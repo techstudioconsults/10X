@@ -3,7 +3,7 @@ import heroImg from "../../assets/heroImg.png";
 import first from "../../assets/first.png";
 import second from "../../assets/second.png";
 import trust from "../../assets/trust.png";
-import companies from "../../assets/companies.png";
+import com from "../../assets/com.png";
 import flower from "../../assets/flower.png";
 import flowerR from "../../assets/flowerR.png";
 import b from "../../assets/b.png";
@@ -12,7 +12,8 @@ import one from "../../assets/one.png";
 import stop from "../../assets/stop.png";
 import award from "../../assets/award.png";
 import mcompanies from "../../assets/mCompanies.png";
-import mobpic from "../../assets/mobpic.png";
+// import mobpic from "../../assets/mobpic.png";
+import assit from "../../assets/assit.png";
 import white from "../../assets/white.png";
 import { Link } from "react-router-dom";
 import { FaBell } from "react-icons/fa";
@@ -71,10 +72,10 @@ export const Home = () => {
   };
 
   return (
-    <main className="mb-5 bg-white">
+    <main className="mb-5 bg-white mt-32">
       <section className="hero-img relative">
-        <div className="mb-0">
-          <h1 className="text-center text-4xl md:text-6xl lg:text-8xl font-[1000] mx-auto max-w-[300px] md:max-w-[500px] lg:max-w-[800px] text-blue mb-0 lg:leading-[97px]">
+        <div className="md:h-[200px]">
+          <h1 className="text-center text-4xl md:text-6xl lg:text-8xl font-[1000] mx-auto max-w-[300px] md:max-w-[500px] lg:max-w-[800px] text-blue  lg:leading-[97px]">
             Fueling Clients to <span className="text-darkBlue">7+ Figures</span>{" "}
             and Beyond!
           </h1>
@@ -87,18 +88,18 @@ export const Home = () => {
             alt=""
             className="w-[343px] h-[329px] md:w-[844px] md:h-[844px] mx-auto  left-0 right-0 relative hidden md:block"
           />
-          <img
+          {/* <img
             src={mobpic}
             alt=""
             className="w-[343px] h-[329px] md:w-[844px] md:h-[844px] mx-auto  left-0 right-0 relative md:hidden"
-          />
+          /> */}
           <div className=" absolute hidden  top-10 bottom-[50%] md:flex justify-between items-center left-0 right-0">
             <img src={first} alt="" className="w-[123px] h-[118px]" />
             <img src={second} alt="" className="w-[123px] h-[118px]" />
           </div>
           <img
-            src={companies}
-            className="absolute top-[45%] left-0 right-0 hidden md:block"
+            src={com}
+            className="absolute top-[45%] left-0 right-0 hidden md:block h-[64px] w-[796px] object-cover"
             alt=""
           />
           <img
@@ -106,27 +107,26 @@ export const Home = () => {
             className="absolute top-[35%] left-[38%] hidden md:block"
             alt=""
           />
-
-          <div className=" absolute -bottom-14 hidden md:block">
-            <img src={white} alt="" className=" w-full h-[466px]" />
+          <div className=" absolute -bottom-14 hidden md:block left-0 right-0">
+            <img src={white} alt="" className=" h-[330px] w-[900px]" />
           </div>
         </section>
 
-        <div className="text-center ms-5 hero-img-div2 absolute left-0 right-5  bottom-[43%] md:bottom-[55%] lg:bottom-[50%]">
+        <div className="text-center ms-5 hero-img-div2 absolute left-0 right-5  bottom-[30%] md:bottom-[55%] lg:bottom-[54%]">
           <button className="bg-white h-[51px]  w-[196px] md:w-[310px] md:h-[69px] text-md md:text-2xl mx-auto text-center shadow text-[#214672] font-semibold rounded-xl client border border-blue hover:bg-blue hover:text-white duration-500">
             Become a Client
           </button>
         </div>
 
-        <img src={mcompanies} alt="" className="w-full  md:hidden " />
+        <img src={mcompanies} alt="" className="w-full  md:hidden mt-[120px]" />
       </section>
 
-      <div className="text-center my-10">
-        <h1 className="text-3xl lg:text-[45px] font-[650] max-w-[300px] md:max-w-[700px] mx-auto text-blue">
+      <div className="text-center mt-10 mb-24">
+        <h1 className="text-3xl lg:text-[45px] font-[650] max-w-[300px] md:max-w-[700px] mx-auto text-blue h-[62px]">
           Everything your <span className=" text-darkBlue">business</span> needs
         </h1>
 
-        <p className=" text-sm max-w-[300px] md:max-w-[630px] mx-auto my-3 text-blue">
+        <p className=" text-sm max-w-[300px] md:max-w-[630px] mx-auto my-3 text-blue h-[40px]">
           We help coaches, experts, and digital course creators replace the
           unpredictability of static launches with evergreen assets that
           consistently convert cold prospects into premium clients and
@@ -187,7 +187,7 @@ export const Home = () => {
         </Link>
       </div>
 
-      <section className="hidden md:flex justify-center items-center gap-10 md:my-10 ">
+      <section className="hidden md:flex justify-center items-center gap-10 md:my-10 h-[483px]">
         <div>
           <ul className="text-white">
             <li className="">
@@ -278,45 +278,51 @@ export const Home = () => {
         </section>
       </section>
 
-      <div className="hidden md:block assisting-bg my-7 h-[100px] md:h-[300px] container mx-auto w-full">
-        {/* assisting img */}
-        
-      
-
-        <section className="flex justify-end items-center gap-3 mx-5 pt-40 lg:pt-32 xl:pt-28 ">
-          <div className="bg-white w-[130px] h-[126px] lg:w-[170px] lg:h-[150px] xl:w-[250px] xl:h-[176px] flex justify-center items-center flex-col rounded-xl">
-            <h1 className="font-[650] text-xs xl:text-lg text-center">
-              Companies Mentoring
-            </h1>
-            <p className="text-[48px] font-[860]">875</p>
-            <p className=" text-gray-600">Work</p>
+      <section className="assisting-bg   md:h-[300px] ">
+        <div className="hidden   my-7 h-[100px] md:h-[308px]  w-full md:flex justify-start gap-20 items-center container mx-auto">
+          <div>
+            <img
+              src={assit}
+              alt=""
+              className=" h-[500px] w-[317px] object-contain"
+            />
+            {/* assisting img */}
           </div>
+          <section className="flex justify-end items-center gap-3 mx-5 ">
+            <div className="bg-white w-[130px] h-[126px] lg:w-[170px] lg:h-[150px] xl:w-[250px] xl:h-[176px] flex justify-center items-center flex-col rounded-xl">
+              <h1 className="font-[650] text-xs xl:text-lg text-center">
+                Companies Mentoring
+              </h1>
+              <p className="text-[48px] font-[860]">875</p>
+              <p className=" text-gray-600">Work</p>
+            </div>
 
-          <div className="bg-white w-[130px] h-[126px] lg:w-[170px] lg:h-[150px] xl:w-[250px] xl:h-[176px] flex justify-center items-center flex-col rounded-xl">
-            <h1 className="font-[650] text-xs xl:text-lg text-center">
-              Companies Mentoring
-            </h1>
-            <p className="text-[48px] font-[860]">6k+</p>
-            <p className=" text-gray-600">Customers</p>
-          </div>
+            <div className="bg-white w-[130px] h-[126px] lg:w-[170px] lg:h-[150px] xl:w-[250px] xl:h-[176px] flex justify-center items-center flex-col rounded-xl">
+              <h1 className="font-[650] text-xs xl:text-lg text-center">
+                Companies Mentoring
+              </h1>
+              <p className="text-[48px] font-[860]">6k+</p>
+              <p className=" text-gray-600">Customers</p>
+            </div>
 
-          <div className="bg-white w-[130px] h-[126px] lg:w-[170px] lg:h-[150px] xl:w-[250px] xl:h-[176px] flex justify-center items-center flex-col rounded-xl">
-            <h1 className="font-[650] text-xs xl:text-lg text-center">
-              Companies Mentoring
-            </h1>
-            <p className="text-[48px] font-[860]">10</p>
-            <p className=" text-gray-600">Years</p>
-          </div>
-        </section>
-      </div>
+            <div className="bg-white w-[130px] h-[126px] lg:w-[170px] lg:h-[150px] xl:w-[250px] xl:h-[176px] flex justify-center items-center flex-col rounded-xl">
+              <h1 className="font-[650] text-xs xl:text-lg text-center">
+                Companies Mentoring
+              </h1>
+              <p className="text-[48px] font-[860]">10</p>
+              <p className=" text-gray-600">Years</p>
+            </div>
+          </section>
+        </div>
+      </section>
 
       <section className="hidden md:block  md:mt-20 container mx-auto">
-        <div className=" shadow-2xl bg-white w-[1000px] max-w-full py-5 px-10 text-blue mx-auto rounded-md relative">
+        <div className=" shadow-2xl bg-white w-[1000px] h max-w-full py-5 px-10 text-blue mx-auto rounded-md relative">
           <FaBell size={20} />
           <h1 className="text-[28px] font-[650] max-w-xs">
             How can Revenue Growth benefit me?
           </h1>
-          <p className="mb-5 max-w-xs lg:max-w-md">
+          <p className="mb-5 max-w-[250px] lg:max-w-md">
             We help coaches, experts, and digital course creators replace the
             unpredictability of static launches with evergreen assets that
             consistently convert cold prospects into premium clients and
@@ -327,26 +333,22 @@ export const Home = () => {
             Learn More
           </Link>
 
-          <div className=" relative">
-            {/* flower img */}
-            {/* <img
-            src={flower}
-            alt=""
-            className="h-[300px] absolute -bottom-[250px] hidden md:block"
-          /> */}
-          </div>
+          {/* <div className=" relative  w-[500px]"> */}
+          {/* flower img */}
+          {/* <img src={flower} alt="" className=" hidden md:block" /> */}
+          {/* </div> */}
 
           <div className="hidden md:block w-[500px] ">
             {/* one */}
             <img
               src={one}
               alt=""
-              className="h-[300px] absolute top-0 left-[50%] lg:left-[53%]"
+              className="h-[300px] absolute top-0 left-[45%] lg:left-[53%]"
             />
             <img
               src={one}
               alt=""
-              className="h-[300px] absolute top-[25%] left-[70%] lg:left-[76%] xl:left-[75%]"
+              className="h-[300px] absolute top-[25%] left-[65%] lg:left-[76%] xl:left-[75%]"
             />
           </div>
         </div>
@@ -354,7 +356,11 @@ export const Home = () => {
 
       <div className="hidden md:block stop md:mt-[150px]">
         {/* stop wasting money img */}
-        <img src={stop} alt="" className="w-full h-[322px]  object-cover object-left" />
+        <img
+          src={stop}
+          alt=""
+          className="w-full h-[322px]  object-cover object-left"
+        />
       </div>
 
       <section>
@@ -371,7 +377,7 @@ export const Home = () => {
         </div>
       </section>
 
-      <div className=" overflow-x-hidden">
+      <div className=" overflow-hidden">
         <section className="my-5">
           <Sliders />
         </section>

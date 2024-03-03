@@ -7,7 +7,7 @@ export const Footer = () => {
     <footer className="pb-7">
       <section className="container mx-auto">
         {" "}
-        <main className=" p-5  md:flex justify-around  ">
+        <main className=" p-5  md:flex justify-around  gap-3">
           <section className="hidden md:block ">
             <img src={logo} alt="" className=" md:w-[200px] md:h-[70px]" />
 
@@ -47,9 +47,12 @@ export const Footer = () => {
                 Subscribe
               </button>
             </form>
+
+            <p className="mt-3 text-center md:text-start text-sm">For media inquiries, please contact us at</p>
+            <p className=" underline text-center md:text-start text-sm">7+figures@revenuegrowth.com</p>
           </section>
         </main>
-        <hr className="bg-white w-[340px] md:w-[900px] max-w-full mx-auto" />
+        <hr className="bg-white w-[340px] md:w-[900px] lg:w-[990px] max-w-full mx-auto" />
         <section className="md:hidden mx-4 space-y-4 mt-3 flex flex-col text-[#fefefe] font-[650]">
           <Link>Home</Link>
           <hr className="bg-white w-[340px] md:w-[930px] max-w-full mx-auto" />
