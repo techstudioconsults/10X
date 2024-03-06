@@ -8,13 +8,13 @@ export const Navbar = () => {
   const [isOpen, setOpen] = useState(false);
 
   return (
-    <nav className=" flex justify-around items-center h-[110px] w-full fixed top-0 bg-white z-10 ">
+    <nav className=" flex justify-around items-center h-[80px]  w-full fixed top-0 bg-white z-10 ">
       <div>
         <Link>
           {" "}
           <img
             src={revenueLogo}
-            className="w-[120px] h-[44px] md:w-[200px] md:h-[74.22px]"
+            className="w-[140px] h-[54px] md:w-[140px] md:h-[54.22px]"
             alt="company-logo"
           />
         </Link>
@@ -26,7 +26,7 @@ export const Navbar = () => {
         <Link className=" text-blue nav__link">Resource</Link>
       </div>
 
-      <Link className=" border border-blue w-[115px] h-[51px] md:flex justify-center items-center rounded-lg text-blue font-semibold hover:bg-blue hover:text-white duration-500 hidden ">
+      <Link className=" border border-blue w-[90px] h-[45px] md:flex justify-center items-center rounded-lg text-blue font-semibold hover:bg-blue hover:text-white duration-500 hidden ">
         Sign In
       </Link>
 

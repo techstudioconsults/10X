@@ -72,48 +72,43 @@ export const Home = () => {
   };
 
   return (
-    <main className="mb-5 bg-white mt-32">
+    <main className="mb-5 bg-white mt-20">
       <section className="hero-img relative">
-        <div className="md:h-[200px]">
-          <h1 className="text-center text-4xl md:text-6xl lg:text-8xl font-[1000] mx-auto max-w-[300px] md:max-w-[500px] lg:max-w-[800px] text-blue  lg:leading-[97px]">
+        <div className="md:h-[150px]">
+          <h1 className="text-center text-4xl md:text-6xl lg:text-7xl font-[1000] mx-auto max-w-[300px] md:max-w-[500px] lg:max-w-[600px] text-blue  lg:leading-[77px]">
             Fueling Clients to <span className="text-darkBlue">7+ Figures</span>{" "}
             and Beyond!
           </h1>
         </div>
 
         <section className=" relative left-0 right-0 md:w-[844px] mx-auto max-w-full">
-          {" "}
           <img
             src={heroImg}
             alt=""
-            className="w-[343px] h-[329px] md:w-[844px] md:h-[844px] mx-auto  left-0 right-0 relative hidden md:block"
+            className="w-[343px] h-[329px] md:w-[744px] md:h-[744px] mx-auto  left-0 right-0 relative hidden md:block"
           />
-          {/* <img
-            src={mobpic}
-            alt=""
-            className="w-[343px] h-[329px] md:w-[844px] md:h-[844px] mx-auto  left-0 right-0 relative md:hidden"
-          /> */}
-          <div className=" absolute hidden  top-10 bottom-[50%] md:flex justify-between items-center left-0 right-0">
+
+          <div className=" absolute hidden  top-10 bottom-[50%] md:flex justify-between items-center left-3 right-3">
             <img src={first} alt="" className="w-[123px] h-[118px]" />
             <img src={second} alt="" className="w-[123px] h-[118px]" />
           </div>
           <img
             src={com}
-            className="absolute top-[45%] left-0 right-0 hidden md:block h-[64px] w-[796px] object-cover"
+            className="absolute top-[45%] left-14 right-14 hidden md:block h-[64px] w-[696px] object-cover"
             alt=""
           />
           <img
             src={trust}
-            className="absolute top-[35%] left-[38%] hidden md:block"
+            className="absolute top-[38%] left-[38%] hidden md:block"
             alt=""
           />
           <div className=" absolute -bottom-14 hidden md:block left-0 right-0">
-            <img src={white} alt="" className=" h-[330px] w-[900px]" />
+            <img src={white} alt="" className=" h-[300px] w-[900px]" />
           </div>
         </section>
 
-        <div className="text-center ms-5 hero-img-div2 absolute left-0 right-5  bottom-[30%] md:bottom-[55%] lg:bottom-[54%]">
-          <button className="bg-white h-[51px]  w-[196px] md:w-[310px] md:h-[69px] text-md md:text-2xl mx-auto text-center shadow text-[#214672] font-semibold rounded-xl client border border-blue hover:bg-blue hover:text-white duration-500">
+        <div className="text-center ms-5 hero-img-div2 absolute left-0 right-5  bottom-[35%] md:bottom-[55%] lg:bottom-[55%]">
+          <button className="bg-white h-[51px]  w-[196px] md:w-[220px] md:h-[59px] text-md md:text-[20px] mx-auto text-center shadow text-[#214672] font-semibold rounded-xl client border border-blue hover:bg-blue hover:text-white duration-500">
             Become a Client
           </button>
         </div>
@@ -121,7 +116,7 @@ export const Home = () => {
         <img src={mcompanies} alt="" className="w-full  md:hidden mt-[120px]" />
       </section>
 
-      <div className="text-center mt-10 mb-24">
+      <div className="text-center mt-8 mb-16">
         <h1 className="text-3xl lg:text-[45px] font-[650] max-w-[300px] md:max-w-[700px] mx-auto text-blue h-[62px]">
           Everything your <span className=" text-darkBlue">business</span> needs
         </h1>
@@ -147,7 +142,49 @@ export const Home = () => {
         <h1 className="text-white text-[24px] font-[650] max-w-[250px] mx-auto">
           Assisting enterprises and customers
         </h1>
-        <AssistSlider />
+        {/* <AssistSlider /> */}
+
+        <div className="slider w-[300px] mx-auto  p-5 max-w-full rounded-xl mt-3 bg-white">
+          {/* 1 */}
+          <p className="text-[#002F6C] font-[650] text-lg ">Companies Mentoring</p>
+
+          <p className=" text-sm text-gray-600 font-medium">
+            We help coaches, experts, and digital course creators replace the
+            unpredictability of static launches.
+          </p>
+          <div className="flex justify-center gap-3 mt-5">
+            <p className=" text-6xl">875</p>
+            <p className=" text-gray-600 mt-8">Work</p>
+          </div>
+        </div>
+
+        <div className="slider w-[300px] mx-auto  p-5 max-w-full rounded-xl my-5 bg-white">
+          {/* 2 */}
+          <p className="text-[#002F6C] font-[650] text-lg ">Companies Mentoring</p>
+
+          <p className=" text-sm text-gray-600 font-medium">
+            We help coaches, experts, and digital course creators replace the
+            unpredictability of static launches.
+          </p>
+          <div className="flex justify-center gap-3 mt-5">
+            <p className=" text-6xl">875</p>
+            <p className=" text-gray-600 mt-8">Work</p>
+          </div>
+        </div>
+
+        <div className="slider w-[300px] mx-auto  p-5 max-w-full rounded-xl mt-3 bg-white">
+          {/* 3 */}
+          <p className="text-[#002F6C] font-[650] text-lg ">Companies Mentoring</p>
+
+          <p className=" text-sm text-gray-600 font-medium">
+            We help coaches, experts, and digital course creators replace the
+            unpredictability of static launches.
+          </p>
+          <div className="flex justify-center gap-3 mt-5">
+            <p className=" text-6xl">875</p>
+            <p className=" text-gray-600 mt-8">Work</p>
+          </div>
+        </div>
       </section>
 
       <section className="text-center my-20 relative md:hidden">
@@ -290,7 +327,7 @@ export const Home = () => {
           </div>
           <section className="flex justify-end items-center gap-3 mx-5 ">
             <div className="bg-white w-[130px] h-[126px] lg:w-[170px] lg:h-[150px] xl:w-[250px] xl:h-[176px] flex justify-center items-center flex-col rounded-xl">
-              <h1 className="font-[650] text-xs xl:text-lg text-center">
+              <h1 className="font-[650] text-xs xl:text-lg text-center text-[#002F6C]">
                 Companies Mentoring
               </h1>
               <p className="text-[48px] font-[860]">875</p>
@@ -298,7 +335,7 @@ export const Home = () => {
             </div>
 
             <div className="bg-white w-[130px] h-[126px] lg:w-[170px] lg:h-[150px] xl:w-[250px] xl:h-[176px] flex justify-center items-center flex-col rounded-xl">
-              <h1 className="font-[650] text-xs xl:text-lg text-center">
+              <h1 className="font-[650] text-xs xl:text-lg text-center text-[#002F6C]">
                 Companies Mentoring
               </h1>
               <p className="text-[48px] font-[860]">6k+</p>
@@ -306,7 +343,7 @@ export const Home = () => {
             </div>
 
             <div className="bg-white w-[130px] h-[126px] lg:w-[170px] lg:h-[150px] xl:w-[250px] xl:h-[176px] flex justify-center items-center flex-col rounded-xl">
-              <h1 className="font-[650] text-xs xl:text-lg text-center">
+              <h1 className="font-[650] text-xs xl:text-lg text-center text-[#002F6C]">
                 Companies Mentoring
               </h1>
               <p className="text-[48px] font-[860]">10</p>

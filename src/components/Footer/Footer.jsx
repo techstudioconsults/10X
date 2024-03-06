@@ -37,31 +37,37 @@ export const Footer = () => {
               news, tips & tricks from Revenue Growth
             </p>
 
-            <form className="mt-4 relative">
+            <form className="mt-4 relative flex justify-center flex-col items-center">
               <input
                 type="email"
                 className="w-[400px] h-[67px] max-w-full ps-3 rounded-2xl outline-none bg-transparent border-2 placeholder:text-sm md:relative md:pe-[160px] pe-[120px]"
                 placeholder="Enter your email"
               />
-              <button className="w-[447px] max-w-full mt-4 md:w-[144px] h-[67px] md:h-[43px] bg-[#fefefe] text-blue font-[650] rounded-lg md:absolute md:right-3 md:-top-1">
+              <button className="w-[347px] max-w-full mt-4 md:w-[144px] h-[67px] md:h-[43px] bg-[#fefefe] text-blue font-[650] rounded-lg md:absolute md:right-3 md:-top-1">
                 Subscribe
               </button>
             </form>
 
-            <p className="mt-3 text-center md:text-start text-sm">For media inquiries, please contact us at</p>
-            <p className=" underline text-center md:text-start text-sm">7+figures@revenuegrowth.com</p>
+            <p className="mt-3 text-center md:text-start text-sm">
+              For media inquiries, please contact us at
+            </p>
+            <p className=" underline text-center md:text-start text-sm">
+              7+figures@revenuegrowth.com
+            </p>
           </section>
         </main>
-        <hr className="bg-white w-[340px] md:w-[900px] lg:w-[990px] max-w-full mx-auto" />
+        <hr className="bg-white w-[540px] md:w-[900px] lg:w-[910px] max-w-full mx-auto hidden md:block" />
+
         <section className="md:hidden mx-4 space-y-4 mt-3 flex flex-col text-[#fefefe] font-[650]">
+          <hr className="bg-white w-[540px] md:w-[900px] lg:w-[910px] max-w-full mx-auto " />
           <Link>Home</Link>
-          <hr className="bg-white w-[340px] md:w-[930px] max-w-full mx-auto" />
+          <hr className="bg-white w-[930px] max-w-full mx-auto" />
           <Link>Service</Link>
-          <hr className="bg-white w-[340px] md:w-[930px] max-w-full mx-auto" />
+          <hr className="bg-white w-[930px] max-w-full mx-auto" />
           <Link>Resource Hub</Link>
-          <hr className="bg-white w-[340px] md:w-[930px] max-w-full mx-auto" />
+          <hr className="bg-white w-[930px] max-w-full mx-auto" />
           <Link>About Us</Link>
-          <hr className="bg-white w-[340px] md:w-[930px] max-w-full mx-auto" />
+          <hr className="bg-white w-[930px] max-w-full mx-auto" />
         </section>
         <div className="mx-4 md:hidden flex justify-between items-start text-[#fefefe] underline mt-10">
           <Link>Terms of Use</Link>
