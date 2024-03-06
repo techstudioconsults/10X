@@ -153,7 +153,7 @@ export const Home = () => {
             unpredictability of static launches.
           </p>
           <div className="flex justify-center gap-3 mt-5">
-            <p className=" text-6xl">875</p>
+            <p className=" text-6xl font-black">875</p>
             <p className=" text-gray-600 mt-8">Work</p>
           </div>
         </div>
@@ -167,7 +167,7 @@ export const Home = () => {
             unpredictability of static launches.
           </p>
           <div className="flex justify-center gap-3 mt-5">
-            <p className=" text-6xl">875</p>
+            <p className=" text-6xl font-black">875</p>
             <p className=" text-gray-600 mt-8">Work</p>
           </div>
         </div>
@@ -181,7 +181,7 @@ export const Home = () => {
             unpredictability of static launches.
           </p>
           <div className="flex justify-center gap-3 mt-5">
-            <p className=" text-6xl">875</p>
+            <p className=" text-6xl font-black">875</p>
             <p className=" text-gray-600 mt-8">Work</p>
           </div>
         </div>
@@ -193,7 +193,7 @@ export const Home = () => {
           benefit me?
         </h1>
 
-        <p className="text-gray-600 mt-4 text-sm max-w-[300px] mx-auto">
+        <p className="text-gray-600 mt-4 text-sm max-w-[300px] mx-auto font-medium">
           We help coaches, experts, and digital course creators replace the
           unpredictability of static launches with evergreen assets that
           consistently convert cold prospects into premium clients and
@@ -204,17 +204,17 @@ export const Home = () => {
           <FirstCardSlider />
         </div>
 
-        <div className=" absolute -bottom-24 flex justify-between left-0 right-0">
+        {/* <div className=" absolute -bottom-24 flex justify-between left-0 right-0">
           <img src={flower} className="w-[172px] h-[200px]" alt="" />
           <img
             src={flowerR}
             className="w-[172px] h-[200px] right-0 absolute"
             alt=""
           />
-        </div>
+        </div> */}
       </section>
 
-      <div className="assist mt-40 h-[267px] w-full flex justify-center items-center flex-col md:hidden">
+      <div className="assist mt-28 h-[267px] w-full flex justify-center items-center flex-col md:hidden">
         <h1 className="font-[540] text-white text-3xl max-w-[300px] text-center">
           Stop wasting time and money on the wrong marketing funnels
         </h1>
