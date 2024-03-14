@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Accordion,
   AccordionHeader,
@@ -32,6 +32,7 @@ export function MobileAccordions() {
 
   const handleOpen = (value) => setOpen(open === value ? 0 : value);
 
+  
   return (
     <>
       <main className="w-[343px] max-w-full px-3  mx-auto">
