@@ -1,19 +1,18 @@
-body{
+body {
   font-family: "Roboto", sans-serif;
 }
 
 .assisting-bg {
- /* background: linear-gradient(to bottom, rgba(38, 45, 53, 0.2) 20%, #262d35 100%);; */
- background-image: url(.././src//assets/stopBg.png);
- width: 100%;
- height: 308px;
- background-repeat: no-repeat;
- background-size: cover;
+  background-image: url(.././src//assets/bg.png);
+  width: 100%;
+  height: 308px;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .slider {
   background-color: rgba(3, 43, 242, 0.02);
-  width: fit-content;
+  
 }
 
 .slider-text {
@@ -28,7 +27,7 @@ footer {
   background-color: rgba(30, 44, 79, 1);
 }
 
-.rights{
+.rights {
   color: rgba(156, 156, 156, 1);
 }
 
@@ -37,16 +36,16 @@ footer {
 }
 
 .text-mark {
-  color: rgba(50, 79, 186, 1)
+  color: rgba(50, 79, 186, 1);
 }
 
-.assist{
-    background-color: rgba(30, 44, 79, 1);
+.assist {
+  background-color: rgba(30, 44, 79, 1);
 }
 
 .hero-img {
   background-image: url(../src//assets//line.png);
-  min-height: 50vh;
+  min-height: 40vh;
   width: 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -54,4 +53,34 @@ footer {
   background-size: cover;
 }
 
+/* .slick-next:before {
+  font-size: 40px !important;
+   color: white !important;
+   opacity: 1 !important;
+}
 
+.slick-prev:before {
+  font-size: 40px !important;
+     color: white !important;
+   opacity: 1 !important;
+  
+   
+}
+
+.slick-next{
+  right: 20px !important;
+}
+.slick-prev{
+  left: -10px !important;
+  z-index: 10;
+} */
+
+@media(max-width:720px){
+  .assisting-bg {
+  background-image: url(.././src//assets/bg.png);
+  width: 100%;
+  height: 08px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+}
