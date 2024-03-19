@@ -12,6 +12,7 @@ const withMaterialTailwind = withMT({
       colors: {
         blue: "#032BF2",
         darkBlue: "#0027BA",
+        grey: "#787878"
       },
     },
   },

@@ -26,7 +26,7 @@ export const Navbar = () => {
         <Link className=" text-blue nav__link">Resource</Link>
       </div>
 
-      <Link className=" border border-blue w-[90px] h-[45px] md:flex justify-center items-center rounded-lg text-blue font-semibold hover:bg-blue hover:text-white duration-500 hidden ">
+      <Link to="/login" className=" border border-blue w-[90px] h-[45px] md:flex justify-center items-center rounded-lg text-blue font-semibold hover:bg-blue hover:text-white duration-500 hidden ">
         Sign In
       </Link>
 
