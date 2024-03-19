@@ -60,7 +60,7 @@ const Resource = () => {
 
   return (
     <div className="bg-[#FFFFFF]">
-      <div className="w-11/12 mx-auto max-w-[1400px] pb-16">
+      <div className="w-11/12 mx-auto container pb-16 pt-20">
         <div className="py-10 w-5/6 lg:w-full mx-auto ">
           <h1 className="leading-9 text-[32px] lg:text-[56px] font-bold text-[#032BF2] text-center ">
             Training and{" "}
