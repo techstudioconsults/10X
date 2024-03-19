@@ -21,9 +21,9 @@ export const Navbar = () => {
       </div>
 
       <div className="hidden md:flex gap-5 items-center font-semibold text-[18px] w-[320px]">
-        <Link className=" text-blue nav__link">Home</Link>
+        <Link to="/" className=" text-blue nav__link">Home</Link>
         <Link className=" text-blue nav__link">Services</Link>
-        <Link className=" text-blue nav__link">Resource</Link>
+        <Link to="/resource" className=" text-blue nav__link">Resource</Link>
       </div>
 
       <Link to="/login" className=" border border-blue w-[90px] h-[45px] md:flex justify-center items-center rounded-lg text-blue font-semibold hover:bg-blue hover:text-white duration-500 hidden ">
