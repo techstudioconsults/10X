@@ -3,24 +3,42 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import prev from '../../assets/Pagation-prev.png'
 import next from '../../assets/pagination-next.png'
+import SkeletonLoader from "../../components/loader/SkeletonLoader";
 
 const Resource = () => {
   const baseUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
+  const [loading, setLoading] = useState(false)
   const [content, setContent] = useState([])
   const [books, setBooks] = useState([]);
   const [videos, setVideos] = useState([]);
   const [allResource, setAllResource] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(8);
+  const [searchParams, setSearchParams] = useState("")
+
+  const maxlength = 30
+
+  const handleSearch =(e)=>{
+    e.preventDefault()
+    console.log(searchParams);
+    
+  }
+
+
+  // const title = item.title.length > maxlength ? slicedTitle = item.title.slice(0, maxlength) + '...' : item.title
   // console.log(content);
 
   // fetched data 
   useEffect(() => {
     const fetchResource = async () => {
       try {
+        setLoading(true)
         const res = await axios.get(`${baseUrl}/api/v1/resources`);
         const resourceData = res.data.data;
+        if(res.status == 200){
+          setLoading(false)
+        }
         setContent(resourceData)
         setAllResource(resourceData);
         setBooks(resourceData.filter(item => item.category === "pdf"));
@@ -51,9 +69,12 @@ const Resource = () => {
             </span>
           </h1>
           <div className="w-full">
-            <form className="flex justify-center items-center w-full lg:w-4/5 mx-auto py-8">
+            <form onSubmit={handleSearch}  className="flex justify-center items-center w-full lg:w-4/5 mx-auto py-8">
               <input
-                type="email"
+              id="search"
+              name="search"
+                type="text"
+                value={searchParams} onChange={(e) => setSearchParams(e.target.value)}
                 placeholder="Search for Anything"
                 className="w-full lg:w-3/5 py-3 px-5 rounded-tl-lg rounded-bl-lg rounded-br-none rounded-tr-none font-medium text-[#787878] placeholder-[#787878] bg-[#EBEFFF] outline-none"
               />
@@ -109,20 +130,21 @@ const Resource = () => {
                   alt=""
                 />
               </div>
-              <div className="w-full p-3 xl:p-8">
-                <h1 className="text-[#0027BA] font-bold text-xl lg:text-lg xl:text-xl text-left ">
-                  {item.title}
+              <div className="w-full p-4  xl:p-4 flex flex-col justify-between gap-4">
+               <h1 className="text-[#0027BA] font-bold text-xl lg:text-lg text-left ">
+                  {item.title.length > maxlength ? item.title.slice(0, maxlength)+ '...' : item.title } 
                 </h1>
-                <p className="text-[#032BF2] text-left text-3xl font-bold py-4">
+
+                <p className="text-[#032BF2] text-left text-2xl font-bold ">
                   NGN {item.price}
                 </p>
-                <div className="flex gap-3 pb-4">
+                <div className="flex gap-3">
                   <p className="text-[#032BF2]">(4.5)</p>
                   <span>
                     <img src={rating} alt="" />
                   </span>
                 </div>
-                <button className=" border-[#032BF2] border-2 text-[#032BF2] font-semibold text-2xl w-full p-3 rounded-lg">
+                <button className=" border-[#032BF2] border-2 text-[#032BF2] font-semibold text-xl w-full p-3 rounded-lg mb-3">
                   Buy Now
                 </button>
               </div>
@@ -169,6 +191,7 @@ const Resource = () => {
           </ul>
         )}
       </div>
+     {loading &&  <SkeletonLoader/>}
       </div>
     </div>
   );
