@@ -156,7 +156,7 @@ const WhatWeDo = () => {
       <div className="py-8">
         <div className="section-bg py-10 lg:py-14 xl:py-20 2xl:py-36 flex flex-col justify-center items-center">
           <div className="bg-white rounded-lg w-11/12 md:w-4/6 lg:w-5/12 p-5 mx-auto my-8 container max-w-2xl border-black border-2 ">
-            <h1 className="text-blue lg:text-3xl font-extrabold text-2xl 2xl:text-4xl px-1 2xl:px-16 text-center ">
+            <h1 className="text-blue lg:text-3xl font-extrabold text-2xl 2xl:text-4xl px-1 xl:px-8 2xl:px-16 text-center ">
               Want 10X Revenue Growth to Help Scale Your Business?
             </h1>
             <div className="pt-3">
@@ -177,8 +177,8 @@ const WhatWeDo = () => {
 
       <div className="bg-white">
         <div className="w-4/5 mx-auto container py-8">
-          <div className=" mx-auto w-2/3 py-4 flex flex-col justify-center items-center">
-            <h1 className="text-center text-blue text-2xl xl:text-5xl font-bold">
+          <div className=" mx-auto w-2/3 xl:w-3/4 2xl:w-2/3 py-4 flex flex-col justify-center items-center">
+            <h1 className="text-center px-2 lg:px-14 xl:px-0 2xl:px-0 text-blue text-2xl xl:text-5xl font-bold">
               Principles We Follow to Help You Scale to $100k/mo and Beyond{" "}
             </h1>
             <img className="w-52 -translate-x-9" src={wavyLine} alt="" />
