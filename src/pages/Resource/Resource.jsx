@@ -14,7 +14,7 @@ const Resource = () => {
   const [videos, setVideos] = useState([]);
   const [allResource, setAllResource] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(8);
+  const [itemsPerPage] = useState(12);
   const [searchParams, setSearchParams] = useState("")
 
   const maxlength = 30
