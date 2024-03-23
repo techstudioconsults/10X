@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 
 function PurchaseForm() {
   const [email, setEmail] = useState("");
@@ -9,6 +10,8 @@ function PurchaseForm() {
   const [agreeTerms, setAgreeTerms] = useState(false);
   const [allInputsFilled, setAllInputsFilled] = useState(false);
   const [allChecked, setAllChecked] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   useEffect(() => {
     // Check if all input fields are filled
@@ -27,6 +30,13 @@ function PurchaseForm() {
     e.preventDefault();
     // Your form submission logic here
     console.log("Form submitted!");
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+  const toggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword(!showConfirmPassword);
   };
 
   return (
@@ -54,23 +64,40 @@ function PurchaseForm() {
           required
         />
 
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Create Password"
-          className="border border-[#787878] rounded-md p-3 w-full bg-[#FAFBFF]"
-          required
-        />
-
-        <input
-          type="password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          placeholder="Confirm Password"
-          className="border border-[#787878] rounded-md p-3 w-full bg-[#FAFBFF]"
-          required
-        />
+        <div className="relative">
+          <input
+            type={showPassword ? "text" : "password"}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Create Password"
+            className="border border-[#787878] rounded-md p-3 w-full bg-[#FAFBFF] pr-10"
+            required
+          />
+          <button
+            type="button"
+            className="absolute inset-y-0 right-0 flex items-center px-3"
+            onClick={togglePasswordVisibility}
+          >
+            {showPassword ? <FiEye /> : <FiEyeOff />}
+          </button>
+        </div>
+        <div className="relative">
+          <input
+            type={showConfirmPassword ? "text" : "password"}
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            placeholder="Confirm Password"
+            className="border border-[#787878] rounded-md p-3 w-full bg-[#FAFBFF]"
+            required
+          />
+          <button
+            type="button"
+            className="absolute inset-y-0 right-0 flex items-center px-3"
+            onClick={toggleConfirmPasswordVisibility}
+          >
+            {showConfirmPassword ? <FiEye /> : <FiEyeOff />}
+          </button>
+        </div>
 
         <div className="flex items-center">
           <input
