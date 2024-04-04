@@ -72,7 +72,7 @@ export const Home = () => {
   };
 
   return (
-    <main className="mb-5 bg-white mt-20">
+    <main className="mb-5 bg-white pt-20">
       <section className="hero-img relative">
         <div className="md:h-[150px]">
           <h1 className="text-center text-4xl md:text-6xl lg:text-7xl font-[1000] mx-auto max-w-[300px] md:max-w-[500px] lg:max-w-[600px] text-blue  lg:leading-[77px]">
@@ -146,7 +146,9 @@ export const Home = () => {
 
         <div className="slider w-[300px] mx-auto  p-5 max-w-full rounded-xl mt-3 bg-white">
           {/* 1 */}
-          <p className="text-[#002F6C] font-[650] text-lg ">Companies Mentoring</p>
+          <p className="text-[#002F6C] font-[650] text-lg ">
+            Companies Mentoring
+          </p>
 
           <p className=" text-sm text-gray-600 font-medium">
             We help coaches, experts, and digital course creators replace the
@@ -160,7 +162,9 @@ export const Home = () => {
 
         <div className="slider w-[300px] mx-auto  p-5 max-w-full rounded-xl my-5 bg-white">
           {/* 2 */}
-          <p className="text-[#002F6C] font-[650] text-lg ">Companies Mentoring</p>
+          <p className="text-[#002F6C] font-[650] text-lg ">
+            Companies Mentoring
+          </p>
 
           <p className=" text-sm text-gray-600 font-medium">
             We help coaches, experts, and digital course creators replace the
@@ -174,7 +178,9 @@ export const Home = () => {
 
         <div className="slider w-[300px] mx-auto  p-5 max-w-full rounded-xl mt-3 bg-white">
           {/* 3 */}
-          <p className="text-[#002F6C] font-[650] text-lg ">Companies Mentoring</p>
+          <p className="text-[#002F6C] font-[650] text-lg ">
+            Companies Mentoring
+          </p>
 
           <p className=" text-sm text-gray-600 font-medium">
             We help coaches, experts, and digital course creators replace the
