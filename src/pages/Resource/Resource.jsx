@@ -21,7 +21,7 @@ const Resource = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
-  const maxlength = 30;
+  const maxlength = 20;
 
   // console.log(active);
   const handleSearch = async (e) => {
