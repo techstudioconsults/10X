@@ -20,10 +20,10 @@ export const Navbar = () => {
         </Link>
       </div>
 
-      <div className="hidden md:flex gap-5 items-center font-semibold text-[18px] w-[320px]">
+      <div className="hidden md:flex gap-5 items-center font-semibold text-[18px] w-[350px]">
         <Link to="/" className=" text-blue nav__link">Home</Link>
         <Link to="/about" className=" text-blue nav__link">What We Do</Link>
-        <Link to="/resource" className=" text-blue nav__link">Resource</Link>
+        <Link to="/resource" className=" text-blue nav__link">Resources Hub</Link>
       </div>
 
       <Link to="/login" className=" border border-blue w-[90px] h-[45px] md:flex justify-center items-center rounded-lg text-blue font-semibold hover:bg-blue hover:text-white duration-500 hidden ">
