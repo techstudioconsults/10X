@@ -6,6 +6,10 @@ import SalesPage from "./pages/SalesPage/SalesPage";
 import Login from "./pages/Auth/Login/Login";
 import Rootlayout from "./layout/Rootlayout";
 import WhatWeDo from "./pages/About/WhatWeDO";
+import Adminlayout from "./layout/AdminLayout";
+import Dashboard from "./components/Dashboard";
+import Library from "./components/Library";
+import Settings from "./pages/Settings/Settings"
 
 function App() {
   return (
@@ -17,6 +21,12 @@ function App() {
             <Route path="/resource" element={<Resource />} />
             <Route path="/about" element={<WhatWeDo />} />
             <Route path="/sales" element={<SalesPage />} />
+          </Route>
+
+          <Route element={<Adminlayout />}>
+            <Route path="/admin/home" element={<Dashboard />} />
+            <Route path="/admin/library" element={<Library />} />
+            <Route path="/admin/settings" element={<Settings />} />
           </Route>
           <Route path="/login" element={<Login />} />
         </Routes>
