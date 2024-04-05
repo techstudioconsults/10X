@@ -12,6 +12,8 @@ function PurchaseForm() {
   const [allChecked, setAllChecked] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
 
   useEffect(() => {
     // Check if all input fields are filled
@@ -39,6 +41,38 @@ function PurchaseForm() {
     setShowConfirmPassword(!showConfirmPassword);
   };
 
+  const validateEmail = () => {
+    // Email validation logic
+    // Regular expression for email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setEmailError("Please enter a valid email address");
+    } else {
+      setEmailError("");
+    }
+  };
+
+  const validatePassword = () => {
+    // Password validation logic
+    if (password !== confirmPassword) {
+      setPasswordError("Passwords do not match");
+    } else {
+      setPasswordError("");
+    }
+  };
+
+  useEffect(() => {
+    if (email !== "") {
+      validateEmail();
+    }
+  }, [email]);
+
+  useEffect(() => {
+    if (confirmPassword !== "") {
+      validatePassword();
+    }
+  }, [confirmPassword]);
+
   return (
     <div className="rounded-md p-4 max-w-[320px] mx-auto bg-[#FAFBFF]  shadow-lg">
       <h2 className="text-xl font-bold mb-4 text-[#032BF2]">
@@ -50,10 +84,12 @@ function PurchaseForm() {
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          onBlur={validateEmail}
           placeholder="Email Address"
           className="border border-[#787878] rounded-md p-3 w-full bg-[#FAFBFF]"
           required
         />
+        {emailError && <p className="text-red-500">{emailError}</p>}
 
         <input
           type="text"
@@ -81,11 +117,13 @@ function PurchaseForm() {
             {showPassword ? <FiEye /> : <FiEyeOff />}
           </button>
         </div>
+
         <div className="relative">
           <input
             type={showConfirmPassword ? "text" : "password"}
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
+            onBlur={validatePassword}
             placeholder="Confirm Password"
             className="border border-[#787878] rounded-md p-3 w-full bg-[#FAFBFF]"
             required
@@ -98,6 +136,7 @@ function PurchaseForm() {
             {showConfirmPassword ? <FiEye /> : <FiEyeOff />}
           </button>
         </div>
+        {passwordError && <p className="text-red-500">{passwordError}</p>}
 
         <div className="flex items-center">
           <input
@@ -133,11 +172,17 @@ function PurchaseForm() {
         <button
           type="submit"
           className={`rounded-md p-2 w-full transition duration-300 ${
-            allInputsFilled && allChecked
+            allInputsFilled && allChecked && password === confirmPassword
               ? "bg-[#032BF2] text-white hover:bg-blue-600"
               : "bg-[#EBEFFF] text-white cursor-not-allowed"
           }`}
-          disabled={!allInputsFilled || !allChecked}
+          disabled={
+            !allInputsFilled ||
+            !allChecked ||
+            password !== confirmPassword ||
+            !!emailError ||
+            !!passwordError
+          }
         >
           Continue Payment
         </button>
