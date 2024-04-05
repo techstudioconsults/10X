@@ -12,7 +12,8 @@ import {useLocation} from "react-router-dom"
 const AdminSidebar = () => {
   const {pathname} = useLocation()
   return (
-    <div className='h-screen w-[270px] hidden md:block bg-[#032BF20F] p-4  shadow-xl'>
+    
+    <div className='h-screen w-[270px] 2xl:relative  fixed hidden lg:block bg-[#032BF20F] p-4  shadow-xl'>
         <div className='flex h-full flex-col gap-8'>
             <div className="mt-4">
             <img
@@ -29,7 +30,7 @@ const AdminSidebar = () => {
                     <Link to="/admin/home" className='w-full'>Home</Link>
                 </div>
                 <div className={`flex gap-4 items-center ${pathname.includes("library") ? "bg-blue text-white" : null} duration-300 rounded-lg h-12 p-3 text-grey font-semibold text-base`}><IoBookOutline  className='text-2xl'/> <Link to="/admin/library" className='w-full'>Library</Link></div>
-                <div className='flex gap-4 items-center rounded-lg text-grey text-lg h-12 p-3 font-semibold text-base'><LuBook  className='text-xl'/><Link className='w-full'>Create A Course </Link></div>
+                <div className='flex gap-4 items-center rounded-lg text-grey h-12 p-3 font-semibold text-base'><LuBook  className='text-xl'/><Link className='w-full'>Create A Course </Link></div>
                 <div className={`flex gap-4 items-center ${pathname === "/admin/settings" ? "bg-blue text-white" : null} duration-300 rounded-lg h-12 p-3 text-grey font-semibold text-base`}> <IoSettingsOutline  className='text-xl'/><Link to="/admin/settings" className="w-full">Settings</Link></div>
             </div>
         </div>
