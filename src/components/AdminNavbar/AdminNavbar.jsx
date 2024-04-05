@@ -4,8 +4,9 @@ import bell from "../../assets/notification-bell.svg"
 import admin from "../../assets/admin-img.svg"
 import arrowDown from "../../assets/arrow-down.svg"
 import {useLocation} from "react-router-dom"
+import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
 
-const AdminNavbar = () => {
+const AdminNavbar = ({setOpen}) => {
   const {pathname} = useLocation()
   const handleLocationSwitch = () => {
     let text = ""
@@ -30,8 +31,9 @@ const AdminNavbar = () => {
 
   }
   return (
-    <div className="py-8 shadow-md  w-full bg-white   shadow-[#032BF20F]">
-      <div className="flex px-8 container w-full mx-auto justify-between items-center">
+    <div className="py-8 shadow-md flex items-center  w-full bg-white   shadow-[#032BF20F]">
+      <div className="lg:hidden block"><span className="text-3xl" onClick={() => setOpen(true)}><PiDotsThreeOutlineVerticalFill /></span></div>
+      <div className="flex lg:px-8 px-3 container w-full mx-auto justify-between items-center">
       <div>
         <h2 className="text-blue font-semibold lg:text-xl text-base">{handleLocationSwitch()}</h2>
       </div>
