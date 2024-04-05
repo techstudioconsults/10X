@@ -5,7 +5,7 @@ import deleteIcon from "../../../assets/delete-icon.svg";
 const Settings = () => {
   const [image, setImage] = useState(admin)
   return (
-    <div className='md:px-6'>
+    <div className='md:px-6 container mx-auto my-2'>
 
       <div className='my-7 text-center md:text-left'>
       <h2 className='text-[#0027BA] font-semibold md:text-2xl text-xl'>Profile Settings</h2>
