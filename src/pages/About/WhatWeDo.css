@@ -1,0 +1,14 @@
+.section-bg{
+    background-image: url("../../assets/wavy-pattern-bg.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+
+
+@media (width > 1440px) {
+    .section-bg{
+        min-height: 600px;
+    }
+}
