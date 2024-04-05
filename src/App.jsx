@@ -9,7 +9,7 @@ import WhatWeDo from "./pages/About/WhatWeDO";
 import Adminlayout from "./layout/AdminLayout";
 import Dashboard from "./components/Dashboard";
 import Library from "./components/Library";
-import Settings from "./pages/Settings/Settings"
+import Settings from "./pages/Admin/Settings/Settings"
 
 function App() {
   return (

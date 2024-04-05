@@ -9,9 +9,9 @@ const Adminlayout = () => {
       <div className='block'>
       <AdminSidebar />
       </div>
-      <div className=' '>
+      <div className='2xl:w-full 2xl:max-w-full  w-full lg:ml-auto xl:pl-0 lg:pl-0'>
       <AdminNavbar />
-      <div className='px-3 mt-4 container mx-auto'>
+      <div className='px-8 2xl:max-w-full mt-4  lg:max-w-[1000px] pl-7 w-full  container mx-auto'>
 
         <Outlet />
       </div>

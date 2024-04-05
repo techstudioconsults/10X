@@ -30,8 +30,8 @@ const AdminNavbar = () => {
 
   }
   return (
-    <div className="py-8 shadow-md  shadow-[#032BF20F]">
-      <div className="flex px-8 container justify-between items-center">
+    <div className="py-8 shadow-md  w-full bg-white   shadow-[#032BF20F]">
+      <div className="flex px-8 container w-full mx-auto justify-between items-center">
       <div>
         <h2 className="text-blue font-semibold lg:text-xl text-base">{handleLocationSwitch()}</h2>
       </div>
