@@ -4,7 +4,7 @@ import axios from "axios";
 import prev from "../../assets/Pagation-prev.png";
 import next from "../../assets/pagination-next.png";
 import filterIcon from "../../assets/filter-Icon.png";
-import SkeletonLoader from "../../components/loader/SkeletonLoader";
+import SkeletonLoader from "../../../components/loader/SkeletonLoader";
 import searchIcon from "../../assets/search-Icon.png";
 import sortIcon from "../../assets/sort-by-btn.png";
 

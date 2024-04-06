@@ -17,12 +17,12 @@ import assit from "../../assets/assit.png";
 import white from "../../assets/white.png";
 import { Link } from "react-router-dom";
 import { FaBell } from "react-icons/fa";
-import { ChangeText } from "../../components/Reusable/ChangeText";
-import { Sliders } from "../../components/Reusable/Slider";
-import { Accordions } from "../../components/Reusable/Accordion";
-import { MobileAccordions } from "../../components/Reusable/MobileAccordion";
-import { AssistSlider } from "../../components/Reusable/AssitSlider";
-import { FirstCardSlider } from "../../components/Reusable/FirstCardSlider";
+import { ChangeText } from "../../../components/Reusable/ChangeText";
+import { Sliders } from "../../../components/Reusable/Slider";
+import { Accordions } from "../../../components/Reusable/Accordion";
+import { MobileAccordions } from "../../../components/Reusable/MobileAccordion";
+import { AssistSlider } from "../../../components/Reusable/AssitSlider";
+import { FirstCardSlider } from "../../../components/Reusable/FirstCardSlider";
 
 export const Home = () => {
   const [funnels, setFunnels] = useState(true);

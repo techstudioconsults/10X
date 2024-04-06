@@ -1,7 +1,7 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { award } from "../../../data/award";
+import { award } from "../../../../data/award";
 import mark from "../../../assets/mark.png";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
