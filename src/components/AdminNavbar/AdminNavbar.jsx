@@ -31,7 +31,7 @@ const AdminNavbar = ({setOpen}) => {
 
   }
   return (
-    <div className="py-8 shadow-md flex items-center  w-full bg-white   shadow-[#032BF20F]">
+    <div className="py-8 px-2 shadow-md flex items-center  w-full bg-white   shadow-[#032BF20F]">
       <div className="lg:hidden block"><span className="text-3xl" onClick={() => setOpen(true)}><PiDotsThreeOutlineVerticalFill /></span></div>
       <div className="flex lg:px-8 px-3 container w-full mx-auto justify-between items-center">
       <div>
