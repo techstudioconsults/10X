@@ -1,28 +1,28 @@
 import "./WhatWeDo.css";
 import { Link } from "react-router-dom";
-import heroImg from "../../assets/About-hero-img.png";
-import arrowDownRightMobile from "../../assets/arrow-down-right-mobile.png";
-import arrowDownLeftMobile from "../../assets/arrow-down-left-mobile.png";
-import underlineImg from "../../assets/Vector-underline.png";
-import meeting from "../../assets/meeting.svg";
-import clientImg from "../../assets/client-img.svg";
-import successImg from "../../assets/success-story-img.svg";
-import layerImg from "../../assets/Layer-Img.png";
-import layerArrowDown from "../../assets/layer-arrow-down.png"
-import flyIlustration from "../../assets/fly-illustation.png";
-import wavyLine from "../../assets/wavy-line.png";
-import number1 from "../../assets/number1.svg";
-import handshakeImg from "../../assets/hand-shake.svg";
-import nextRight from "../../assets/next-right.png";
-import nextLeft from '../../assets/next-left.png'
-import marketingImg from '../../assets/marketing.svg'
-import nummber2 from "../../assets/number2.svg";
-import number3 from '../../assets/number3.svg'
-import number4 from '../../assets/number4.svg'
-import scaleImg from '../../assets/scaleImg.svg'
-import systemImg from '../../assets/systemsImg.svg'
-import doubleImg from '../../assets/grouped-imgs.svg'
-import wavyPattern from '../../assets/wavy-pattern-bg-top.svg'
+import heroImg from "../../../assets/About-hero-img.png";
+import arrowDownRightMobile from "../../../assets/arrow-down-right-mobile.png";
+import arrowDownLeftMobile from "../../../assets/arrow-down-left-mobile.png";
+import underlineImg from "../../../assets/Vector-underline.png";
+import meeting from "../../../assets/meeting.svg";
+import clientImg from "../../../assets/client-img.svg";
+import successImg from "../../../assets/success-story-img.svg";
+import layerImg from "../../../assets/Layer-Img.png";
+import layerArrowDown from "../../../assets/layer-arrow-down.png"
+import flyIlustration from "../../../assets/fly-illustation.png";
+import wavyLine from "../../../assets/wavy-line.png";
+import number1 from "../../../assets/number1.svg";
+import handshakeImg from "../../../assets/hand-shake.svg";
+import nextRight from "../../../assets/next-right.png";
+import nextLeft from '../../../assets/next-left.png'
+import marketingImg from '../../../assets/marketing.svg'
+import nummber2 from "../../../assets/number2.svg";
+import number3 from '../../../assets/number3.svg'
+import number4 from '../../../assets/number4.svg'
+import scaleImg from '../../../assets/scaleImg.svg'
+import systemImg from '../../../assets/systemsImg.svg'
+import doubleImg from '../../../assets/grouped-imgs.svg'
+import wavyPattern from '../../../assets/wavy-pattern-bg-top.svg'
 
 const WhatWeDo = () => {
   return (

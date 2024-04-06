@@ -1,6 +1,6 @@
-import React,{useState} from 'react'
-import admin from "../../../assets/admin-img.svg";
-import deleteIcon from "../../../assets/delete-icon.svg";
+import {useState} from 'react'
+import admin from "../../../../assets/admin-img.svg";
+import deleteIcon from "../../../../assets/delete-icon.svg";
 
 const Settings = () => {
   const [image, setImage] = useState(admin)

@@ -1,4 +1,4 @@
-import dotIcon from "../../../assets/Vector123.png";
+import dotIcon from "../../../../assets/Vector123.png";
 import PropTypes from "prop-types";
 import { NewSliders } from "../Carousel/NewSlider";
 import PurchaseForm from "../PurchaseForm/PurchaseForm";

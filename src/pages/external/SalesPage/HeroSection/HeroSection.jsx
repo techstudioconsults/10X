@@ -1,4 +1,4 @@
-import buyNow from "../../../assets/page1.png";
+import buyNow from "../../../../assets/page1.png";
 
 const HeroSection = () => {
   return (
