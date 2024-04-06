@@ -14,35 +14,41 @@ const Resource = () => {
   const [loading, setLoading] = useState(false);
   const [content, setContent] = useState([]);
   const [books, setBooks] = useState([]);
+  const [error, setError] = useState([])
   const [videos, setVideos] = useState([]);
   const [allResource, setAllResource] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(12);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [filterClicked, setFilterClicked] = useState(false); // New state
 
   const maxlength = 20;
 
-  // console.log(active);
   const handleSearch = async (e) => {
     e.preventDefault();
+   
     try {
-      setLoading(true);
+      if (filterClicked) { // Check if filter button clicked
+        setLoading(true);
+      }
       const response = await axios.get(
         `${baseUrl}/api/v1/resources?search=${searchTerm}`
       );
       setSearchResults(response.data.data);
       setLoading(false);
+      setError("")
     } catch (error) {
       console.error("Error fetching search results:", error);
       setLoading(false);
+      setError("No product fit your search")
     }
   };
 
   useEffect(() => {
     const fetchResource = async () => {
       try {
-        setLoading(true);
+        setLoading(true)
         const res = await axios.get(`${baseUrl}/api/v1/resources`);
         const resourceData = res.data.data;
         if (res.status == 200) {
@@ -57,13 +63,14 @@ const Resource = () => {
       }
     };
     fetchResource();
-  }, [baseUrl]);
+
+    if (searchTerm.trim() === "") {
+      setSearchResults([]);
+    }
+    
+  }, [baseUrl, searchTerm, filterClicked]); // Include filterClicked in dependencies
 
   const showFilterBtn = searchTerm !== "" ? "hidden" : "block";
-  // Logic to get current items
-  // const indexOfLastItem = currentPage * itemsPerPage;
-  // const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  // const currentItems = content.slice(indexOfFirstItem, indexOfLastItem);
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -72,9 +79,8 @@ const Resource = () => {
       ? searchResults.slice(indexOfFirstItem, indexOfLastItem)
       : content.slice(indexOfFirstItem, indexOfLastItem);
 
-  const padding = loading ? "pt-10 pb-0" : "py-10";
+  const padding = loading ? "pt-10 pb-0" : "pt-5 pb-5";
 
-  // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
@@ -102,7 +108,10 @@ const Resource = () => {
                 placeholder="Search for Anything"
                 className="w-full lg:w-3/5 h-12 py-3 ps-11 pe-5 rounded-tl-lg rounded-bl-lg rounded-br-none rounded-tr-none font-medium text-[#787878] placeholder-[#787878] bg-[#EBEFFF] outline-none"
               />
-              <button className="w-[41%] lg:w-[13%] py-3 px-2 lg:px-5 rounded-tr-lg rounded-br-lg bg-[#032BF2] text-white outline-none border-0 cursor-pointer flex  justify-evenly h-12">
+              <button
+                onClick={() => setFilterClicked(true)} // Set filterClicked to true when the filter button is clicked
+                className="w-[41%] lg:w-[13%] py-3 px-2 lg:px-5 rounded-tr-lg rounded-br-lg bg-[#032BF2] text-white outline-none border-0 cursor-pointer flex  justify-evenly h-12"
+              >
                 <img src={filterIcon} alt="" />
                 <span>Filter</span>
               </button>
@@ -111,7 +120,7 @@ const Resource = () => {
             <div
               className={`${showFilterBtn} flex justify-between items-center`}
             >
-              <div className="flex gap-4 justify-between md:justify-center lg:justify-start">
+              <div className="flex gap-4 justify-between md:justify-center lg:justify-start pb-9">
                 <button
                   onClick={() => {
                     setContent(allResource);
@@ -137,18 +146,11 @@ const Resource = () => {
                   Video
                 </button>
               </div>
-              {/* <div className="  flex items-center justify-between gap-2  ">
-                <p className="text-[#032BF2] text-xl font-bold underline">
-                  Sort by
-                </p>
-                <span>
-                  <img src={sortIcon} alt="" />
-                </span>
-              </div> */}
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full justify-center items-center gap-x-5 gap-y-10 xl:gap-x-8 xl:gap-y-16 pb-14">
+        {loading && <SkeletonLoader />}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full justify-center items-center gap-x-5 gap-y-10 xl:gap-x-8 xl:gap-y-16 pb-14 ">
           {currentItems.map((item) => (
             <div
               key={item._id}
@@ -168,7 +170,6 @@ const Resource = () => {
                     ? item.title.slice(0, maxlength) + "..."
                     : item.title}
                 </h1>
-
                 <p className="text-[#032BF2] text-left text-2xl font-bold ">
                   NGN {item.price}
                 </p>
@@ -185,7 +186,6 @@ const Resource = () => {
             </div>
           ))}
         </div>
-
         <div>
           {!loading && content.length > itemsPerPage && (
             <ul className="pagination flex justify-center gap-2 items-center">
@@ -229,7 +229,7 @@ const Resource = () => {
             </ul>
           )}
         </div>
-        {loading && <SkeletonLoader />}
+        
       </div>
     </div>
   );
