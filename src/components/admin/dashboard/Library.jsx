@@ -10,25 +10,25 @@ const lib = [
 
 const Library = () => {
   return (
-    <main>
-      <div>
+    <main className=" shadow shadow-[#032BF2] p-3 rounded-md lg:h-[240px]">
+      <div className="flex items-center justify-between">
         <h1>Library</h1>
-        <Link>See All</Link>
+        <Link className="text-xs">See All</Link>
       </div>
 
-      <section className=" space-y-3">
+      <section className=" space-y-5 mt-2">
         {lib.map((l) => (
           <div
             key={l.id}
-            className="flex items-center gap-5 text-sm text-darkBlue"
+            className="flex items-center gap-5 text-sm text-darkBlue shadow p-1 rounded"
           >
-            <img src={l.img} alt="" className="w-10 h-10 rounded-md"/>
+            <img src={l.img} alt="" className="w-10 h-10 rounded-md" />
             <div className=" flex-1">
               <h3 className=" underline">{l.title}</h3>
               <p className=" text-xs">{l.module} Modules</p>
             </div>
-            
-            <Link className="">View More</Link>
+
+            <Link className="text-xs">View More</Link>
           </div>
         ))}
       </section>

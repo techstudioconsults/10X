@@ -9,17 +9,17 @@ const Dashboard = () => {
   return (
     <main className="container mx-auto mb-10">
       <Courses />
-      <section className=" md:flex justify-between  w-full mt-5">
-        <div className="w-[70%]">
+      <section className=" lg:flex justify-between  w-full mt-5">
+        <div className="w-[60%] xl:w-[65%]">
           <BestSelling />
         </div>
-        <div className="w-[30%]">
+        <div className="w-[36%] xl:w-[30%]">
           <PopularCat />
         </div>
       </section>
 
-      <section className=" md:flex justify-between  w-full mt-5">
-        <div className="w-[60%]">
+      <section className=" lg:flex justify-between  w-full mt-5">
+        <div className="w-[55%]">
           <Recent />
         </div>
         <div className="w-[40%]">

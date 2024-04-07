@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const PopularCat = () => {
-  return (
-    <div>PopularCat</div>
-  )
-}
+  return <div>For Chart (Videos & Books)</div>;
+};
 
-export default PopularCat
+export default PopularCat;

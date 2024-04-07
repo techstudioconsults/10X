@@ -25,19 +25,19 @@ const courses = [
 
 const Recent = () => {
   return (
-    <main>
-      <div className=" flex items-center w-[450px] justify-between px-3">
+    <main className=" shadow shadow-[#032BF2] p-3 rounded-md   ">
+      <div className=" flex items-center w-full justify-between px-5">
         <h1 className="text-lg font-semibold text-darkBlue">
-          Best Selling Courses
+          Recently Uploaded Courses
         </h1>
         <Link to="/all-courses" className="text-xs text-[#3952AC]">
           See All
         </Link>
       </div>
 
-      <section className="w-[500px]">
+      <section className="w-full">
         <table className="w-full">
-          <tr className="">
+          <tr className="bg-[#F8F8F8]">
             <th
               align="left"
               className="p-3 text-sm text-[#7C87AC] font-semibold"
