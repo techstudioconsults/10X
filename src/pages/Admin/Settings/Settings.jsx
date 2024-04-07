@@ -4,6 +4,17 @@ import deleteIcon from "../../../assets/delete-icon.svg";
 
 const Settings = () => {
   const [image, setImage] = useState(admin)
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setImage(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
   return (
     <div className='md:px-6 container mx-auto my-2'>
 
@@ -22,7 +33,7 @@ const Settings = () => {
               <img src={image} className=' w-20 h-20 object-cover rounded-lg' alt="" />
               <div className='flex gap-2'>
 
-              <button className='h-[41px] bg-blue rounded-lg px-3 text-white font-semibold text-xs relative cursor-pointer' type="button"><input type="file" accept='image/*' className='w-full h-full opacity-0 absolute left-0  cursor-pointer' />Upload new picture</button>
+              <button className='h-[41px] bg-blue rounded-lg px-3 text-white font-semibold text-xs relative cursor-pointer' type="button"><input type="file" accept='image/*' onChange={handleImageChange}  className='w-full h-full opacity-0 absolute left-0  cursor-pointer' />Upload new picture</button>
               <button className='h-[41px] flex items-center justify-center px-5 gap-2 border-[#F87171] border-2 rounded-lg text-[#F87171] font-semibold'><img src={deleteIcon} alt="" />Delete</button>
               </div>
             </div>
