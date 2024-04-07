@@ -36,7 +36,32 @@ const Recent = () => {
       </div>
 
       <section className="w-full">
-        <table className="w-full">
+        <div className="flex justify-between items-center text-sm bg-[#F8F8F8] py-2 px-3  text-[#7C87AC] font-semibold">
+          <p> Course Name</p>
+          <p> Category</p>
+          <p>Price</p>
+        </div>
+
+        <section className=" space-y-3">
+          {courses.map((b) => (
+            <div key={b.id} className="flex justify-between items-center mt-2">
+              <p className=" text-md text-darkBlue font-semibold underline">
+                {b.title}
+              </p>
+              <p
+                className={` text-sm bg-[#CFE6FF] px-3 py-1 font-semibold ml-3 rounded-md  ${
+                  b.category.toLowerCase() === "book" && "text-[#AD70FF]"
+                }`}
+              >
+                {b.category}
+              </p>
+              <p className="p-3 text-sm text-grey">
+                {formatCurrency(b.price).substring(0, 10)}
+              </p>
+            </div>
+          ))}
+        </section>
+        {/* <table className="w-full">
           <tr className="bg-[#F8F8F8]">
             <th
               align="left"
@@ -77,7 +102,7 @@ const Recent = () => {
               </td>
             </tr>
           ))}
-        </table>
+        </table> */}
       </section>
     </main>
   );

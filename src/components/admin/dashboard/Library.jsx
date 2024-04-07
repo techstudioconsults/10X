@@ -10,13 +10,13 @@ const lib = [
 
 const Library = () => {
   return (
-    <main className=" shadow shadow-[#032BF2] p-3 rounded-md lg:h-[240px]">
+    <main className=" shadow shadow-[#032BF2] p-3 rounded-md lg:h-[250px]">
       <div className="flex items-center justify-between">
         <h1>Library</h1>
-        <Link className="text-xs">See All</Link>
+        <Link className="text-xs text-[#3952AC]">See All</Link>
       </div>
 
-      <section className=" space-y-5 mt-2">
+      <section className=" space-y-6 mt-2">
         {lib.map((l) => (
           <div
             key={l.id}
@@ -24,7 +24,7 @@ const Library = () => {
           >
             <img src={l.img} alt="" className="w-10 h-10 rounded-md" />
             <div className=" flex-1">
-              <h3 className=" underline">{l.title}</h3>
+              <h3 className=" underline font-[650]">{l.title}</h3>
               <p className=" text-xs">{l.module} Modules</p>
             </div>
 
