@@ -13,7 +13,7 @@ const AdminSidebar = () => {
   const {pathname} = useLocation()
   return (
     
-    <div className='h-screen w-[240px] 2xl:w-[270px] 2xl:relative fixed hidden lg:block bg-[#032BF20F] p-4  shadow-xl'>
+    <div className='h-screen w-[240px] 2xl:w-[270px] fixed hidden lg:block bg-[#032BF20F] p-4  shadow-xl'>
         <div className='flex h-full flex-col gap-8'>
             <div className="mt-4">
             <img

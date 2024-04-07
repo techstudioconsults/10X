@@ -20,7 +20,7 @@ const Login = () => {
                 <span className="self-center md:self-start"><Link to="/"><img src={logo} alt="" className="w-[110px] h-[44px] object-contain md:w-[140px] md:h-[54.22px]" /></Link></span>
                 <form className="flex flex-col mx-auto gap-3">
                     <div>
-                    <h2 className="font-bold text-xl md:text-2xl text-center md:text-start  text-blue">Welcome Back</h2>
+                    <h2 className="font-[1000] text-xl md:text-2xl text-center md:text-start  text-blue">Welcome Back</h2>
                     <p className="text-grey text-sm md:text-base text-center md:text-start  my-2 md:my-4">Please enter your details to continue to 10x Revenue Growth</p>
                     </div>
 

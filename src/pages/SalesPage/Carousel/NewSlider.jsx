@@ -56,14 +56,14 @@ export const NewSliders = () => { // Renamed the component to NewSliders
   };
 
   return (
-    <main className="slider">
-      <Slider {...settings} className="container mx-auto my-10 w-11/12" style={{ padding: "0 20px" }}>
+    <main className="slider max-w-[700px] bg-[#032BF214]">
+      <Slider {...settings} className="mx-auto 2xl:-space-x-6 lg:-space-x-6 my-10 w-full " style={{ padding: "0 20px" }}>
         {award.map((a) => {
           const { name, job, msg, id } = a;
 
           return (
-            <section key={id} className="ha">
-              <div className="w-[350px] p-5 mx-auto flex justify-start items-start flex-col gap-4">
+            <section key={id} className="">
+              <div className="max-w-[350px] p-5 mx-auto flex justify-start items-start flex-col gap-4">
                 <img src={mark} alt="" />
                 <p className="text-mark mx-auto text-md mt-3">{msg}</p>
                 <div className="flex items-center gap-2 mt-5 justify-start">

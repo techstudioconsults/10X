@@ -6,12 +6,12 @@ import { NewAccordions } from "../accordion/NewAccordion";
 
 const Section1 = () => {
   return (
-    <div className="flex justify-center pt-9">
-      <div className="container w-11/12 xl:w-11/12 2xl:w-11/12">
-        <div className="flex flex-col md:flex-row mx-auto items-center">
-          <div className="flex flex-col-reverse md:flex-row justify-center">
-            <div className="flex flex-col-reverse md:flex-row gap-9 lg:gap-72 items-stretch">
-              <div className="flex flex-col gap-5">
+    <div className="flex justify-center carousel-class mb-7  container mx-auto">
+      <div className="container w-full xl:w-11/12 2xl:w-11/12 px-3 mx-auto">
+        
+          <div className="flex flex-col-reverse md:flex-row mx-auto w-full">
+            <div className="flex flex-col-reverse lg:flex-row gap-20 w-full xl:gap-52 items-stretch">
+              <div className="flex flex-col gap-5 lg:pt-36 lg:w-1/2 w-full ">
                 <div className="flex flex-col items-start gap-3">
                   <SectionHeading title="Description" color="#0027BA" />
                   <p className="max-w-xl text-[#6476BA]">
@@ -40,21 +40,23 @@ const Section1 = () => {
                 <SectionHeading
                   title="Why people choose the zero call close"
                   color="#0027BA"
+                  responsive={"text-center lg:text-start"}
                 />
+                <NewSliders />
               </div>
-              <div>
+              <div className="lg:w-1/2">
                 <PurchaseForm />
               </div>
             </div>
           </div>
-        </div>
+        
       </div>
     </div>
   );
 };
 
-const SectionHeading = ({ title, color }) => {
-  return <h2 className={`text-3xl font-semibold text-${color}`}>{title}</h2>;
+const SectionHeading = ({ title, color, responsive }) => {
+  return <h2 className={`text-2xl font-semibold text-[${color}] ${responsive} my-3`}>{title}</h2>;
 };
 
 SectionHeading.propTypes = {

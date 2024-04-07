@@ -26,7 +26,7 @@ const Adminlayout = () => {
 
       <AdminNavbar setOpen={setIsOpen}/>
         </div>
-      <div className='px-2 2xl:max-w-full mt-32  lg:max-w-[1000px] w-full container mx-auto'>
+      <div className='px-2 2xl:max-w-full 2xl:pl-[270px] mt-32  lg:max-w-[1000px] w-full container mx-auto'>
 
         <Outlet />
       </div>

@@ -1,5 +1,11 @@
 import { useState, useEffect } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+import arrowDown from "../../../assets/special-arrow-down.svg"
+import arrowUp from "../../../assets/special-arrow-up.svg"
+import person from "../../../assets/purchase-fullname.svg"
+import emailIcon from "../../../assets/purchase-email.svg"
+import lock from "../../../assets/purchase-lock.svg"
+import "./PurchaseForm.css"
 
 function PurchaseForm() {
   const [email, setEmail] = useState("");
@@ -74,39 +80,50 @@ function PurchaseForm() {
   }, [confirmPassword]);
 
   return (
-    <div className="rounded-md p-4 max-w-[320px] mx-auto bg-[#FAFBFF]  shadow-lg">
-      <h2 className="text-xl font-bold mb-4 text-[#032BF2]">
+    <div className="flex flex-col items-center container mx-auto w-full lg:my-0 my-7 ">
+      <img src={arrowDown} className="self-end translate-y-5 xl:w-auto w-[101px] lg:block hidden" alt="" />
+    <div className="rounded-md p-4 space-y-6 2xl:w-[440px] lg:max-w-[440px] w-full mx-auto bg-[#FAFBFF]  shadow-lg">
+      <h2 className="text-xl font-[800] mb-4 text-[#032BF2]">
         Begin your Journey
       </h2>
       <hr className="mb-4 border-[#0027BA4D]" />
-      <form onSubmit={handleSubmit} className="space-y-4 ">
-        <input
+      <form onSubmit={handleSubmit} className="space-y-8 w-full ">
+        
+        <div>
+          <div className="flex relative items-center">
+          <img src={emailIcon} className=" absolute h-5  left-4" alt="" />
+          <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           onBlur={validateEmail}
           placeholder="Email Address"
-          className="border border-[#787878] rounded-md p-3 w-full bg-[#FAFBFF]"
+          className="border-2 border-[#787878] rounded-lg py-3 pl-12 pr-4 h-[56px] w-full bg-[#FAFBFF]"
           required
         />
+        </div>
         {emailError && <p className="text-red-500">{emailError}</p>}
+        </div>
 
-        <input
+        <div className="flex relative items-center">
+        <img src={person} className=" absolute h-5  left-4" alt="" /><input
           type="text"
           value={fullName}
           onChange={(e) => setFullName(e.target.value)}
           placeholder="Full Name"
-          className="border border-[#787878] rounded-md p-3 w-full bg-[#FAFBFF]"
+          className="border border-[#787878] rounded-md py-3 pl-12 pr-4 h-[56px]  w-full bg-[#FAFBFF]"
           required
         />
+        </div>
 
-        <div className="relative">
+        <div className="relative flex items-center">
+        <img src={lock} className=" absolute h-5  left-4" alt="" />
           <input
             type={showPassword ? "text" : "password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Create Password"
-            className="border border-[#787878] rounded-md p-3 w-full bg-[#FAFBFF] pr-10"
+            className="border border-[#787878] rounded-md py-3 pl-12 w-full bg-[#FAFBFF] pr-10"
             required
           />
           <button
@@ -117,15 +134,16 @@ function PurchaseForm() {
             {showPassword ? <FiEye /> : <FiEyeOff />}
           </button>
         </div>
-
-        <div className="relative">
+        <div>
+        <div className="relative flex items-center">
+        <img src={lock} className=" absolute h-5  left-4" alt="" />
           <input
             type={showConfirmPassword ? "text" : "password"}
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             onBlur={validatePassword}
             placeholder="Confirm Password"
-            className="border border-[#787878] rounded-md p-3 w-full bg-[#FAFBFF]"
+            className="border border-[#787878] rounded-md  py-3 pl-12 pr-10 w-full bg-[#FAFBFF]"
             required
           />
           <button
@@ -137,7 +155,9 @@ function PurchaseForm() {
           </button>
         </div>
         {passwordError && <p className="text-red-500">{passwordError}</p>}
+        </div>
 
+    <div className="space-y-3">
         <div className="flex items-center">
           <input
             type="checkbox"
@@ -168,6 +188,7 @@ function PurchaseForm() {
             Agree to <u>terms and conditions</u>
           </span>
         </div>
+        </div>
 
         <button
           type="submit"
@@ -187,6 +208,8 @@ function PurchaseForm() {
           Continue Payment
         </button>
       </form>
+    </div>
+    <img src={arrowUp} className="self-start -translate-y-5 xl:w-auto w-[101px] lg:block hidden" alt="" />
     </div>
   );
 }
