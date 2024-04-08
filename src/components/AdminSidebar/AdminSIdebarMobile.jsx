@@ -30,7 +30,7 @@ const AdminSIdebarMobile = ({setIsOpen}) => {
             alt="company-logo"
           />
 
-          <div><span className='text-3xl text-blue' onClick={() => setIsOpen(false)}><IoCloseCircle /></span></div>
+          <div><span className='text-3xl text-blue cursor-pointer' onClick={() => setIsOpen(false)}><IoCloseCircle /></span></div>
             </div>
             <hr className="bg-grey h-[1.5px]"/>
 
