@@ -1,11 +1,11 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import { Home } from "./pages/external/Home/Home";
-import Resource from "./pages/external/Resource/Resource";
-import SalesPage from "./pages/external/SalesPage/SalesPage";
+import { Home } from "./pages/Home/Home";
+import Resource from "./pages/Resource/Resource";
+import SalesPage from "./pages/SalesPage/SalesPage";
 import Login from "./pages/Auth/Login/Login";
 import Rootlayout from "./layout/Rootlayout";
-import WhatWeDo from "./pages/external/About/WhatWeDO";
+import WhatWeDo from "./pages/About/WhatWeDO";
 import Adminlayout from "./layout/AdminLayout";
 import Library from "./components/Library";
 import Settings from "./pages/Admin/Settings/Settings"
@@ -21,7 +21,6 @@ function App() {
             <Route path="/resource" element={<Resource />} />
             <Route path="/about" element={<WhatWeDo />} />
             <Route path="/sales" element={<SalesPage />} />
-           
           </Route>
 
           <Route element={<Adminlayout />}>
