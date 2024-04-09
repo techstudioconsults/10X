@@ -1,0 +1,15 @@
+.carousel-class ul.slick-dots {
+    width: 85% !important;
+    margin-inline: auto !important;
+}
+
+.carousel-class .slick-arrow.slick-next {
+    display: none !important;
+    right: 0 !important;
+    background-color: violet !important;
+}
+
+.carousel-class svg.slick-arrow.slick-next path {
+    display: none !important;
+    right: 50 !important;
+}

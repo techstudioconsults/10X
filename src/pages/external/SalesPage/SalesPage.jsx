@@ -7,7 +7,7 @@ const SalesPage = () => {
     <div className="pt-20">
       <HeroSection />
       <Section1 />
-      <NewSliders />
+      {/* <NewSliders /> */}
     </div>
   );
 };

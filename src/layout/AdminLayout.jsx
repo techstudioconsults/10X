@@ -21,9 +21,12 @@ const Adminlayout = () => {
           
         }
       </div>
-      <div className='2xl:w-full lg:w-[76.5%] 2xl:max-w-full lg:max-w-[960px] w-full lg:ml-auto xl:pl-0 lg:pl-0'>
+      <div className='2xl:w-full 2xl:max-w-full  w-full 2xl:pl-0 lg:pl-[240px]'>
+        <div className='fixed top-0 right-0 2xl:pl-[270px] lg:pl-[240px] z-30 w-full'>
+
       <AdminNavbar setOpen={setIsOpen}/>
-      <div className='px-2 2xl:max-w-full mt-4  lg:max-w-[1000px] w-full container mx-auto'>
+        </div>
+      <div className='px-2 2xl:max-w-full 2xl:pl-[270px] mt-32  lg:max-w-[1000px] w-full container mx-auto'>
 
         <Outlet />
       </div>
