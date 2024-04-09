@@ -4,7 +4,7 @@ import {
   AccordionHeader,
   AccordionBody,
 } from "@material-tailwind/react";
-import checkmark from "../../../assets/check-icon.svg"
+import checkmark from "../../../../assets/check-icon.svg"
 
 function Icon({ id, open }) {
   return (

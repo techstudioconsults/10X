@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import arrowDown from "../../../assets/special-arrow-down.svg"
-import arrowUp from "../../../assets/special-arrow-up.svg"
-import person from "../../../assets/purchase-fullname.svg"
-import emailIcon from "../../../assets/purchase-email.svg"
-import lock from "../../../assets/purchase-lock.svg"
+import arrowDown from "../../../../assets/special-arrow-down.svg"
+import arrowUp from "../../../../assets/special-arrow-up.svg"
+import person from "../../../../assets/purchase-fullname.svg"
+import emailIcon from "../../../../assets/purchase-email.svg"
+import lock from "../../../../assets/purchase-lock.svg"
 import "./PurchaseForm.css"
 
 function PurchaseForm() {

@@ -7,6 +7,7 @@ import filterIcon from "../../../assets/filter-Icon.png";
 import SkeletonLoader from "../../../components/loader/SkeletonLoader";
 import searchIcon from "../../../assets/search-Icon.png";
 import sortIcon from "../../../assets/sort-by-btn.png";
+import { useNavigate } from "react-router-dom";
 
 const Resource = () => {
   const baseUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -25,6 +26,9 @@ const Resource = () => {
 
   const maxlength = 20;
 
+  // console.log(allResource);
+
+  const navigate = useNavigate()
   const handleSearch = async (e) => {
     e.preventDefault();
    
@@ -179,7 +183,9 @@ const Resource = () => {
                     <img src={rating} alt="" />
                   </span>
                 </div>
-                <button className=" border-[#032BF2] border-2 text-[#032BF2] hover:bg-[#032BF2] hover:text-white duration-100 font-semibold text-xl w-full p-3 rounded-lg mb-3">
+                <button onClick={()=>{
+                  navigate('/sales')
+                }} className=" border-[#032BF2] border-2 text-[#032BF2] hover:bg-[#032BF2] hover:text-white duration-100 font-semibold text-xl w-full p-3 rounded-lg mb-3">
                   Buy Now
                 </button>
               </div>
