@@ -7,7 +7,7 @@ import Login from "./pages/Auth/Login/Login";
 import Rootlayout from "./layout/Rootlayout";
 import WhatWeDo from "./pages/external/About/WhatWeDO";
 import Adminlayout from "./layout/AdminLayout";
-import Library from "./pages/internal/Admin/libary/Libary";
+import Library from "./pages/internal/Admin/library/Library";
 import Settings from "./pages/internal/Admin/Settings/Settings";
 import Dashboard from "./pages/internal/Admin/Home/Dashboard";
 
