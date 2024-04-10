@@ -34,8 +34,12 @@ export function Accordions() {
   return (
     <>
       <main className="w-[865px]  max-w-full px-3  mx-auto">
-        <Accordion open={open === 1} icon={<Icon id={1} open={open} />}>
-          <AccordionHeader onClick={() => handleOpen(1)} className="text-md">
+        <Accordion
+          open={open === 1}
+          icon={<Icon id={1} open={open} />}
+         
+        >
+          <AccordionHeader onClick={() => handleOpen(1)} className="text-md px-3 bg-[#FAFBFF]">
             What is a corporate retreat?
           </AccordionHeader>
           <AccordionBody>
@@ -66,8 +70,12 @@ export function Accordions() {
           </AccordionBody>
         </Accordion>
 
-        <Accordion open={open === 2} icon={<Icon id={2} open={open} />}>
-          <AccordionHeader onClick={() => handleOpen(2)} className="text-md">
+        <Accordion
+          open={open === 2}
+          icon={<Icon id={2} open={open} />}
+         
+        >
+          <AccordionHeader onClick={() => handleOpen(2)} className="text-md px-3 bg-[#FAFBFF]">
             What is a corporate retreat?
           </AccordionHeader>
           <AccordionBody>
@@ -98,8 +106,12 @@ export function Accordions() {
           </AccordionBody>
         </Accordion>
 
-        <Accordion open={open === 3} icon={<Icon id={3} open={open} />}>
-          <AccordionHeader onClick={() => handleOpen(3)} className="text-md">
+        <Accordion
+          open={open === 3}
+          icon={<Icon id={3} open={open} />}
+         
+        >
+          <AccordionHeader onClick={() => handleOpen(3)} className="text-md px-3 bg-[#FAFBFF]">
             What is a corporate retreat?
           </AccordionHeader>
           <AccordionBody>
@@ -130,8 +142,12 @@ export function Accordions() {
           </AccordionBody>
         </Accordion>
 
-        <Accordion open={open === 4} icon={<Icon id={4} open={open} />}>
-          <AccordionHeader onClick={() => handleOpen(4)} className="text-md">
+        <Accordion
+          open={open === 4}
+          icon={<Icon id={4} open={open} />}
+         
+        >
+          <AccordionHeader onClick={() => handleOpen(4)} className="text-md px-3 bg-[#FAFBFF]">
             What is a corporate retreat?
           </AccordionHeader>
           <AccordionBody>
@@ -162,8 +178,12 @@ export function Accordions() {
           </AccordionBody>
         </Accordion>
 
-        <Accordion open={open === 5} icon={<Icon id={5} open={open} />}>
-          <AccordionHeader onClick={() => handleOpen(5)} className="text-md">
+        <Accordion
+          open={open === 5}
+          icon={<Icon id={5} open={open} />}
+         
+        >
+          <AccordionHeader onClick={() => handleOpen(5)} className="text-md px-3 bg-[#FAFBFF]">
             What is a corporate retreat?
           </AccordionHeader>
           <AccordionBody>
@@ -194,8 +214,12 @@ export function Accordions() {
           </AccordionBody>
         </Accordion>
 
-        <Accordion open={open === 6} icon={<Icon id={6} open={open} />}>
-          <AccordionHeader onClick={() => handleOpen(6)} className="text-md">
+        <Accordion
+          open={open === 6}
+          icon={<Icon id={6} open={open} />}
+         
+        >
+          <AccordionHeader onClick={() => handleOpen(6)} className="text-md px-3 bg-[#FAFBFF]">
             What is a corporate retreat?
           </AccordionHeader>
           <AccordionBody>

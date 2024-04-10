@@ -1,0 +1,26 @@
+.nav__link::before{
+    content: "";
+}
+
+.nav__link::after{
+    content: "";
+    height: 2px;
+    width: 100%;
+    background-color: blue;
+    /* display: block; */
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    opacity: 0;
+    transition: all 0.2s;
+}
+
+.nav__link:focus::after, .nav__link:hover::after{
+    opacity: 1;
+    transition: all 0.5s;
+}
+
+.nav__link{
+    position: relative;
+    transition: all 0.4;
+}

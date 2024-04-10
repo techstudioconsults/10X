@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Accordion,
   AccordionHeader,
@@ -32,13 +32,14 @@ export function MobileAccordions() {
 
   const handleOpen = (value) => setOpen(open === value ? 0 : value);
 
+  
   return (
     <>
       <main className="w-[343px] max-w-full px-3  mx-auto">
         <Accordion open={open === 1}>
           <AccordionHeader
             onClick={() => handleOpen(1)}
-            className="text-md  px-3 rounded-2xl shadow-lg "
+            className="text-md  focus:bg-darkBlue px-3 rounded-2xl shadow-lg focus:text-white"
           >
             <div className="flex items-center gap-5 ms-7 text-blue focus:bg-darkBlue focus:text-white">
               <FaBell size={20} />
@@ -58,7 +59,7 @@ export function MobileAccordions() {
         <Accordion open={open === 2}>
           <AccordionHeader
             onClick={() => handleOpen(2)}
-            className="text-md  px-3 rounded-2xl"
+            className="text-md  focus:bg-darkBlue px-3 rounded-2xl shadow-lg text-white"
           >
             <div className="flex items-center gap-5 ms-7 text-blue focus:bg-darkBlue focus:text-white">
               <FaBell size={20} />
@@ -77,7 +78,7 @@ export function MobileAccordions() {
         <Accordion open={open === 3}>
           <AccordionHeader
             onClick={() => handleOpen(3)}
-            className="text-md focus:bg-darkBlue active:text-white px-3 rounded-2xl shadow-lg text-white"
+            className="text-md focus:bg-darkBlue px-3 rounded-2xl shadow-lg text-white"
           >
             <div className="flex items-center gap-5 ms-7 text-blue focus:bg-darkBlue focus:text-white">
               <FaBell size={20} />
