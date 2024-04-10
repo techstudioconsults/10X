@@ -1,9 +1,9 @@
 import React from "react";
-import Courses from "../../../components/admin/dashboard/Courses";
-import BestSelling from "../../../components/admin/dashboard/BestSelling";
-import PopularCat from "../../../components/admin/dashboard/PopularCat";
-import Recent from "../../../components/admin/dashboard/Recent";
-import Library from "../../../components/admin/dashboard/Library";
+import Courses from "../../../../components/admin/dashboard/Courses";
+import BestSelling from "../../../../components/admin/dashboard/BestSelling";
+import PopularCat from "../../../../components/admin/dashboard/PopularCat";
+import Recent from "../../../../components/admin/dashboard/Recent";
+import Library from "../../../../components/admin/dashboard/Library";
 
 const Dashboard = () => {
   return (
