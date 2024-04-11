@@ -1,8 +1,54 @@
+import React from 'react';
+import { useTable } from 'react-table';
 import searchIcon from "../../../../assets/search-icon.svg";
 import printIcon from "../../../../assets/print-icon.png";
 import exportIcon from "../../../../assets/Export -icon.png";
+import { useFetch } from "../../../../hooks/useFetch";
 
-const Libary = () => {
+const Library = () => {
+  const { content: data, error } = useFetch('/api/v1/resources');
+  
+  const columns = React.useMemo(
+    () => [
+      {
+        Header: 'Course Name',
+        accessor: 'title',
+      },
+      {
+        Header: 'Category',
+        accessor: 'category',
+      },
+      {
+        Header: 'Unit Sold',
+        accessor: 'unitSold',
+      },
+      {
+        Header: 'Date',
+        accessor: 'createdAt',
+        Cell: ({ value }) => new Date(value).toLocaleDateString(),
+      },
+      {
+        Header: 'Client',
+        accessor: 'client',
+      },
+      {
+        Header: 'Price',
+        accessor: 'price',
+      },
+    ],
+    []
+  );
+
+  const tableInstance = useTable({ columns, data });
+
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    prepareRow,
+  } = tableInstance;
+
   return (
     <div className="w-11/12 mx-auto container">
       <div className="px-0 py-3 flex justify-between items-center ">
@@ -21,21 +67,32 @@ const Libary = () => {
           </button>
         </div>
       </div>
-      {/* <form action="" className="relative  ">
-        <img className=" translate-x-3 translate-y-9" src={searchIcon} alt="" />
-        <input
-          id="search"
-          name="search"
-          type="text"
-          placeholder="Search for Anything....."
-          className="w-full lg:w-3/5 max-w-[431px] h-12 py-3 ps-12 pe-5 rounded-tl-lg rounded-bl-lg rounded-br-none rounded-tr-none font-medium text-[#787878] placeholder-[#787878] bg-[#F1F5FE] outline-none"
-        />
-      </form> */}
-
-
-
+      <table {...getTableProps()} className="w-full border-collapse border-0">
+        <thead className="bg-light-blue-50">
+          {headerGroups.map(headerGroup => (
+            <tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map(column => (
+                <th {...column.getHeaderProps()} className="px-4 py-2 text-left font-semibold text-gray-800">{column.render('Header')}</th>
+              ))}
+            </tr>
+          ))}
+        </thead>
+        <tbody {...getTableBodyProps()}>
+          {rows.map(row => {
+            prepareRow(row);
+            return (
+              <tr {...row.getRowProps()} className="hover:bg-gray-50">
+                {row.cells.map(cell => (
+                  <td {...cell.getCellProps()} className=" px-4 py-2">{cell.render('Cell')}</td>
+                ))}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+      {error && <h1 className="text-red-500 text-center">{error}</h1>}
     </div>
   );
 };
 
-export default Libary;
+export default Library;
