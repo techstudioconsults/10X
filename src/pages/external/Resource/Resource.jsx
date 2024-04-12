@@ -7,29 +7,51 @@ import filterIcon from "../../../assets/filter-Icon.png";
 import SkeletonLoader from "../../../components/loader/SkeletonLoader";
 import searchIcon from "../../../assets/search-Icon.png";
 import sortIcon from "../../../assets/sort-by-btn.png";
+import { useNavigate } from "react-router-dom";
+import { useFetch } from "../../../hooks/useFetch";
 
 const Resource = () => {
+  const {
+    content,
+    setContent,
+    loading,
+    setLoading,
+    books,
+    allResource,
+    videos,
+    filterClicked,
+    setFilterClicked,
+    error,
+    setError,
+    searchTerm,
+    setSearchTerm,
+  } = useFetch('/api/v1/resources');
   const baseUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
-  const [loading, setLoading] = useState(false);
-  const [content, setContent] = useState([]);
-  const [books, setBooks] = useState([]);
-  const [error, setError] = useState([])
-  const [videos, setVideos] = useState([]);
-  const [allResource, setAllResource] = useState([]);
+
+
+  // const [loading, setLoading] = useState(false);
+
+  // const [books, setBooks] = useState([]);
+  // const [error, setError] = useState([]);
+  // const [videos, setVideos] = useState([]);
+  // const [allResource, setAllResource] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(12);
-  const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [filterClicked, setFilterClicked] = useState(false); // New state
+  // const [filterClicked, setFilterClicked] = useState(false); // New state
 
   const maxlength = 20;
 
+  // console.log(allResource);
+
+  const navigate = useNavigate();
   const handleSearch = async (e) => {
     e.preventDefault();
-   
+
     try {
-      if (filterClicked) { // Check if filter button clicked
+      if (filterClicked) {
+        // Check if filter button clicked
         setLoading(true);
       }
       const response = await axios.get(
@@ -37,38 +59,37 @@ const Resource = () => {
       );
       setSearchResults(response.data.data);
       setLoading(false);
-      setError("")
+      setError("");
     } catch (error) {
       console.error("Error fetching search results:", error);
       setLoading(false);
-      setError("No product fit your search")
+      setError("No product fit your search");
     }
   };
 
-  useEffect(() => {
-    const fetchResource = async () => {
-      try {
-        setLoading(true)
-        const res = await axios.get(`${baseUrl}/api/v1/resources`);
-        const resourceData = res.data.data;
-        if (res.status == 200) {
-          setLoading(false);
-        }
-        setContent(resourceData);
-        setAllResource(resourceData);
-        setBooks(resourceData.filter((item) => item.category === "pdf"));
-        setVideos(resourceData.filter((item) => item.category === "video"));
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchResource();
+  // useEffect(() => {
+  //   const fetchResource = async () => {
+  //     try {
+  //       setLoading(true);
+  //       const res = await axios.get(`${baseUrl}/api/v1/resources`);
+  //       const resourceData = res.data.data;
+  //       if (res.status == 200) {
+  //         setLoading(false);
+  //       }
+  //       setContent(resourceData);
+  //       setAllResource(resourceData);
+  //       setBooks(resourceData.filter((item) => item.category === "pdf"));
+  //       setVideos(resourceData.filter((item) => item.category === "video"));
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   fetchResource();
 
-    if (searchTerm.trim() === "") {
-      setSearchResults([]);
-    }
-    
-  }, [baseUrl, searchTerm, filterClicked]); // Include filterClicked in dependencies
+  //   if (searchTerm.trim() === "") {
+  //     setSearchResults([]);
+  //   }
+  // }, [baseUrl, searchTerm, filterClicked]); // Include filterClicked in dependencies
 
   const showFilterBtn = searchTerm !== "" ? "hidden" : "block";
 
@@ -179,7 +200,12 @@ const Resource = () => {
                     <img src={rating} alt="" />
                   </span>
                 </div>
-                <button className=" border-[#032BF2] border-2 text-[#032BF2] hover:bg-[#032BF2] hover:text-white duration-100 font-semibold text-xl w-full p-3 rounded-lg mb-3">
+                <button
+                  onClick={() => {
+                    navigate("/sales");
+                  }}
+                  className=" border-[#032BF2] border-2 text-[#032BF2] hover:bg-[#032BF2] hover:text-white duration-100 font-semibold text-xl w-full p-3 rounded-lg mb-3"
+                >
                   Buy Now
                 </button>
               </div>
@@ -229,7 +255,6 @@ const Resource = () => {
             </ul>
           )}
         </div>
-        
       </div>
     </div>
   );
