@@ -42,6 +42,8 @@ const Library = () => {
     }
   };
 
+
+  // The logic for export
   const handleExport = () => {
     const doc = new jsPDF();
 
@@ -127,7 +129,7 @@ const Library = () => {
   };
 
   return (
-    <div className="w-11/12 mx-auto container">
+    <div className="w-full mx-auto container">
       <div className="px-0 py-3 flex flex-col lg:flex-row justify-evenly lg:justify-between items-center ">
         <h1 className="text-2xl text-[#0027BA] font-bold"> {getHeadingText()} </h1>
         <div className="flex gap-5 py-8">
