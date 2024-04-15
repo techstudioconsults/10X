@@ -27,12 +27,15 @@ const Resource = () => {
   } = useFetch('/api/v1/resources');
   const baseUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
+ 
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(12);
   const [searchResults, setSearchResults] = useState([]);
 
   const navigate = useNavigate();
 
+
+  // handle search
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
@@ -52,6 +55,7 @@ const Resource = () => {
 
   const showFilterBtn = searchTerm !== "" ? "hidden" : "block";
 
+ // pagination logic
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems =
@@ -60,6 +64,8 @@ const Resource = () => {
       : content.slice(indexOfFirstItem, indexOfLastItem);
 
   const padding = loading ? "pt-10 pb-0" : "pt-5 pb-5";
+
+  // const activeBtn = 
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -119,6 +125,7 @@ const Resource = () => {
           </div>
         </div>
         {loading && <SkeletonLoader />}
+        {error && !content && <p className="text-red-500">Something went wrong </p>}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full justify-center items-center gap-x-5 gap-y-10 xl:gap-x-8 xl:gap-y-16 pb-14 ">
           {currentItems.map((item) => (
             <div
