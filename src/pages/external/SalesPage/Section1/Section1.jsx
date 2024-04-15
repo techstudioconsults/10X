@@ -6,8 +6,8 @@ import { NewAccordions } from "../accordion/NewAccordion";
 
 const Section1 = () => {
   return (
-    <div className="flex justify-center carousel-class mb-7  w-11/12  container mx-auto">
-      <div className="">
+    <div className="flex justify-center carousel-class mb-7 w-full">
+      <div className="w-full">
         
           <div className="flex flex-col-reverse md:flex-row mx-auto w-full">
             <div className="flex flex-col-reverse lg:flex-row gap-20 w-full xl:gap-40 items-stretch">
