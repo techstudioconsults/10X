@@ -19,6 +19,12 @@ const AdminNavbar = ({setOpen}) => {
       return text
     }
 
+    if(pathname.includes("/admin/coursedetail")){
+      text = "Course Hub"
+      return text
+    }
+   
+
     if (pathname.includes("/coursehub")) {
       text = "Course Hub"
       return text

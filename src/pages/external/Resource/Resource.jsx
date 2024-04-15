@@ -128,9 +128,9 @@ const Resource = () => {
           </div>
         </div>
         {loading && <SkeletonLoader />}
-        {error && !content && (
+        {error && !content.length ? (
           <p className="text-red-500">Something went wrong </p>
-        )}
+        ) : 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full justify-center items-center gap-x-5 gap-y-10 xl:gap-x-8 xl:gap-y-16 pb-14 ">
           {currentItems.map((item) => (
             <div
@@ -168,6 +168,7 @@ const Resource = () => {
             </div>
           ))}
         </div>
+        }
         <div>
           {!loading && content.length > itemsPerPage && (
             <ul className="pagination flex justify-center gap-2 items-center">

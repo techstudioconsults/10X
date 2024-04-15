@@ -1,4 +1,5 @@
 import searchIcon from "../../../../assets/search-icon.svg";
+import './Library.css'
 import printIcon from "../../../../assets/print-icon.png";
 import exportIcon from "../../../../assets/Export -icon.png";
 import { useFetch } from "../../../../hooks/useFetch";
@@ -151,19 +152,19 @@ const Library = () => {
         <div className="container border-b py-4 my-4 flex gap-4 md:gap-10">
           <button
             onClick={() => handleTabClick("all")}
-            className={`text-xl ${getTabClass("all")}`}
+            className={`text-xl tab ${getTabClass("all")}`}
           >
             All Courses
           </button>
           <button
             onClick={() => handleTabClick("video")}
-            className={`text-xl ${getTabClass("video")}`}
+            className={`text-xl tab ${getTabClass("video")}`}
           >
             Video
           </button>
           <button
             onClick={() => handleTabClick("pdf")}
-            className={`text-xl ${getTabClass("pdf")}`}
+            className={`text-xl tab ${getTabClass("pdf")}`}
           >
             Books
           </button>
