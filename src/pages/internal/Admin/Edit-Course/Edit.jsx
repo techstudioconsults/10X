@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import EditComponent from "../../../../components/admin/Edit-Course/Edit";
+
 import { CiCamera } from "react-icons/ci";
 import { useForm } from "react-hook-form";
+import EditComponent from "./Edit-Course-Component/Edit";
 
 const Edit = () => {
   const [profileImage, setProfileImage] = useState("");

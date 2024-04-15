@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { formatCurrency } from "../../../utils/Currency";
+import { formatCurrency } from "../../../../../utils/Currency";
 
 const courses = [
   {
