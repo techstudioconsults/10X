@@ -14,7 +14,7 @@ const Dashboard = () => {
           <BestSelling />
         </div>
         <div
-          className="w-[36%] shadow p-2 shadow-[#032BF2] rounded"
+          className="w-[36%] "
         >
           <PopularCat />
         </div>

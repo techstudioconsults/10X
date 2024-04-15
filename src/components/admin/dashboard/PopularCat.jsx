@@ -23,11 +23,7 @@ import { useFetch } from "../../../hooks/useFetch";
 // );
 
 const PopularCat = () => {
-  const {
-    content,
-    books,
-    videos,
-  } = useFetch("/api/v1/resources");
+  const { content, books, videos } = useFetch("/api/v1/resources");
 
   const video = videos.filter((v) => v.category === "video");
   const book = books.filter((v) => v.category === "pdf");
@@ -44,7 +40,10 @@ const PopularCat = () => {
   ];
 
   return (
-    <main>
+    <main
+      className="shadow shadow-[#032BF2] p-3 rounded-md"
+      style={{ height: "100%", width: "100%" }}
+    >
       <h1 className="font-semibold text-darkBlue">Popular Category</h1>
       <section>
         <Doughnut

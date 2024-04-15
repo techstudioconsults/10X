@@ -7,9 +7,10 @@ import Login from "./pages/Auth/Login/Login";
 import Rootlayout from "./layout/Rootlayout";
 import WhatWeDo from "./pages/external/About/WhatWeDO";
 import Adminlayout from "./layout/AdminLayout";
-import Library from "./pages/internal/Admin/libary/Libary";
+import Library from "./pages/internal/Admin/library/Library";
 import Settings from "./pages/internal/Admin/Settings/Settings";
 import Dashboard from "./pages/internal/Admin/Home/Dashboard";
+import Edit from "./pages/internal/Admin/Edit-Course/Edit";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path="/admin/home" element={<Dashboard />} />
             <Route path="/admin/library" element={<Library />} />
             <Route path="/admin/settings" element={<Settings />} />
+            <Route path="/admin/edit-course" element={<Edit />} />
           </Route>
           <Route path="/login" element={<Login />} />
         </Routes>

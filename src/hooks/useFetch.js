@@ -32,6 +32,7 @@ export const useFetch = (url, token) => {
         setBooks(resourceData.filter((item) => item.category === "pdf"));
         setVideos(resourceData.filter((item) => item.category === "video"));
       } catch (error) {
+        console.error(error)
         console.log(error);
       }
     };
