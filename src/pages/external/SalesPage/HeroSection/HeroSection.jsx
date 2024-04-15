@@ -28,7 +28,7 @@ const HeroSection = () => {
           <img src={buyNow} alt="" />
         </div>
       </div>
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 justify-center gap-5 md:w-11/12 pt-8 mx-auto container">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 justify-center gap-5 md:w-11/12 pt-8 px-4 mx-auto container">
         <div className="bg-[#FAFBFF] flex flex-col gap-3 rounded-lg shadow-xl border border-[#032BF214] shadow-[#032BF214] max-w-[400px] p-6 text-center md:text-start">
           <h1 className="text-4xl md:text-5xl font-[1000] text-[#032BF2]">40%</h1>
           <h3 className="text-[28px] font-semibold text-[#0027BA]">

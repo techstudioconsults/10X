@@ -31,8 +31,9 @@ const AdminNavbar = ({setOpen}) => {
 
   }
   return (
-    <div className="py-8 px-2 shadow-md flex items-center  w-full bg-white   shadow-[#032BF20F]">
-      <div className="lg:hidden block"><span className="text-3xl text-darkBlue cursor-pointer" onClick={() => setOpen(true)}><PiDotsThreeOutlineVerticalFill /></span></div>
+    <div className="shadow-[#032BF20F]  shadow-md bg-white 2xl:w-4/5 w-full absolute right-0">
+      <div className="py-8 flex items-center mx-auto  w-full ">
+      <div className="2xl:hidden block"><span className="text-3xl text-darkBlue cursor-pointer" onClick={() => setOpen(true)}><PiDotsThreeOutlineVerticalFill /></span></div>
       <div className="flex lg:px-8 px-3 container w-full mx-auto justify-between items-center">
       <div>
         <h2 className="text-blue font-semibold lg:text-xl text-base">{handleLocationSwitch()}</h2>
@@ -54,6 +55,8 @@ const AdminNavbar = ({setOpen}) => {
       </div>
       </div>
     </div>
+    </div>
+    
   );
 };
 

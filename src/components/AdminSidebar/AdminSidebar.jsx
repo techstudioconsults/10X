@@ -13,16 +13,16 @@ const AdminSidebar = () => {
   const {pathname} = useLocation()
   return (
     
-    <div className='h-screen w-[240px] 2xl:w-[270px] fixed hidden lg:block bg-[#032BF20F] p-4  shadow-xl'>
+    <div className='h-screen 2xl:w-1/5 lg:w-1/4  fixed hidden lg:block bg-[#032BF20F] p-4  shadow-xl'>
         <div className='flex h-full flex-col gap-8'>
-            <div className="mt-4">
+            <div className="mt-3">
             <img
             src={revenueLogo}
             className="w-[140px] h-[54px] md:w-[140px] md:h-[54.22px]"
             alt="company-logo"
           />
+            <hr className="bg-grey h-[1.5px] mt-4"/>
             </div>
-            <hr className="bg-grey h-[1.5px]"/>
 
             <div className='flex flex-col gap-4'>
                 <div className={`flex gap-4 items-center ${pathname === "/admin/home"? "bg-blue text-white" : null} duration-300  rounded-lg h-12 p-3 text-grey font-semibold text-base`}>
