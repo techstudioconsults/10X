@@ -7,13 +7,15 @@ import Library from "../../../../components/admin/dashboard/Library";
 
 const Dashboard = () => {
   return (
-    <main className="container mx-auto mb-10">
+    <main className="container mx-auto mb-10 px-5">
       <Courses />
       <section className=" lg:flex justify-between  w-full mt-5">
-        <div className="w-[60%] xl:w-[65%]">
+        <div className="w-[60%] xl:w-[60%]">
           <BestSelling />
         </div>
-        <div className="w-[36%] xl:w-[30%]">
+        <div
+          className="w-[36%] shadow p-2 shadow-[#032BF2] rounded"
+        >
           <PopularCat />
         </div>
       </section>

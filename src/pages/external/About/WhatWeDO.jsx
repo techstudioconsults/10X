@@ -1,6 +1,6 @@
 import "./WhatWeDo.css";
 import { Link } from "react-router-dom";
-import heroImg from "../../../assets/About-hero-img.png";
+import heroImg from "../../../assets/aboutpage.svg";
 import arrowDownRightMobile from "../../../assets/arrow-down-right-mobile.png";
 import arrowDownLeftMobile from "../../../assets/arrow-down-left-mobile.png";
 import underlineImg from "../../../assets/Vector-underline.png";
@@ -27,7 +27,7 @@ import wavyPattern from '../../../assets/wavy-pattern-bg-top.svg'
 const WhatWeDo = () => {
   return (
     <div className="bg-white ">
-      <div className=" w-11/12 mx-auto container pt-24 grid grid-cols-1 gap-6 lg:gap-0 lg:grid-cols-2">
+      <div className=" w-11/12 mx-auto container pt-24 grid grid-cols-1 items-center gap-6 lg:gap-0 lg:grid-cols-2">
         <div className="pt-10 lg:order-1 flex flex-col gap-5">
           <h1 className="text-3xl lg:text-4xl 2xl:text-7xl font-black text-blue text-center lg:text-start ">
             What We Do at 10X Revenue Growth
@@ -44,8 +44,8 @@ const WhatWeDo = () => {
             </button>
           </div>
         </div>
-        <div className="lg:order-2">
-          <img className="w-full" src={heroImg} alt="" />
+        <div className="lg:order-2 ">
+          <img className="w-full lg:h-[600px] h-[450px] translate-y-5" src={heroImg} alt="" />
         </div>
       </div>
 
