@@ -1,21 +1,28 @@
 import React, { useState } from "react";
 import EditComponent from "../../../../components/admin/Edit-Course/Edit";
 import { CiCamera } from "react-icons/ci";
+import { useForm } from "react-hook-form";
 
 const Edit = () => {
   const [profileImage, setProfileImage] = useState("");
   const [images, setImages] = useState(null);
+
+  const { register, handleSubmit } = useForm();
 
   const handleImageChange = (e) => {
     setProfileImage(e.target.files[0]);
     setImages(URL.createObjectURL(e.target.files[0]));
   };
 
+  const handleEditCourse = (data) => {
+    const formData = new FormData()
+  }
+
   return (
     <main className=" container mx-auto w-11/12">
       <EditComponent />
 
-      <section className="mt-8">
+      <form className="mt-8">
         <p className="text-sm mt-1 text-grey">COURSE DETAILS</p>
         <hr className="mt-2 text-grey" />
 
@@ -23,7 +30,10 @@ const Edit = () => {
           <div className="flex flex-col gap-7 w-[50%]">
             {/* edit-form */}
             <div className="flex flex-col w-full">
-              <label htmlFor="title" className=" text-darkBlue font-[650] text-sm">
+              <label
+                htmlFor="title"
+                className=" text-darkBlue font-[650] text-sm"
+              >
                 Course Title
               </label>
 
@@ -34,7 +44,10 @@ const Edit = () => {
               />
             </div>
             <div className="flex flex-col">
-              <label htmlFor="price" className=" text-darkBlue font-[650] text-sm">
+              <label
+                htmlFor="price"
+                className=" text-darkBlue font-[650] text-sm"
+              >
                 Price *
               </label>
 
@@ -51,13 +64,13 @@ const Edit = () => {
 
               <div className=" flex gap-7 items-center">
                 <div className="flex items-center gap-2 mt-2">
-                  <input type="radio" id="video"/>
+                  <input type="radio" id="video" />
                   <label htmlFor="video" className=" text-xs">
                     Video
                   </label>
                 </div>
                 <div className="flex items-center gap-2 mt-2">
-                  <input type="radio" id="book"/>
+                  <input type="radio" id="book" />
                   <label htmlFor="book" className=" text-xs">
                     Book
                   </label>
@@ -101,7 +114,7 @@ const Edit = () => {
             </main>
           </div>
         </div>
-      </section>
+      </form>
     </main>
   );
 };
