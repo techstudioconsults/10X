@@ -24,16 +24,14 @@ const Resource = () => {
     setError,
     searchTerm,
     setSearchTerm,
-  } = useFetch('/api/v1/resources');
+  } = useFetch("/api/v1/resources");
   const baseUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
- 
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(12);
   const [searchResults, setSearchResults] = useState([]);
 
   const navigate = useNavigate();
-
 
   // handle search
   const handleSearch = async (e) => {
@@ -55,7 +53,7 @@ const Resource = () => {
 
   const showFilterBtn = searchTerm !== "" ? "hidden" : "block";
 
- // pagination logic
+  // pagination logic
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems =
@@ -65,7 +63,7 @@ const Resource = () => {
 
   const padding = loading ? "pt-10 pb-0" : "pt-5 pb-5";
 
-  // const activeBtn = 
+  // const activeBtn =
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -80,7 +78,10 @@ const Resource = () => {
             </span>
           </h1>
           <div className="w-full">
-            <form onSubmit={handleSearch} className="flex justify-center items-center w-full lg:w-4/5 mx-auto py-8">
+            <form
+              onSubmit={handleSearch}
+              className="flex justify-center items-center w-full lg:w-4/5 mx-auto py-8"
+            >
               <img className="translate-x-10" src={searchIcon} alt="" />
               <input
                 id="search"
@@ -100,23 +101,25 @@ const Resource = () => {
               </button>
             </form>
 
-            <div className={`${showFilterBtn} flex justify-between items-center`}>
+            <div
+              className={`${showFilterBtn} flex justify-between items-center`}
+            >
               <div className="flex gap-4 justify-between md:justify-center lg:justify-start pb-9">
                 <button
                   onClick={() => setContent(allResource)}
-                  className="text-white bg-[#032BF2] py-2 px-5 rounded-lg hover:bg-[#032BF2] duration-500"
+                  className={`text-[#0027BA] border-[#032BF2] border-2 py-2 px-5 rounded-lg hover:bg-[#032BF2] duration-500 ${content === allResource ? "bg-[#032BF2] text-white" : ""}`}
                 >
                   All
                 </button>
                 <button
                   onClick={() => setContent(books)}
-                  className="text-[#0027BA] border-[#032BF2] border-2 rounded-lg py-2 px-5 hover:bg-[#032BF2] duration-500 hover:text-white"
+                  className={`text-[#0027BA] border-[#032BF2] border-2 rounded-lg py-2 px-5 hover:bg-[#032BF2] duration-500 hover:text-white ${content === books ? "bg-[#032BF2] text-white" : ""}`}
                 >
                   Book
                 </button>
                 <button
                   onClick={() => setContent(videos)}
-                  className="text-[#0027BA] border-[#032BF2] border-2 rounded-lg py-2 px-5 hover:bg-[#032BF2] duration-500 hover:text-white"
+                  className={`text-[#0027BA] border-[#032BF2] border-2 rounded-lg py-2 px-5 hover:bg-[#032BF2] duration-500 hover:text-white ${content === videos ? "bg-[#032BF2] text-white" : ""}`}
                 >
                   Video
                 </button>
@@ -125,7 +128,9 @@ const Resource = () => {
           </div>
         </div>
         {loading && <SkeletonLoader />}
-        {error && !content && <p className="text-red-500">Something went wrong </p>}
+        {error && !content && (
+          <p className="text-red-500">Something went wrong </p>
+        )}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full justify-center items-center gap-x-5 gap-y-10 xl:gap-x-8 xl:gap-y-16 pb-14 ">
           {currentItems.map((item) => (
             <div
@@ -143,9 +148,13 @@ const Resource = () => {
               </div>
               <div className="w-full p-4 xl:p-4 flex flex-col justify-between gap-4">
                 <h1 className="text-[#0027BA] font-bold text-xl lg:text-lg text-left ">
-                  {item.title.length > 20 ? `${item.title.slice(0, 20)}...` : item.title}
+                  {item.title.length > 20
+                    ? `${item.title.slice(0, 20)}...`
+                    : item.title}
                 </h1>
-                <p className="text-[#032BF2] text-left text-2xl font-bold ">NGN {item.price}</p>
+                <p className="text-[#032BF2] text-left text-2xl font-bold ">
+                  NGN {item.price}
+                </p>
                 <div className="flex gap-3">
                   <p className="text-[#032BF2]">(4.5)</p>
                   <span>
@@ -171,11 +180,15 @@ const Resource = () => {
                   <img src={prev} alt="Previous" />
                 </button>
               </li>
-              {Array.from({ length: Math.ceil(content.length / itemsPerPage) }).map((_, index) => (
+              {Array.from({
+                length: Math.ceil(content.length / itemsPerPage),
+              }).map((_, index) => (
                 <li key={index} className="page-item flex items-center">
                   <button
                     onClick={() => paginate(index + 1)}
-                    className={`page-link ${currentPage === index + 1 ? "active" : ""}`}
+                    className={`page-link ${
+                      currentPage === index + 1 ? "active" : ""
+                    }`}
                   >
                     {index + 1}
                   </button>
@@ -184,7 +197,9 @@ const Resource = () => {
               <li className="page-item flex items-center">
                 <button
                   onClick={() => paginate(currentPage + 1)}
-                  disabled={currentPage === Math.ceil(content.length / itemsPerPage)}
+                  disabled={
+                    currentPage === Math.ceil(content.length / itemsPerPage)
+                  }
                   className="page-link"
                 >
                   <img src={next} alt="Next" />
