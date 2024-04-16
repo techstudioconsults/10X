@@ -4,7 +4,7 @@ import specialArrow from "../../../../assets/special-arrow.svg";
 const HeroSection = () => {
   return (
     <div>
-      <div className="flex my-7 flex-col-reverse lg:flex-row items-center justify-center gap-5 p-4 lg:w-11/12 mx-auto container">
+      <div className="flex my-7 flex-col-reverse lg:flex-row items-center justify-center gap-5 py-4 w-full">
         <div className="flex flex-col items-start lg:w-1/2 w-full lg:justify-center gap-4">
           <h2 className="text-3xl lg:text-[38px] font-[800] text-darkBlue hidden lg:block">
             The Zero Call Close
@@ -28,8 +28,8 @@ const HeroSection = () => {
           <img src={buyNow} alt="" />
         </div>
       </div>
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 justify-center gap-5 md:w-11/12 pt-8 mx-auto container">
-        <div className="bg-[#FAFBFF] flex flex-col gap-3 rounded-lg shadow-xl border border-[#032BF214] shadow-[#032BF214] max-w-[400px] p-6 text-center md:text-start">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 justify-center gap-2 pt-8">
+        <div className="bg-[#FAFBFF] flex flex-col gap-3 rounded-lg shadow-xl border border-[#032BF214] shadow-[#032BF214] max-w-[440px] p-6 text-center md:text-start">
           <h1 className="text-4xl md:text-5xl font-[1000] text-[#032BF2]">40%</h1>
           <h3 className="text-[28px] font-semibold text-[#0027BA]">
             Conversions
@@ -38,7 +38,7 @@ const HeroSection = () => {
             40% of your sales conversations without ever picking up the phone.
           </p>
         </div>
-        <div className="bg-[#FAFBFF] flex flex-col gap-2  rounded-lg shadow-xl border border-[#032BF214] shadow-[#032BF214] max-w-[400px] p-6  text-center md:text-start">
+        <div className="bg-[#FAFBFF] flex flex-col gap-2  rounded-lg shadow-xl border border-[#032BF214] shadow-[#032BF214] max-w-[440px] p-6  text-center md:text-start">
           <h1 className="text-4xl md:text-5xl tracking-tight font-[1000] text-[#032BF2]">
             NGN 1M+
           </h1>
@@ -49,7 +49,7 @@ const HeroSection = () => {
             40% of your sales conversations without ever picking up the phone.
           </p>
         </div>
-        <div className="bg-[#FAFBFF] flex flex-col lg:col-span-1 md:col-span-2 place-self-center gap-2 rounded-lg shadow-xl border border-[#032BF214]  shadow-[#032BF214] max-w-[400px] p-6 text-center md:text-start">
+        <div className="bg-[#FAFBFF] flex flex-col lg:col-span-1 md:col-span-2 place-self-center gap-2 rounded-lg shadow-xl border border-[#032BF214]  shadow-[#032BF214] max-w-[440px] h-full p-6 text-center md:text-start">
           <h1 className="text-4xl md:text-5xl tracking-tight font-[1000] text-[#032BF2]">
             No More
           </h1>
