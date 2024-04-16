@@ -3,6 +3,7 @@ import './Library.css'
 import printIcon from "../../../../assets/print-icon.png";
 import exportIcon from "../../../../assets/Export -icon.png";
 import { useFetch } from "../../../../hooks/useFetch";
+import { Tabs, TabsHeader, TabsBody, Tab, TabPanel } from "@material-tailwind/react"
 import { useState } from "react";
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
@@ -130,7 +131,7 @@ const Library = () => {
   };
 
   return (
-    <div className="w-11/12 mx-auto container">
+    <div className="w-full px-6 mx-auto container">
       <div className="px-0 py-3 flex flex-col lg:flex-row justify-evenly lg:justify-between items-center ">
         <h1 className="text-2xl text-[#0027BA] font-bold"> {getHeadingText()} </h1>
         <div className="flex gap-5 py-8">
@@ -149,7 +150,7 @@ const Library = () => {
       </div>
       {error && <h1 className="text-red-500 text-center">{error}</h1>}
       <div className="">
-        <div className="container border-b py-4 my-4 flex gap-4 md:gap-10">
+        {/* <div className="container border-b py-4 my-4 flex gap-4 md:gap-10">
           <button
             onClick={() => handleTabClick("all")}
             className={`text-xl tab ${getTabClass("all")}`}
@@ -174,8 +175,26 @@ const Library = () => {
           >
             Draft
           </button>
-        </div>
-        <div className="overflow-x-auto">
+        </div> */}
+        <Tabs value={activeTab}>
+
+         <TabsHeader className="rounded-none border-b border-blue-gray-50 bg-transparent p-0" indicatorProps={{ className: "bg-transparent border-b-2 border-[#0027BA] shadow-none rounded-none" }}>
+            <Tab value="all" onClick={() => handleTabClick("all")} className={` w-1/5 text-xl ${getTabClass("all")}`}>
+              All Courses
+            </Tab>
+            <Tab value="video" onClick={() => handleTabClick("video")} className={`w-1/5 text-xl ${getTabClass("video")}`}>
+              Video
+            </Tab>
+            <Tab value="pdf" onClick={() => handleTabClick("pdf")} className={` w-1/5 text-xl ${getTabClass("Books")}`}>
+              Books
+            </Tab>
+            <Tab value="draft" onClick={() => handleTabClick("draft")} className={` w-1/5 text-xl ${getTabClass("Draft")}`}>
+              Draft
+            </Tab>
+          </TabsHeader>
+
+        </Tabs>
+        <div className="overflow-x-auto pt-7">
           <table className="w-full text-left table-auto">
             <thead>
               <tr className="bg-[#F8F8F8] text-[#7C87AC] font-medium">

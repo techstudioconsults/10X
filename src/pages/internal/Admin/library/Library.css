@@ -1,4 +1,4 @@
-.tab::before{
+/* .tab::before{
     content: "";
 }
 
@@ -23,4 +23,4 @@
 .tab{
     position: relative;
     transition: all 0.4;
-} 
+}  */
