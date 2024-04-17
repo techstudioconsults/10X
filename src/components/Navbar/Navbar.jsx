@@ -27,7 +27,7 @@ export const Navbar = () => {
             </Link>
           </div>
 
-          <div className="hidden md:flex gap-5 items-center font-semibold text-[18px] w-[350px]">
+          <div className="hidden md:flex gap-10 whitespace-nowrap items-center font-semibold text-[18px] w-[350px]">
             <Link to="/" className=" text-blue nav__link">
               Home
             </Link>

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { formatCurrency } from "../../../../../utils/Currency";
+import { useFetch } from "../../../../../hooks/useFetch";
 
 const courses = [
   {
@@ -24,8 +25,13 @@ const courses = [
 ];
 
 const Recent = () => {
+  const { content: data, error } = useFetch("/api/v1/resources");
+
+  const sliced = data.slice(0, 3)
+
+  console.log(sliced);
   return (
-    <main className=" shadow shadow-[#032BF2] p-3 rounded-md   ">
+    <main className=" shadow shadow-[#032BF2] p-3 rounded-md">
       <div className=" flex items-center w-full justify-between px-5">
         <h1 className="text-lg font-semibold text-darkBlue">
           Recently Uploaded Courses
@@ -36,20 +42,23 @@ const Recent = () => {
       </div>
 
       <section className="w-full">
-        <div className="flex justify-between items-center text-sm bg-[#F8F8F8] py-2 px-3  text-[#7C87AC] font-semibold">
+        <div className="grid grid-cols-3 place-items-center text-sm bg-[#F8F8F8] py-2 px-3  text-[#7C87AC] font-semibold">
           <p> Course Name</p>
           <p> Category</p>
           <p>Price</p>
         </div>
 
         <section className=" space-y-3">
-          {courses.map((b) => (
-            <div key={b.id} className="flex justify-between items-center mt-2">
-              <p className=" text-md text-darkBlue font-semibold underline">
+          {sliced.map((b) => (
+            <div
+              key={b.id}
+              className="grid grid-cols-3 place-items-center mt-2"
+            >
+              <p className=" text-md text-darkBlue font-semibold underline whitespace-nowrap ps-3 text-start capitalize">
                 {b.title}
               </p>
               <p
-                className={` text-sm bg-[#CFE6FF] px-3 py-1 font-semibold ml-3 rounded-md  ${
+                className={` text-sm bg-[#CFE6FF] px-3 py-1 font-semibold ml-3 rounded-md ${
                   b.category.toLowerCase() === "book" && "text-[#AD70FF]"
                 }`}
               >
