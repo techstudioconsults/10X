@@ -5,8 +5,10 @@ import admin from "../../assets/admin-img.svg"
 import arrowDown from "../../assets/arrow-down.svg"
 import {useLocation} from "react-router-dom"
 import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
+import useAdminContext from "../../hooks/useAdminContext";
 
 const AdminNavbar = ({setOpen}) => {
+  const {userInfo} = useAdminContext()
   const {pathname} = useLocation()
   const handleLocationSwitch = () => {
     let text = ""
@@ -45,9 +47,9 @@ const AdminNavbar = ({setOpen}) => {
           </div>
 
           <div className="flex gap-3 items-center">
-            <img src={admin} className=" w-8 h-8 rounded-full object-cover" alt="" />
+            <img src={userInfo?.data?.photo} className=" w-8 h-8 rounded-full object-cover" alt="" />
             <div className="hidden md:block">
-              <p className=" font-semibold text-blue ">Eric T</p>
+              <p className=" font-semibold text-blue ">{userInfo?.data?.fullname}</p>
               <p className="text-blue text-xs">Admin</p>
             </div>
             <img src={arrowDown} alt="" />

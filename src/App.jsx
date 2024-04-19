@@ -10,6 +10,7 @@ import Adminlayout from "./layout/AdminLayout";
 import Library from "./pages/internal/Admin/libary/Libary";
 import Settings from "./pages/internal/Admin/Settings/Settings";
 import Dashboard from "./pages/internal/Admin/Home/Dashboard";
+import Adminlogin from "./pages/internal/Auth/Adminlogin";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="/admin/library" element={<Library />} />
             <Route path="/admin/settings" element={<Settings />} />
           </Route>
+            <Route path="/admin/login" element={<Adminlogin />} />
           <Route path="/login" element={<Login />} />
         </Routes>
       </BrowserRouter>
