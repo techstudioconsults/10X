@@ -1,9 +1,17 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import admin from "../../../../assets/admin-img.svg";
 import deleteIcon from "../../../../assets/delete-icon.svg";
+import axios from 'axios';
+import { useForm } from 'react-hook-form';
+import useAdminContext from '../../../../hooks/useAdminContext';
 
 const Settings = () => {
-  const [image, setImage] = useState(admin)
+  const {API_URL, getUser, userInfo, token} = useAdminContext()
+  console.log(userInfo);
+  const [image, setImage] = useState(userInfo?.data?.photo)
+  const [user, setUser] = useState(userInfo?.data)
+  // const [email, setEmail] = useState("")
+  const {register, handleSubmit} = useForm()
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
@@ -13,8 +21,66 @@ const Settings = () => {
         setImage(reader.result);
       };
       reader.readAsDataURL(file);
+      
     }
   };
+
+ 
+
+  const updatePassword = async (data) => {
+
+    const formData = new FormData();
+    formData.append("currentPassword", data?.currentPassword);
+    formData.append("newPassword", data?.newPassword);
+    try {
+      const {data} = await axios.put(`${API_URL}/api/v1/auth/updatepassword`,formData, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
+
+  const updateDetails = async (data) => {
+    console.log(data);
+    const formData = new FormData()
+    formData.append("fullname", data.fullname)
+    formData.append("email", data.email)
+    
+
+    if (data.photo) {
+      formData.append("photo", data.photo[0])
+    }
+
+    else {
+      formData.append("photo",user?.photo)
+    }
+    // formData.append("role", data.role)
+
+    // console.log(formData);
+
+    
+    try {
+      const res = await axios.put("https://one0x-revenue.onrender.com/api/v1/auth/updatedetails",formData, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+
+      console.log(res.data);
+      if (res.data.success) {
+        getUser()
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <div className=' container w-11/12 mx-auto my-2'>
 
@@ -33,15 +99,15 @@ const Settings = () => {
               <img src={image} className=' w-20 h-20 object-cover rounded-lg' alt="" />
               <div className='flex gap-2'>
 
-              <button className='h-[41px] bg-blue rounded-lg px-3 text-white font-semibold text-xs relative cursor-pointer' type="button"><input type="file" accept='image/*' onChange={handleImageChange} onMouseOver={(e) => e.target.title = ""}  className='w-full h-full opacity-0 absolute inset-0   cursor-pointer' />Upload new picture</button>
-              <button className='h-[41px] flex items-center justify-center px-5 gap-2 border-[#F87171] border-2 rounded-lg text-[#F87171] font-semibold'><img src={deleteIcon} alt="" />Delete</button>
+              <button className='h-[41px] bg-blue rounded-lg px-3 text-white font-semibold text-xs relative cursor-pointer' type="button"><input type="file" accept='image/*' {...register("photo")} onChange={handleImageChange} onMouseOver={(e) => e.target.title = ""}  className='w-full h-full opacity-0 absolute inset-0   cursor-pointer' />Upload new picture</button>
+              <button className='h-[41px] flex items-center justify-center px-5 gap-2 border-[#F87171] border-2 rounded-lg text-[#F87171] font-semibold' type="button"><img src={deleteIcon} alt="" />Delete</button>
               </div>
             </div>
 
             <div className='flex md:flex-row flex-col my-6 gap-3 w-full'>
               <div className='flex flex-col xl:w-1/2 w-full gap-1'>
                 <label className='text-[#0027BA] font-medium'>First Name</label>
-                <input type="text" placeholder='First Name' className=' w-full px-4 placeholder:text-[#6476BA] text-[#6476BA] h-12 rounded-md border-2 border-[#0000001A]  bg-transparent ' />
+                <input type="text" placeholder='First Name' {...register("fullname")} defaultValue={user?.fullname} className=' w-full px-4 placeholder:text-[#6476BA] text-[#6476BA] h-12 rounded-md border-2 border-[#0000001A]  bg-transparent ' />
               </div>
               <div className='flex flex-col xl:w-1/2 w-full gap-1'>
                 <label className='text-[#0027BA] font-medium'>Last Name</label>
@@ -50,12 +116,12 @@ const Settings = () => {
             </div>
             <div  className='flex flex-col mb-6 gap-1'>
                 <label className='text-[#0027BA] font-medium'>Email</label>
-                <input type="email" placeholder='Email Address' className=' h-12 px-4 text-[#6476BA] placeholder:text-[#6476BA] rounded-md border-2 border-[#0000001A]  bg-transparent ' />
+                <input type="email" placeholder='Email Address' {...register("email")} defaultValue={user?.email} className=' h-12 px-4 text-[#6476BA] placeholder:text-[#6476BA] rounded-md border-2 border-[#0000001A]  bg-transparent ' />
               </div>
 
               <div className='flex gap-3 md:justify-end justify-center'>
                 <button className='h-[41px] border-blue border-2 rounded-lg px-5 text-blue font-semibold text-sm'>Discard</button>
-                <button className='h-[41px] bg-blue rounded-lg px-5 text-white font-semibold text-xs'>Save Changes</button>
+                <button className='h-[41px] bg-blue rounded-lg px-5 text-white font-semibold text-xs' type="button" onClick={handleSubmit(updateDetails)}>Save Changes</button>
               </div>
             
           </form>
@@ -69,19 +135,19 @@ const Settings = () => {
 
           <div  className='flex flex-col gap-1'>
                 <label className='text-[#0027BA] font-medium'>Current Password</label>
-                <input type="password" className=' px-4 h-12 rounded-md border-2 border-[#0000001A]  bg-transparent ' />
+                <input type="password" {...register("currentPassword")} className=' px-4 h-12 rounded-md border-2 border-[#0000001A]  bg-transparent ' />
               </div>
           <div  className='flex flex-col gap-1'>
                 <label className='text-[#0027BA] font-medium'>New Password</label>
-                <input type="password" className=' px-4 h-12 rounded-md border-2 border-[#0000001A]  bg-transparent ' />
+                <input type="password" {...register("newPassword")}  className=' px-4 h-12 rounded-md border-2 border-[#0000001A]  bg-transparent ' />
               </div>
           <div  className='flex flex-col gap-1'>
                 <label className='text-[#0027BA] font-medium'>Confirm Password</label>
                 <input type="password" className=' px-4 h-12 rounded-md border-2 border-[#0000001A]  bg-transparent ' />
               </div>
               <div className='flex gap-3 md:justify-end justify-center my-3'>
-                <button className='h-[41px] border-blue border-2 rounded-lg px-5 text-blue font-semibold text-sm'>Discard</button>
-                <button className='h-[41px] bg-blue rounded-lg px-5 text-white font-semibold text-xs'>Save Changes</button>
+                <button className='h-[41px] border-blue border-2 rounded-lg px-5 text-blue font-semibold text-sm' type="button">Discard</button>
+                <button className='h-[41px] bg-blue rounded-lg px-5 text-white font-semibold text-xs' onClick={handleSubmit(updatePassword)}>Save Changes</button>
               </div>
           </form>
         </div>
