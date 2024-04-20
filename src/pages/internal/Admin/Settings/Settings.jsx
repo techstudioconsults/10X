@@ -32,9 +32,8 @@ const Settings = () => {
     handleSubmit: submitSecurity,
     setValue: setSecurity,
     formState: { errors: securityErrors },
-    watch,
   } = useForm();
-  const password = watch("newPassword");
+  // const password = watch("newPassword");
   // console.log(password);
   const handleImageChange = (event) => {
     const file = event.target.files[0];
