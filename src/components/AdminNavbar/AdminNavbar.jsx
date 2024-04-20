@@ -21,6 +21,12 @@ const AdminNavbar = ({setOpen}) => {
       return text
     }
 
+    if(pathname.includes("/admin/coursedetail")){
+      text = "Course Hub"
+      return text
+    }
+   
+
     if (pathname.includes("/coursehub")) {
       text = "Course Hub"
       return text
@@ -34,7 +40,7 @@ const AdminNavbar = ({setOpen}) => {
   }
   return (
     <div className="shadow-[#032BF20F]  shadow-md bg-white 2xl:w-4/5 w-full absolute right-0">
-      <div className="py-8 flex items-center mx-auto  w-full ">
+      <div className="py-6 h-[91px] flex items-center mx-auto  w-full ">
       <div className="2xl:hidden block"><span className="text-3xl text-darkBlue cursor-pointer" onClick={() => setOpen(true)}><PiDotsThreeOutlineVerticalFill /></span></div>
       <div className="flex lg:px-8 px-3 container w-full mx-auto justify-between items-center">
       <div>

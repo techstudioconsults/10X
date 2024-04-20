@@ -159,7 +159,7 @@ const Settings = () => {
       setUser(userInfo?.data);
       setImage(userInfo?.data.photo);
       setValue("email", userInfo?.data.email);
-      setValue("fullname", userInfo?.data21.fullname);
+      setValue("fullname", userInfo?.data.fullname);
     }
   }, [userInfo]);
 
