@@ -27,7 +27,7 @@ function App() {
           <Route element={<Adminlayout />}>
             <Route path="/admin/home" element={<Dashboard />} />
             <Route path="/admin/library" element={<Library />} />
-            <Route path="admin/coursedetail" element={<CourseDetail/>}/>
+            <Route path="coursedetail/:id" element={<CourseDetail/>}/>
             <Route path="/admin/settings" element={<Settings />} />
 
           </Route>

@@ -30,6 +30,11 @@ const AdminNavbar = ({setOpen}) => {
       return text
     }
 
+    if(pathname.includes('coursedetail/')){
+      text = "Course Hub"
+      return text
+    }
+
     if (pathname === "/admin/settings") {
       text = "Settings"
       return text
