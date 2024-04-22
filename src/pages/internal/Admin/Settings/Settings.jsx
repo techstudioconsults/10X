@@ -25,8 +25,6 @@ const Settings = () => {
     }
   };
 
- 
-
   const updatePassword = async (data) => {
 
     const formData = new FormData();
@@ -53,11 +51,9 @@ const Settings = () => {
     formData.append("fullname", data.fullname)
     formData.append("email", data.email)
     
-
     if (data.photo) {
       formData.append("photo", data.photo[0])
     }
-
     else {
       formData.append("photo",user?.photo)
     }

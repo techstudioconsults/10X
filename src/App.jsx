@@ -12,27 +12,28 @@ import Settings from "./pages/internal/Admin/Settings/Settings";
 import Dashboard from "./pages/internal/Admin/Home/Dashboard";
 import CourseDetail from "./pages/internal/Admin/coursedetail/CourseDetail";
 import Adminlogin from "./pages/internal/Auth/Adminlogin";
+import CreateCourse from "./pages/internal/Admin/create/CreateCourse";
 
 function App() {
-    return (
-        <div>
-            <BrowserRouter>
-                <Routes>
-                    <Route element={<Rootlayout />}>
-                        <Route path='/' element={<Home />} />
-                        <Route path='/resource' element={<Resource />} />
-                        <Route path='/about' element={<WhatWeDo />} />
-                        <Route path='/sales' element={<SalesPage />} />
-                    </Route>
+  return (
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<Rootlayout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/resource" element={<Resource />} />
+            <Route path="/about" element={<WhatWeDo />} />
+            <Route path="/sales" element={<SalesPage />} />
+          </Route>
 
           <Route element={<Adminlayout />}>
             <Route path="/admin/home" element={<Dashboard />} />
             <Route path="/admin/library" element={<Library />} />
-            <Route path="coursedetail/:id" element={<CourseDetail/>}/>
+            <Route path="coursedetail/:id" element={<CourseDetail />} />
             <Route path="/admin/settings" element={<Settings />} />
-
+            <Route path="/admin/create" element={<CreateCourse />} />
           </Route>
-            <Route path="/admin/login" element={<Adminlogin />} />
+          <Route path="/admin/login" element={<Adminlogin />} />
           <Route path="/login" element={<Login />} />
         </Routes>
       </BrowserRouter>
