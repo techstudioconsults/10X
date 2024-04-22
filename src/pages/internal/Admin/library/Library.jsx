@@ -1,22 +1,39 @@
 import searchIcon from "../../../../assets/search-icon.svg";
-import './Library.css'
+import "./Library.css";
 import printIcon from "../../../../assets/print-icon.png";
 import exportIcon from "../../../../assets/Export -icon.png";
 import { useFetch } from "../../../../hooks/useFetch";
-import { Tabs, TabsHeader, TabsBody, Tab, TabPanel } from "@material-tailwind/react"
+import { useNavigate } from "react-router-dom";
+import {
+  Tabs,
+  TabsHeader,
+  TabsBody,
+  Tab,
+  TabPanel,
+} from "@material-tailwind/react";
 import { useState } from "react";
-import jsPDF from 'jspdf';
-import 'jspdf-autotable';
-
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 const Library = () => {
   const { content: data, error } = useFetch("/api/v1/resources");
   const [activeTab, setActiveTab] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(9);
 
+  // const handleTabClick = (tab) => {
+  //   setActiveTab(tab);
+  //   setCurrentPage(1); // Reset the current page when the tab changes
+  // };
+
+  // const getTabClass = (tab) => {
+  //   return activeTab === tab
+  //     ? "text-[#0027BA] font-semibold"
+  //     : "text-[#818181] font-semibold";
+  // };
+
   const handleTabClick = (tab) => {
     setActiveTab(tab);
-    setCurrentPage(1); // Reset the current page when the tab changes
+    setCurrentPage(1);
   };
 
   const getTabClass = (tab) => {
@@ -44,26 +61,34 @@ const Library = () => {
     }
   };
 
-
   // The logic for export
   const handleExport = () => {
     const doc = new jsPDF();
 
     // Add table headers
-    const tableHeaders = ['Course Name', 'Category', 'Unit Sold', 'Date', 'Client', 'Price'];
+    const tableHeaders = [
+      "Course Name",
+      "Category",
+      "Unit Sold",
+      "Date",
+      "Client",
+      "Price",
+    ];
 
     // Add table data
-    const tableData = data.filter((datum) => {
-      if (activeTab === "all") return true;
-      return datum.category === activeTab;
-    }).map((datum) => [
-      datum.title,
-      datum.category,
-      'Nill',
-      new Date(datum.createdAt).toLocaleDateString(),
-      'Nill',
-      datum.price,
-    ]);
+    const tableData = data
+      .filter((datum) => {
+        if (activeTab === "all") return true;
+        return datum.category === activeTab;
+      })
+      .map((datum) => [
+        datum.title,
+        datum.category,
+        "Nill",
+        new Date(datum.createdAt).toLocaleDateString(),
+        "Nill",
+        datum.price,
+      ]);
 
     doc.autoTable({
       head: [tableHeaders],
@@ -84,17 +109,21 @@ const Library = () => {
     doc.save(`${getHeadingText()}-courses.pdf`);
   };
 
-  const handlePrint = () => {
-    window.print();
-  };
+  // const handlePrint = () => {
+  //   window.print();
+  // };
+
+  const navigate = useNavigate();
 
   // Pagination logic
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = data.filter((datum) => {
-    if (activeTab === "all") return true;
-    return datum.category === activeTab;
-  }).slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = data
+    .filter((datum) => {
+      if (activeTab === "all") return true;
+      return datum.category === activeTab;
+    })
+    .slice(indexOfFirstItem, indexOfLastItem);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -125,24 +154,29 @@ const Library = () => {
       );
     }
 
-    return (
-      <div className="flex justify-center gap-2 my-4">{pages}</div>
-    );
+    return <div className="flex justify-center gap-2 my-4">{pages}</div>;
   };
 
   return (
     <div className="w-full px-6 mx-auto container">
       <div className="px-0 py-3 flex flex-col lg:flex-row justify-evenly lg:justify-between items-center ">
-        <h1 className="text-2xl text-[#0027BA] font-bold"> {getHeadingText()} </h1>
+        <h1 className="text-2xl text-[#0027BA] font-bold">
+          {" "}
+          {getHeadingText()}{" "}
+        </h1>
         <div className="flex gap-5 py-8">
-          <button onClick={handleExport} className="bg-white border border-[#0226B066] border-1 px-3 md:px-5 py-2 rounded-md text-[#0027BA] flex gap-3 items-center">
+          <button
+            onClick={handleExport}
+            className="bg-white border border-[#0226B066] border-1 px-3 md:px-5 py-2 rounded-md text-[#0027BA] flex gap-3 items-center"
+          >
             {" "}
-            <img src={exportIcon} alt="" /> <span className="hidden lg:block " >Export</span>
+            <img src={exportIcon} alt="" />{" "}
+            <span className="hidden lg:block ">Export</span>
           </button>
-          <button onClick={handlePrint} className="bg-white border border-[#0226B066] border-1 px-3 md:px-5 py-2 rounded-md text-[#0027BA] flex gap-3 items-center">
+          {/* <button onClick={handlePrint} className="bg-white border border-[#0226B066] border-1 px-3 md:px-5 py-2 rounded-md text-[#0027BA] flex gap-3 items-center">
             {" "}
             <img src={printIcon} alt="" /> <span className="hidden lg:block ">Print</span>
-          </button>
+          </button> */}
           <button className="bg-[#0027BA] min-w-20 text-white px-5 py-2 rounded-md ">
             + Create New Course
           </button>
@@ -177,23 +211,42 @@ const Library = () => {
           </button>
         </div> */}
         <Tabs value={activeTab}>
-
-         <TabsHeader className="rounded-none border-b border-blue-gray-50 bg-transparent p-0" indicatorProps={{ className: "bg-transparent border-b-2 border-[#0027BA] shadow-none rounded-none" }}>
-            <Tab value="all" onClick={() => handleTabClick("all")} className={` w-1/5 text-xl ${getTabClass("all")}`}>
-              All Courses
-            </Tab>
-            <Tab value="video" onClick={() => handleTabClick("video")} className={`w-1/5 text-xl ${getTabClass("video")}`}>
-              Video
-            </Tab>
-            <Tab value="pdf" onClick={() => handleTabClick("pdf")} className={` w-1/5 text-xl ${getTabClass("Books")}`}>
-              Books
-            </Tab>
-            <Tab value="draft" onClick={() => handleTabClick("draft")} className={` w-1/5 text-xl ${getTabClass("Draft")}`}>
-              Draft
-            </Tab>
-          </TabsHeader>
-
-        </Tabs>
+        <TabsHeader
+          className="rounded-none border-b justify-between border-blue-gray-50 bg-transparent p-0"
+          indicatorProps={{
+            className: "bg-transparent border-b-2 border-[#0027BA] shadow-none rounded-none",
+          }}
+        >
+          <Tab
+            value="all"
+            onClick={() => handleTabClick("all")}
+            className={`w-1/5 text-base lg:text-xl ${getTabClass("all")}`}
+          >
+            All Courses
+          </Tab>
+          <Tab
+            value="video"
+            onClick={() => handleTabClick("video")}
+            className={`w-1/5 text-base lg:text-xl ${getTabClass("video")}`}
+          >
+            Video
+          </Tab>
+          <Tab
+            value="pdf"
+            onClick={() => handleTabClick("pdf")}
+            className={`w-1/5 text-base lg:text-xl ${getTabClass("pdf")}`}
+          >
+            Books
+          </Tab>
+          <Tab
+            value="draft"
+            onClick={() => handleTabClick("draft")}
+            className={`w-1/5 text-base lg:text-xl ${getTabClass("draft")}`}
+          >
+            Draft
+          </Tab>
+        </TabsHeader>
+      </Tabs>
         <div className="overflow-x-auto pt-7">
           <table className="w-full text-left table-auto">
             <thead>
@@ -207,25 +260,33 @@ const Library = () => {
               </tr>
             </thead>
             <tbody>
-              {currentItems.map((datum) => (
-                <tr key={datum.id} className="border-b my-2">
-                  <td className="px-4 py-3 text-base text-[#0027BA] underline font-semibold">{datum.title}</td>
-                  <td
-                    className={`px-4 py-3 text-center min-w-52 ${getCategoryClass(
-                      datum.category
-                    )}`}
-                  >
-                    <span className="my-2"> {datum.category}</span>
-                  </td>
-                  <td className="px-4 py-3 min-w-52 text-[#6072AC]">Nill</td>
-                  <td className="px-4 py-3 min-w-52 text-[#6072AC]">
-                    {new Date(datum.createdAt).toLocaleDateString()}
-                  </td>
-                  <td className="px-4 py-3 min-w-52 text-[#6072AC]"> Nill </td>
-                  <td className="px-4 py-3 min-w-52 text-[#6072AC]">{datum.price}</td>
-                </tr>
-              ))}
-            </tbody>
+  {currentItems.map((datum) => (
+    
+      <tr key={datum._id} onClick={()=>{
+        navigate(`/coursedetail/${datum._id}`)
+      }} className="border-b my-2 cursor-pointer">
+        <td className="px-3 py-3">
+          <span className="text-base text-[#0027BA] border-b border-1 border-[#0027BA] font-semibold">
+            {datum.title}
+          </span>
+        </td>
+        <td className={`px-4 py-3 text-center min-w-52`}>
+          <div
+            className={`my-3 mx-3 rounded ${getCategoryClass(datum.category)}`}
+          >
+            <p className="p-2">{datum.category}</p>
+          </div>
+        </td>
+        <td className="px-4 py-3 min-w-52 text-[#6072AC]">Nill</td>
+        <td className="px-4 py-3 min-w-52 text-[#6072AC]">
+          {new Date(datum.createdAt).toLocaleDateString()}
+        </td>
+        <td className="px-4 py-3 min-w-52 text-[#6072AC]">Nill</td>
+        <td className="px-4 py-3 min-w-52 text-[#6072AC]">{datum.price}</td>
+      </tr>
+  ))}
+</tbody>
+
           </table>
         </div>
         {renderPagination()}
