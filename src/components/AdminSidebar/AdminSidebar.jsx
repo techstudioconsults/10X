@@ -16,12 +16,13 @@ const AdminSidebar = () => {
     <div className='h-screen 2xl:w-1/5 lg:w-1/4  fixed hidden lg:block bg-[#032BF20F] p-4  shadow-xl'>
         <div className='flex h-full flex-col gap-10'>
             <div className="mt-3 ">
-            <img
+         <Link to="/">
+         <img
             src={revenueLogo}
             className="w-[140px] h-[54px] md:w-[140px] md:h-[54.22px]"
             alt="company-logo"
-          />
-            <hr className="bg-[rgba(150, 155, 172, 1)] h-[1.5px] mt-9"/>
+          /></Link>
+            {/* <hr className="bg-[rgba(150, 155, 172, 1)] h-[1.5px] mt-9"/> */}
             </div>
 
             <div className='flex flex-col gap-4'>

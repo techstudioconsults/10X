@@ -8,6 +8,7 @@ import SkeletonLoader from "../../../components/loader/SkeletonLoader";
 import searchIcon from "../../../assets/search-Icon.png";
 import { useNavigate } from "react-router-dom";
 import { useFetch } from "../../../hooks/useFetch";
+import { formatCurrency } from "../../../utils/Currency";
 
 const Resource = () => {
   const {
@@ -18,48 +19,77 @@ const Resource = () => {
     books,
     allResource,
     videos,
-    filterClicked,
     setFilterClicked,
     error,
     setError,
     searchTerm,
     setSearchTerm,
+    searchResults,
+    setSearchResults
   } = useFetch("/api/v1/resources");
-  const baseUrl = import.meta.env.VITE_REACT_APP_API_URL;
+  
 
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(12);
-  const [searchResults, setSearchResults] = useState([]);
+  // const [searchError, setSearchError] = useState('')
+ 
+  
 
   const navigate = useNavigate();
 
   // handle search
-  const handleSearch = async (e) => {
-    e.preventDefault();
-    try {
-      if (filterClicked) setLoading(true);
-      const response = await axios.get(
-        `${baseUrl}/api/v1/resources?search=${searchTerm}`
-      );
-      setSearchResults(response.data.data);
-      setLoading(false);
-      setError("");
-    } catch (error) {
-      console.error("Error fetching search results:", error);
-      setLoading(false);
-      setError("No product fit your search");
-    }
-  };
+  // const handleSearch = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     if (filterClicked) setLoading(true);
+  //     const response = await axios.get(
+  //       `${baseUrl}/api/v1/resources?search=${searchTerm}`
+  //     );
+  //     setSearchResults(response.data.data);
+  //     setLoading(false);
+  //     setError("");
+  //   } catch (error) {
+  //     console.error("Error fetching search results:", error);
+  //     setLoading(false);
+  //     setError("No product fit your search");
+  //   }
+  // };
+
+
+    const handleSearch = (e) => {
+      e.preventDefault();
+      const trimmedSearchTerm = searchTerm.trim();
+      if (trimmedSearchTerm !== "") {
+        setSearchResults([]); // Clear the searchResults state
+        const filteredResults = content.filter((item) =>
+          item.title.toLowerCase().includes(trimmedSearchTerm.toLowerCase())
+        );
+        setSearchResults(filteredResults);
+        setError(filteredResults.length === 0 ? "No results found" : "");
+      } else {
+        setSearchResults([]);
+        setError("");
+      }
+    };
+
+
 
   const showFilterBtn = searchTerm !== "" ? "hidden" : "block";
 
   // pagination logic
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  // const currentItems =
+  //   searchTerm.trim() !== ""
+  //     ? searchResults.slice(indexOfFirstItem, indexOfLastItem)
+  //     : content.slice(indexOfFirstItem, indexOfLastItem);
+
   const currentItems =
-    searchTerm.trim() !== ""
+  searchTerm.trim() !== ""
+    ? searchResults.length > 0
       ? searchResults.slice(indexOfFirstItem, indexOfLastItem)
-      : content.slice(indexOfFirstItem, indexOfLastItem);
+      : []
+    : content.slice(indexOfFirstItem, indexOfLastItem);
 
   const padding = loading ? "pt-10 pb-0" : "pt-5 pb-5";
 
@@ -128,8 +158,8 @@ const Resource = () => {
           </div>
         </div>
         {loading && <SkeletonLoader />}
-        {error && !content.length ? (
-          <p className="text-red-500">Something went wrong </p>
+        {error && !loading && !content.length ? (
+          <p className="text-red-500">{} </p>
         ) : 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full justify-center items-center gap-x-5 gap-y-10 xl:gap-x-8 xl:gap-y-16 pb-14 ">
           {currentItems.map((item) => (
@@ -153,7 +183,7 @@ const Resource = () => {
                     : item.title}
                 </h1>
                 <p className="text-[#032BF2] text-left text-2xl font-bold ">
-                  NGN {item.price}
+                  {formatCurrency(`${item.price}`)}
                 </p>
                 <div className="flex gap-3">
                   <p className="text-[#032BF2]">(4.5)</p>

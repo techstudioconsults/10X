@@ -11,6 +11,7 @@ import Library from "./pages/internal/Admin/library/Library";
 import Settings from "./pages/internal/Admin/Settings/Settings";
 import Dashboard from "./pages/internal/Admin/Home/Dashboard";
 import CourseDetail from "./pages/internal/Admin/coursedetail/CourseDetail";
+import Adminlogin from "./pages/internal/Auth/Adminlogin";
 
 function App() {
     return (
@@ -24,17 +25,19 @@ function App() {
                         <Route path='/sales' element={<SalesPage />} />
                     </Route>
 
-                    <Route element={<Adminlayout />}>
-                        <Route path='/admin/home' element={<Dashboard />} />
-                        <Route path='/admin/library' element={<Library />} />
-                        <Route path='admin/coursedetail' element={<CourseDetail />} />
-                        <Route path='/admin/settings' element={<Settings />} />
-                    </Route>
-                    <Route path='/login' element={<Login />} />
-                </Routes>
-            </BrowserRouter>
-        </div>
-    );
+          <Route element={<Adminlayout />}>
+            <Route path="/admin/home" element={<Dashboard />} />
+            <Route path="/admin/library" element={<Library />} />
+            <Route path="coursedetail/:id" element={<CourseDetail/>}/>
+            <Route path="/admin/settings" element={<Settings />} />
+
+          </Route>
+            <Route path="/admin/login" element={<Adminlogin />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
 }
 
 export default App;
