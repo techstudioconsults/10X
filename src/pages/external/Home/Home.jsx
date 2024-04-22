@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import heroImg from "../../../assets/heroImg.png";
 import first from "../../../assets/first.png";
 import second from "../../../assets/second.png";
@@ -15,7 +15,7 @@ import mcompanies from "../../../assets/mCompanies.png";
 // import mobpic from "../../assets/mobpic.png";
 import assit from "../../../assets/assit.png";
 import white from "../../../assets/white.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FaBell } from "react-icons/fa";
 import { ChangeText } from "../../../components/Reusable/ChangeText";
 import { Sliders } from "../../../components/Reusable/Slider";
@@ -25,6 +25,10 @@ import { AssistSlider } from "../../../components/Reusable/AssitSlider";
 import { FirstCardSlider } from "../../../components/Reusable/FirstCardSlider";
 
 export const Home = () => {
+  const location = useLocation()
+  useEffect(()=>{
+    window.scrollTo(0, 0)
+  },[location.pathname])
   const [funnels, setFunnels] = useState(true);
   const [testing, setTesting] = useState(false);
   const [scale, setScale] = useState(false);
@@ -73,7 +77,7 @@ export const Home = () => {
 
   return (
     <main className="mb-5 bg-white pt-20">
-      <section className="hero-img relative">
+      <section className="hero-img relative pt-10">
         <div className="md:h-[150px]">
           <h1 className="text-center text-4xl md:text-6xl lg:text-7xl font-[1000] mx-auto max-w-[300px] md:max-w-[500px] lg:max-w-[600px] text-blue  lg:leading-[77px]">
             Fueling Clients to <span className="text-darkBlue">7+ Figures</span>{" "}

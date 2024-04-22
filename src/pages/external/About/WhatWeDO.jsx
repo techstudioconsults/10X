@@ -1,5 +1,5 @@
 import "./WhatWeDo.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import heroImg from "../../../assets/aboutpage.svg";
 import arrowDownRightMobile from "../../../assets/arrow-down-right-mobile.png";
 import arrowDownLeftMobile from "../../../assets/arrow-down-left-mobile.png";
@@ -22,12 +22,21 @@ import number4 from '../../../assets/number4.svg'
 import scaleImg from '../../../assets/scaleImg.svg'
 import systemImg from '../../../assets/systemsImg.svg'
 import doubleImg from '../../../assets/grouped-imgs.svg'
-import wavyPattern from '../../../assets/wavy-pattern-bg-top.svg'
+
+import { useEffect } from "react";
+
 
 const WhatWeDo = () => {
+  const location = useLocation()
+
+  useEffect(()=>{
+    window.scrollTo(0, 0)
+  },[location.pathname])
+ 
+
   return (
     <div className="bg-white ">
-      <div className=" w-11/12 mx-auto container pt-24 grid grid-cols-1 items-center gap-6 lg:gap-0 lg:grid-cols-2">
+      <div className=" w-11/12 mx-auto container pt-11 grid grid-cols-1 items-center gap-6 lg:gap-0 lg:grid-cols-2">
         <div className="pt-10 lg:order-1 flex flex-col gap-5">
           <h1 className="text-3xl lg:text-4xl 2xl:text-7xl font-black text-blue text-center lg:text-start ">
             What We Do at 10X Revenue Growth
@@ -328,7 +337,7 @@ const WhatWeDo = () => {
       </div>
 
       {/* last section */}
-      <div className="bg-[#1E2C4F] ">
+      <div className=" bg-[#1E2C4F]  lg:bg-transparent wavy my-7 ">
 
         <div className="container  w-4/5 mx-auto grid grid-cols-1 lg:grid-cols-2 mt-5 mb-0 py-6 lg:py-2 lg:mb-48 gap-10 items-center">
           <div className=" py-3 flex flex-col justify-center lg:justify-start gap-4 ">

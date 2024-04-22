@@ -15,6 +15,7 @@ import Adminlogin from "./pages/internal/Auth/Adminlogin";
 import CreateCourse from "./pages/internal/Admin/create/CreateCourse";
 
 function App() {
+  
   return (
     <div>
       <BrowserRouter>
