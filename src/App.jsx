@@ -14,16 +14,16 @@ import CourseDetail from "./pages/internal/Admin/coursedetail/CourseDetail";
 import Adminlogin from "./pages/internal/Auth/Adminlogin";
 
 function App() {
-  return (
-    <div>
-      <BrowserRouter>
-        <Routes>
-          <Route element={<Rootlayout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/resource" element={<Resource />} />
-            <Route path="/about" element={<WhatWeDo />} />
-            <Route path="/sales" element={<SalesPage />} />
-          </Route>
+    return (
+        <div>
+            <BrowserRouter>
+                <Routes>
+                    <Route element={<Rootlayout />}>
+                        <Route path='/' element={<Home />} />
+                        <Route path='/resource' element={<Resource />} />
+                        <Route path='/about' element={<WhatWeDo />} />
+                        <Route path='/sales' element={<SalesPage />} />
+                    </Route>
 
           <Route element={<Adminlayout />}>
             <Route path="/admin/home" element={<Dashboard />} />
