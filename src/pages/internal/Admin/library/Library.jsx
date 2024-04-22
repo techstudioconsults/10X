@@ -252,11 +252,11 @@ const Library = () => {
             <thead>
               <tr className="bg-[#F8F8F8] text-[#7C87AC] font-medium">
                 <th className="px-4 py-3 min-w-52 min-w-lg-60">Course Name</th>
-                <th className="px-4 py-3 min-w-40">Category</th>
-                <th className="px-4 py-3 min-w-40">Unit Sold</th>
-                <th className="px-4 py-3 min-w-48">Date</th>
+                <th className="px-4 py-3 min-w-36">Category</th>
+                <th className="px-4 py-3 min-w-36">Unit Sold</th>
+                <th className="px-4 py-3 min-w-36">Date</th>
                 <th className="px-4 py-3 min-w-52">Client</th>
-                <th className="px-4 py-3 min-w-48">Price</th>
+                <th className="px-4 py-3 min-w-36">Price</th>
               </tr>
             </thead>
             <tbody>
@@ -272,7 +272,7 @@ const Library = () => {
         </td>
         <td className={`px-4 py-3 text-center min-w-52`}>
           <div
-            className={`my-3 mx-3 rounded ${getCategoryClass(datum.category)}`}
+            className={`my-3 w-[100px]  rounded ${getCategoryClass(datum.category)}`}
           >
             <p className="p-2">{datum.category}</p>
           </div>
