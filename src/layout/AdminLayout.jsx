@@ -24,7 +24,7 @@ const Adminlayout = () => {
       </div>
 
       {/* content */}
-      <div className=' 2xl:w-4/5 w-full  mx-auto container'>
+      <div className=' 2xl:w-4/5 min-h-screen w-full  mx-auto container'>
         <div className='fixed  top-0 right-0  mx-auto   z-30 w-full'>
 
       <AdminNavbar setOpen={setIsOpen}/>

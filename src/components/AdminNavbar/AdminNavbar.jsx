@@ -13,7 +13,7 @@ const AdminNavbar = ({setOpen}) => {
   const handleLocationSwitch = () => {
     let text = ""
     if(pathname === "/admin/home") {
-      text ="Welcome Back, Eric"
+      text =`Welcome Back${userInfo?.data.fullname ? `, ${userInfo?.data.fullname}` : ", Admin"}`
       return text
     }
     if(pathname.includes("/library")) {

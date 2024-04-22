@@ -9,10 +9,12 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import useAdminContext from "../../../hooks/useAdminContext";
 import Cookies from "js-cookie";
+import { Bars } from "react-loader-spinner";
 
 const Adminlogin = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const {register, handleSubmit} = useForm()
+  const [isLoading, setIsLoading] = useState(false);
+  const {register, handleSubmit, formState: {errors}} = useForm()
   const navigate = useNavigate()
   const {API_URL} = useAdminContext()
   const togglePasswordVisibility = () => {
@@ -20,6 +22,7 @@ const Adminlogin = () => {
   };
 
   const onSubmit = async (data) => {
+    setIsLoading(true)
     const formData = new FormData()
     formData.append("email", data.email)
     formData.append("password", data.password)
@@ -29,12 +32,14 @@ const Adminlogin = () => {
         console.log(data);
 
         if (data.success) {
+          setIsLoading(false)
             Cookies.set("token", data.token)
             navigate("/admin/home")
-
+           
         }
     } catch (error) {
         console.log(error);
+        setIsLoading(false)
     }
   }
 
@@ -60,22 +65,36 @@ const Adminlogin = () => {
           </div>
 
           <div className="flex w-full flex-col gap-8 my-4">
+            <div>
             <div className="relative w-full  flex items-center">
               <img src={emailIcon} className=" absolute h-[18px]  left-4" alt="" />
               <input
                 type="email"
                 className="w-full border px-11 border-grey outline-none h-12 rounded-lg text-grey text-[15px] "
                 placeholder="Email Address"
-                {...register("email")}
+                {...register("email", {
+                  required: "Email is required",
+                    pattern: {
+                      value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                      message: "Enter a valid email address"
+                    },
+                  
+                })}
               />
             </div>
+              {errors.email && <p className="text-red-500">{errors.email.message}</p>}
+            </div>
+
+            <div>
             <div className="relative w-full  flex items-center">
               <img src={lock} className=" absolute h-[17px]  left-4" alt="" />
               <input
                 type={showPassword ? "text" : "password"}
                 className="w-full border border-grey outline-none h-12  rounded-lg px-11 text-grey text-[15px] "
                 placeholder="Password"
-                {...register("password")}
+                {...register("password", {
+                  required: "Password is required"
+                })}
               />
               <button
                 type="button"
@@ -85,6 +104,9 @@ const Adminlogin = () => {
                 {showPassword ? <FiEye /> : <FiEyeOff />}
               </button>
             </div>
+              {errors.password && <p className="text-red-500">{errors.password.message}</p>}
+            </div>
+            
           </div>
     <div className="w-full space-y-3">
     <div className="w-full flex justify-between items-center text-grey mt-4">
@@ -102,8 +124,16 @@ const Adminlogin = () => {
             </p>
           </div>
 
-          <button className="w-full bg-blue font-bold text-white h-[45px] rounded-xl ">
-            Log In
+          <button className="w-full bg-blue font-bold flex items-center justify-center text-white h-[45px] rounded-xl ">
+            {isLoading ? <div><Bars
+  height="30"
+  width="100"
+  color="#fff"
+  ariaLabel="bars-loading"
+  wrapperStyle={{}}
+  wrapperClass=""
+  visible={true}
+  /></div> :"Log In"}
           </button>
     </div>
          

@@ -25,6 +25,8 @@ const AdminProvider = ({children}) => {
         }
       }
 
+     
+
       useEffect(() => {
         getUser()
       }, [token])
