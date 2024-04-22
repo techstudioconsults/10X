@@ -96,14 +96,14 @@ const PopularCat = () => {
             <linearGradient
               id="paint0_linear_622:13696"
               x1="5.54791e-07"
-              y1="42.0001"
+              y1="42.0001"  
               x2="54.6039"
               y2="41.9535"
               gradientUnits="userSpaceOnUse"
             >
               <stop stopColor="#E323FF" />
               <stop offset="1" stopColor="#7517F8" />
-            </linearGradient>
+            </linearGradient> 
           </defs>
         </svg>
       </div>
