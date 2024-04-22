@@ -22,7 +22,7 @@ const AdminSidebar = () => {
             className="w-[140px] h-[54px] md:w-[140px] md:h-[54.22px]"
             alt="company-logo"
           /></Link>
-            <hr className="bg-[rgba(150, 155, 172, 1)] h-[1.5px] mt-9"/>
+            {/* <hr className="bg-[rgba(150, 155, 172, 1)] h-[1.5px] mt-9"/> */}
             </div>
 
             <div className='flex flex-col gap-4'>
