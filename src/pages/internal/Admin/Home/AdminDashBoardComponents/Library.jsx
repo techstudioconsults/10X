@@ -1,5 +1,5 @@
 import React from "react";
-import lib1 from "../../../assets/libimg.png";
+import lib1 from "../../../../../assets/libimg.png";
 import { Link } from "react-router-dom";
 
 const lib = [
