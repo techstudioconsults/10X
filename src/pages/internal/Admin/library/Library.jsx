@@ -1,4 +1,3 @@
-import searchIcon from "../../../../assets/search-icon.svg";
 import "./Library.css";
 import printIcon from "../../../../assets/print-icon.png";
 import exportIcon from "../../../../assets/Export -icon.png";
@@ -15,7 +14,7 @@ import { useState } from "react";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 const Library = () => {
-  const { content: data, error } = useFetch("/api/v1/resources");
+  const { content: data, error } = useFetch("/api/v1/course");
   const [activeTab, setActiveTab] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(9);
@@ -158,7 +157,7 @@ const Library = () => {
   };
 
   return (
-    <div className="w-full px-6 mx-auto container">
+    <div className="w-full px-6  container">
       <div className="px-0 py-3 flex flex-col lg:flex-row justify-evenly lg:justify-between items-center ">
         <h1 className="text-2xl text-[#0027BA] font-bold">
           {" "}
