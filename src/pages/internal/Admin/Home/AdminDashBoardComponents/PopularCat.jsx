@@ -23,7 +23,7 @@ import { useFetch } from "../../../../../hooks/useFetch";
 // );
 
 const PopularCat = () => {
-  const { content, books, videos } = useFetch("/api/v1/resources");
+  const { books, videos } = useFetch("/api/v1/course");
 
 
 

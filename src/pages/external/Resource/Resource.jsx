@@ -32,7 +32,7 @@ const Resource = () => {
     setSearchTerm,
     searchResults,
     setSearchResults
-  } = useFetch("/api/v1/resources");
+  } = useFetch("/api/v1/course");
   
 
   const [currentPage, setCurrentPage] = useState(1);

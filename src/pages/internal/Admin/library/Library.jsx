@@ -14,7 +14,7 @@ import { useState } from "react";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 const Library = () => {
-  const { content: data, error } = useFetch("/api/v1/resources");
+  const { content: data, error } = useFetch("/api/v1/course");
   const [activeTab, setActiveTab] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(9);
