@@ -62,7 +62,7 @@ const PopularCat = () => {
       </section>
 
       {/* newly added chart from material tailwind  */}
-      <div className="py-8 px-6 text-gray-600 rounded-xl border">
+      {/* <div className="py-8 px-6 text-gray-600 rounded-xl border">
         <svg
           className="w-40 m-auto"
           viewBox="0 0 56 56"
@@ -106,7 +106,7 @@ const PopularCat = () => {
             </linearGradient> 
           </defs>
         </svg>
-      </div>
+      </div> */}
     </main>
   );
 };

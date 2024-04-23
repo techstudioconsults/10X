@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export const useFetch = (url, token) => {
   const [loading, setLoading] = useState(false);
+  const [single, setSingle] = useState([])
   const [content, setContent] = useState([]);
   const [books, setBooks] = useState([]);
   const [error, setError] = useState([]);
@@ -18,6 +19,23 @@ export const useFetch = (url, token) => {
   //
 
   useEffect(() => {
+
+    const getSingleResource = async ()=>{
+      try {
+        setLoading(true);
+        const res = await axiosInstance.get(url);
+        const singleDatum = res.data.data;
+        if (res.status == 200) {
+          setLoading(false);
+        }
+        setSingle(singleDatum)
+      } catch (error) {
+        setError(error)
+        console.error
+      }
+      
+    }
+    getSingleResource()
     const fetchResource = async () => {
       try {
         setLoading(true);
@@ -32,7 +50,7 @@ export const useFetch = (url, token) => {
         setBooks(resourceData.filter((item) => item.category === "pdf"));
         setVideos(resourceData.filter((item) => item.category === "video"));
       } catch (error) {
-        console.error(error)
+        setError(error)
         console.log(error);
       }
     };
@@ -56,6 +74,9 @@ export const useFetch = (url, token) => {
     error,
     setError,
     searchTerm,
-    setSearchTerm
+    setSearchTerm,
+    searchResults,
+    setSearchResults,
+    single,
   };
 };

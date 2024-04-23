@@ -13,7 +13,7 @@ const AdminSIdebarMobile = ({setIsOpen}) => {
     const {pathname} = useLocation()
   return (
     <motion.div
-          className="bg-white lg:hidden block h-full md:w-2/5 shadow-md p-3 w-3/4 fixed top-0 z-50 left-0"
+          className="bg-white 2xl:hidden block h-full md:w-2/5 shadow-md p-3 w-3/4 fixed top-0 z-50 left-0"
           initial={{
             x: -200,
           }}

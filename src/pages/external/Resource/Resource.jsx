@@ -8,6 +8,7 @@ import SkeletonLoader from "../../../components/loader/SkeletonLoader";
 import searchIcon from "../../../assets/search-Icon.png";
 import { useNavigate } from "react-router-dom";
 import { useFetch } from "../../../hooks/useFetch";
+import { formatCurrency } from "../../../utils/Currency";
 
 const Resource = () => {
   const {
@@ -18,48 +19,81 @@ const Resource = () => {
     books,
     allResource,
     videos,
-    filterClicked,
     setFilterClicked,
     error,
     setError,
     searchTerm,
     setSearchTerm,
-  } = useFetch('/api/v1/resources');
-  const baseUrl = import.meta.env.VITE_REACT_APP_API_URL;
+    searchResults,
+    setSearchResults
+  } = useFetch("/api/v1/resources");
+  
 
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(12);
-  const [searchResults, setSearchResults] = useState([]);
+  // const [searchError, setSearchError] = useState('')
+ 
+  
 
   const navigate = useNavigate();
 
-  const handleSearch = async (e) => {
-    e.preventDefault();
-    try {
-      if (filterClicked) setLoading(true);
-      const response = await axios.get(
-        `${baseUrl}/api/v1/resources?search=${searchTerm}`
-      );
-      setSearchResults(response.data.data);
-      setLoading(false);
-      setError("");
-    } catch (error) {
-      console.error("Error fetching search results:", error);
-      setLoading(false);
-      setError("No product fit your search");
-    }
-  };
+  // handle search
+  // const handleSearch = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     if (filterClicked) setLoading(true);
+  //     const response = await axios.get(
+  //       `${baseUrl}/api/v1/resources?search=${searchTerm}`
+  //     );
+  //     setSearchResults(response.data.data);
+  //     setLoading(false);
+  //     setError("");
+  //   } catch (error) {
+  //     console.error("Error fetching search results:", error);
+  //     setLoading(false);
+  //     setError("No product fit your search");
+  //   }
+  // };
+
+
+    const handleSearch = (e) => {
+      e.preventDefault();
+      const trimmedSearchTerm = searchTerm.trim();
+      if (trimmedSearchTerm !== "") {
+        setSearchResults([]); // Clear the searchResults state
+        const filteredResults = content.filter((item) =>
+          item.title.toLowerCase().includes(trimmedSearchTerm.toLowerCase())
+        );
+        setSearchResults(filteredResults);
+        setError(filteredResults.length === 0 ? "No results found" : "");
+      } else {
+        setSearchResults([]);
+        setError("");
+      }
+    };
+
+
 
   const showFilterBtn = searchTerm !== "" ? "hidden" : "block";
 
+  // pagination logic
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  // const currentItems =
+  //   searchTerm.trim() !== ""
+  //     ? searchResults.slice(indexOfFirstItem, indexOfLastItem)
+  //     : content.slice(indexOfFirstItem, indexOfLastItem);
+
   const currentItems =
-    searchTerm.trim() !== ""
+  searchTerm.trim() !== ""
+    ? searchResults.length > 0
       ? searchResults.slice(indexOfFirstItem, indexOfLastItem)
-      : content.slice(indexOfFirstItem, indexOfLastItem);
+      : []
+    : content.slice(indexOfFirstItem, indexOfLastItem);
 
   const padding = loading ? "pt-10 pb-0" : "pt-5 pb-5";
+
+  // const activeBtn =
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -98,19 +132,19 @@ const Resource = () => {
               <div className="flex gap-4 justify-between md:justify-center lg:justify-start pb-9">
                 <button
                   onClick={() => setContent(allResource)}
-                  className="text-white bg-[#032BF2] py-2 px-5 rounded-lg hover:bg-[#032BF2] duration-500"
+                  className={`text-[#0027BA] border-[#032BF2] border-2 py-2 px-5 rounded-lg hover:bg-[#032BF2] duration-500 ${content === allResource ? "bg-[#032BF2] text-white" : ""}`}
                 >
                   All
                 </button>
                 <button
                   onClick={() => setContent(books)}
-                  className="text-[#0027BA] border-[#032BF2] border-2 rounded-lg py-2 px-5 hover:bg-[#032BF2] duration-500 hover:text-white"
+                  className={`text-[#0027BA] border-[#032BF2] border-2 rounded-lg py-2 px-5 hover:bg-[#032BF2] duration-500 hover:text-white ${content === books ? "bg-[#032BF2] text-white" : ""}`}
                 >
                   Book
                 </button>
                 <button
                   onClick={() => setContent(videos)}
-                  className="text-[#0027BA] border-[#032BF2] border-2 rounded-lg py-2 px-5 hover:bg-[#032BF2] duration-500 hover:text-white"
+                  className={`text-[#0027BA] border-[#032BF2] border-2 rounded-lg py-2 px-5 hover:bg-[#032BF2] duration-500 hover:text-white ${content === videos ? "bg-[#032BF2] text-white" : ""}`}
                 >
                   Video
                 </button>
@@ -119,6 +153,9 @@ const Resource = () => {
           </div>
         </div>
         {loading && <SkeletonLoader />}
+        {error && !loading && !content.length ? (
+          <p className="text-red-500">{} </p>
+        ) : 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full justify-center items-center gap-x-5 gap-y-10 xl:gap-x-8 xl:gap-y-16 pb-14 ">
           {currentItems.map((item) => (
             <div
@@ -136,9 +173,13 @@ const Resource = () => {
               </div>
               <div className="w-full p-4 xl:p-4 flex flex-col justify-between gap-4">
                 <h1 className="text-[#0027BA] font-bold text-xl lg:text-lg text-left ">
-                  {item.title.length > 20 ? `${item.title.slice(0, 20)}...` : item.title}
+                  {item.title.length > 20
+                    ? `${item.title.slice(0, 20)}...`
+                    : item.title}
                 </h1>
-                <p className="text-[#032BF2] text-left text-2xl font-bold ">NGN {item.price}</p>
+                <p className="text-[#032BF2] text-left text-2xl font-bold ">
+                  {formatCurrency(`${item.price}`)}
+                </p>
                 <div className="flex gap-3">
                   <p className="text-[#032BF2]">(4.5)</p>
                   <span>
@@ -152,6 +193,7 @@ const Resource = () => {
             </div>
           ))}
         </div>
+        }
         <div>
           {!loading && content.length > itemsPerPage && (
             <ul className="pagination flex justify-center gap-2 items-center">
@@ -164,7 +206,9 @@ const Resource = () => {
                   <img src={prev} alt="Previous" />
                 </button>
               </li>
-              {Array.from({ length: Math.ceil(content.length / itemsPerPage) }).map((_, index) => (
+              {Array.from({
+                length: Math.ceil(content.length / itemsPerPage),
+              }).map((_, index) => (
                 <li key={index} className="page-item flex items-center">
                   <button
                     onClick={() => paginate(index + 1)}

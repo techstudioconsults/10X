@@ -3,8 +3,10 @@ import course1 from "../../../../../assets/course1.png";
 import course2 from "../../../../../assets/course2.png";
 import course3 from "../../../../../assets/course3.png";
 import { formatCurrency } from "../../../../../utils/Currency";
+import { useNavigate } from "react-router-dom";
 
 const Courses = () => {
+  const navigate = useNavigate()
   return (
     <main className="md:flex items-center justify-between gap-10">
       {/* <section> */}
@@ -41,7 +43,7 @@ const Courses = () => {
         </div>
       </section>
       {/* </section> */}
-      <button className=" bg-blue text-white h-14 w-44 font-semibold rounded-md">
+      <button className=" bg-blue text-white h-14 w-44 font-semibold rounded-md" onClick={() => navigate("/admin/create")}>
         + Add a Course
       </button>
     </main>

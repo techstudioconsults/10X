@@ -42,23 +42,23 @@ const Recent = () => {
       </div>
 
       <section className="w-full">
-        <div className="grid grid-cols-3 place-items-center text-sm bg-[#F8F8F8] py-2 px-3  text-[#7C87AC] font-semibold">
+        <div className="grid grid-cols-3  text-sm bg-[#F8F8F8] py-2 px-3  text-[#7C87AC] font-semibold">
           <p> Course Name</p>
-          <p> Category</p>
-          <p>Price</p>
+          <p className="ms-8"> Category</p>
+          <p className="ms-5">Price</p>
         </div>
 
         <section className=" space-y-3">
           {sliced.map((b) => (
             <div
               key={b.id}
-              className="grid grid-cols-3 place-items-center mt-2"
+              className="grid grid-cols-3  mt-2"
             >
-              <p className=" text-md text-darkBlue font-semibold underline whitespace-nowrap ps-3 text-start capitalize">
+              <p className=" text-md text-darkBlue font-semibold underline ps-3 text-start capitalize">
                 {b.title}
               </p>
               <p
-                className={` text-sm bg-[#CFE6FF] px-3 py-1 font-semibold ml-3 rounded-md ${
+                className={` text-sm bg-[#CFE6FF] px-6 flex items-center ms-7 py-1 font-semibold ml-3 rounded-md w-fit ${
                   b.category.toLowerCase() === "book" && "text-[#AD70FF]"
                 }`}
               >
