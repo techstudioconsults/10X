@@ -24,7 +24,10 @@ const courses = [
 
 const BestSelling = () => {
   return (
-    <main className=" shadow shadow-[#032BF2] p-3 rounded-md w-full ">
+    <main
+      className=" shadow shadow-[#032BF2] p-3 rounded-md w-full "
+      style={{ height: "100%", width: "100%" }}
+    >
       <div className=" flex items-center w-full justify-between px-3">
         <h1 className="xl:text-lg font-semibold text-darkBlue">
           Best Selling Courses
