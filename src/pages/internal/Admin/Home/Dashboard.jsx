@@ -1,9 +1,9 @@
-import React from "react";
-import Courses from "../../../../components/admin/dashboard/Courses";
-import BestSelling from "../../../../components/admin/dashboard/BestSelling";
-import PopularCat from "../../../../components/admin/dashboard/PopularCat";
-import Recent from "../../../../components/admin/dashboard/Recent";
-import Library from "../../../../components/admin/dashboard/Library";
+import Courses from "./AdminDashBoardComponents/Courses";
+import BestSelling from "./AdminDashBoardComponents/BestSelling";
+import PopularCat from "./AdminDashBoardComponents/PopularCat";
+import Recent from "./AdminDashBoardComponents/Recent";
+import Library from "./AdminDashBoardComponents/Library";
+
 
 const Dashboard = () => {
   return (
@@ -14,7 +14,7 @@ const Dashboard = () => {
           <BestSelling />
         </div>
         <div
-          className="w-[36%] shadow p-2 shadow-[#032BF2] rounded"
+          className="w-[36%] "
         >
           <PopularCat />
         </div>

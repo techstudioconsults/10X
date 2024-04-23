@@ -72,7 +72,7 @@ export const Home = () => {
   };
 
   return (
-    <main className="mb-5 bg-white pt-20">
+    <main className="mb-5 bg-white pt-28">
       <section className="hero-img relative">
         <div className="md:h-[150px]">
           <h1 className="text-center text-4xl md:text-6xl lg:text-7xl font-[1000] mx-auto max-w-[300px] md:max-w-[500px] lg:max-w-[600px] text-blue  lg:leading-[77px]">

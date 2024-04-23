@@ -108,10 +108,7 @@ const Resource = () => {
             </span>
           </h1>
           <div className="w-full">
-            <form
-              onSubmit={handleSearch}
-              className="flex justify-center items-center w-full lg:w-4/5 mx-auto py-8"
-            >
+            <form onSubmit={handleSearch} className="flex justify-center items-center w-full lg:w-4/5 mx-auto py-8">
               <img className="translate-x-10" src={searchIcon} alt="" />
               <input
                 id="search"
@@ -131,9 +128,7 @@ const Resource = () => {
               </button>
             </form>
 
-            <div
-              className={`${showFilterBtn} flex justify-between items-center`}
-            >
+            <div className={`${showFilterBtn} flex justify-between items-center`}>
               <div className="flex gap-4 justify-between md:justify-center lg:justify-start pb-9">
                 <button
                   onClick={() => setContent(allResource)}
@@ -217,9 +212,7 @@ const Resource = () => {
                 <li key={index} className="page-item flex items-center">
                   <button
                     onClick={() => paginate(index + 1)}
-                    className={`page-link ${
-                      currentPage === index + 1 ? "active" : ""
-                    }`}
+                    className={`page-link ${currentPage === index + 1 ? "active" : ""}`}
                   >
                     {index + 1}
                   </button>
@@ -228,9 +221,7 @@ const Resource = () => {
               <li className="page-item flex items-center">
                 <button
                   onClick={() => paginate(currentPage + 1)}
-                  disabled={
-                    currentPage === Math.ceil(content.length / itemsPerPage)
-                  }
+                  disabled={currentPage === Math.ceil(content.length / itemsPerPage)}
                   className="page-link"
                 >
                   <img src={next} alt="Next" />
