@@ -2,7 +2,7 @@ import React from "react";
 import { Doughnut } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 // import {  } from "../../../data/chart";
-import { useFetch } from "../../../hooks/useFetch";
+import { useFetch } from "../../../../../hooks/useFetch";
 // import {
 //   Chart as ChartJS,
 //   CategoryScale,
@@ -23,31 +23,29 @@ import { useFetch } from "../../../hooks/useFetch";
 // );
 
 const PopularCat = () => {
-  const {
-    content,
-    books,
-    videos,
-  } = useFetch("/api/v1/resources");
+  const { books, videos } = useFetch("/api/v1/course");
 
-  const video = videos.filter((v) => v.category === "video");
-  const book = books.filter((v) => v.category === "pdf");
+
 
   const myChart = [
     {
       label: "video",
-      value: video.length,
+      value: videos.length,
     },
     {
       label: "book",
-      value: book.length,
+      value: books.length,
     },
   ];
 
   return (
-    <main>
+    <main
+      className="shadow-md p-3 rounded-md"
+      style={{ height: "100%", width: "100%" }}
+    >
       <h1 className="font-semibold text-darkBlue">Popular Category</h1>
       <section>
-        <Doughnut
+        {/* <Doughnut
           data={{
             labels: myChart.map((data) => data.label),
             datasets: [
@@ -59,8 +57,36 @@ const PopularCat = () => {
               },
             ],
           }}
-        />
+        /> */}
+
+
+<Doughnut
+  data={{
+    labels: myChart.map((data) => data.label),
+    datasets: [
+      {
+        label: "Courses",
+        data: myChart.map((data) => data.value),
+        backgroundColor: ["rgba(3, 43, 242, 1)", "rgba(207, 230, 255, 1)"],
+        hoverOffset: 2,
+      },
+    ],
+  }}
+  options={{
+    responsive: true, // Make the chart responsive
+    maintainAspectRatio: false, // Allow resizing without maintaining aspect ratio
+    plugins: {
+      legend: {
+        position: "bottom", // Move the legend position to reduce chart size
+      },
+    },
+  }}
+  height={300} // Set the desired height
+  width={400} // Set the desired width
+/>
       </section>
+
+
     </main>
   );
 };

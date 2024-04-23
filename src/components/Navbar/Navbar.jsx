@@ -14,7 +14,7 @@ export const Navbar = () => {
 
   return (
     <nav className=" relative">
-      <main className="bg-white w-full h-[60px] md:h-[80px] flex  fixed top-0  z-20 right-0 left-0">
+      <main className="bg-white w-full py-14 md:h-[80px] flex  fixed top-0  z-20 right-0 left-0">
         <section className=" flex justify-between items-center  w-11/12 container mx-auto ">
           <div>
             <Link to={"/"}>
@@ -27,7 +27,7 @@ export const Navbar = () => {
             </Link>
           </div>
 
-          <div className="hidden md:flex gap-5 items-center font-semibold text-[18px] w-[350px]">
+          <div className="hidden md:flex gap-10 whitespace-nowrap items-center font-semibold text-[18px] w-[350px]">
             <Link to="/" className=" text-blue nav__link">
               Home
             </Link>

@@ -9,8 +9,14 @@ import searchIcon from "../../../assets/search-Icon.png";
 import { useNavigate } from "react-router-dom";
 import { useFetch } from "../../../hooks/useFetch";
 import { formatCurrency } from "../../../utils/Currency";
+import { useLocation } from "react-router-dom";
 
 const Resource = () => {
+  const location = useLocation()
+  useEffect(()=>{
+    window.scrollTo(0, 0)
+  },[location.pathname])
+
   const {
     content,
     setContent,
@@ -26,7 +32,7 @@ const Resource = () => {
     setSearchTerm,
     searchResults,
     setSearchResults
-  } = useFetch("/api/v1/resources");
+  } = useFetch("/api/v1/course");
   
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -36,6 +42,8 @@ const Resource = () => {
   
 
   const navigate = useNavigate();
+
+  const disableBtn = searchTerm === '' ? 'disabled cursor-not-allowed opacity-50 ' : '  '
 
   // handle search
   // const handleSearch = async (e) => {
@@ -99,7 +107,7 @@ const Resource = () => {
 
   return (
     <div className="bg-[#FFFFFF]">
-      <div className="w-11/12 mx-auto container pb-16 pt-20">
+      <div className="w-11/12 mx-auto container pb-16 pt-28">
         <div className={`${padding} lg:w-full mx-auto`}>
           <h1 className="leading-9 text-[32px] lg:text-[56px] font-bold text-[#032BF2] text-center ">
             Training and{" "}
@@ -108,10 +116,7 @@ const Resource = () => {
             </span>
           </h1>
           <div className="w-full">
-            <form
-              onSubmit={handleSearch}
-              className="flex justify-center items-center w-full lg:w-4/5 mx-auto py-8"
-            >
+            <form onSubmit={handleSearch} className="flex justify-center items-center w-full lg:w-4/5 mx-auto py-8">
               <img className="translate-x-10" src={searchIcon} alt="" />
               <input
                 id="search"
@@ -124,16 +129,14 @@ const Resource = () => {
               />
               <button
                 onClick={() => setFilterClicked(true)}
-                className="w-[41%] lg:w-[13%] py-3 px-2 lg:px-5 rounded-tr-lg rounded-br-lg bg-[#032BF2] text-white outline-none border-0 cursor-pointer flex  justify-evenly h-12"
+                className={`${disableBtn} w-[41%] lg:w-[13%] py-3 px-2 lg:px-5 rounded-tr-lg rounded-br-lg bg-[#032BF2] text-white outline-none border-0 cursor-pointer flex  justify-evenly h-12`}
               >
                 <img src={filterIcon} alt="" />
                 <span>Filter</span>
               </button>
             </form>
 
-            <div
-              className={`${showFilterBtn} flex justify-between items-center`}
-            >
+            <div className={`${showFilterBtn} flex justify-between items-center`}>
               <div className="flex gap-4 justify-between md:justify-center lg:justify-start pb-9">
                 <button
                   onClick={() => setContent(allResource)}
@@ -158,9 +161,8 @@ const Resource = () => {
           </div>
         </div>
         {loading && <SkeletonLoader />}
-        {error && !loading && !content.length ? (
-          <p className="text-red-500">{} </p>
-        ) : 
+        
+        { content &&
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full justify-center items-center gap-x-5 gap-y-10 xl:gap-x-8 xl:gap-y-16 pb-14 ">
           {currentItems.map((item) => (
             <div
@@ -199,6 +201,8 @@ const Resource = () => {
           ))}
         </div>
         }
+
+    {searchTerm == ' ' && error &&  <p className="text-red-500">{error} </p>}
         <div>
           {!loading && content.length > itemsPerPage && (
             <ul className="pagination flex justify-center gap-2 items-center">
@@ -217,9 +221,7 @@ const Resource = () => {
                 <li key={index} className="page-item flex items-center">
                   <button
                     onClick={() => paginate(index + 1)}
-                    className={`page-link ${
-                      currentPage === index + 1 ? "active" : ""
-                    }`}
+                    className={`page-link ${currentPage === index + 1 ? "active" : ""}`}
                   >
                     {index + 1}
                   </button>
@@ -228,9 +230,7 @@ const Resource = () => {
               <li className="page-item flex items-center">
                 <button
                   onClick={() => paginate(currentPage + 1)}
-                  disabled={
-                    currentPage === Math.ceil(content.length / itemsPerPage)
-                  }
+                  disabled={currentPage === Math.ceil(content.length / itemsPerPage)}
                   className="page-link"
                 >
                   <img src={next} alt="Next" />
