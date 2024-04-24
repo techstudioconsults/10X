@@ -1,4 +1,3 @@
-import React from "react";
 import uploadFile from "../../../../../assets/file-upload.svg";
 function FileDropzone() {
   return (

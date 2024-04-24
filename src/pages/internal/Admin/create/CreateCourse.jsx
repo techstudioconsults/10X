@@ -1,5 +1,5 @@
 
-import Details from "../coursedetail/content/Details";
+import CourseModule from "./content/CourseModule";
 import CreateCourseDetails from "./content/CreateCourseDetails";
 const handleNext = () => {};
 
@@ -24,6 +24,9 @@ const CreateCourse = () => {
       </div>
       <section>
         <CreateCourseDetails/>
+      </section>
+      <section className="pt-80 pb-72">
+        <CourseModule/>
       </section>
     </div>
   );
