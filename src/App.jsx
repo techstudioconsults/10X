@@ -17,6 +17,7 @@ import CreateCourse from "./pages/internal/Admin/create/CreateCourse";
 import MyCourses from "./pages/internal/user/Mycourses/MyCourses";
 
 function App() {
+  
   return (
     <div>
       <BrowserRouter>

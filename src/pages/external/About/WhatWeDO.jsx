@@ -1,5 +1,5 @@
 import "./WhatWeDo.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import heroImg from "../../../assets/aboutpage.svg";
 import arrowDownRightMobile from "../../../assets/arrow-down-right-mobile.png";
 import arrowDownLeftMobile from "../../../assets/arrow-down-left-mobile.png";
@@ -22,12 +22,21 @@ import number4 from '../../../assets/number4.svg'
 import scaleImg from '../../../assets/scaleImg.svg'
 import systemImg from '../../../assets/systemsImg.svg'
 import doubleImg from '../../../assets/grouped-imgs.svg'
-import wavyPattern from '../../../assets/wavy-pattern-bg-top.svg'
+
+import { useEffect } from "react";
+
 
 const WhatWeDo = () => {
+  const location = useLocation()
+
+  useEffect(()=>{
+    window.scrollTo(0, 0)
+  },[location.pathname])
+ 
+
   return (
     <div className="bg-white ">
-      <div className=" w-11/12 mx-auto container pt-24 grid grid-cols-1 items-center gap-6 lg:gap-0 lg:grid-cols-2">
+      <div className=" w-11/12 mx-auto container pt-11 grid grid-cols-1 items-center gap-6 lg:gap-0 lg:grid-cols-2">
         <div className="pt-10 lg:order-1 flex flex-col gap-5">
           <h1 className="text-3xl lg:text-4xl 2xl:text-7xl font-black text-blue text-center lg:text-start ">
             What We Do at 10X Revenue Growth
@@ -39,9 +48,11 @@ const WhatWeDo = () => {
             customers.
           </p>
           <div className="flex justify-center lg:justify-start">
-            <button className=" border px-9 py-3 border-blue  rounded-lg text-blue font-semibold hover:bg-blue hover:text-white duration-500 text-xl">
+          <Link to="/sales"> 
+          <button className=" border px-9 py-3 border-blue  rounded-lg text-blue font-semibold hover:bg-blue hover:text-white duration-500 text-xl">
               Get started Now
             </button>
+           </Link>
           </div>
         </div>
         <div className="lg:order-2 ">
@@ -95,10 +106,12 @@ const WhatWeDo = () => {
                 </p>
               </div>
               <div className="flex flex-col items-center lg:flex-row gap-5 ">
-                <button className=" border px-9 py-2 border-blue  rounded-lg font-semibold bg-blue text-white hover:bg-light-blue-900 hover:text-white duration-500 w-full md:w-48 lg:w-52 text-xl">
+               <Link to="/sales">
+               <button className=" border px-9 py-2 border-blue  rounded-lg font-semibold bg-blue text-white hover:bg-light-blue-900 hover:text-white duration-500 w-full md:w-48 lg:w-52 text-xl">
                   Get started
                 </button>
-                <Link className="text-[#6476BA] text-lg text-center lg:text-start">
+               </Link>
+                <Link to="/sales" className="text-[#6476BA] text-lg text-center lg:text-start">
                   <u>Scale to $100k Course</u>
                 </Link>
               </div>
@@ -123,10 +136,12 @@ const WhatWeDo = () => {
                 </p>
               </div>
               <div className="flex flex-col items-center lg:flex-row gap-5 ">
+                <Link to="/sales">
                 <button className=" border px-9 py-2 border-blue  rounded-lg font-semibold bg-blue text-white hover:bg-light-blue-900 hover:text-white duration-500 w-full md:w-48 lg:w-52 text-xl">
                   Get started
                 </button>
-                <Link className="text-[#6476BA] text-lg text-center lg:text-start">
+                </Link>
+                <Link to="/sales" className="text-[#6476BA] text-lg text-center lg:text-start">
                   <u>Scale to $100k Course</u>
                 </Link>
               </div>
@@ -145,10 +160,12 @@ const WhatWeDo = () => {
                 </p>
               </div>
               <div className="flex flex-col items-center lg:flex-row gap-5 ">
+                <Link to="/sales">
                 <button className=" border px-9 py-2 border-blue  rounded-lg font-semibold bg-blue text-white hover:bg-light-blue-900 hover:text-white duration-500 w-full md:w-48 lg:w-52 text-xl">
                   Get started
                 </button>
-                <Link className="text-[#6476BA] text-lg text-center lg:text-start">
+                </Link>
+                <Link to="/sales" className="text-[#6476BA] text-lg text-center lg:text-start">
                   <u>Scale to $100k Course</u>
                 </Link>
               </div>
@@ -176,9 +193,11 @@ const WhatWeDo = () => {
                 <img className="w-40" src={flyIlustration} alt="" />
               </div>
               <div className="flex  justify-center ">
-                <button className=" border px-7 py-2 bg-blue  rounded-lg text-white font-semibold hover:bg-blue hover:text-white duration-500 text-xl">
+                <Link to="/sales">
+                <button className=" border px-7 py-2 bg-blue  rounded-lg text-white font-semibold hover:bg-light-blue-900 hover:text-white duration-500 text-xl">
                   Get started
                 </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -328,7 +347,7 @@ const WhatWeDo = () => {
       </div>
 
       {/* last section */}
-      <div className="bg-[#1E2C4F] ">
+      <div className=" bg-[#1E2C4F]  lg:bg-transparent wavy my-7 ">
 
         <div className="container  w-4/5 mx-auto grid grid-cols-1 lg:grid-cols-2 mt-5 mb-0 py-6 lg:py-2 lg:mb-48 gap-10 items-center">
           <div className=" py-3 flex flex-col justify-center lg:justify-start gap-4 ">
@@ -339,7 +358,7 @@ const WhatWeDo = () => {
             We help coaches, experts, and digital course creators replace the unpredictability of static launches with evergreen assets that consistently convert cold prospects into premium clients and customers.
             </p>
            <div className="flex justify-center lg:justify-start">
-           <button className="text-[#032BF2] bg-white text-lg font-bold px-2 py-2 rounded-md w-32 ">Get Started</button>
+           <button className="text-[#032BF2] bg-white hover:bg-blue duration-300 hover:text-white text-lg font-bold px-2 py-2 rounded-md w-32 ">Get Started</button>
            </div>
           </div>
           <div className="translate-y-0 lg:translate-y-32">

@@ -1,9 +1,9 @@
-import searchIcon from "../../../../assets/search-icon.svg";
 import "./Library.css";
-import printIcon from "../../../../assets/print-icon.png";
+// import printIcon from "../../../../assets/print-icon.png";
+
 import exportIcon from "../../../../assets/Export -icon.png";
 import { useFetch } from "../../../../hooks/useFetch";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import {
   Tabs,
   TabsHeader,
@@ -15,7 +15,7 @@ import { useState } from "react";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 const Library = () => {
-  const { content: data, error } = useFetch("/api/v1/resources");
+  const { content: data, error } = useFetch("/api/v1/course");
   const [activeTab, setActiveTab] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(9);
@@ -158,7 +158,7 @@ const Library = () => {
   };
 
   return (
-    <div className="w-full px-6 mx-auto container">
+    <div className="w-full px-6  container">
       <div className="px-0 py-3 flex flex-col lg:flex-row justify-evenly lg:justify-between items-center ">
         <h1 className="text-2xl text-[#0027BA] font-bold">
           {" "}
@@ -167,7 +167,7 @@ const Library = () => {
         <div className="flex gap-5 py-8">
           <button
             onClick={handleExport}
-            className="bg-white border border-[#0226B066] border-1 px-3 md:px-5 py-2 rounded-md text-[#0027BA] flex gap-3 items-center"
+            className="bg-white border h-12 border-[#0226B066] border-1 px-3 md:px-5 py-2 rounded-md text-[#0027BA] flex gap-3 items-center"
           >
             {" "}
             <img src={exportIcon} alt="" />{" "}
@@ -177,9 +177,11 @@ const Library = () => {
             {" "}
             <img src={printIcon} alt="" /> <span className="hidden lg:block ">Print</span>
           </button> */}
-          <button className="bg-[#0027BA] min-w-20 text-white px-5 py-2 rounded-md ">
+          <Link to="/admin/create">
+          <button   className="bg-[#032BF2] h-12 min-w-20 text-white px-5 py-2 rounded-md ">
             + Create New Course
           </button>
+          </Link>
         </div>
       </div>
       {error && <h1 className="text-red-500 text-center">{error}</h1>}
