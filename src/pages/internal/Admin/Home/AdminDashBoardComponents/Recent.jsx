@@ -20,7 +20,7 @@ const Recent = () => {
         </Link>
       </div>
 
-      <section className="w-full">
+      {/* <section className="w-full">
         <div className="grid grid-cols-3  text-sm bg-[#F8F8F8] py-2 px-3  text-[#7C87AC] font-semibold">
           <p> Course Name</p>
           <p className="ms-8"> Category</p>
@@ -46,49 +46,48 @@ const Recent = () => {
             </div>
           ))}
         </section>
-        {/* <table className="w-full">
-          <tr className="bg-[#F8F8F8]">
-            <th
-              align="left"
-              className="p-3 text-sm text-[#7C87AC] font-semibold"
-            >
-              Course Name
-            </th>
-            <th
-              align="left"
-              className="p-3 text-sm text-[#7C87AC] font-semibold"
-            >
+      </section> */}
+
+      <table>
+        <thead className="w-full text-left table-auto">
+          <tr className="bg-[#F8F8F8] text-[#7C87AC] font-medium">
+            <th className="px-4 py-3 min-w-40 xl:min-w-[207px] "> Course Name</th>
+            <th className="px-4 py-3  xl:min-w-[207px]  xl:text-center">
+              {" "}
               Category
             </th>
-            <th
-              align="left"
-              className="p-3 text-sm text-[#7C87AC] font-semibold"
-            >
+            <th className="px-4 py-3 min-w-40 text-center">
+              {" "}
               Price
             </th>
           </tr>
+        </thead>
 
-          {courses.map((b) => (
+        <tbody>
+          {sliced.map((b) => (
             <tr key={b.id}>
-              <td className="p-3 text-md text-darkBlue font-semibold underline">
+              <td className=" text-md text-darkBlue font-semibold underline py-2">
                 {b.title}
               </td>
-
-              <td
-                align="center"
-                className={`m-5 text-sm bg-[#CFE6FF] w-1 font-semibold rounded-md  ${
-                  b.category.toLowerCase() === "book" && "text-[#AD70FF]"
-                }`}
-              >
-                {b.category}
+              <td className={`px-4 py-3 text-center w-10`}>
+                <div></div>
+                <p
+                  className={` text-sm bg-[#CFE6FF] px-3 py-1 font-semibold mr-14 w-fit mx-auto rounded-md text-center ${
+                    b.category.toLowerCase() === "book" && "text-[#AD70FF]"
+                  }`}
+                >
+                  {b.category}
+                </p>
               </td>
-              <td className="p-3 text-sm text-grey">
+
+              <td className="p-3 text-sm text-grey text-center">
+                {" "}
                 {formatCurrency(b.price).substring(0, 10)}
               </td>
             </tr>
           ))}
-        </table> */}
-      </section>
+        </tbody>
+      </table>
     </main>
   );
 };

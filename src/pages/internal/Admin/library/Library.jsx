@@ -211,42 +211,43 @@ const Library = () => {
           </button>
         </div> */}
         <Tabs value={activeTab}>
-        <TabsHeader
-          className="rounded-none border-b justify-between border-blue-gray-50 bg-transparent p-0"
-          indicatorProps={{
-            className: "bg-transparent border-b-2 border-[#0027BA] shadow-none rounded-none",
-          }}
-        >
-          <Tab
-            value="all"
-            onClick={() => handleTabClick("all")}
-            className={`w-1/5 text-base lg:text-xl ${getTabClass("all")}`}
+          <TabsHeader
+            className="rounded-none border-b justify-between border-blue-gray-50 bg-transparent p-0"
+            indicatorProps={{
+              className:
+                "bg-transparent border-b-2 border-[#0027BA] shadow-none rounded-none",
+            }}
           >
-            All Courses
-          </Tab>
-          <Tab
-            value="video"
-            onClick={() => handleTabClick("video")}
-            className={`w-1/5 text-base lg:text-xl ${getTabClass("video")}`}
-          >
-            Video
-          </Tab>
-          <Tab
-            value="pdf"
-            onClick={() => handleTabClick("pdf")}
-            className={`w-1/5 text-base lg:text-xl ${getTabClass("pdf")}`}
-          >
-            Books
-          </Tab>
-          <Tab
-            value="draft"
-            onClick={() => handleTabClick("draft")}
-            className={`w-1/5 text-base lg:text-xl ${getTabClass("draft")}`}
-          >
-            Draft
-          </Tab>
-        </TabsHeader>
-      </Tabs>
+            <Tab
+              value="all"
+              onClick={() => handleTabClick("all")}
+              className={`w-1/5 text-base lg:text-xl ${getTabClass("all")}`}
+            >
+              All Courses
+            </Tab>
+            <Tab
+              value="video"
+              onClick={() => handleTabClick("video")}
+              className={`w-1/5 text-base lg:text-xl ${getTabClass("video")}`}
+            >
+              Video
+            </Tab>
+            <Tab
+              value="pdf"
+              onClick={() => handleTabClick("pdf")}
+              className={`w-1/5 text-base lg:text-xl ${getTabClass("pdf")}`}
+            >
+              Books
+            </Tab>
+            <Tab
+              value="draft"
+              onClick={() => handleTabClick("draft")}
+              className={`w-1/5 text-base lg:text-xl ${getTabClass("draft")}`}
+            >
+              Draft
+            </Tab>
+          </TabsHeader>
+        </Tabs>
         <div className="overflow-x-auto pt-7">
           <table className="w-full text-left table-auto">
             <thead>
@@ -260,33 +261,39 @@ const Library = () => {
               </tr>
             </thead>
             <tbody>
-  {currentItems.map((datum) => (
-    
-      <tr key={datum._id} onClick={()=>{
-        navigate(`/coursedetail/${datum._id}`)
-      }} className="border-b my-2 cursor-pointer">
-        <td className="px-3 py-3">
-          <span className="text-base text-[#0027BA] border-b border-1 border-[#0027BA] font-semibold">
-            {datum.title}
-          </span>
-        </td>
-        <td className={`px-4 py-3 text-center min-w-52`}>
-          <div
-            className={`my-3 w-[100px]  rounded ${getCategoryClass(datum.category)}`}
-          >
-            <p className="p-2">{datum.category}</p>
-          </div>
-        </td>
-        <td className="px-4 py-3 min-w-52 text-[#6072AC]">Nill</td>
-        <td className="px-4 py-3 min-w-52 text-[#6072AC]">
-          {new Date(datum.createdAt).toLocaleDateString()}
-        </td>
-        <td className="px-4 py-3 min-w-52 text-[#6072AC]">Nill</td>
-        <td className="px-4 py-3 min-w-52 text-[#6072AC]">{datum.price}</td>
-      </tr>
-  ))}
-</tbody>
-
+              {currentItems.map((datum) => (
+                <tr
+                  key={datum._id}
+                  onClick={() => {
+                    navigate(`/coursedetail/${datum._id}`);
+                  }}
+                  className="border-b my-2 cursor-pointer"
+                >
+                  <td className="px-3 py-3">
+                    <span className="text-base text-[#0027BA] border-b border-1 border-[#0027BA] font-semibold">
+                      {datum.title}
+                    </span>
+                  </td>
+                  <td className={`px-4 py-3 text-center min-w-52`}>
+                    <div
+                      className={`my-3 w-[100px]  rounded ${getCategoryClass(
+                        datum.category
+                      )}`}
+                    >
+                      <p className="p-2">{datum.category}</p>
+                    </div>
+                  </td>
+                  <td className="px-4 py-3 min-w-52 text-[#6072AC]">Nill</td>
+                  <td className="px-4 py-3 min-w-52 text-[#6072AC]">
+                    {new Date(datum.createdAt).toLocaleDateString()}
+                  </td>
+                  <td className="px-4 py-3 min-w-52 text-[#6072AC]">Nill</td>
+                  <td className="px-4 py-3 min-w-52 text-[#6072AC]">
+                    {datum.price}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
           </table>
         </div>
         {renderPagination()}
