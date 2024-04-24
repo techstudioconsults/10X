@@ -59,7 +59,7 @@ const MyCourses = () => {
 
         <Tabs value={activeTab}>
           <TabsHeader
-            className="rounded-none border-b gap-10 ms-5 lg:ms-0 mt-6 border-blue-gray-50 bg-transparent p-0 z-0"
+            className="rounded-none border-b gap-10 md:gap-5 ms-5 lg:ms-0 mt-6 border-blue-gray-50 bg-transparent p-0 z-0"
             indicatorProps={{
               className:
                 "bg-transparent border-b-2 border-[#0027BA] shadow-none rounded-none",
@@ -88,20 +88,32 @@ const MyCourses = () => {
       </main>
 
       {activeTab === "all" && (
-        <section className="mt-10">
+        <section className="mt-7">
           {courses.map((c) => (
             <div
               key={c.id}
-              className="mb-5 shadow-xl shadow-[#032BF214]   p-3 w-full md:flex items-center gap-3"
+              className="mb-5 shadow-xl shadow-[#032BF214]   p-3 w-full md:flex  gap-3"
             >
-              <img
-                src={c.image}
-                alt={c.title}
-                className="w-full md:w-[200px] md:h-[150px] lg:w-[300px] lg:h-[200px] mb-2 md:mb-0 rounded-lg"
-              />
-              <div className=" space-y-2">
-                <h1 className=" text-darkBlue font-[650] md:text-lg">{c.title}</h1>
-                <p className="  text-[10px] md:max-w-[350px] lg:text-[18px] text-[#6476BA]">
+              <div>
+                <img
+                  src={c.image}
+                  alt={c.title}
+                  className="w-full md:w-[200px] md:h-[150px] lg:w-[400px] lg:h-[200px] mb-2 md:mb-0 rounded-lg"
+                />
+
+                <div className="h-0.5 rounded w-full mt-2 bg-darkBlue" />
+
+                <div className="flex justify-between mt-2 text-[11px] text-[#6476BA]">
+                  <p>IN PROGRESS</p>
+                  <p>10% complete</p>
+                </div>
+              </div>
+
+              <div className=" space-y-3">
+                <h1 className=" text-darkBlue font-[650] md:text-lg">
+                  {c.title}
+                </h1>
+                <p className="  text-[10px] md:max-w-[350px] lg:text-[16px] text-[#6476BA]">
                   {c.description}
                 </p>
 

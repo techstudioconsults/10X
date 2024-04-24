@@ -29,7 +29,7 @@ const WishList = () => {
   ];
 
   return (
-    <main className="flex items-center gap-3 my-5 ">
+    <main className="flex items-center gap-3 my-7">
       {courses.map((w) => (
         <div key={w.id} className="w-40  md:w-[200px] lg:w-[295px] relative">
           <div className=" relative">
@@ -61,7 +61,7 @@ const WishList = () => {
               <p className="text-[10px] md:text-[13px]">{w.star}</p>
             </div>
 
-            <button className="text-xs border border-darkBlue w-full py-1.5  rounded hover:bg-darkBlue hover:text-white font-[650] md:py-3 text-darkBlue">
+            <button className="text-xs border border-darkBlue w-full py-1.5  rounded hover:bg-darkBlue hover:text-white font-[650] md:py-3 text-darkBlue duration-300">
               Buy Now
             </button>
           </div>
