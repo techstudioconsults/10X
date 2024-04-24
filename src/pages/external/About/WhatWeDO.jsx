@@ -48,9 +48,11 @@ const WhatWeDo = () => {
             customers.
           </p>
           <div className="flex justify-center lg:justify-start">
-            <button className=" border px-9 py-3 border-blue  rounded-lg text-blue font-semibold hover:bg-blue hover:text-white duration-500 text-xl">
+          <Link to="/sales"> 
+          <button className=" border px-9 py-3 border-blue  rounded-lg text-blue font-semibold hover:bg-blue hover:text-white duration-500 text-xl">
               Get started Now
             </button>
+           </Link>
           </div>
         </div>
         <div className="lg:order-2 ">
@@ -104,10 +106,12 @@ const WhatWeDo = () => {
                 </p>
               </div>
               <div className="flex flex-col items-center lg:flex-row gap-5 ">
-                <button className=" border px-9 py-2 border-blue  rounded-lg font-semibold bg-blue text-white hover:bg-light-blue-900 hover:text-white duration-500 w-full md:w-48 lg:w-52 text-xl">
+               <Link to="/sales">
+               <button className=" border px-9 py-2 border-blue  rounded-lg font-semibold bg-blue text-white hover:bg-light-blue-900 hover:text-white duration-500 w-full md:w-48 lg:w-52 text-xl">
                   Get started
                 </button>
-                <Link className="text-[#6476BA] text-lg text-center lg:text-start">
+               </Link>
+                <Link to="/sales" className="text-[#6476BA] text-lg text-center lg:text-start">
                   <u>Scale to $100k Course</u>
                 </Link>
               </div>
@@ -132,10 +136,12 @@ const WhatWeDo = () => {
                 </p>
               </div>
               <div className="flex flex-col items-center lg:flex-row gap-5 ">
+                <Link to="/sales">
                 <button className=" border px-9 py-2 border-blue  rounded-lg font-semibold bg-blue text-white hover:bg-light-blue-900 hover:text-white duration-500 w-full md:w-48 lg:w-52 text-xl">
                   Get started
                 </button>
-                <Link className="text-[#6476BA] text-lg text-center lg:text-start">
+                </Link>
+                <Link to="/sales" className="text-[#6476BA] text-lg text-center lg:text-start">
                   <u>Scale to $100k Course</u>
                 </Link>
               </div>
@@ -154,10 +160,12 @@ const WhatWeDo = () => {
                 </p>
               </div>
               <div className="flex flex-col items-center lg:flex-row gap-5 ">
+                <Link to="/sales">
                 <button className=" border px-9 py-2 border-blue  rounded-lg font-semibold bg-blue text-white hover:bg-light-blue-900 hover:text-white duration-500 w-full md:w-48 lg:w-52 text-xl">
                   Get started
                 </button>
-                <Link className="text-[#6476BA] text-lg text-center lg:text-start">
+                </Link>
+                <Link to="/sales" className="text-[#6476BA] text-lg text-center lg:text-start">
                   <u>Scale to $100k Course</u>
                 </Link>
               </div>
@@ -185,9 +193,11 @@ const WhatWeDo = () => {
                 <img className="w-40" src={flyIlustration} alt="" />
               </div>
               <div className="flex  justify-center ">
-                <button className=" border px-7 py-2 bg-blue  rounded-lg text-white font-semibold hover:bg-blue hover:text-white duration-500 text-xl">
+                <Link to="/sales">
+                <button className=" border px-7 py-2 bg-blue  rounded-lg text-white font-semibold hover:bg-light-blue-900 hover:text-white duration-500 text-xl">
                   Get started
                 </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -348,7 +358,7 @@ const WhatWeDo = () => {
             We help coaches, experts, and digital course creators replace the unpredictability of static launches with evergreen assets that consistently convert cold prospects into premium clients and customers.
             </p>
            <div className="flex justify-center lg:justify-start">
-           <button className="text-[#032BF2] bg-white text-lg font-bold px-2 py-2 rounded-md w-32 ">Get Started</button>
+           <button className="text-[#032BF2] bg-white hover:bg-blue duration-300 hover:text-white text-lg font-bold px-2 py-2 rounded-md w-32 ">Get Started</button>
            </div>
           </div>
           <div className="translate-y-0 lg:translate-y-32">
