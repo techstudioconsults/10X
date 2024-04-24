@@ -3,31 +3,10 @@ import { Link } from "react-router-dom";
 import { formatCurrency } from "../../../../../utils/Currency";
 import { useFetch } from "../../../../../hooks/useFetch";
 
-const courses = [
-  {
-    id: crypto.randomUUID(),
-    title: "The Zero Call Close",
-    category: "Video",
-    price: 45000,
-  },
-  {
-    id: crypto.randomUUID(),
-    title: "The Zero Call Close",
-    category: "Book",
-    price: 45000,
-  },
-  {
-    id: crypto.randomUUID(),
-    title: "The Zero Call Close",
-    category: "Video",
-    price: 45000,
-  },
-];
-
 const Recent = () => {
-  const { content: data, error } = useFetch("/api/v1/resources");
+  const { content: data, error } = useFetch("/api/v1/course");
 
-  const sliced = data.slice(0, 3)
+  const sliced = data.slice(0, 3);
 
   console.log(sliced);
   return (
@@ -50,10 +29,7 @@ const Recent = () => {
 
         <section className=" space-y-3">
           {sliced.map((b) => (
-            <div
-              key={b.id}
-              className="grid grid-cols-3  mt-2"
-            >
+            <div key={b.id} className="grid grid-cols-3  mt-2">
               <p className=" text-md text-darkBlue font-semibold underline ps-3 text-start capitalize">
                 {b.title}
               </p>
