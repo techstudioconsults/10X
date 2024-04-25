@@ -52,6 +52,16 @@ footer {
   background-color: white;
   background-size: cover;
 }
+.sales-hero-img {
+  background-image: url(../src//assets//line.png);
+  min-height: 40vh;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: white;
+  background-size: cover;
+}
+
 
 /* .slick-next:before {
   font-size: 40px !important;

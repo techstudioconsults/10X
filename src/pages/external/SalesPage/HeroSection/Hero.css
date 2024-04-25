@@ -1,0 +1,8 @@
+.sales-hero-img {
+    background-image: url(../../../../assets/sales-hero.svg);
+    min-height: 50vh;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
