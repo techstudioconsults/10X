@@ -25,9 +25,9 @@ const CreateCourse = () => {
       <section>
         <CreateCourseDetails/>
       </section>
-      <section className="pt-80 pb-72">
+      {/* <section className="pt-80 pb-72">
         <CourseModule/>
-      </section>
+      </section> */}
     </div>
   );
 };
