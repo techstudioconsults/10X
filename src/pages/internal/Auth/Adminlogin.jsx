@@ -16,7 +16,7 @@ const Adminlogin = () => {
   const [isLoading, setIsLoading] = useState(false);
   const {register, handleSubmit, formState: {errors}} = useForm()
   const navigate = useNavigate()
-  const {API_URL} = useAdminContext()
+  const {API_URL, getUser} = useAdminContext()
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -34,6 +34,7 @@ const Adminlogin = () => {
         if (data.success) {
           setIsLoading(false)
             Cookies.set("token", data.token)
+            getUser()
             navigate("/admin/home")
            
         }
