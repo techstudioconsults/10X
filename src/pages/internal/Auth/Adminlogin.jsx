@@ -138,9 +138,6 @@ const Adminlogin = () => {
     </div>
          
           </div> 
-  
-          
- 
         </form>
       </div>
     </div>
