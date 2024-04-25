@@ -12,7 +12,7 @@ import Overview from "./content/Overview"
 const CourseDetail = () => {
   const { id } = useParams()
   console.log(id);
-  const { single, error, loading } = useFetch(`/api/v1/resources/${id}`);
+  const { single, error, loading } = useFetch(`/api/v1/course/${id}`);
   console.log(single);
   const [activeTab, setActiveTab] = React.useState("overview")
 

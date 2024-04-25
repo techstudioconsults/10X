@@ -9,8 +9,14 @@ import searchIcon from "../../../assets/search-Icon.png";
 import { useNavigate } from "react-router-dom";
 import { useFetch } from "../../../hooks/useFetch";
 import { formatCurrency } from "../../../utils/Currency";
+import { useLocation } from "react-router-dom";
 
 const Resource = () => {
+  const location = useLocation()
+  useEffect(()=>{
+    window.scrollTo(0, 0)
+  },[location.pathname])
+
   const {
     content,
     setContent,
@@ -26,7 +32,7 @@ const Resource = () => {
     setSearchTerm,
     searchResults,
     setSearchResults
-  } = useFetch("/api/v1/resources");
+  } = useFetch("/api/v1/course");
   
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -36,6 +42,8 @@ const Resource = () => {
   
 
   const navigate = useNavigate();
+
+  const disableBtn = searchTerm === '' ? 'disabled cursor-not-allowed opacity-50 ' : '  '
 
   // handle search
   // const handleSearch = async (e) => {
@@ -99,7 +107,7 @@ const Resource = () => {
 
   return (
     <div className="bg-[#FFFFFF]">
-      <div className="w-11/12 mx-auto container pb-16 pt-20">
+      <div className="w-11/12 mx-auto container pb-16 pt-28">
         <div className={`${padding} lg:w-full mx-auto`}>
           <h1 className="leading-9 text-[32px] lg:text-[56px] font-bold text-[#032BF2] text-center ">
             Training and{" "}
@@ -121,7 +129,7 @@ const Resource = () => {
               />
               <button
                 onClick={() => setFilterClicked(true)}
-                className="w-[41%] lg:w-[13%] py-3 px-2 lg:px-5 rounded-tr-lg rounded-br-lg bg-[#032BF2] text-white outline-none border-0 cursor-pointer flex  justify-evenly h-12"
+                className={`${disableBtn} w-[41%] lg:w-[13%] py-3 px-2 lg:px-5 rounded-tr-lg rounded-br-lg bg-[#032BF2] text-white outline-none border-0 cursor-pointer flex  justify-evenly h-12`}
               >
                 <img src={filterIcon} alt="" />
                 <span>Filter</span>
@@ -153,9 +161,8 @@ const Resource = () => {
           </div>
         </div>
         {loading && <SkeletonLoader />}
-        {error && !loading && !content.length ? (
-          <p className="text-red-500">{} </p>
-        ) : 
+        
+        { content &&
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full justify-center items-center gap-x-5 gap-y-10 xl:gap-x-8 xl:gap-y-16 pb-14 ">
           {currentItems.map((item) => (
             <div
@@ -194,6 +201,8 @@ const Resource = () => {
           ))}
         </div>
         }
+
+    {searchTerm == ' ' && error &&  <p className="text-red-500">{error} </p>}
         <div>
           {!loading && content.length > itemsPerPage && (
             <ul className="pagination flex justify-center gap-2 items-center">

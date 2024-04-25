@@ -14,8 +14,10 @@ import Edit from "./pages/internal/Admin/Edit-Course/Edit";
 import CourseDetail from "./pages/internal/Admin/coursedetail/CourseDetail";
 import Adminlogin from "./pages/internal/Auth/Adminlogin";
 import CreateCourse from "./pages/internal/Admin/create/CreateCourse";
+import MyCourses from "./pages/internal/user/Mycourses/MyCourses";
 
 function App() {
+  
   return (
     <div>
       <BrowserRouter>
@@ -25,6 +27,8 @@ function App() {
             <Route path="/resource" element={<Resource />} />
             <Route path="/about" element={<WhatWeDo />} />
             <Route path="/sales" element={<SalesPage />} />
+
+            <Route path="/myCourses" element={<MyCourses />} />
           </Route>
 
           <Route element={<Adminlayout />}>

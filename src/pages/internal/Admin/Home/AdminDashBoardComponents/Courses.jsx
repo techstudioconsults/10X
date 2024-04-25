@@ -43,7 +43,7 @@ const Courses = () => {
         </div>
       </section>
       {/* </section> */}
-      <button className=" bg-blue text-white h-14 w-44 font-semibold rounded-md" onClick={() => navigate("/admin/create")}>
+      <button className=" bg-blue text-white h-24 w-full font-semibold rounded-md">
         + Add a Course
       </button>
     </main>
