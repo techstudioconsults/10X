@@ -123,7 +123,7 @@ Vercel is used for continious integration and development (CI/CD) on the develop
 
 -   [@kingsleySolomon](https://github.com/kinxlo) - Lead Developer
 
-See also the list of [contributors](https://github.com/techstudioconsults/Productize/graphs/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/techstudioconsults/10X/graphs/contributors) who participated in this project.
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
 
