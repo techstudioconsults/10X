@@ -10,10 +10,9 @@ const lib = [
 
 const Library = () => {
   return (
-    <main className=" shadow shadow-[#032BF2] p-3 rounded-md lg:h-[250px]">
+    <main className=" shadow-xl shadow-[#032BF214]  p-3 rounded-md lg:h-[250px]">
       <div className="flex items-center justify-between">
         <h1>Library</h1>
-        <Link className="text-xs text-[#3952AC]">See All</Link>
       </div>
 
       <section className=" space-y-6 mt-2">

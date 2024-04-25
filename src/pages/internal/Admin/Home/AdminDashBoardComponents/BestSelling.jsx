@@ -25,43 +25,55 @@ const courses = [
 const BestSelling = () => {
   return (
     <main
-      className=" shadow shadow-[#032BF2] p-3 rounded-md w-full "
+      className="shadow-xl shadow-[#032BF214]  p-3 rounded-md w-full "
       style={{ height: "100%", width: "100%" }}
     >
       <div className=" flex items-center w-full justify-between px-3">
         <h1 className="xl:text-lg font-semibold text-darkBlue">
           Best Selling Courses
         </h1>
-        <Link to="/all-courses" className="text-xs text-[#3952AC]">
-          See All
-        </Link>
       </div>
 
-      <section className="w-full">
-        <div className="flex justify-between items-center text-sm bg-[#F8F8F8] py-2 px-3  text-[#7C87AC] font-semibold">
-          <p> Course Name</p>
-          <p> Category</p>
-          <p> Units Sold</p>
-        </div>
+      <table>
+        <thead className="w-full text-left table-auto">
+          <tr className="bg-[#F8F8F8] text-[#7C87AC] font-medium">
+            <th className="px-4 py-3 lg:min-w-[170px] xl:min-w-[207px] ">
+              {" "}
+              Course Name
+            </th>
+            <th className="px-4 py-3 lg:min-w-[170px] xl:min-w-[207px]  text-center">
+              {" "}
+              Category
+            </th>
+            <th className="px-4 py-3 lg:min-w-[170px] xl:min-w-[207px]  text-center">
+              {" "}
+              Units Sold
+            </th>
+          </tr>
+        </thead>
 
-        <section className=" space-y-3">
+        <tbody>
           {courses.map((b) => (
-            <div key={b.id} className="flex justify-between items-center mt-2">
-              <p className=" text-md text-darkBlue font-semibold underline">
+            <tr key={b.id}>
+              <td className=" text-md text-darkBlue font-semibold underline py-2">
                 {b.title}
-              </p>
-              <p
-                className={` text-sm bg-[#CFE6FF] px-3 py-1 font-semibold mr-14 rounded-md  ${
-                  b.category.toLowerCase() === "book" && "text-[#AD70FF]"
-                }`}
-              >
-                {b.category}
-              </p>
-              <p className="p-3 text-sm text-grey">{b.units}</p>
-            </div>
+              </td>
+              <td className={`px-4 py-3 text-center w-10`}>
+                <div></div>
+                <p
+                  className={` text-sm bg-[#CFE6FF] px-3 py-1 font-semibold  w-20 text-center mx-auto rounded-md  ${
+                    b.category.toLowerCase() === "book" && "text-[#AD70FF]"
+                  }`}
+                >
+                  {b.category}
+                </p>
+              </td>
+
+              <td className="p-3 text-sm text-grey text-center">{b.units}</td>
+            </tr>
           ))}
-        </section>
-      </section>
+        </tbody>
+      </table>
     </main>
   );
 };
