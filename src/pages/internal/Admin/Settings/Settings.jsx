@@ -58,9 +58,9 @@ const Settings = () => {
   };
 
   const handlePhotoDelete = () => {
-    setImage(user.photo)
-    setValue("photo", "")
-  }
+    setImage(user.photo);
+    setValue("photo", "");
+  };
 
   const updatePassword = async (data) => {
     setSecurityLoading(true);
@@ -163,7 +163,7 @@ const Settings = () => {
   }, [userInfo]);
 
   return (
-    <div className=" container w-11/12 mx-auto my-2">
+    <div className=" container px-6 mx-auto my-2">
       <div className="my-7 text-center md:text-left">
         <h2 className="text-[#0027BA] font-semibold md:text-2xl text-xl">
           Profile Settings
@@ -173,8 +173,8 @@ const Settings = () => {
         </p>
       </div>
 
-      <div className="flex lg:flex-row flex-col items-center gap-6">
-        <div className="xl:w-[637px] lg:w-2/3 w-full p-3 border-[rgba(0,0,0,0.1)] shadow-md border-2 rounded-xl">
+      <div className="flex lg:flex-row  flex-col items-start gap-10">
+        <div className="xl:w-[637px] lg:w-2/3 w-full p-6 border-[rgba(0,0,0,0.1)] shadow-sm border-2 rounded-xl">
           <form>
             <h2 className="text-[#0027BA] font-semibold text-lg my-3">
               Personal Information
@@ -204,7 +204,8 @@ const Settings = () => {
                 </button>
                 <button
                   className="h-[41px] flex items-center justify-center px-5 gap-2 border-[#F87171] border-2 rounded-lg text-[#F87171] font-semibold"
-                  type="button" onClick={() => handlePhotoDelete()}
+                  type="button"
+                  onClick={() => handlePhotoDelete()}
                 >
                   <img src={deleteIcon} alt="" />
                   Delete
@@ -293,8 +294,8 @@ const Settings = () => {
           </form>
         </div>
 
-        <div className=" lg:max-w-[401px] lg:w-1/2 w-full h-full border-[#0000001A] border-2 shadow-md rounded-xl">
-          <form className="flex flex-col p-4  gap-3">
+        <div className=" lg:max-w-[401px] lg:w-1/2 w-full h-full border-[#0000001A] border-2 shadow-sm rounded-xl">
+          <form className="flex flex-col p-6  gap-3">
             <h2 className="text-[#0027BA] font-semibold text-lg mt-3">
               Security
             </h2>

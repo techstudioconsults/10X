@@ -1,8 +1,9 @@
 import "./Library.css";
-import printIcon from "../../../../assets/print-icon.png";
+// import printIcon from "../../../../assets/print-icon.png";
+
 import exportIcon from "../../../../assets/Export -icon.png";
 import { useFetch } from "../../../../hooks/useFetch";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import {
   Tabs,
   TabsHeader,
@@ -166,7 +167,7 @@ const Library = () => {
         <div className="flex gap-5 py-8">
           <button
             onClick={handleExport}
-            className="bg-white border border-[#0226B066] border-1 px-3 md:px-5 py-2 rounded-md text-[#0027BA] flex gap-3 items-center"
+            className="bg-white border h-12 border-[#0226B066] border-1 px-3 md:px-5 py-2 rounded-md text-[#0027BA] flex gap-3 items-center"
           >
             {" "}
             <img src={exportIcon} alt="" />{" "}
@@ -176,9 +177,11 @@ const Library = () => {
             {" "}
             <img src={printIcon} alt="" /> <span className="hidden lg:block ">Print</span>
           </button> */}
-          <button className="bg-[#0027BA] min-w-20 text-white px-5 py-2 rounded-md ">
+          <Link to="/admin/create">
+          <button   className="bg-[#032BF2] h-12 min-w-20 text-white px-5 py-2 rounded-md ">
             + Create New Course
           </button>
+          </Link>
         </div>
       </div>
       {error && <h1 className="text-red-500 text-center">{error}</h1>}

@@ -1,4 +1,6 @@
-import React from "react";
+
+import CourseModule from "./content/CourseModule";
+import CreateCourseDetails from "./content/CreateCourseDetails";
 const handleNext = () => {};
 
 const CreateCourse = () => {
@@ -20,55 +22,12 @@ const CreateCourse = () => {
           Next
         </button>
       </div>
-
-      <div className=" mt-8 px-6 rounded-lg border shadow-sm py-12">
-        <h1 className="text-[#A5A5A5] text-sm font-medium ">COURSE DETAILS</h1>
-
-        <hr className=" my-6 border border-gray-400" />
-
-        <form className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-          <div className="flex flex-col gap-3">
-            <label
-              htmlFor="course-title"
-              className=" font-semibold text-base text-[#6476BA]"
-            >
-              {" "}
-              Course Title
-            </label>
-            <input
-              type="text"
-              className="px-3 py-4 border-2 border-gray-400 rounded-md"
-              placeholder="Name your course......"
-            />
-            <label
-              htmlFor="description"
-              className=" font-semibold text-base text-[#6476BA]"
-            >
-              {" "}
-              Course Description
-            </label>
-            <textarea
-              rows={3}
-              type="text"
-              className="px-3 py-4 border-2 border-gray-400 rounded-md"
-              placeholder="Short course description"
-            />
-            <label
-              htmlFor="course-title"
-              className=" font-semibold text-base text-[#6476BA]"
-            >
-              {" "}
-              Price *
-            </label>
-            <input
-              type="text"
-              className="px-3 py-4 border-2 border-gray-400 rounded-md"
-              placeholder="100,000.00"
-            />
-          </div>
-          <div></div>
-        </form>
-      </div>
+      <section>
+        <CreateCourseDetails/>
+      </section>
+      <section className="pt-80 pb-72">
+        <CourseModule/>
+      </section>
     </div>
   );
 };
