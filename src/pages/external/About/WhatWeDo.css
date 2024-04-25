@@ -7,6 +7,16 @@
 
 
 
+
+@media (width > 1000px) {
+    .wavy{
+        background-image: url('../.././../assets/last-wavy-bg.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+    } 
+}
+
+
 @media (width > 1440px) {
     .section-bg{
         min-height: 600px;

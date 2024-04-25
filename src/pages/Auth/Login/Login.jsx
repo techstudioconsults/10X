@@ -23,7 +23,7 @@ const Login = () => {
   return (
     <div>
       <div className="flex lg:flex-row flex-col items-center gap-4 h-screen">
-        <div className="h-full lg:self-start">
+        <div className="h-full lg:self-start hidden lg:block">
           <img
             src={signinImg}
             alt=""

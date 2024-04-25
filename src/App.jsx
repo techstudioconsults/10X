@@ -10,11 +10,14 @@ import Adminlayout from "./layout/AdminLayout";
 import Library from "./pages/internal/Admin/library/Library";
 import Settings from "./pages/internal/Admin/Settings/Settings";
 import Dashboard from "./pages/internal/Admin/Home/Dashboard";
+import Edit from "./pages/internal/Admin/Edit-Course/Edit";
 import CourseDetail from "./pages/internal/Admin/coursedetail/CourseDetail";
 import Adminlogin from "./pages/internal/Auth/Adminlogin";
 import CreateCourse from "./pages/internal/Admin/create/CreateCourse";
+import MyCourses from "./pages/internal/user/Mycourses/MyCourses";
 
 function App() {
+  
   return (
     <div>
       <BrowserRouter>
@@ -24,6 +27,8 @@ function App() {
             <Route path="/resource" element={<Resource />} />
             <Route path="/about" element={<WhatWeDo />} />
             <Route path="/sales" element={<SalesPage />} />
+
+            <Route path="/myCourses" element={<MyCourses />} />
           </Route>
 
           <Route element={<Adminlayout />}>
@@ -31,6 +36,7 @@ function App() {
             <Route path="/admin/library" element={<Library />} />
             <Route path="coursedetail/:id" element={<CourseDetail />} />
             <Route path="/admin/settings" element={<Settings />} />
+            <Route path="/admin/edit-course" element={<Edit />} />
             <Route path="/admin/create" element={<CreateCourse />} />
           </Route>
           <Route path="/admin/login" element={<Adminlogin />} />
