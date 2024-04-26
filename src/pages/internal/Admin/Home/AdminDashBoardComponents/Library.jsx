@@ -10,16 +10,16 @@ const lib = [
 
 const Library = () => {
   return (
-    <main className=" shadow-xl shadow-[#032BF214]  p-3 rounded-md lg:h-[250px]">
+    <main className=" shadow-xl shadow-[#032BF214] border-[rgba(0,0,0,0.1)] border-2  p-5 rounded-md xl:max-h-80 ">
       <div className="flex items-center justify-between">
-        <h1>Library</h1>
+        <h1 className="xl:text-lg font-semibold text-darkBlue py-2">Library</h1>
       </div>
 
-      <section className=" space-y-6 mt-2">
+      <section className=" space-y-6 mt-1">
         {lib.map((l) => (
           <div
             key={l.id}
-            className="flex items-center gap-5 text-sm text-darkBlue shadow p-1 rounded"
+            className="flex items-center gap-5 text-sm text-darkBlue shadow p-2 rounded"
           >
             <img src={l.img} alt="" className="w-10 h-10 rounded-md" />
             <div className=" flex-1">

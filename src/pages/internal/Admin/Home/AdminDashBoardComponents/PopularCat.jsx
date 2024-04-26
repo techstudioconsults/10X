@@ -40,7 +40,7 @@ const PopularCat = () => {
 
   return (
     <main
-      className="shadow-md p-3 rounded-md"
+      className="shadow-lg shadow-[#032BF214] border-[rgba(0,0,0,0.1)]  p-5 rounded-md border-2 "
       style={{ height: "100%", width: "100%" }}
     >
       <h1 className="font-semibold text-darkBlue">Popular Category</h1>
