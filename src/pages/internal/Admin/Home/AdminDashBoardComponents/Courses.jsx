@@ -3,7 +3,7 @@ import course1 from "../../../../../assets/course1.png";
 import course2 from "../../../../../assets/course2.png";
 import course3 from "../../../../../assets/course3.png";
 import { formatCurrency } from "../../../../../utils/Currency";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Courses = () => {
   const navigate = useNavigate()
@@ -43,9 +43,9 @@ const Courses = () => {
         </div>
       </section>
       {/* </section> */}
-      <button className=" bg-blue xl:w-64 text-white h-24 w-full font-semibold rounded-md">
+      <Link to="/admin/create"><button className=" bg-blue xl:w-64 text-white h-24 w-full font-semibold rounded-md">
         + Add a Course
-      </button>
+      </button></Link>
     </main>
   );
 };
