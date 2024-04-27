@@ -10,8 +10,8 @@ import { Link } from "react-router-dom";
 const HeroSection = () => {
   return (
     <div>
-      <div className="sales-hero-img mt-8  rounded-sm flex w-full">
-        <div className="flex items-center justify-center py-8  relative   w-1/2">
+      <div className="sales-hero-img mt-10  rounded-sm flex w-full">
+        <div className="flex items-center justify-center py-8  relative lg:w-3/5 md:w-8/12   w-full">
           <div className="h-full w-full absolute inset-0">
            <img src={darkBg} className="h-full w-full  " alt="" />
           </div>
@@ -21,17 +21,17 @@ const HeroSection = () => {
               <Link to="/resource" className="flex items-center gap-2"><img src={arrow} alt="" /> Resources Hub</Link>
             </p>
 
-            <h2 className="font-[1000] text-5xl">The Zero Call Close</h2>
-            <p className="text-xl">Close 40% Of Prospects Without Phone Calls The Zero Call Close" offers you a game changing solution for life.</p>
-            <div className="flex items-center gap-5 ">
-              <button className="h-16 w-56 bg-blue rounded-lg text-lg font-semibold">
+            <h2 className="font-[1000] md:text-5xl text-3xl md:text-start text-center">The Zero Call Close</h2>
+            <p className="md:text-xl text-lg md:text-start text-center">Close 40% Of Prospects Without Phone Calls The Zero Call Close" offers you a game changing solution for life.</p>
+            <div className="flex items-center gap-6 ">
+              <button className="h-16 lg:w-56 w-40 md:m-0 mx-auto bg-blue rounded-lg text-lg font-semibold">
                 Get the Course
               </button>
-              <img src={whiteArrow} className="self-end translate-y-7" alt="" />
+              <img src={whiteArrow} className="self-end md:block h-12 hidden translate-y-3" alt="" />
             </div>
           </div>
         </div>
-        <div className="w-1/2 h-full self-end">
+        <div className="lg:w-1/2 md:w-5/12 h-full md:block hidden">
           <img src={salesMan} className="w-full h-full " alt="" />
         </div>
       </div>

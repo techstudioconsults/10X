@@ -70,7 +70,7 @@ const AdminNavbar = ({ setOpen }) => {
 
             <div className="flex gap-3 items-center">
               <img
-                src={userInfo?.data?.photo}
+                src={userInfo ? userInfo?.data?.photo : `https://static-00.iconduck.com/assets.00/avatar-default-symbolic-icon-479x512-n8sg74wg.png`}
                 className=" w-8 h-8 rounded-full object-cover"
                 alt=""
               />
