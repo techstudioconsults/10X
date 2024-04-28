@@ -10,32 +10,29 @@ const Recent = () => {
 
   console.log(sliced);
   return (
-    <main className="shadow-xl shadow-[#032BF214]  p-3 rounded-md">
-      <div className=" flex items-center w-full justify-between px-5">
-        <h1 className="text-lg font-semibold text-darkBlue">
+    <main className="shadow-xl shadow-[#032BF214] border-2 border-[rgba(0,0,0,0.1)]  p-5 rounded-md">
+      <div className=" flex items-center w-full justify-between ">
+        <h1 className="text-lg font-semibold text-darkBlue py-3">
           Recently Uploaded Courses
         </h1>
       </div>
 
-      <table>
+      <table className="w-full">
         <thead className="w-full text-left table-auto">
-          <tr className="bg-[#F8F8F8] text-[#7C87AC] font-medium">
-            <th className="px-4 py-3 min-w-40 xl:min-w-[207px] ">
-              {" "}
-              Course Name
-            </th>
-            <th className="px-4 py-3  xl:min-w-[207px]  xl:text-center">
+          <tr className="bg-[#F8F8F8]  text-[#7C87AC] font-medium">
+            <th className="px-3 py-2 min-w-40 xl:min-w-full "> Course Name</th>
+            <th className="px-4 py-2  xl:min-w-full  xl:text-center">
               {" "}
               Category
             </th>
-            <th className="px-4 py-3 min-w-40 text-center"> Price</th>
+            <th className="px-4 py-2 min-w-40 text-center"> Price</th>
           </tr>
         </thead>
 
         <tbody>
           {sliced.map((b) => (
-            <tr key={b.id}>
-              <td className=" text-md text-darkBlue font-semibold underline py-2">
+            <tr className="border-b" key={b.id}>
+              <td className=" text-md text-darkBlue font-semibold underline px-3 py-4">
                 {b.title}
               </td>
               <td className={`px-4 py-3 text-center w-10`}>

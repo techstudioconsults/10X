@@ -9,7 +9,7 @@ import Cookies from "js-cookie";
 
 const Settings = () => {
   const { API_URL, getUser, userInfo, token } = useAdminContext();
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState("https://static-00.iconduck.com/assets.00/avatar-default-symbolic-icon-479x512-n8sg74wg.png");
   const [user, setUser] = useState({});
   console.log(user);
   const [infoLoading, setInfoLoading] = useState(false);
