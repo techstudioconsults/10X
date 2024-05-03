@@ -8,31 +8,29 @@ import meeting from "../../../assets/meeting.svg";
 import clientImg from "../../../assets/client-img.svg";
 import successImg from "../../../assets/success-story-img.svg";
 import layerImg from "../../../assets/Layer-Img.png";
-import layerArrowDown from "../../../assets/layer-arrow-down.png"
+import layerArrowDown from "../../../assets/layer-arrow-down.png";
 import flyIlustration from "../../../assets/fly-illustation.png";
 import wavyLine from "../../../assets/wavy-line.png";
 import number1 from "../../../assets/number1.svg";
 import handshakeImg from "../../../assets/hand-shake.svg";
 import nextRight from "../../../assets/next-right.png";
-import nextLeft from '../../../assets/next-left.png'
-import marketingImg from '../../../assets/marketing.svg'
+import nextLeft from "../../../assets/next-left.png";
+import marketingImg from "../../../assets/marketing.svg";
 import nummber2 from "../../../assets/number2.svg";
-import number3 from '../../../assets/number3.svg'
-import number4 from '../../../assets/number4.svg'
-import scaleImg from '../../../assets/scaleImg.svg'
-import systemImg from '../../../assets/systemsImg.svg'
-import doubleImg from '../../../assets/grouped-imgs.svg'
+import number3 from "../../../assets/number3.svg";
+import number4 from "../../../assets/number4.svg";
+import scaleImg from "../../../assets/scaleImg.svg";
+import systemImg from "../../../assets/systemsImg.svg";
+import doubleImg from "../../../assets/grouped-imgs.svg";
 
 import { useEffect } from "react";
 
-
 const WhatWeDo = () => {
-  const location = useLocation()
+  const location = useLocation();
 
-  useEffect(()=>{
-    window.scrollTo(0, 0)
-  },[location.pathname])
- 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <div className="bg-white ">
@@ -48,15 +46,19 @@ const WhatWeDo = () => {
             customers.
           </p>
           <div className="flex justify-center lg:justify-start">
-          <Link to="/sales"> 
-          <button className=" border px-9 py-3 border-blue  rounded-lg text-blue font-semibold hover:bg-blue hover:text-white duration-500 text-xl">
-              Get started Now
-            </button>
-           </Link>
+            <Link to="/sales">
+              <button className=" border px-9 py-3 border-blue  rounded-lg text-blue font-semibold hover:bg-blue hover:text-white duration-500 text-xl">
+                Get started Now
+              </button>
+            </Link>
           </div>
         </div>
         <div className="lg:order-2 ">
-          <img className="w-full lg:h-[600px] h-[450px] translate-y-5" src={heroImg} alt="" />
+          <img
+            className="w-full lg:h-[600px] h-[450px] translate-y-5"
+            src={heroImg}
+            alt=""
+          />
         </div>
       </div>
 
@@ -106,12 +108,15 @@ const WhatWeDo = () => {
                 </p>
               </div>
               <div className="flex flex-col items-center lg:flex-row gap-5 ">
-               <Link to="/sales">
-               <button className=" border px-9 py-2 border-blue  rounded-lg font-semibold bg-blue text-white hover:bg-light-blue-900 hover:text-white duration-500 w-full md:w-48 lg:w-52 text-xl">
-                  Get started
-                </button>
-               </Link>
-                <Link to="/sales" className="text-[#6476BA] text-lg text-center lg:text-start">
+                <Link to="/sales">
+                  <button className=" border px-9 py-2 border-blue  rounded-lg font-semibold bg-blue text-white hover:bg-light-blue-900 hover:text-white duration-500 w-full md:w-48 lg:w-52 text-xl">
+                    Get started
+                  </button>
+                </Link>
+                <Link
+                  to="/sales"
+                  className="text-[#6476BA] text-lg text-center lg:text-start"
+                >
                   <u>Scale to $100k Course</u>
                 </Link>
               </div>
@@ -137,11 +142,14 @@ const WhatWeDo = () => {
               </div>
               <div className="flex flex-col items-center lg:flex-row gap-5 ">
                 <Link to="/sales">
-                <button className=" border px-9 py-2 border-blue  rounded-lg font-semibold bg-blue text-white hover:bg-light-blue-900 hover:text-white duration-500 w-full md:w-48 lg:w-52 text-xl">
-                  Get started
-                </button>
+                  <button className=" border px-9 py-2 border-blue  rounded-lg font-semibold bg-blue text-white hover:bg-light-blue-900 hover:text-white duration-500 w-full md:w-48 lg:w-52 text-xl">
+                    Get started
+                  </button>
                 </Link>
-                <Link to="/sales" className="text-[#6476BA] text-lg text-center lg:text-start">
+                <Link
+                  to="/sales"
+                  className="text-[#6476BA] text-lg text-center lg:text-start"
+                >
                   <u>Scale to $100k Course</u>
                 </Link>
               </div>
@@ -161,11 +169,14 @@ const WhatWeDo = () => {
               </div>
               <div className="flex flex-col items-center lg:flex-row gap-5 ">
                 <Link to="/sales">
-                <button className=" border px-9 py-2 border-blue  rounded-lg font-semibold bg-blue text-white hover:bg-light-blue-900 hover:text-white duration-500 w-full md:w-48 lg:w-52 text-xl">
-                  Get started
-                </button>
+                  <button className=" border px-9 py-2 border-blue  rounded-lg font-semibold bg-blue text-white hover:bg-light-blue-900 hover:text-white duration-500 w-full md:w-48 lg:w-52 text-xl">
+                    Get started
+                  </button>
                 </Link>
-                <Link to="/sales" className="text-[#6476BA] text-lg text-center lg:text-start">
+                <Link
+                  to="/sales"
+                  className="text-[#6476BA] text-lg text-center lg:text-start"
+                >
                   <u>Scale to $100k Course</u>
                 </Link>
               </div>
@@ -177,7 +188,10 @@ const WhatWeDo = () => {
 
           <div className="py-10">
             <img src={layerImg} alt="" />
-           <div className="flex justify-center lg:-translate-y-2 xl:-translate-y-4"> <img src={layerArrowDown} alt="" /></div>
+            <div className="flex justify-center lg:-translate-y-2 xl:-translate-y-4">
+              {" "}
+              <img src={layerArrowDown} alt="" />
+            </div>
           </div>
         </div>
         {/* Section ends here */}
@@ -194,9 +208,9 @@ const WhatWeDo = () => {
               </div>
               <div className="flex  justify-center ">
                 <Link to="/sales">
-                <button className=" border px-7 py-2 bg-blue  rounded-lg text-white font-semibold hover:bg-light-blue-900 hover:text-white duration-500 text-xl">
-                  Get started
-                </button>
+                  <button className=" border px-7 py-2 bg-blue  rounded-lg text-white font-semibold hover:bg-light-blue-900 hover:text-white duration-500 text-xl">
+                    Get started
+                  </button>
                 </Link>
               </div>
             </div>
@@ -241,10 +255,14 @@ const WhatWeDo = () => {
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2">
               <div className="flex justify-center">
-                <img className="translate-y-0 translate-x-0 lg:translate-y-14 lg:-translate-x-8" src={nextRight} alt="" />
+                <img
+                  className="translate-y-0 translate-x-0 lg:translate-y-14 lg:-translate-x-8"
+                  src={nextRight}
+                  alt=""
+                />
               </div>
               <div>
-              <img className="hidden lg:block" src={handshakeImg} alt="" />
+                <img className="hidden lg:block" src={handshakeImg} alt="" />
               </div>
             </div>
           </div>
@@ -255,10 +273,10 @@ const WhatWeDo = () => {
                 <div className="grid grid-cols-2 items-center">
                   <div>
                     <h1 className="text-[#032BF2] text-2xl font-semibold">
-                    Marketing
+                      Marketing
                     </h1>
                     <h5 className="text-[#032BF2] text-xl font-medium">
-                    Breakeven Marketing Using a Book 
+                      Breakeven Marketing Using a Book 
                     </h5>
                   </div>
                   <div className="flex justify-end">
@@ -267,15 +285,22 @@ const WhatWeDo = () => {
                 </div>
               </div>
               <p className="text-[#6476BA] py-4">
-              Don’t let your marketing method or budget hold back how fast your business can grow. Let us help you apply the methods we use to sell 50 - 150 books per day while getting ads to pay for themselves!
+                Don’t let your marketing method or budget hold back how fast
+                your business can grow. Let us help you apply the methods we use
+                to sell 50 - 150 books per day while getting ads to pay for
+                themselves!
               </p>
             </div>
             <div className="grid order-2 lg:order-1 grid-cols-1 lg:grid-cols-2">
               <div>
-              <img className="hidden lg:block" src={marketingImg} alt="" />
+                <img className="hidden lg:block" src={marketingImg} alt="" />
               </div>
               <div className="flex justify-center">
-                <img className="translate-y-0 translate-x-0 lg:translate-y-14 lg:-translate-x-8" src={nextLeft} alt="" />
+                <img
+                  className="translate-y-0 translate-x-0 lg:translate-y-14 lg:-translate-x-8"
+                  src={nextLeft}
+                  alt=""
+                />
               </div>
             </div>
           </div>
@@ -287,10 +312,10 @@ const WhatWeDo = () => {
                 <div className="grid grid-cols-2 items-center">
                   <div>
                     <h1 className="text-[#032BF2] text-2xl font-semibold">
-                    Scale
+                      Scale
                     </h1>
                     <h5 className="text-[#032BF2] text-xl font-medium">
-                    Scale with Automation and Leverage
+                      Scale with Automation and Leverage
                     </h5>
                   </div>
                   <div className="flex justify-end">
@@ -299,30 +324,38 @@ const WhatWeDo = () => {
                 </div>
               </div>
               <p className="text-[#6476BA] py-4">
-              Experience massive growth in revenue with less work, less effort, and more automation. Let us help you reduce complexity in your business by developing offers and marketing assets that rapidly add customers and clients with less complexity than ever before.
+                Experience massive growth in revenue with less work, less
+                effort, and more automation. Let us help you reduce complexity
+                in your business by developing offers and marketing assets that
+                rapidly add customers and clients with less complexity than ever
+                before.
               </p>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2">
               <div className="flex justify-center">
-                <img className="translate-y-0 translate-x-0 lg:translate-y-14 lg:-translate-x-8" src={nextRight} alt="" />
+                <img
+                  className="translate-y-0 translate-x-0 lg:translate-y-14 lg:-translate-x-8"
+                  src={nextRight}
+                  alt=""
+                />
               </div>
               <div>
-              <img className="hidden lg:block" src={scaleImg} alt="" />
+                <img className="hidden lg:block" src={scaleImg} alt="" />
               </div>
             </div>
           </div>
 
-           {/* grid-layout 2 */}
-           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 items-center">
+          {/* grid-layout 2 */}
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 items-center">
             <div className="order-1 lg:order-2">
               <div>
                 <div className="grid grid-cols-2 items-center">
                   <div>
                     <h1 className="text-[#032BF2] text-2xl font-semibold">
-                    Systems
+                      Systems
                     </h1>
                     <h5 className="text-[#032BF2] text-xl font-medium">
-                    We Work You Out of the “Day-to-Day”
+                      We Work You Out of the “Day-to-Day”
                     </h5>
                   </div>
                   <div className="flex justify-end">
@@ -331,15 +364,22 @@ const WhatWeDo = () => {
                 </div>
               </div>
               <p className="text-[#6476BA] py-4">
-              Apply our experience building teams and developing scalable “hands off” marketing, automations, and offer delivery frameworks to build and manage a team that can grow your business without your direct input.
+                Apply our experience building teams and developing scalable
+                “hands off” marketing, automations, and offer delivery
+                frameworks to build and manage a team that can grow your
+                business without your direct input.
               </p>
             </div>
             <div className="grid order-2 lg:order-1 grid-cols-1 lg:grid-cols-2">
               <div>
-              <img className="hidden lg:block" src={systemImg} alt="" />
+                <img className="hidden lg:block" src={systemImg} alt="" />
               </div>
               <div className="flex justify-center">
-                <img className="translate-y-14 translate-x-7 hidden" src={nextLeft} alt="" />
+                <img
+                  className="translate-y-14 translate-x-7 hidden"
+                  src={nextLeft}
+                  alt=""
+                />
               </div>
             </div>
           </div>
@@ -348,18 +388,24 @@ const WhatWeDo = () => {
 
       {/* last section */}
       <div className=" bg-[#1E2C4F]  lg:bg-transparent wavy my-7 ">
-
         <div className="container  w-4/5 mx-auto grid grid-cols-1 lg:grid-cols-2 mt-5 mb-0 py-6 lg:py-2 lg:mb-48 gap-10 items-center">
           <div className=" py-3 flex flex-col justify-center lg:justify-start gap-4 ">
             <h1 className=" text-white text-2xl lg:text-3xl w-full text-center lg:text-left lg:w-3/5">
-            How can 10X Revenue Growth benefit me?
+              How can 10X Revenue Growth benefit me?
             </h1>
             <p className="text-white text-center lg:text-left">
-            We help coaches, experts, and digital course creators replace the unpredictability of static launches with evergreen assets that consistently convert cold prospects into premium clients and customers.
+              We help coaches, experts, and digital course creators replace the
+              unpredictability of static launches with evergreen assets that
+              consistently convert cold prospects into premium clients and
+              customers.
             </p>
-           <div className="flex justify-center lg:justify-start">
-           <button className="text-[#032BF2] bg-white hover:bg-blue duration-300 hover:text-white text-lg font-bold px-2 py-2 rounded-md w-32 ">Get Started</button>
-           </div>
+            <div className="flex justify-center lg:justify-start">
+             <Link to="/sales">
+             <button className="text-[#032BF2] bg-white hover:bg-blue duration-300 hover:text-white text-lg font-bold px-2 py-2 rounded-md w-32 ">
+                Get Started
+              </button>
+             </Link>
+            </div>
           </div>
           <div className="translate-y-0 lg:translate-y-32">
             <img className="" src={doubleImg} alt="" />

@@ -1,4 +1,6 @@
 import "./Library.css";
+import React from "react";
+
 // import printIcon from "../../../../assets/print-icon.png";
 
 import exportIcon from "../../../../assets/Export -icon.png";
@@ -14,8 +16,9 @@ import {
 import { useState } from "react";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
+import SkeletonRow from "../../../../components/loader/SkeletonRow";
 const Library = () => {
-  const { content: data, error } = useFetch("/api/v1/course");
+  const { content: data, error, loading } = useFetch("/api/v1/course");
   const [activeTab, setActiveTab] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(9);
@@ -263,38 +266,51 @@ const Library = () => {
               </tr>
             </thead>
             <tbody>
-              {currentItems.map((datum) => (
-                <tr
-                  key={datum._id}
-                  onClick={() => {
-                    navigate(`/coursedetail/${datum._id}`);
-                  }}
-                  className="border-b my-2 cursor-pointer"
-                >
-                  <td className="px-3 py-3">
-                    <span className="text-base text-[#0027BA] border-b border-1 border-[#0027BA] font-semibold">
-                      {datum.title}
-                    </span>
-                  </td>
-                  <td className={`px-4 py-3 text-center min-w-52`}>
-                    <div
-                      className={`my-3 w-[100px]  rounded ${getCategoryClass(
-                        datum.category
-                      )}`}
-                    >
-                      <p className="p-2">{datum.category}</p>
-                    </div>
-                  </td>
-                  <td className="px-4 py-3 min-w-52 text-[#6072AC]">Nill</td>
-                  <td className="px-4 py-3 min-w-52 text-[#6072AC]">
-                    {new Date(datum.createdAt).toLocaleDateString()}
-                  </td>
-                  <td className="px-4 py-3 min-w-52 text-[#6072AC]">Nill</td>
-                  <td className="px-4 py-3 min-w-52 text-[#6072AC]">
-                    {datum.price}
-                  </td>
-                </tr>
-              ))}
+            {loading ? (
+              <React.Fragment>
+                
+                <SkeletonRow />
+                <SkeletonRow />
+                <SkeletonRow />
+                <SkeletonRow />
+                <SkeletonRow />
+                <SkeletonRow />
+                {/* Add more SkeletonRow components as needed */}
+              </React.Fragment>
+            ) :
+            currentItems.map((datum) => (
+              <tr
+                key={datum._id}
+                onClick={() => {
+                  navigate(`/coursedetail/${datum._id}`);
+                }}
+                className="border-b my-2 cursor-pointer"
+              >
+                <td className="px-3 py-3">
+                  <span className="text-base text-[#0027BA] border-b border-1 border-[#0027BA] font-semibold">
+                    {datum.title}
+                  </span>
+                </td>
+                <td className={`px-4 py-3 text-center min-w-52`}>
+                  <div
+                    className={`my-3 w-[100px]  rounded ${getCategoryClass(
+                      datum.category
+                    )}`}
+                  >
+                    <p className="p-2">{datum.category}</p>
+                  </div>
+                </td>
+                <td className="px-4 py-3 min-w-52 text-[#6072AC]">Nill</td>
+                <td className="px-4 py-3 min-w-52 text-[#6072AC]">
+                  {new Date(datum.createdAt).toLocaleDateString()}
+                </td>
+                <td className="px-4 py-3 min-w-52 text-[#6072AC]">Nill</td>
+                <td className="px-4 py-3 min-w-52 text-[#6072AC]">
+                  {datum.price}
+                </td>
+              </tr>
+            ))
+            }
             </tbody>
           </table>
         </div>
@@ -305,3 +321,5 @@ const Library = () => {
 };
 
 export default Library;
+
+

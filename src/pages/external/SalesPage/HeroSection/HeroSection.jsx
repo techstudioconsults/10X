@@ -1,31 +1,38 @@
 import buyNow from "../../../../assets/page1.png";
 import specialArrow from "../../../../assets/special-arrow.svg";
+import whiteArrow from "../../../../assets/arrow-white.png";
+import salesMan from "../../../../assets/salesman.svg";
+import arrow from "../../../../assets/arrow-left.svg";
+import darkBg from "../../../../assets/dark-bg.svg";
+import "./Hero.css";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   return (
     <div>
-      <div className="flex my-7 flex-col-reverse lg:flex-row items-center justify-center gap-5 py-4 w-full">
-        <div className="flex flex-col items-start lg:w-1/2 w-full lg:justify-center gap-4">
-          <h2 className="text-3xl lg:text-[38px] font-[800] text-darkBlue hidden lg:block">
-            The Zero Call Close
-          </h2>
-          <p className="text-blue font-[600] text-[19px]">
-            Close 40% Of Prospects Without Phone Calls "The Zero Call Close"
-            offers you a game changing solution for life.
-          </p>
-          <div className="flex gap-9 items-center w-full">
-<button className="px-6 py-3 rounded-md bg-blue md:w-48 w-full text-white font-semibold shadow-lg hover:bg-darkBlue focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-colors duration-300">
-            Get the course
-          </button>
-          <img src={specialArrow} alt="" className=" w-[75px] h-[75px] translate-y-5 lg:block hidden" />
+      <div className="sales-hero-img mt-10  rounded-sm flex w-full">
+        <div className="flex items-center justify-center py-8  relative lg:w-3/5 md:w-8/12   w-full">
+          <div className="h-full w-full absolute inset-0">
+           <img src={darkBg} className="h-full w-full  " alt="" />
           </div>
-          
+          <div className="text-white z-10 grid gap-3 w-5/6">
+            <p className="flex items-center gap-2 mb-10 text-lg font-semibold">
+        
+              <Link to="/resource" className="flex items-center gap-2"><img src={arrow} alt="" /> Resources Hub</Link>
+            </p>
+
+            <h2 className="font-[1000] md:text-5xl text-3xl md:text-start text-center">The Zero Call Close</h2>
+            <p className="md:text-xl text-lg md:text-start text-center">Close 40% Of Prospects Without Phone Calls The Zero Call Close" offers you a game changing solution for life.</p>
+            <div className="flex items-center gap-6 ">
+              <button className="h-16 lg:w-56 w-40 md:m-0 mx-auto bg-blue rounded-lg text-lg font-semibold">
+                Get the Course
+              </button>
+              <img src={whiteArrow} className="self-end md:block h-12 hidden translate-y-3" alt="" />
+            </div>
+          </div>
         </div>
-        <div className="max-w-100 lg:w-1/2 w-full flex flex-col gap">
-          <h2 className="text-3xl lg:text-[38px] my-3 font-[800] text-darkBlue  lg:hidden">
-            The Zero Call Close
-          </h2>
-          <img src={buyNow} alt="" />
+        <div className="lg:w-1/2 md:w-5/12 h-full md:block hidden">
+          <img src={salesMan} className="w-full h-full " alt="" />
         </div>
       </div>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 justify-center gap-2 pt-8">
