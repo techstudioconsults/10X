@@ -6,11 +6,15 @@ import person from "../../../../assets/purchase-fullname.svg";
 import emailIcon from "../../../../assets/purchase-email.svg";
 import lock from "../../../../assets/purchase-lock.svg";
 import "./PurchaseForm.css";
-import { useParams } from "react-router-dom";
-import {useForm} from "react-hook-form";
+import { useParams, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import axios from "axios";
+import { Bars } from "react-loader-spinner";
+import axiosInstance from "../../../../utils/axiosConfig";
 
 function PurchaseForm() {
   const { id } = useParams();
+  const navigate = useNavigate()
   console.log(id);
   const [email, setEmail] = useState("");
   const [fullName, setFullName] = useState("");
@@ -24,6 +28,8 @@ function PurchaseForm() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [amount] = useState(40000);
 
   useEffect(() => {
     // Check if all input fields are filled
@@ -38,9 +44,50 @@ function PurchaseForm() {
     setAllChecked(subscribe && agreeTerms);
   }, [email, fullName, password, confirmPassword, subscribe, agreeTerms]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Your form submission logic here
+    try {
+      const formData = {
+        fullname: fullName,
+        email,
+        password,
+        amount,
+        courseId: id,
+      };
+      const registerRes = await axiosInstance.post(
+        "/api/v1/auth/register",
+        formData
+      );
+      setIsLoading(true);
+      if (registerRes.status === 200) {
+        setIsLoading(false);
+        const authorizationUrl =
+          registerRes.data.paymentData.data.authorization_url;
+        window.open(authorizationUrl, "_blank");
+
+        // Login the user
+        const loginData = {
+          email,
+          password,
+        };
+        const loginRes = await axiosInstance.post(
+          "/api/v1/auth/login",
+          loginData
+        );
+        if (loginRes.status === 200) {
+          // Handle successful login
+          navigate("/mycourses")
+          console.log("User logged in successfully");
+          
+          // You can store the user's token or perform any other necessary actions here
+        } else {
+          console.error("Failed to log in the user");
+        }
+      }
+      console.log(registerRes);
+    } catch (error) {
+      console.log(error);
+    }
     console.log("Form submitted!");
   };
 
@@ -199,6 +246,10 @@ function PurchaseForm() {
           </div>
 
           <button
+            onClick={() => {
+              setIsLoading(true)
+              console.log("clicked");
+            }}
             type="submit"
             className={`rounded-md p-2 w-full transition duration-300 ${
               allInputsFilled && allChecked && password === confirmPassword
@@ -213,8 +264,35 @@ function PurchaseForm() {
               !!passwordError
             }
           >
-            Continue Payment
+            {isLoading ? (
+              <div className="flex items-center justify-center">
+                <Bars
+                  height="30"
+                  width="100"
+                  color="#fff"
+                  ariaLabel="bars-loading"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                  visible={true}
+                />
+              </div>
+            ) : (
+              " Continue Payment"
+            )}
           </button>
+
+          {/* 
+          <button className="w-full bg-blue font-bold flex items-center justify-center text-white h-[45px] rounded-xl ">
+            {isLoading ? <div><Bars
+  height="30"
+  width="100"
+  color="#fff"
+  ariaLabel="bars-loading"
+  wrapperStyle={{}}
+  wrapperClass=""
+  visible={true}
+  /></div> :"Log In"}
+          </button> */}
         </form>
       </div>
       <img
