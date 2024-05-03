@@ -4,7 +4,7 @@ import { NewSliders } from "../Carousel/NewSlider";
 import PurchaseForm from "../PurchaseForm/PurchaseForm";
 import { NewAccordions } from "../accordion/NewAccordion";
 
-const Section1 = () => {
+const Section1 = ({courseId}) => {
   return (
     <div className="flex justify-center carousel-class mb-7 w-full">
       <div className="w-full">
