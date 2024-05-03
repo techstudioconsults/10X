@@ -37,8 +37,8 @@ const Courses = () => {
           <img src={course3} alt="" className="w-14 h-14" />
 
           <div>
-            <p className=" text-sm text-grey ">Total Clients</p>
-            <h3 className=" text-blue font-[1000] text-2xl">7,876</h3>
+            <p className=" text-sm text-grey ">Total Courses</p>
+            <h3 className=" text-blue font-[1000] text-2xl">396</h3>
           </div>
         </div>
       </section>
