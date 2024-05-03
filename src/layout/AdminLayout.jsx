@@ -4,12 +4,15 @@ import { Outlet } from 'react-router-dom'
 import AdminSidebar from '../components/AdminSidebar/AdminSidebar'
 import { useState } from 'react'
 import AdminSIdebarMobile from '../components/AdminSidebar/AdminSIdebarMobile'
+import AdminProvider from '../context/AdminContext'
 
 
 const Adminlayout = () => {
   
   const [isOpen, setIsOpen] = useState(false)
   return (
+    <>
+    <AdminProvider>
     <div className='flex w-full'>
       {/* sidebar */}
       <div className='2xl:block hidden w-1/5 '>
@@ -35,6 +38,9 @@ const Adminlayout = () => {
       </div>
       </div>
     </div>
+    </AdminProvider>
+    </>
+    
   )
 }
 

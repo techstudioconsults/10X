@@ -5,21 +5,47 @@ import logo from "../../../assets/10X LOGO.png";
 import person from "../../../assets/purchase-fullname.svg";
 import emailIcon from "../../../assets/purchase-email.svg";
 import lock from "../../../assets/purchase-lock.svg";
+import Cookies from "js-cookie";
+import { Bars } from "react-loader-spinner";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [checked, setChecked] = useState("");
+  const API_URL = import.meta.env.VITE_REACT_APP_API_URL
+  const [isLoading, setIsLoading] = useState(false);
+  const {register, handleSubmit, formState: {errors}} = useForm()
+  const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false);
-
-  console.log(checked);
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+  console.log(API_URL);
+
+  const onSubmit = async (data) => {
+    setIsLoading(true)
+    const formData = new FormData()
+    formData.append("email", data.email)
+    formData.append("password", data.password)
+    try {
+        const {data} = await axios.post(`${API_URL}/api/v1/auth/login`, formData)
+        console.log(data);
+
+        if (data.success) {
+          setIsLoading(false)
+            Cookies.set("token", data.token)
+            navigate("/")
+           
+        }
+    } catch (error) {
+        console.log(error);
+        setIsLoading(false)
+    }
+  }
   return (
     <div>
       <div className="flex lg:flex-row flex-col items-center gap-4 h-screen">
@@ -49,7 +75,7 @@ const Login = () => {
                 />
               </Link>
             </span>
-            <form className="flex flex-col mx-auto gap-3">
+            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col mx-auto gap-3">
               <div>
                 <h2 className="font-[1000] text-xl md:text-2xl text-center lg:text-start  text-blue">
                   Welcome Back
@@ -68,11 +94,18 @@ const Login = () => {
                   />
                   <input
                     type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    {...register("email", {
+                      required: "Email is required",
+                        pattern: {
+                          value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                          message: "Enter a valid email address"
+                        },
+                      
+                    })}
                     className="w-full border-2 px-10 border-grey outline-none h-12 rounded-lg text-grey text-base "
                     placeholder="Email Address"
                   />
+                                {errors.email && <p className="text-red-500">{errors.email.message}</p>}
                 </div>
                 <div className="relative w-full  flex items-center">
                   <img
@@ -82,8 +115,9 @@ const Login = () => {
                   />
                   <input
                     type={showPassword ? "text" : "password"}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    {...register("password", {
+                      required: "Password is required"
+                    })}
                     className="w-full border-2 border-grey outline-none h-12 rounded-lg px-10 text-grey text-base "
                     placeholder="Password"
                   />
@@ -99,8 +133,7 @@ const Login = () => {
               <div className="w-full flex justify-between items-center text-grey mt-4">
                 <label className="font-semibold text-xs flex items-center gap-1 cursor-pointer ">
                   <input
-                    type="checkbox"
-                    onClick={(e) => setChecked(e.target.checked)}
+                  {...register("checkbox")}
                     className="size-4 rounded-md cursor-pointer"
                     name=""
                     id=""
@@ -112,8 +145,16 @@ const Login = () => {
                 </p>
               </div>
 
-              <button className="w-full bg-blue font-bold text-white h-[45px] rounded-xl ">
-                Log In
+              <button className="w-full flex items-center justify-center bg-blue font-bold text-white h-[45px] rounded-xl ">
+              {isLoading ? <div><Bars
+  height="30"
+  width="100"
+  color="#fff"
+  ariaLabel="bars-loading"
+  wrapperStyle={{}}
+  wrapperClass=""
+  visible={true}
+  /></div> :"Log In"}
               </button>
             </form>
 
