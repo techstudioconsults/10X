@@ -2,7 +2,8 @@
 import { useEffect } from "react";
 import HeroSection from "./HeroSection/HeroSection";
 import Section1 from "./Section1/Section1";
-import { useLocation } from "react-router";
+import { useLocation, } from "react-router";
+
 
 const SalesPage = () => {
   const location = useLocation();
