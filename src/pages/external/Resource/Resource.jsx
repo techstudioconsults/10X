@@ -168,7 +168,7 @@ const Resource = () => {
             <div
               key={item._id}
               className="flex hover:border-2 border-[#032BF2] duration-500 cursor-pointer flex-col justify-center items-center bg-[#FFFFFF] drop-shadow-md rounded-2xl"
-              onClick={() => navigate("/sales")}
+              onClick={() => navigate(`/sales/${item._id}`)}
             >
               <div className="w-full max-w-[298] xl:h-[210px] lg:h-[150px]">
                 <img

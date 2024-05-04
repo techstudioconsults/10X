@@ -1,6 +1,7 @@
 import {  createContext, useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
 
 export const AdminContext = createContext()
 
@@ -9,6 +10,11 @@ const AdminProvider = ({children}) => {
     const API_URL = import.meta.env.VITE_REACT_APP_API_URL
     const [userInfo, setUserInfo] = useState()
     const token = Cookies.get("token")
+    let decoded = null
+    if (token) {
+      decoded = jwtDecode(token)
+      console.log(decoded);
+    }
 
 
     const getUser = async () => {

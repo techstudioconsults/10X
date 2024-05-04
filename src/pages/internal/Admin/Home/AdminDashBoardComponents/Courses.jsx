@@ -38,7 +38,7 @@ const Courses = () => {
 
           <div>
             <p className=" text-sm text-grey ">Total Courses</p>
-            <h3 className=" text-blue font-[1000] text-2xl">7,876</h3>
+            <h3 className=" text-blue font-[1000] text-2xl">396</h3>
           </div>
         </div>
       </section>

@@ -26,9 +26,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/resource" element={<Resource />} />
             <Route path="/about" element={<WhatWeDo />} />
-            <Route path="/sales" element={<SalesPage />} />
+            <Route path="/sales/:id" element={<SalesPage />} />
 
-            <Route path="/myCourses" element={<MyCourses />} />
+            <Route path="/mycourses" element={<MyCourses />} />
           </Route>
 
           <Route element={<Adminlayout />}>
