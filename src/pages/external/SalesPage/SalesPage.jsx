@@ -11,7 +11,7 @@ const SalesPage = () => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
   return (
-    <div className="pt-20 w-11/12 container mx-auto">
+    <div className="pt-20">
     <HeroSection/>
       <Section1 />
      

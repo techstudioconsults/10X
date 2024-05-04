@@ -11,6 +11,7 @@ const HeroSection = () => {
   return (
     <div>
       <div className="sales-hero-img mt-10  rounded-sm flex w-full">
+        
         <div className="flex items-center justify-center py-8  relative lg:w-3/5 md:w-8/12   w-full">
           <div className="h-full w-full absolute inset-0">
            <img src={darkBg} className="h-full w-full  " alt="" />
@@ -35,7 +36,7 @@ const HeroSection = () => {
           <img src={salesMan} className="w-full h-full " alt="" />
         </div>
       </div>
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 justify-center gap-2 pt-8">
+      <div className="grid w-11/12 container mx-auto lg:grid-cols-3 md:grid-cols-2 justify-center gap-2 pt-8">
         <div className="bg-[#FAFBFF] flex flex-col gap-3 rounded-lg shadow-xl border border-[#032BF214] shadow-[#032BF214] max-w-[440px] p-6 text-center md:text-start">
           <h1 className="text-4xl md:text-5xl font-[1000] text-[#032BF2]">40%</h1>
           <h3 className="text-[28px] font-semibold text-[#0027BA]">
