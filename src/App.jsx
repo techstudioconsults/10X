@@ -15,6 +15,7 @@ import CourseDetail from "./pages/internal/Admin/coursedetail/CourseDetail";
 import Adminlogin from "./pages/internal/Auth/Adminlogin";
 import CreateCourse from "./pages/internal/Admin/create/CreateCourse";
 import MyCourses from "./pages/internal/user/Mycourses/MyCourses";
+import { SingleCourseView } from "./pages/internal/user/Mycourses/singleCourseView";
 
 function App() {
   
@@ -29,6 +30,10 @@ function App() {
             <Route path="/sales/:id" element={<SalesPage />} />
 
             <Route path="/mycourses" element={<MyCourses />} />
+            <Route
+              path="/mycourses-resume/:title"
+              element={<SingleCourseView />}
+            />
           </Route>
 
           <Route element={<Adminlayout />}>
