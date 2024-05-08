@@ -43,7 +43,7 @@ function FileDropzone() {
       >
         <div className="flex flex-col items-center justify-center pt-5 pb-6">
           <img src={uploadFile} alt="" />
-          <p className="mb-2 text-lg text-[#787878]">
+          <p className=" px-4 mb-2 text-lg text-[#787878]">
             Drag and Drop or{" "}
             <span className="font-semibold text-blue">Choose File</span> to
             upload
