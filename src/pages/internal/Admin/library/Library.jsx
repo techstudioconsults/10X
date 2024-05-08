@@ -228,7 +228,7 @@ const Library = () => {
               onClick={() => handleTabClick("all")}
               className={`w-1/5 text-base lg:text-xl ${getTabClass("all")}`}
             >
-              {window.innerWidth >= 768admin ? "All Courses" : "All"}
+              {window.innerWidth >= 768 ? "All Courses" : "All"}
             </Tab>
             <Tab
               value="video"
