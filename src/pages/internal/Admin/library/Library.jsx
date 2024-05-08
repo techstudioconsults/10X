@@ -181,9 +181,9 @@ const Library = () => {
             <img src={printIcon} alt="" /> <span className="hidden lg:block ">Print</span>
           </button> */}
           <Link to="/admin/create">
-          <button   className="bg-[#032BF2] h-12 min-w-20 text-white px-5 py-2 rounded-md ">
-            + Create New Course
-          </button>
+            <button className="bg-[#032BF2] h-12 min-w-20 text-white px-5 py-2 rounded-md ">
+              + Create New Course
+            </button>
           </Link>
         </div>
       </div>
@@ -228,7 +228,7 @@ const Library = () => {
               onClick={() => handleTabClick("all")}
               className={`w-1/5 text-base lg:text-xl ${getTabClass("all")}`}
             >
-              All Courses
+              {window.innerWidth >= 768admin ? "All Courses" : "All"}
             </Tab>
             <Tab
               value="video"
@@ -257,60 +257,59 @@ const Library = () => {
           <table className="w-full text-left table-auto">
             <thead>
               <tr className="bg-[#F8F8F8] text-[#7C87AC] font-medium">
-                <th className="px-4 py-3 min-w-52 min-w-lg-60">Course Name</th>
+                <th className="px-4 py-3 min-w-36 md:min-w-52 min-w-lg-60">Course Name</th>
                 <th className="px-4 py-3 min-w-36">Category</th>
                 <th className="px-4 py-3 min-w-36">Unit Sold</th>
                 <th className="px-4 py-3 min-w-36">Date</th>
-                <th className="px-4 py-3 min-w-52">Client</th>
+                <th className="px-4 py-3 min-w-36 md:min-w-52">Client</th>
                 <th className="px-4 py-3 min-w-36">Price</th>
               </tr>
             </thead>
             <tbody>
-            {loading ? (
-              <React.Fragment>
-                
-                <SkeletonRow />
-                <SkeletonRow />
-                <SkeletonRow />
-                <SkeletonRow />
-                <SkeletonRow />
-                <SkeletonRow />
-                {/* Add more SkeletonRow components as needed */}
-              </React.Fragment>
-            ) :
-            currentItems.map((datum) => (
-              <tr
-                key={datum._id}
-                onClick={() => {
-                  navigate(`/coursedetail/${datum._id}`);
-                }}
-                className="border-b my-2 cursor-pointer"
-              >
-                <td className="px-3 py-3">
-                  <span className="text-base text-[#0027BA] border-b border-1 border-[#0027BA] font-semibold">
-                    {datum.title}
-                  </span>
-                </td>
-                <td className={`px-4 py-3 text-center min-w-52`}>
-                  <div
-                    className={`my-3 w-[100px]  rounded ${getCategoryClass(
-                      datum.category
-                    )}`}
+              {loading ? (
+                <React.Fragment>
+                  <SkeletonRow />
+                  <SkeletonRow />
+                  <SkeletonRow />
+                  <SkeletonRow />
+                  <SkeletonRow />
+                  <SkeletonRow />
+                  {/* Add more SkeletonRow components as needed */}
+                </React.Fragment>
+              ) : (
+                currentItems.map((datum) => (
+                  <tr
+                    key={datum._id}
+                    onClick={() => {
+                      navigate(`/coursedetail/${datum._id}`);
+                    }}
+                    className="border-b my-2 cursor-pointer"
                   >
-                    <p className="p-2">{datum.category}</p>
-                  </div>
-                </td>
-                <td className="px-4 py-3 min-w-52 text-[#6072AC]">Nill</td>
-                <td className="px-4 py-3 min-w-52 text-[#6072AC]">
-                  {new Date(datum.createdAt).toLocaleDateString()}
-                </td>
-                <td className="px-4 py-3 min-w-52 text-[#6072AC]">Nill</td>
-                <td className="px-4 py-3 min-w-52 text-[#6072AC]">
-                  {datum.price}
-                </td>
-              </tr>
-            ))
-            }
+                    <td className="px-3 py-3 min-w-36 md:min-w-52">
+                      <span className="text-base text-[#0027BA] border-b border-1 border-[#0027BA] font-semibold">
+                        {datum.title}
+                      </span>
+                    </td>
+                    <td className={`px-4 py-3 text-center min-w-36  md:min-w-52`}>
+                      <div
+                        className={`my-3 w-[100px]  rounded ${getCategoryClass(
+                          datum.category
+                        )}`}
+                      >
+                        <p className="p-2">{datum.category}</p>
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 min-w-36 md:min-w-52 text-[#6072AC]">Nill</td>
+                    <td className="px-4 py-3 min-w-36 md:min-w-52 text-[#6072AC]">
+                      {new Date(datum.createdAt).toLocaleDateString()}
+                    </td>
+                    <td className="px-4 py-3 min-w-36 md:min-w-52 text-[#6072AC]">Nill</td>
+                    <td className="px-4 py-3 min-w-36 md:min-w-52 text-[#6072AC]">
+                      {datum.price}
+                    </td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>
@@ -321,5 +320,3 @@ const Library = () => {
 };
 
 export default Library;
-
-
