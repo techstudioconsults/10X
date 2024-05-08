@@ -23,17 +23,6 @@ const Library = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(9);
 
-  // const handleTabClick = (tab) => {
-  //   setActiveTab(tab);
-  //   setCurrentPage(1); // Reset the current page when the tab changes
-  // };
-
-  // const getTabClass = (tab) => {
-  //   return activeTab === tab
-  //     ? "text-[#0027BA] font-semibold"
-  //     : "text-[#818181] font-semibold";
-  // };
-
   const handleTabClick = (tab) => {
     setActiveTab(tab);
     setCurrentPage(1);
