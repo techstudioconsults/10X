@@ -1,5 +1,7 @@
 
 import FileDropzone from "./FileDropZone";
+import propTypes from 'prop-types'
+
 
 const CreateCourseDetails = ({setShowNext}) => {
   const handleNext = ()=>{
@@ -118,3 +120,7 @@ const CreateCourseDetails = ({setShowNext}) => {
 };
 
 export default CreateCourseDetails;
+
+CreateCourseDetails.propTypes = {
+setShowNext: propTypes.bool,
+}
