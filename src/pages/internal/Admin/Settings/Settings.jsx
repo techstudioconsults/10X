@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import useAdminContext from "../../../../hooks/useAdminContext";
 import { Bars } from "react-loader-spinner";
 import Cookies from "js-cookie";
+import { FaCircleCheck } from "react-icons/fa6";
 
 const Settings = () => {
   const { API_URL, getUser, userInfo, token } = useAdminContext();
@@ -215,7 +216,7 @@ const Settings = () => {
 
             <hr className="bg-grey bg-opacity-40 h-[1.5px] mt-4 " />
 
-            <p className="text-sm text-green-600">{successMessage.info}</p>
+            <p className="text-sm text-green-700  flex items-center gap-2">{successMessage.info && <FaCircleCheck />} {successMessage.info}</p>
             <div className="flex md:flex-row flex-col my-6 gap-3 w-full">
               <div className="flex flex-col xl:w-full w-full gap-1">
                 <label className="text-[#0027BA] font-medium">Full Name</label>
@@ -300,7 +301,7 @@ const Settings = () => {
               Security
             </h2>
             <hr className="bg-grey h-[1.5px]" />
-            <p className="text-sm text-green-600">{successMessage.security}</p>
+            <p className="text-sm text-green-700 flex items-center gap-2">{successMessage.security && <FaCircleCheck />}{successMessage.security}</p>
             <div className="flex flex-col gap-1">
               <label className="text-[#0027BA] font-medium">
                 Current Password

@@ -16,6 +16,7 @@ import Adminlogin from "./pages/internal/Auth/Adminlogin";
 import CreateCourse from "./pages/internal/Admin/create/CreateCourse";
 import MyCourses from "./pages/internal/user/Mycourses/MyCourses";
 import { SingleCourseView } from "./pages/internal/user/Mycourses/singleCourseView";
+import UserSettings from "./pages/internal/user/Usersetting/UserSettings";
 
 function App() {
   
@@ -28,7 +29,7 @@ function App() {
             <Route path="/resource" element={<Resource />} />
             <Route path="/about" element={<WhatWeDo />} />
             <Route path="/sales/:id" element={<SalesPage />} />
-
+            <Route path="/settings" element={<UserSettings />} />
             <Route path="/mycourses" element={<MyCourses />} />
             <Route
               path="/mycourses-resume/:title"
@@ -53,3 +54,4 @@ function App() {
 }
 
 export default App;
+ 

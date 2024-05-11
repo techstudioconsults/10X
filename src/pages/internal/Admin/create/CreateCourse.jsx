@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import CourseContent from "./content/CourseContent";
-import CourseModule from "./content/CourseContent";
+// import CourseModule from "./content/CourseContent";
 import CreateCourseDetails from "./content/CreateCourseDetails";
 
 const CreateCourse = () => {

@@ -6,6 +6,7 @@ import arrowDown from "../../assets/arrow-down.svg";
 import { useLocation } from "react-router-dom";
 import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
 import useAdminContext from "../../hooks/useAdminContext";
+import MenuComp from "./menu/Menu";
 
 const AdminNavbar = ({ setOpen }) => {
   const { userInfo } = useAdminContext();
@@ -80,7 +81,8 @@ const AdminNavbar = ({ setOpen }) => {
                 </p>
                 <p className="text-blue text-xs">Admin</p>
               </div>
-              <img src={arrowDown} alt="" />
+              {/* <img src={arrowDown} alt="" /> */}
+            <MenuComp />
             </div>
           </div>
         </div>

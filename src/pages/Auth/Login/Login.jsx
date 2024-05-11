@@ -16,10 +16,15 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const Login = () => {
-  const API_URL = import.meta.env.VITE_REACT_APP_API_URL
+  const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
   const [isLoading, setIsLoading] = useState(false);
-  const {register, handleSubmit, formState: {errors}} = useForm()
-  const navigate = useNavigate()
+  const [Error, setError] = useState({ password: "", email: "", network: "" });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -27,29 +32,62 @@ const Login = () => {
   console.log(API_URL);
 
   const onSubmit = async (data) => {
-    setIsLoading(true)
-    const formData = new FormData()
-    formData.append("email", data.email)
-    formData.append("password", data.password)
+    setIsLoading(true);
+    const formData = new FormData();
+    formData.append("email", data.email);
+    formData.append("password", data.password);
     try {
-        const {data} = await axios.post(`${API_URL}/api/v1/auth/login`, formData)
-        console.log(data);
+      const { data } = await axios.post(
+        `${API_URL}/api/v1/auth/login`,
+        formData
+      );
+      console.log(data);
 
-        if (data.success) {
-          setIsLoading(false)
-            Cookies.set("token", data.token)
-            navigate("/")
-           
-        }
+      if (data.success) {
+        setIsLoading(false);
+        Cookies.set("userToken", data.token);
+        navigate("/myCourses");
+      }
     } catch (error) {
-        console.log(error);
-        setIsLoading(false)
+      console.log(error);
+      setIsLoading(false);
+
+      if (error.message === "Network Error") {
+        setError({...Error, network: "Check your internet connection"})
+        setTimeout(() => {
+          setError({ password: "", email: "", network: "" });
+        }, 4000);
+      }
+
+      if (
+        !error.response.data.success &&
+        error.response.data.message === "Invalid email"
+      ) {
+        setError({
+          ...Error,
+          email: "This email address is unregistered with 10X Revenue",
+        });
+      }
+
+      if (
+        !error.response.data.success &&
+        error.response.data.message === "Invalid Password"
+      ) {
+        setError({
+          ...Error,
+          password: "Password does not match email address",
+        });
+      }
+
+      setTimeout(() => {
+        setError({ password: "", email: "", network: "" });
+      }, 4000);
     }
-  }
+  };
   return (
     <div>
-      <div className="flex lg:flex-row flex-col items-center gap-4 h-screen">
-        <div className="h-full lg:self-start hidden lg:block">
+      <div className="lg:grid grid-cols-2  flex lg:flex-col items-center gap-4 h-screen">
+        <div className="h-screen lg:self-start hidden lg:block">
           <img
             src={signinImg}
             alt=""
@@ -62,8 +100,8 @@ const Login = () => {
           />
         </div>
         <div
-          className="lg:w-1/2 w-full flex flex-col justify-between h-full p-4 self-center items-center"
-          style={{ maxWidth: "720px", margin: "auto", maxHeight: "827px" }}
+          className="w-full flex flex-col justify-between h-full p-4 self-center items-center"
+          // style={{ maxWidth, margin: "auto", maxHeight: "827px" }}
         >
           <div className="flex flex-col gap-3 justify-between h-full self-center items-center">
             <span className="self-center lg:self-start">
@@ -75,7 +113,10 @@ const Login = () => {
                 />
               </Link>
             </span>
-            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col mx-auto gap-3">
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="flex flex-col mx-auto gap-3"
+            >
               <div>
                 <h2 className="font-[1000] text-xl md:text-2xl text-center lg:text-start  text-blue">
                   Welcome Back
@@ -84,59 +125,73 @@ const Login = () => {
                   Please enter your details to continue to 10x Revenue Growth
                 </p>
               </div>
-
+              <p className="text-red-500">{Error.network}</p>
               <div className="flex flex-col gap-8 my-4">
-                <div className="relative w-full  flex items-center">
-                  <img
-                    src={emailIcon}
-                    className=" absolute h-5  left-4"
-                    alt=""
-                  />
-                  <input
-                    type="email"
-                    {...register("email", {
-                      required: "Email is required",
+                <div>
+                  <div className="relative w-full  flex items-center">
+                    <img
+                      src={emailIcon}
+                      className=" absolute h-5  left-4"
+                      alt=""
+                    />
+                    <input
+                      type="email"
+                      {...register("email", {
+                        required: "Email is required",
                         pattern: {
-                          value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                          message: "Enter a valid email address"
+                          value:
+                            /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                          message: "Enter a valid email address",
                         },
-                      
-                    })}
-                    className="w-full border-2 px-10 border-grey outline-none h-12 rounded-lg text-grey text-base "
-                    placeholder="Email Address"
-                  />
-                                {errors.email && <p className="text-red-500">{errors.email.message}</p>}
+                      })}
+                      className="w-full border-2 px-10 border-grey outline-none h-12 rounded-lg text-grey text-base "
+                      placeholder="Email Address"
+                    />
+                  </div>
+
+                  <p className="text-red-500">{Error.email}</p>
+                  {errors.email && (
+                    <p className="text-red-500">{errors.email.message}</p>
+                  )}
                 </div>
-                <div className="relative w-full  flex items-center">
-                  <img
-                    src={lock}
-                    className=" absolute h-[18px]  left-4"
-                    alt=""
-                  />
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    {...register("password", {
-                      required: "Password is required"
-                    })}
-                    className="w-full border-2 border-grey outline-none h-12 rounded-lg px-10 text-grey text-base "
-                    placeholder="Password"
-                  />
-                  <button
-                    type="button"
-                    className="absolute inset-y-0 right-0 flex items-center px-3"
-                    onClick={togglePasswordVisibility}
-                  >
-                    {showPassword ? <FiEye /> : <FiEyeOff />}
-                  </button>
+
+                <div>
+                  <div className="relative w-full  flex items-center">
+                    <img
+                      src={lock}
+                      className=" absolute h-[18px]  left-4"
+                      alt=""
+                    />
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      {...register("password", {
+                        required: "Password is required",
+                      })}
+                      className="w-full border-2 border-grey outline-none h-12 rounded-lg px-10 text-grey text-base "
+                      placeholder="Password"
+                    />
+                    <button
+                      type="button"
+                      className="absolute inset-y-0 right-0 flex items-center px-3"
+                      onClick={togglePasswordVisibility}
+                    >
+                      {showPassword ? <FiEye /> : <FiEyeOff />}
+                    </button>
+                  </div>
+                  <p className="text-red-500">{Error.password}</p>
+                  {errors.password && (
+                    <p className="text-red-500">{errors.password.message}</p>
+                  )}
                 </div>
               </div>
               <div className="w-full flex justify-between items-center text-grey mt-4">
                 <label className="font-semibold text-xs flex items-center gap-1 cursor-pointer ">
                   <input
-                  {...register("checkbox")}
+                    {...register("checkbox")}
                     className="size-4 rounded-md cursor-pointer"
                     name=""
                     id=""
+                    type="checkbox"
                   />{" "}
                   Remember Me
                 </label>
@@ -146,15 +201,21 @@ const Login = () => {
               </div>
 
               <button className="w-full flex items-center justify-center bg-blue font-bold text-white h-[45px] rounded-xl ">
-              {isLoading ? <div><Bars
-  height="30"
-  width="100"
-  color="#fff"
-  ariaLabel="bars-loading"
-  wrapperStyle={{}}
-  wrapperClass=""
-  visible={true}
-  /></div> :"Log In"}
+                {isLoading ? (
+                  <div>
+                    <Bars
+                      height="30"
+                      width="100"
+                      color="#fff"
+                      ariaLabel="bars-loading"
+                      wrapperStyle={{}}
+                      wrapperClass=""
+                      visible={true}
+                    />
+                  </div>
+                ) : (
+                  "Log In"
+                )}
               </button>
             </form>
 
