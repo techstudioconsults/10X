@@ -12,7 +12,7 @@ import { FaCircleCheck } from "react-icons/fa6";
 import DeleteUser from "../../../../../components/Modal/DeleteUser/DeleteUser";
 
 const Profile = () => {
-  const { API_URL } = useUserContext();
+  const { API_URL, getUserInfo, } = useUserContext();
   const {
     register,
     handleSubmit,
@@ -96,6 +96,8 @@ const Profile = () => {
 
         getUser();
         setIsLoading(false);
+        getUserInfo()
+        // getData()
       }
 
       setTimeout(() => {

@@ -1,16 +1,47 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import revenueLogo from "../../assets/10X LOGO.png";
 import { Link } from "react-router-dom";
 import { Turn as Hamburger } from "hamburger-react";
 import "../Navbar/navbar.css";
 import { motion } from "framer-motion";
+import Cookies from "js-cookie";
+import useUserContext from "../../hooks/useUserContext";
+import axios from "axios";
+import MenuComp from "./menu/Menu";
+
 
 export const Navbar = () => {
+  const {API_URL, getUserInfo, userInfo} = useUserContext()
+  // const [userInfo, setUserInfo] = useState(user)
   const [isOpen, setOpen] = useState(false);
+  const userToken = Cookies.get("userToken");
+
 
   const handleClose = () => {
     setOpen(false);
-  };
+  }
+    // const getUser = async () => {
+    //   try {
+    //     const { data } = await axios.get(`${API_URL}/api/v1/auth/me`, {
+    //       headers: {
+    //         Authorization: `Bearer ${userToken}`,
+    //       },
+    //     });
+    //     console.log(data);
+    //     if (data.success) {
+    //       setUserInfo(data);
+         
+    //     }
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // };
+  
+
+  // useEffect(() => {
+  //   getUserInfo()
+  //   // getUser()
+  // }, [userToken])  
 
   return (
     <nav className=" relative">
@@ -37,14 +68,33 @@ export const Navbar = () => {
             <Link to="/resource" className=" text-blue nav__link">
               Resources Hub
             </Link>
+
+            {
+              userToken ? <Link to="/mycourses" className=" text-blue nav__link">
+              My Courses
+            </Link> : null
+            }
           </div>
 
-          <Link
+          {userToken ?  <div className="flex gap-3 items-center">
+              <img
+                src={userInfo?.data?.photo}
+                className=" w-8 h-8 bg-[#6072AC] rounded-full object-cover"
+                alt=""
+              />
+              <div className="hidden md:block">
+                <p className=" font-semibold text-blue ">
+                  {userInfo?.data?.fullname}
+                </p>
+              </div>
+              {/* <img src={arrowDown} alt="" /> */}
+            <MenuComp />
+            </div> : <Link
             to="/login"
             className=" border border-blue w-[90px] h-[45px] md:flex justify-center items-center rounded-lg text-blue font-semibold hover:bg-blue hover:text-white duration-500 hidden "
           >
             Sign In
-          </Link>
+          </Link>}
 
           <div className="text-blue font-bold md:hidden">
             <Hamburger toggled={isOpen} toggle={setOpen} size={30} />
