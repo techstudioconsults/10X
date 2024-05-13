@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import arrowDown from "../../../../assets/special-arrow-down.svg";
 import arrowUp from "../../../../assets/special-arrow-up.svg";
@@ -11,9 +11,10 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Bars } from "react-loader-spinner";
 import axiosInstance from "../../../../utils/axiosConfig";
-import { UserContext } from "../../../../context/UserContext";
+import useUserContext from "../../../../hooks/useUserContext";
 
 function PurchaseForm() {
+  const {getUserInfo} = useUserContext()
   const { id } = useParams();
   const navigate = useNavigate()
   // console.log(id);
@@ -33,7 +34,7 @@ function PurchaseForm() {
   const [amount] = useState(40000);
   const [ registrationError, setRegistrationError ] = useState("")
   const [isValid, setIsValid] = useState(true);
-  const {getUserInfo } = UserContext() 
+  
 
   useEffect(() => {
     // Check if all input fields are filled
@@ -82,7 +83,7 @@ function PurchaseForm() {
         console.log(loginRes.data.token);
         if (loginRes.status === 200) {
           Cookies.set("userToken", loginRes.data.token)
-          // getUserInfo()
+          getUserInfo()
           // Handle successful login
           navigate("/mycourses")
           console.log("User logged in successfully");
