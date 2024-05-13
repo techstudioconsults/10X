@@ -1,23 +1,22 @@
-import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-const Home = lazy(() => import("./pages/external/Home/Home"));
-const Resource = lazy(() => import("./pages/external/Resource/Resource"));
-const SalesPage = lazy(() => import("./pages/external/SalesPage/SalesPage"));
-const Login = lazy(() => import("./pages/Auth/Login/Login"));
-const Rootlayout = lazy(() => import("./layout/Rootlayout"));
-const WhatWeDo = lazy(() => import("./pages/external/About/WhatWeDO"));
-const Adminlayout = lazy(() => import("./layout/AdminLayout"));
-const Library = lazy(() => import("./pages/internal/Admin/library/Library"));
-const Settings = lazy(() => import("./pages/internal/Admin/Settings/Settings"));
-const Dashboard = lazy(() => import("./pages/internal/Admin/Home/Dashboard"));
-const Edit = lazy(() => import("./pages/internal/Admin/Edit-Course/Edit"));
-const CourseDetail = lazy(() => import("./pages/internal/Admin/coursedetail/CourseDetail"));
-const Adminlogin = lazy(() => import("./pages/internal/Auth/Adminlogin"));
-const CreateCourse = lazy(() => import("./pages/internal/Admin/create/CreateCourse"));
-const MyCourses = lazy(() => import("./pages/internal/user/Mycourses/MyCourses"));
-const SingleCourseView = lazy(() => import("./pages/internal/user/Mycourses/singleCourseView"));
-const UserSettings = lazy(() => import("./pages/internal/user/Usersetting/UserSettings"));
+import { Home } from "./pages/external/Home/Home";
+import Resource from "./pages/external/Resource/Resource";
+import SalesPage from "./pages/external/SalesPage/SalesPage";
+import Login from "./pages/Auth/Login/Login";
+import Rootlayout from "./layout/Rootlayout";
+import WhatWeDo from "./pages/external/About/WhatWeDO";
+import Adminlayout from "./layout/AdminLayout";
+import Library from "./pages/internal/Admin/library/Library";
+import Settings from "./pages/internal/Admin/Settings/Settings";
+import Dashboard from "./pages/internal/Admin/Home/Dashboard";
+import Edit from "./pages/internal/Admin/Edit-Course/Edit";
+import CourseDetail from "./pages/internal/Admin/coursedetail/CourseDetail";
+import Adminlogin from "./pages/internal/Auth/Adminlogin";
+import CreateCourse from "./pages/internal/Admin/create/CreateCourse";
+import MyCourses from "./pages/internal/user/Mycourses/MyCourses";
+import { SingleCourseView } from "./pages/internal/user/Mycourses/singleCourseView";
+import UserSettings from "./pages/internal/user/Usersetting/UserSettings";
 
 function App() {
   
