@@ -5,17 +5,18 @@ import arrowUp from "../../../../assets/special-arrow-up.svg";
 import person from "../../../../assets/purchase-fullname.svg";
 import emailIcon from "../../../../assets/purchase-email.svg";
 import lock from "../../../../assets/purchase-lock.svg";
+import Cookies from "js-cookie";
 import "./PurchaseForm.css";
 import { useParams, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import { Bars } from "react-loader-spinner";
 import axiosInstance from "../../../../utils/axiosConfig";
+import { UserContext } from "../../../../context/UserContext";
 
 function PurchaseForm() {
   const { id } = useParams();
   const navigate = useNavigate()
-  console.log(id);
+  // console.log(id);
   const [email, setEmail] = useState("");
   const [fullName, setFullName] = useState("");
   const [password, setPassword] = useState("");
@@ -30,6 +31,9 @@ function PurchaseForm() {
   const [passwordError, setPasswordError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [amount] = useState(40000);
+  const [ registrationError, setRegistrationError ] = useState("")
+  const [isValid, setIsValid] = useState(true);
+  // const {getUserInfo } = UserContext() 
 
   useEffect(() => {
     // Check if all input fields are filled
@@ -58,6 +62,7 @@ function PurchaseForm() {
         "/api/v1/auth/register",
         formData
       );
+      console.log(registerRes);
       setIsLoading(true);
       if (registerRes.status === 200) {
         setIsLoading(false);
@@ -74,19 +79,24 @@ function PurchaseForm() {
           "/api/v1/auth/login",
           loginData
         );
+        console.log(loginRes.data.token);
         if (loginRes.status === 200) {
+          Cookies.set("userToken", loginRes.data.token)
+          // getUserInfo()
           // Handle successful login
           navigate("/mycourses")
           console.log("User logged in successfully");
-          
           // You can store the user's token or perform any other necessary actions here
         } else {
           console.error("Failed to log in the user");
         }
-      }
+      } 
       console.log(registerRes);
     } catch (error) {
       console.log(error);
+      console.log(error.response.data.error);
+      setIsLoading(false)
+      setRegistrationError(error.response.data.error)
     }
     console.log("Form submitted!");
   };
@@ -130,6 +140,30 @@ function PurchaseForm() {
     }
   }, [confirmPassword]);
 
+  const isValidPassword = (password) => {
+    // Check if the password is at least 8 characters long
+    if (password.length < 8) {
+      return false;
+    }
+  
+    // Define the regular expression pattern
+    const pattern = /[0-9!@#$%^&*(),.?":{}|<>]/;
+  
+    // Check if the password contains at least one number or special character
+    if (!pattern.test(password)) {
+      return false;
+    }
+  
+    // If both conditions are met, return true
+    return true;
+  };
+
+  const handlePasswordChange = (e) => {
+    const newPassword = e.target.value;
+    setPassword(newPassword);
+    setIsValid(isValidPassword(newPassword));
+  };
+
   return (
     <div className="flex flex-col items-center container mx-auto w-full lg:my-0 my-7 ">
       <img
@@ -171,14 +205,16 @@ function PurchaseForm() {
             />
           </div>
 
-          <div className="relative flex items-center">
+          {/* <div className="relative flex items-center">
             <img src={lock} className=" absolute h-5  left-4" alt="" />
             <input
               type={showPassword ? "text" : "password"}
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={handlePasswordChange}
               placeholder="Create Password"
-              className="border border-[#787878] rounded-md py-3 pl-12 w-full bg-[#FAFBFF] pr-10"
+              className={`border border-[#787878] rounded-md py-3 pl-12 w-full bg-[#FAFBFF] pr-10 ${
+                isValid ? '' : 'border-red-500'
+              }`}
               required
             />
             <button
@@ -188,7 +224,39 @@ function PurchaseForm() {
             >
               {showPassword ? <FiEye /> : <FiEyeOff />}
             </button>
-          </div>
+            {!isValid && (
+        <p className="text-red-500">
+          Password must be at least 8 characters long and contain at least one number or special character.
+        </p>
+      )}
+          </div> */}
+          <div>
+      <img src={lock} className="absolute h-5 left-4" alt="" />
+      <input
+        type={showPassword ? 'text' : 'password'}
+        value={password}
+        onChange={handlePasswordChange}
+        placeholder="Create Password"
+        className={`border border-[#787878] rounded-md py-3 pl-12 w-full bg-[#FAFBFF] pr-10 ${
+          isValid ? '' : 'border-red-500'
+        }`}
+        required
+      />
+      <button
+        type="button"
+        className="absolute inset-y-0 right-0 flex items-center px-3"
+        onClick={togglePasswordVisibility}
+      >
+        {showPassword ? <FiEye /> : <FiEyeOff />}
+      </button>
+      {!isValid && (
+        <div className="text-red-500 mt-2">
+          <p>
+            Password must be at least 8 characters long and contain at least one number or special character.
+          </p>
+        </div>
+      )}
+    </div>
           <div>
             <div className="relative flex items-center">
               <img src={lock} className=" absolute h-5  left-4" alt="" />
@@ -244,6 +312,7 @@ function PurchaseForm() {
               </span>
             </div>
           </div>
+          {registrationError && <p className="text-red-500 mt-2">{registrationError}</p>}
 
           <button
             onClick={() => {
