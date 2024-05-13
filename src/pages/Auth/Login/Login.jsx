@@ -14,9 +14,11 @@ import { FiEye, FiEyeOff } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import useUserContext from "../../../hooks/useUserContext";
 
 const Login = () => {
-  const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
+  // const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
+  const {getUserInfo, API_URL} = useUserContext()
   const [isLoading, setIsLoading] = useState(false);
   const [Error, setError] = useState({ password: "", email: "", network: "" });
   const {
@@ -44,9 +46,10 @@ const Login = () => {
       console.log(data);
 
       if (data.success) {
-        setIsLoading(false);
         Cookies.set("userToken", data.token);
+        getUserInfo()
         navigate("/myCourses");
+        setIsLoading(false);
       }
     } catch (error) {
       console.log(error);
@@ -86,8 +89,8 @@ const Login = () => {
   };
   return (
     <div>
-      <div className="lg:grid grid-cols-2  flex lg:flex-col items-center gap-4 h-screen">
-        <div className="h-screen lg:self-start hidden lg:block">
+      <div className="lg:grid grid-cols-2  flex flex-col items-center gap-4 h-screen">
+        <div className="h-screen lg:self-start ">
           <img
             src={signinImg}
             alt=""
