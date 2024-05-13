@@ -33,7 +33,7 @@ function PurchaseForm() {
   const [amount] = useState(40000);
   const [ registrationError, setRegistrationError ] = useState("")
   const [isValid, setIsValid] = useState(true);
-  const {getUserInfo, } = UserContext() 
+  // const {getUserInfo } = UserContext() 
 
   useEffect(() => {
     // Check if all input fields are filled
@@ -82,7 +82,7 @@ function PurchaseForm() {
         console.log(loginRes.data.token);
         if (loginRes.status === 200) {
           Cookies.set("userToken", loginRes.data.token)
-          getUserInfo()
+          // getUserInfo()
           // Handle successful login
           navigate("/mycourses")
           console.log("User logged in successfully");
