@@ -37,11 +37,14 @@ export const Navbar = () => {
     //   }
     // };
   
+    
 
-  // useEffect(() => {
-  //   getUserInfo()
-  //   // getUser()
-  // }, [userToken])  
+  useEffect(() => {
+    setTimeout(() => {
+      getUserInfo()
+    }, 4000);
+    // getUser()
+  }, [userToken])  
 
   return (
     <nav className=" relative">

@@ -49,6 +49,7 @@ const Login = () => {
         Cookies.set("userToken", data.token);
         getUserInfo()
         navigate("/myCourses");
+        window.location.reload()
         setIsLoading(false);
       }
     } catch (error) {
