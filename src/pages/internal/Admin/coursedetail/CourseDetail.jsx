@@ -11,7 +11,7 @@ import Overview from "./content/Overview"
 
 const CourseDetail = () => {
   const { id } = useParams()
-  console.log(id);
+  // console.log(id);
   const { single, error, loading } = useFetch(`/api/v1/course/${id}`);
   console.log(single);
   const [activeTab, setActiveTab] = React.useState("overview")
@@ -39,21 +39,21 @@ const CourseDetail = () => {
             <Tab
               value="overview"
               onClick={() => setActiveTab("overview")}
-              className={`w-1/6 text-lg font-bold ${activeTab === "overview" ? "text-[#0027BA]  " : "text-gray-600"}`}
+              className={`w-3/6 lg:w-1/6 text-lg font-bold ${activeTab === "overview" ? "text-[#0027BA]  " : "text-gray-600"}`}
             >
               Overview
             </Tab>
             <Tab
               value="coursedetail"
               onClick={() => setActiveTab("coursedetail")}
-              className={`w-1/6 text-lg font-bold ${activeTab === "coursedetail" ? "text-[#0027BA] " : " text-gray-600"}`}
+              className={`w-3/6 lg:w-1/6 text-lg font-bold ${activeTab === "coursedetail" ? "text-[#0027BA] " : " text-gray-600"}`}
             >
               Course Detail
             </Tab>
           </TabsHeader>
           <TabsBody>
             <TabPanel className="px-0" value="overview">
-              <Overview/>
+              <Overview courseId= {id}/>
             </TabPanel>
             <TabPanel className="px-0" value="coursedetail">
               <Details data={single} />
