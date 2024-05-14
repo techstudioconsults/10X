@@ -24,7 +24,7 @@ import { MobileAccordions } from "../../../components/Reusable/MobileAccordion";
 import { AssistSlider } from "../../../components/Reusable/AssitSlider";
 import { FirstCardSlider } from "../../../components/Reusable/FirstCardSlider";
 
-export const Home = () => {
+ const Home = () => {
   const location = useLocation()
   useEffect(()=>{
     window.scrollTo(0, 0)
@@ -442,3 +442,6 @@ export const Home = () => {
     </main>
   );
 };
+
+
+export default Home
