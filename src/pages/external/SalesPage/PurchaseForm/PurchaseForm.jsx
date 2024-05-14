@@ -33,7 +33,7 @@ function PurchaseForm() {
   const [amount] = useState(40000);
   const [ registrationError, setRegistrationError ] = useState("")
   const [isValid, setIsValid] = useState(true);
-  const {getUserInfo } = UserContext() 
+  // const {getUserInfo } = UserContext() 
 
   useEffect(() => {
     // Check if all input fields are filled
