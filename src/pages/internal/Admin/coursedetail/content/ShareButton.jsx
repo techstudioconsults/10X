@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import { useLocation } from 'react-router-dom';
 import shareIcon from '../../../../../assets/share-icon.png';
 
@@ -34,7 +34,7 @@ const ShareButton = () => {
 
   return (
     <button
-      className="lg:flex gap-2 w-28 border-2 items-center px-3 border-[rgba(2, 38, 176, 0.4)] rounded-md bg-white text-[#0027BA] h-12"
+      className="flex lg:flex gap-2 w-28 border-2 items-center px-3 border-[rgba(2, 38, 176, 0.4)] rounded-md bg-white text-[#0027BA] h-12"
       onClick={handleShare}
     >
       <img src={shareIcon} alt="share icon img" />
