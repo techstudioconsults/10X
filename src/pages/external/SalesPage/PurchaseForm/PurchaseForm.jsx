@@ -418,27 +418,26 @@ function PurchaseForm() {
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [amount] = useState(40000);
+  const [ registrationError, setRegistrationError ] = useState("")
+  const [isValid, setIsValid] = useState(true);
+  const {getUserInfo } = UserContext() 
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
+  useEffect(() => {
+    // Check if all input fields are filled
+    const inputsFilled =
+      email !== "" &&
+      fullName !== "" &&
+      password !== "" &&
+      confirmPassword !== "";
+    setAllInputsFilled(inputsFilled);
 
-  const toggleConfirmPasswordVisibility = () => {
-    setShowConfirmPassword(!showConfirmPassword);
-  };
-
-  const isValidPassword = (password) => {
-    if (password.length < 8) {
-      return false;
-    }
-
-    const pattern = /[0-9!@#$%^&*(),.?":{}|<>]/;
-    if (!pattern.test(password)) {
-      return false;
-    }
-
-    return true;
-  };
+    // Check if both checkboxes are checked
+    setAllChecked(subscribe && agreeTerms);
+  }, [email, fullName, password, confirmPassword, subscribe, agreeTerms]);
 
   const onSubmit = async (data) => {
     try {
