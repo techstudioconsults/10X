@@ -18,6 +18,8 @@ export const Navbar = () => {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const showSignIn = userToken? 'hidden' : 'block'
   // const getUser = async () => {
   //   try {
   //     const { data } = await axios.get(`${API_URL}/api/v1/auth/me`, {
@@ -93,7 +95,7 @@ export const Navbar = () => {
             ) : (
               <Link
                 to="/login"
-                className=" border border-blue w-[90px] h-[45px] md:flex justify-center items-center rounded-lg text-blue font-semibold hover:bg-blue hover:text-white duration-500 hidden "
+                className={`${showSignIn}  border border-blue w-[90px] h-[45px] md:flex justify-center items-center rounded-lg   text-blue font-semibold hover:bg-blue hover:text-white duration-500 hidden `}
               >
                 Sign In
               </Link>
@@ -133,7 +135,7 @@ export const Navbar = () => {
 
             <Link
               to="/login"
-              className=" border border-blue md:flex justify-center items-center rounded-lg text-blue font-semibold hover:bg-blue hover:text-white duration-500 py-2 px-5"
+              className={` ${showSignIn} border border-blue md:flex justify-center items-center rounded-lg text-blue font-semibold hover:bg-blue hover:text-white duration-500 py-2 px-5`}
             >
               Sign In
             </Link>
