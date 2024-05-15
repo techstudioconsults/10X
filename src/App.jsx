@@ -29,6 +29,7 @@ const UserSettings = lazy(() =>
 import Rootlayout from "./layout/Rootlayout";
 import Adminlayout from "./layout/AdminLayout";
 import PrivateRoute from "./utils/PrivateRoute";
+import PageLoader from "./components/loader/PageLoader";
 
 
 
@@ -51,7 +52,9 @@ import PrivateRoute from "./utils/PrivateRoute";
 function App() {
   return (
     <div>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div>
+        <PageLoader/>
+      </div>}>
         <BrowserRouter>
           <Routes>
             <Route element={<Rootlayout />}>
