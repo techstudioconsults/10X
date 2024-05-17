@@ -23,6 +23,8 @@ import { Accordions } from "../../../components/Reusable/Accordion";
 import { MobileAccordions } from "../../../components/Reusable/MobileAccordion";
 import { AssistSlider } from "../../../components/Reusable/AssitSlider";
 import { FirstCardSlider } from "../../../components/Reusable/FirstCardSlider";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 export const Home = () => {
   const location = useLocation()
@@ -86,28 +88,29 @@ export const Home = () => {
         </div>
 
         <section className=" relative left-0 right-0 md:w-[844px] mx-auto max-w-full">
-          <img
+          <LazyLoadImage
             src={heroImg}
+            // effect="blur"
             alt=""
             className="w-[343px] h-[329px] md:w-[744px] md:h-[744px] mx-auto  left-0 right-0 relative hidden md:block"
           />
 
           <div className=" absolute hidden  top-10 bottom-[50%] md:flex justify-between items-center left-3 right-3">
-            <img src={first} alt="" className="w-[123px] h-[118px]" />
-            <img src={second} alt="" className="w-[123px] h-[118px]" />
+            <LazyLoadImage src={first} alt="" className="w-[123px] h-[118px]" />
+            <LazyLoadImage src={second} alt="" className="w-[123px] h-[118px]" />
           </div>
-          <img
+          <LazyLoadImage
             src={com}
             className="absolute top-[45%] left-14 right-14 hidden md:block h-[64px] w-[696px] object-cover"
             alt=""
           />
-          <img
+          <LazyLoadImage
             src={trust}
             className="absolute top-[38%] left-[38%] hidden md:block"
             alt=""
           />
           <div className=" absolute -bottom-14 hidden md:block left-0 right-0">
-            <img src={white} alt="" className=" h-[300px] w-[900px]" />
+            <LazyLoadImage src={white} alt="" className=" h-[300px] w-[900px]" />
           </div>
         </section>
 
@@ -118,7 +121,7 @@ export const Home = () => {
           </button></Link>
         </div>
 
-        <img src={mcompanies} alt="" className="w-full  md:hidden mt-[120px]" />
+        <LazyLoadImage effect="blur" src={mcompanies} alt="" className="w-full  md:hidden mt-[120px]" />
       </section>
 
       <div className="text-center mt-8 mb-16">
