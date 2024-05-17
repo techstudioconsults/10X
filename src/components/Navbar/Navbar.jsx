@@ -8,6 +8,7 @@ import Cookies from "js-cookie";
 import useUserContext from "../../hooks/useUserContext";
 import axios from "axios";
 import MenuComp from "./menu/Menu";
+import { Typography } from "@material-tailwind/react";
 
 export const Navbar = () => {
   const { API_URL, getUserInfo, userInfo } = useUserContext();
@@ -83,9 +84,21 @@ export const Navbar = () => {
                   alt=""
                 />
                 <div className="hidden md:block">
-                  <p className=" font-semibold text-blue ">
-                    {userInfo?.data?.fullname}
-                  </p>
+                  {userInfo ? (
+                    <p className=" font-semibold text-blue ">
+                      {userInfo?.data?.fullname}
+                    </p>
+                  ) : (
+                    <div className="animate-pulse flex items-center">
+                      <Typography
+                        as="div"
+                        variant="h1"
+                        className=" h-3 w-16 rounded-xl bg-gray-600"
+                      >
+                        &nbsp;
+                      </Typography>{" "}
+                    </div>
+                  )}
                 </div>
                 {/* <img src={arrowDown} alt="" /> */}
                 <MenuComp />
