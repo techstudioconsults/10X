@@ -8,7 +8,7 @@ const PageLoader = () => {
   return (
     <main className="bg-white h-screen flex justify-center items-center gap-5">
       <LazyLoadImage src={logo} effect="blur" loading="lazy" />
-      <Oval
+      {/* <Oval
         visible={true}
         height="40"
         width="40"
@@ -16,7 +16,7 @@ const PageLoader = () => {
         ariaLabel="oval-loading"
         wrapperStyle={{}}
         wrapperClass=""
-      />
+      /> */}
     </main>
   );
 };
