@@ -1,8 +1,5 @@
 import "./Library.css";
 import React from "react";
-
-// import printIcon from "../../../../assets/print-icon.png";
-
 import exportIcon from "../../../../assets/Export -icon.png";
 import { useFetch } from "../../../../hooks/useFetch";
 import { useNavigate, Link } from "react-router-dom";

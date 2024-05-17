@@ -4,9 +4,8 @@ import { Link } from "react-router-dom";
 
 export const Footer = () => {
   return (
-    <footer className="pb-7">
-      <section className="">
-        {" "}
+    <footer className="">
+      <section className="pb-7">
         <main className=" p-5  md:flex justify-between container mx-auto w-11/12 gap-3">
           <section className="hidden md:block ">
             <img src={logo} alt="" className=" md:w-[200px] md:h-[70px]" />
@@ -56,7 +55,7 @@ export const Footer = () => {
             </p>
           </section>
         </main>
-        {/* <hr className=" w-[540px] md:w-[900px] lg:w-[910px] max-w-full mx-auto" /> */}
+
         <div className="bg-white w-11/12 h-[1px] mx-auto hidden md:block" />
         <section className="md:hidden mx-4 space-y-4 mt-3 flex flex-col text-[#fefefe] font-[650]">
           <hr className="bg-white w-[540px] md:w-[900px] lg:w-[910px] max-w-full mx-auto " />

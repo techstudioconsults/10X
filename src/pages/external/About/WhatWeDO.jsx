@@ -22,6 +22,8 @@ import number4 from "../../../assets/number4.svg";
 import scaleImg from "../../../assets/scaleImg.svg";
 import systemImg from "../../../assets/systemsImg.svg";
 import doubleImg from "../../../assets/grouped-imgs.svg";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 import { useEffect } from "react";
 
@@ -46,15 +48,16 @@ const WhatWeDo = () => {
             customers.
           </p>
           <div className="flex justify-center lg:justify-start">
-            <Link to="/sales">
+            <Link to="/resource">
               <button className=" border px-9 py-3 border-blue  rounded-lg text-blue font-semibold hover:bg-blue hover:text-white duration-500 text-xl">
                 Get started Now
               </button>
             </Link>
           </div>
         </div>
-        <div className="lg:order-2 ">
-          <img
+        <div className="lg:order-2 flex 2xl:ml-20 md: mx-auto ">
+          <LazyLoadImage
+          effect="blur"
             className="w-full lg:h-[600px] h-[450px] translate-y-5"
             src={heroImg}
             alt=""
@@ -108,13 +111,13 @@ const WhatWeDo = () => {
                 </p>
               </div>
               <div className="flex flex-col items-center lg:flex-row gap-5 ">
-                <Link to="/sales">
+                <Link to="/resource">
                   <button className=" border px-9 py-2 border-blue  rounded-lg font-semibold bg-blue text-white hover:bg-light-blue-900 hover:text-white duration-500 w-full md:w-48 lg:w-52 text-xl">
                     Get started
                   </button>
                 </Link>
                 <Link
-                  to="/sales"
+                  to="/resource"
                   className="text-[#6476BA] text-lg text-center lg:text-start"
                 >
                   <u>Scale to $100k Course</u>
@@ -122,13 +125,13 @@ const WhatWeDo = () => {
               </div>
             </div>
             <div className="order-1 lg:order-2 flex justify-center">
-              <img src={meeting} alt="" />
+              <LazyLoadImage effect="blur" src={meeting} alt="" />
             </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-0 my-7 items-center p-6 border border-gray-500 border-opacity-25 rounded-md shadow-md">
             <div className=" flex justify-center">
-              <img src={clientImg} alt="" />
+              <LazyLoadImage effect="blur" src={clientImg} alt="" />
             </div>
             <div className="flex flex-col gap-4 ">
               <div className="w-full xl:w-4/5 flex flex-col gap-4">
@@ -141,13 +144,13 @@ const WhatWeDo = () => {
                 </p>
               </div>
               <div className="flex flex-col items-center lg:flex-row gap-5 ">
-                <Link to="/sales">
+                <Link to="/resource">
                   <button className=" border px-9 py-2 border-blue  rounded-lg font-semibold bg-blue text-white hover:bg-light-blue-900 hover:text-white duration-500 w-full md:w-48 lg:w-52 text-xl">
                     Get started
                   </button>
                 </Link>
                 <Link
-                  to="/sales"
+                  to="/resource"
                   className="text-[#6476BA] text-lg text-center lg:text-start"
                 >
                   <u>Scale to $100k Course</u>
@@ -168,13 +171,13 @@ const WhatWeDo = () => {
                 </p>
               </div>
               <div className="flex flex-col items-center lg:flex-row gap-5 ">
-                <Link to="/sales">
+                <Link to="/resource">
                   <button className=" border px-9 py-2 border-blue  rounded-lg font-semibold bg-blue text-white hover:bg-light-blue-900 hover:text-white duration-500 w-full md:w-48 lg:w-52 text-xl">
                     Get started
                   </button>
                 </Link>
                 <Link
-                  to="/sales"
+                  to="/resource"
                   className="text-[#6476BA] text-lg text-center lg:text-start"
                 >
                   <u>Scale to $100k Course</u>
@@ -182,7 +185,7 @@ const WhatWeDo = () => {
               </div>
             </div>
             <div className="order-1 lg:order-2 flex justify-center">
-              <img src={successImg} alt="" />
+              <LazyLoadImage effect="blur" src={successImg} alt="" />
             </div>
           </div>
 
@@ -207,7 +210,7 @@ const WhatWeDo = () => {
                 <img className="w-40" src={flyIlustration} alt="" />
               </div>
               <div className="flex  justify-center ">
-                <Link to="/sales">
+                <Link to="/resource">
                   <button className=" border px-7 py-2 bg-blue  rounded-lg text-white font-semibold hover:bg-light-blue-900 hover:text-white duration-500 text-xl">
                     Get started
                   </button>
@@ -262,7 +265,7 @@ const WhatWeDo = () => {
                 />
               </div>
               <div>
-                <img className="hidden lg:block" src={handshakeImg} alt="" />
+                <LazyLoadImage effect="blur" className="hidden lg:block" src={handshakeImg} alt="" />
               </div>
             </div>
           </div>
@@ -293,7 +296,7 @@ const WhatWeDo = () => {
             </div>
             <div className="grid order-2 lg:order-1 grid-cols-1 lg:grid-cols-2">
               <div>
-                <img className="hidden lg:block" src={marketingImg} alt="" />
+                <LazyLoadImage effect="blur" className="hidden lg:block" src={marketingImg} alt="" />
               </div>
               <div className="flex justify-center">
                 <img
@@ -340,7 +343,7 @@ const WhatWeDo = () => {
                 />
               </div>
               <div>
-                <img className="hidden lg:block" src={scaleImg} alt="" />
+                <LazyLoadImage effect="blur" className="hidden lg:block" src={scaleImg} alt="" />
               </div>
             </div>
           </div>
@@ -372,7 +375,7 @@ const WhatWeDo = () => {
             </div>
             <div className="grid order-2 lg:order-1 grid-cols-1 lg:grid-cols-2">
               <div>
-                <img className="hidden lg:block" src={systemImg} alt="" />
+                <LazyLoadImage effect="blur" className="hidden lg:block" src={systemImg} alt="" />
               </div>
               <div className="flex justify-center">
                 <img
@@ -400,7 +403,7 @@ const WhatWeDo = () => {
               customers.
             </p>
             <div className="flex justify-center lg:justify-start">
-             <Link to="/sales">
+             <Link to="/resource">
              <button className="text-[#032BF2] bg-white hover:bg-blue duration-300 hover:text-white text-lg font-bold px-2 py-2 rounded-md w-32 ">
                 Get Started
               </button>
@@ -408,7 +411,7 @@ const WhatWeDo = () => {
             </div>
           </div>
           <div className="translate-y-0 lg:translate-y-32">
-            <img className="" src={doubleImg} alt="" />
+            <LazyLoadImage effect="blur" className="" src={doubleImg} alt="" />
           </div>
         </div>
       </div>

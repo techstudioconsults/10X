@@ -10,6 +10,8 @@ import { useNavigate } from "react-router-dom";
 import { useFetch } from "../../../hooks/useFetch";
 import { formatCurrency } from "../../../utils/Currency";
 import { useLocation } from "react-router-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const Resource = () => {
   const location = useLocation()
@@ -22,6 +24,7 @@ const Resource = () => {
     setContent,
     loading,
     setLoading,
+    fetchError,
     books,
     allResource,
     videos,
@@ -115,9 +118,10 @@ const Resource = () => {
               Resources
             </span>
           </h1>
-          <div className="w-full">
-            <form onSubmit={handleSearch} className="flex justify-center items-center w-full lg:w-4/5 mx-auto py-8">
-              <img className="translate-x-10" src={searchIcon} alt="" />
+          <div className="w-full ">
+            <form onSubmit={handleSearch} className="flex justify-center items-center w-full  lg:w-4/5 mx-auto py-8">
+         <div className="flex bg-[#EBEFFF] rounded-l-lg w-full max-w-[870px]">
+         <span><img className="translate-x-5 translate-y-3 lg:translate-x-8" src={searchIcon} alt="" /></span>
               <input
                 id="search"
                 name="search"
@@ -125,8 +129,9 @@ const Resource = () => {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Search for Anything"
-                className="w-full lg:w-3/5 h-12 py-3 ps-11 pe-5 rounded-tl-lg rounded-bl-lg rounded-br-none rounded-tr-none font-medium text-[#787878] placeholder-[#787878] bg-[#EBEFFF] outline-none"
+                className="w-full  h-12 py-3 ps-7 lg:ps-11 pe-5 rounded-tl-lg rounded-bl-lg rounded-br-none rounded-tr-none font-medium text-[#787878] placeholder-[#787878] bg-[#EBEFFF] outline-none"
               />
+         </div>
               <button
                 onClick={() => setFilterClicked(true)}
                 className={`${disableBtn} w-[41%] lg:w-[13%] py-3 px-2 lg:px-5 rounded-tr-lg rounded-br-lg bg-[#032BF2] text-white outline-none border-0 cursor-pointer flex  justify-evenly h-12`}
@@ -137,22 +142,22 @@ const Resource = () => {
             </form>
 
             <div className={`${showFilterBtn} flex justify-between items-center`}>
-              <div className="flex gap-4 justify-between md:justify-center lg:justify-start pb-9">
+              <div className="flex gap-4 justify-center lg:justify-start pb-7 w-4/5 lg:w-full mx-auto">
                 <button
                   onClick={() => setContent(allResource)}
-                  className={`text-[#0027BA] border-[#032BF2] border-2 py-2 px-5 rounded-lg hover:bg-[#032BF2] duration-500 ${content === allResource ? "bg-[#032BF2] text-white" : ""}`}
+                  className={`text-[#0027BA] border-[#032BF2] w-[93px] lg:w-[66px]  border-2 py-2 px-5 rounded-lg hover:bg-[#032BF2] duration-500 ${content === allResource ? "bg-[#032BF2] text-white" : ""}`}
                 >
                   All
                 </button>
                 <button
                   onClick={() => setContent(books)}
-                  className={`text-[#0027BA] border-[#032BF2] border-2 rounded-lg py-2 px-5 hover:bg-[#032BF2] duration-500 hover:text-white ${content === books ? "bg-[#032BF2] text-white" : ""}`}
+                  className={`text-[#0027BA] border-[#032BF2] min-w-[93px] border-2 rounded-lg py-2 px-5 hover:bg-[#032BF2] duration-500 hover:text-white ${content === books ? "bg-[#032BF2] text-white" : ""}`}
                 >
                   Book
                 </button>
                 <button
                   onClick={() => setContent(videos)}
-                  className={`text-[#0027BA] border-[#032BF2] border-2 rounded-lg py-2 px-5 hover:bg-[#032BF2] duration-500 hover:text-white ${content === videos ? "bg-[#032BF2] text-white" : ""}`}
+                  className={`text-[#0027BA] border-[#032BF2] min-w-[93px] border-2 rounded-lg py-2 px-5 hover:bg-[#032BF2] duration-500 hover:text-white ${content === videos ? "bg-[#032BF2] text-white" : ""}`}
                 >
                   Video
                 </button>
@@ -161,6 +166,7 @@ const Resource = () => {
           </div>
         </div>
         {loading && <SkeletonLoader />}
+        {fetchError &&  <p className="text-red-500 text-center "> Something went wrong !!</p>}
         
         { content &&
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full justify-center items-center gap-x-5 gap-y-10 xl:gap-x-8 xl:gap-y-16 pb-14 ">
@@ -171,7 +177,8 @@ const Resource = () => {
               onClick={() => navigate(`/sales/${item._id}`)}
             >
               <div className="w-full max-w-[298] xl:h-[210px] lg:h-[150px]">
-                <img
+                <LazyLoadImage
+                effect="blur"
                   className="w-full object-cover h-full rounded-t-2xl"
                   loading="lazy"
                   src={item.photo}

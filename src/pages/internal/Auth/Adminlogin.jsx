@@ -14,9 +14,11 @@ import { Bars } from "react-loader-spinner";
 const Adminlogin = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [Error, setError] = useState({ password: "", email: "", network: "" });
   const {register, handleSubmit, formState: {errors}} = useForm()
   const navigate = useNavigate()
-  const {API_URL, getUser} = useAdminContext()
+  // const {getUser} = useAdminContext()
+  const API_URL = import.meta.env.VITE_REACT_APP_API_URL
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -34,13 +36,44 @@ const Adminlogin = () => {
         if (data.success) {
           setIsLoading(false)
             Cookies.set("token", data.token)
-            getUser()
+            // getUser()
             navigate("/admin/home")
            
         }
     } catch (error) {
         console.log(error);
         setIsLoading(false)
+
+        if (error.message === "Network Error") {
+          setError({...Error, network: "Check your internet connection"})
+          setTimeout(() => {
+            setError({ password: "", email: "", network: "" });
+          }, 4000);
+        }
+  
+        if (
+          !error.response.data.success &&
+          error.response.data.message === "Invalid email"
+        ) {
+          setError({
+            ...Error,
+            email: "This email address is unregistered with 10X Revenue",
+          });
+        }
+  
+        if (
+          !error.response.data.success &&
+          error.response.data.message === "Invalid Password"
+        ) {
+          setError({
+            ...Error,
+            password: "Password does not match email address",
+          });
+        }
+  
+        setTimeout(() => {
+          setError({ password: "", email: "", network: "" });
+        }, 4000);
     }
   }
 
@@ -64,7 +97,7 @@ const Adminlogin = () => {
               Please enter your details to continue{" "}
             </p>
           </div>
-
+          <p className="text-red-500">{Error.network}</p>
           <div className="flex w-full flex-col gap-8 my-4">
             <div>
             <div className="relative w-full  flex items-center">
@@ -83,6 +116,7 @@ const Adminlogin = () => {
                 })}
               />
             </div>
+            <p className="text-red-500">{Error.email}</p>
               {errors.email && <p className="text-red-500">{errors.email.message}</p>}
             </div>
 
@@ -105,6 +139,7 @@ const Adminlogin = () => {
                 {showPassword ? <FiEye /> : <FiEyeOff />}
               </button>
             </div>
+            <p className="text-red-500">{Error.password}</p>
               {errors.password && <p className="text-red-500">{errors.password.message}</p>}
             </div>
             
