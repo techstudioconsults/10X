@@ -34,12 +34,13 @@ function App() {
             <Route element={<PrivateRoute/>}>
             <Route path="/settings" element={<UserSettings />} />
             <Route path="/mycourses" element={<MyCourses />} />
+          </Route>
             <Route
               path="/mycourses-resume/:title"
               element={<SingleCourseView />}
             />
             </Route>
-          </Route>
+         
 
           <Route element={<Adminlayout />}>
             <Route path="/admin/home" element={<Dashboard />} />

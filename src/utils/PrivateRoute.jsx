@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import Cookies from "js-cookie";
 import { useNavigate, Outlet } from 'react-router-dom/dist';
 
@@ -14,3 +14,6 @@ const PrivateRoute = () => {
 }
 
 export default PrivateRoute
+
+
+
