@@ -1,12 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../assets/footer.png";
 import { Link } from "react-router-dom";
-
+import { useForm } from "react-hook-form";
+import { Bars } from "react-loader-spinner";
+import useUserContext from "../../hooks/useUserContext";
+import axios from "axios";
 export const Footer = () => {
+  const { API_URL} = useUserContext()
+  const [isLoading, setIsLoading]= useState(false)
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+
+  const onsubmit = async (data) => {
+    setIsLoading(true);
+    const formData = new FormData();
+    formData.append("email", data.email);
+  
+    const fullUrl = `${API_URL}/api/v1/subscribe/createsubscriber`;
+    console.log("Full URL:", fullUrl);
+  
+    try {
+      const { data } = await axios.post(fullUrl, formData);
+      setIsLoading(false)
+      console.log(data);
+      reset()
+    } catch (error) {
+      setIsLoading(false);
+      console.log(error);
+    }
+  };
+
   return (
-    <footer className="pb-7">
-      <section className="">
-        {" "}
+    <footer className="">
+      <section className="pb-7">
         <main className=" p-5  md:flex justify-between container mx-auto w-11/12 gap-3">
           <section className="hidden md:block ">
             <img src={logo} alt="" className=" md:w-[200px] md:h-[70px]" />
@@ -37,15 +68,41 @@ export const Footer = () => {
               news, tips & tricks from Revenue Growth
             </p>
 
-            <form className="mt-4 relative flex justify-center flex-col items-center">
+            <form onSubmit={handleSubmit(onsubmit)} className="mt-4 relative flex justify-center flex-col items-center">
               <input
+                    {...register("email", {
+                      required: "Email is required",
+                      pattern: {
+                        value:
+                          /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                        message: "Enter a valid email address",
+                      },
+                    })}
                 type="email"
                 className="w-[400px] h-[67px] max-w-full ps-3 rounded-2xl outline-none bg-transparent border-2 placeholder:text-sm md:relative md:pe-[160px] pe-[120px]"
                 placeholder="Enter your email"
               />
               <button className="w-[347px] max-w-full mt-4 md:w-[144px] h-[67px] md:h-[43px] bg-[#fefefe] text-blue font-[650] rounded-lg md:absolute md:right-3 md:-top-1">
-                Subscribe
+
+              {isLoading ? (
+                  <div className="flex justify-center items-center">
+                    <Bars
+                      height="30"
+                      width="100"
+                      color="blue"
+                      ariaLabel="bars-loading"
+                      wrapperStyle={{}}
+                      wrapperClass=""
+                      visible={true}
+                    />
+                  </div>
+                ) : (
+                  "Subscribe"
+                )}
               </button>
+            <div className="w-full">
+              <p className="text-red-500 text-left py-2">{errors.email?.message}</p>
+            </div>
             </form>
 
             <p className="mt-3 text-center md:text-start text-sm">
@@ -56,7 +113,7 @@ export const Footer = () => {
             </p>
           </section>
         </main>
-        {/* <hr className=" w-[540px] md:w-[900px] lg:w-[910px] max-w-full mx-auto" /> */}
+
         <div className="bg-white w-11/12 h-[1px] mx-auto hidden md:block" />
         <section className="md:hidden mx-4 space-y-4 mt-3 flex flex-col text-[#fefefe] font-[650]">
           <hr className="bg-white w-[540px] md:w-[900px] lg:w-[910px] max-w-full mx-auto " />

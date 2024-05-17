@@ -112,9 +112,10 @@ export const Home = () => {
         </section>
 
         <div className="text-center ms-5 hero-img-div2 absolute left-0 right-5  bottom-[35%] md:bottom-[55%] lg:bottom-[55%]">
-          <button className="bg-white h-[51px]  w-[196px] md:w-[220px] md:h-[59px] text-md md:text-[20px] mx-auto text-center shadow text-[#214672] font-semibold rounded-xl client border border-blue hover:bg-blue hover:text-white duration-500">
+         <Link to="/resource">
+         <button className="bg-white h-[51px]  w-[196px] md:w-[220px] md:h-[59px] text-md md:text-[20px] mx-auto text-center shadow text-[#214672] font-semibold rounded-xl client border border-blue hover:bg-blue hover:text-white duration-500">
             Become a Client
-          </button>
+          </button></Link>
         </div>
 
         <img src={mcompanies} alt="" className="w-full  md:hidden mt-[120px]" />
@@ -136,7 +137,7 @@ export const Home = () => {
       <section className="md:hidden">
         <MobileAccordions />
 
-        <Link className="border border-darkBlue py-3 px-10 rounded-lg font-[650] text-blue flex justify-center w-fit mx-auto">
+        <Link to="/about" className="border border-darkBlue py-3 px-10 rounded-lg font-[650] text-blue flex justify-center w-fit mx-auto">
           Learn More
         </Link>
       </section>
@@ -229,7 +230,7 @@ export const Home = () => {
           Stop wasting time and money on the wrong marketing funnels
         </h1>
 
-        <Link className="bg-white py-3 px-10 rounded-lg font-[650] text-blue flex justify-center w-fit mx-auto mt-5">
+        <Link to="/about" className="bg-white py-3 px-10 rounded-lg font-[650] text-blue flex justify-center w-fit mx-auto mt-5">
           Resource
         </Link>
       </div>
@@ -376,7 +377,7 @@ export const Home = () => {
             customers.
           </p>
 
-          <Link className="py-2 px-6 rounded-xl font-[650] text-sm bg-blue text-white">
+          <Link to="/about" className="py-2 px-6 rounded-xl font-[650] text-sm bg-blue text-white">
             Learn More
           </Link>
 
