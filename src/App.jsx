@@ -18,6 +18,8 @@ import MyCourses from "./pages/internal/user/Mycourses/MyCourses";
 import { SingleCourseView } from "./pages/internal/user/Mycourses/singleCourseView";
 import UserSettings from "./pages/internal/user/Usersetting/UserSettings";
 import PrivateRoute from "./utils/PrivateRoute";
+import AdminPrivateRoute from "./utils/AdminPrivateRoute";
+import PageNotFound from "./pages/external/ErrorPage/PageNotFound";
 
 function App() {
   
@@ -41,14 +43,17 @@ function App() {
             />
             </Route>
          
+          <Route path="*" element={<PageNotFound/>}/>
 
           <Route element={<Adminlayout />}>
+            <Route element={<AdminPrivateRoute/>}>
             <Route path="/admin/home" element={<Dashboard />} />
             <Route path="/admin/library" element={<Library />} />
             <Route path="coursedetail/:id" element={<CourseDetail />} />
             <Route path="/admin/settings" element={<Settings />} />
             <Route path="/admin/edit-course" element={<Edit />} />
             <Route path="/admin/create" element={<CreateCourse />} />
+            </Route>
           </Route>
           <Route path="/admin/login" element={<Adminlogin />} />
           <Route path="/login" element={<Login />} />
