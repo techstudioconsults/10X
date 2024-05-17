@@ -7,6 +7,8 @@ import useAdminContext from "../../../../hooks/useAdminContext";
 import { Bars } from "react-loader-spinner";
 import Cookies from "js-cookie";
 import { FaCircleCheck } from "react-icons/fa6";
+import 'react-lazy-load-image-component/src/effects/blur.css';
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const Settings = () => {
   const { API_URL, getUser, userInfo, token } = useAdminContext();
@@ -183,7 +185,8 @@ const Settings = () => {
 
             <hr className="bg-grey bg-opacity-40 mb-4 h-[1.5px] " />
             <div className="flex md:flex-row flex-col my-3 items-center gap-2">
-              <img
+              <LazyLoadImage 
+              effect="blur"
                 src={!image ? userInfo?.data.photo : image}
                 className=" w-20 h-20 object-cover rounded-lg"
                 alt=""
