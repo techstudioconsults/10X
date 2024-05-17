@@ -8,6 +8,7 @@ export const useFetch = (url, token) => {
   const [content, setContent] = useState([]);
   const [books, setBooks] = useState([]);
   const [error, setError] = useState([]);
+  const [fetchError, setFetchError] = useState("")
   const [videos, setVideos] = useState([]);
   const [allResource, setAllResource] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -30,7 +31,8 @@ export const useFetch = (url, token) => {
         }
         setSingle(singleDatum)
       } catch (error) {
-        setError(error)
+        setLoading(false)
+        setFetchError(error)
         console.error
       }
       
@@ -50,7 +52,8 @@ export const useFetch = (url, token) => {
         setBooks(resourceData.filter((item) => item.category === "pdf"));
         setVideos(resourceData.filter((item) => item.category === "video"));
       } catch (error) {
-        setError(error)
+        setLoading(false)
+        setFetchError(error)
         console.log(error);
       }
     };
@@ -78,5 +81,6 @@ export const useFetch = (url, token) => {
     searchResults,
     setSearchResults,
     single,
+    fetchError,
   };
 };

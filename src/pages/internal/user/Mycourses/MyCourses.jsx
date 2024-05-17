@@ -11,7 +11,7 @@ import {
 import WishList from "./WishList";
 
 const MyCourses = () => {
-  const { content: data, error } = useFetch("/api/v1/resources");
+  const { content: data, error } = useFetch("/api/v1/course");
   const [activeTab, setActiveTab] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
 

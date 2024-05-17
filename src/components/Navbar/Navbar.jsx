@@ -9,47 +9,41 @@ import useUserContext from "../../hooks/useUserContext";
 import axios from "axios";
 import MenuComp from "./menu/Menu";
 
-
 export const Navbar = () => {
-  const {API_URL, getUserInfo, userInfo} = useUserContext()
+  const { API_URL, getUserInfo, userInfo } = useUserContext();
   // const [userInfo, setUserInfo] = useState(user)
   const [isOpen, setOpen] = useState(false);
   const userToken = Cookies.get("userToken");
 
-
   const handleClose = () => {
     setOpen(false);
-  }
-    // const getUser = async () => {
-    //   try {
-    //     const { data } = await axios.get(`${API_URL}/api/v1/auth/me`, {
-    //       headers: {
-    //         Authorization: `Bearer ${userToken}`,
-    //       },
-    //     });
-    //     console.log(data);
-    //     if (data.success) {
-    //       setUserInfo(data);
-         
-    //     }
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // };
-  
-    
+  };
+  // const getUser = async () => {
+  //   try {
+  //     const { data } = await axios.get(`${API_URL}/api/v1/auth/me`, {
+  //       headers: {
+  //         Authorization: `Bearer ${userToken}`,
+  //       },
+  //     });
+  //     console.log(data);
+  //     if (data.success) {
+  //       setUserInfo(data);
 
-  useEffect(() => {
-    setTimeout(() => {
-      getUserInfo()
-    }, 4000);
-    // getUser()
-  }, [userToken])  
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   getUserInfo()
+  //   // getUser()
+  // }, [userToken])
 
   return (
     <nav className=" relative">
-      <main className="bg-white w-full py-14 md:h-[80px] flex  fixed top-0  z-20 right-0 left-0">
-        <section className=" flex justify-between items-center  w-11/12 container mx-auto ">
+      <main className="bg-white w-full h-[80px] flex  fixed top-0  z-20 right-0 left-0">
+        <section className=" flex justify-between md:gap-6 lg:gap-0 items-center  w-11/12 container mx-auto ">
           <div>
             <Link to={"/"}>
               {" "}
@@ -61,7 +55,7 @@ export const Navbar = () => {
             </Link>
           </div>
 
-          <div className="hidden md:flex gap-10 whitespace-nowrap items-center font-semibold text-[18px] w-[350px]">
+          <div className="hidden lg:flex md:gap-5 lg:gap-10 whitespace-nowrap items-center font-semibold text-[18px] ">
             <Link to="/" className=" text-blue nav__link">
               Home
             </Link>
@@ -71,36 +65,39 @@ export const Navbar = () => {
             <Link to="/resource" className=" text-blue nav__link">
               Resources Hub
             </Link>
-
-            {
-              userToken ? <Link to="/mycourses" className=" text-blue nav__link">
-              My Courses
-            </Link> : null
-            }
+            {userToken ? (
+              <Link to="/mycourses" className=" text-blue nav__link">
+                My Courses
+              </Link>
+            ) : null}
           </div>
-
-          {userToken ?  <div className="flex gap-3 items-center">
-              <img
-                src={userInfo?.data?.photo}
-                className=" w-8 h-8 bg-[#6072AC] rounded-full object-cover"
-                alt=""
-              />
-              <div className="hidden md:block">
-                <p className=" font-semibold text-blue ">
-                  {userInfo?.data?.fullname}
-                </p>
+          <div className="flex items-center gap-1">
+            <div className="text-blue font-bold lg:hidden">
+              <Hamburger toggled={isOpen} toggle={setOpen} size={30} />
+            </div>
+            {userToken ? (
+              <div className="flex gap-1 items-center">
+                <img
+                  src={userInfo?.data?.photo}
+                  className=" w-8 h-8 bg-[#6072AC] rounded-full object-cover"
+                  alt=""
+                />
+                <div className="hidden md:block">
+                  <p className=" font-semibold text-blue ">
+                    {userInfo?.data?.fullname}
+                  </p>
+                </div>
+                {/* <img src={arrowDown} alt="" /> */}
+                <MenuComp />
               </div>
-              {/* <img src={arrowDown} alt="" /> */}
-            <MenuComp />
-            </div> : <Link
-            to="/login"
-            className=" border border-blue w-[90px] h-[45px] md:flex justify-center items-center rounded-lg text-blue font-semibold hover:bg-blue hover:text-white duration-500 hidden "
-          >
-            Sign In
-          </Link>}
-
-          <div className="text-blue font-bold md:hidden">
-            <Hamburger toggled={isOpen} toggle={setOpen} size={30} />
+            ) : (
+              <Link
+                to="/login"
+                className=" border border-blue w-[90px] h-[45px] md:flex justify-center items-center rounded-lg text-blue font-semibold hover:bg-blue hover:text-white duration-500 hidden "
+              >
+                Sign In
+              </Link>
+            )}
           </div>
         </section>
       </main>
@@ -116,32 +113,31 @@ export const Navbar = () => {
           exit={{ x: 200, transition: { duration: 0.3 } }}
           transition={{ duration: 0.5 }}
         >
-          <ul className="flex pt-20 flex-col justify-center items-center gap-8 font-semibold text-blue text-lg">
-            <li>
-              <Link to="/" onClick={handleClose}>
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link to="/about" onClick={handleClose}>
-                What We Do
-              </Link>
-            </li>
-            <li>
-              <Link to="/resource" onClick={handleClose}>
-                Resource Hub
-              </Link>
-            </li>
+          <div className="flex pt-20 flex-col justify-center items-center gap-8 font-semibold text-blue text-lg">
+            <Link to="/" onClick={handleClose}>
+              Home
+            </Link>
 
-            <li>
-              <Link
-                to="/login"
-                className=" border border-blue md:flex justify-center items-center rounded-lg text-blue font-semibold hover:bg-blue hover:text-white duration-500 py-2 px-5"
-              >
-                Sign In
+            <Link to="/about" onClick={handleClose}>
+              What We Do
+            </Link>
+
+            <Link to="/resource" onClick={handleClose}>
+              Resource Hub
+            </Link>
+            {userToken ? (
+              <Link to="/mycourses" className=" text-blue nav__link">
+                My Courses
               </Link>
-            </li>
-          </ul>
+            ) : null}
+
+            <Link
+              to="/login"
+              className=" border border-blue md:flex justify-center items-center rounded-lg text-blue font-semibold hover:bg-blue hover:text-white duration-500 py-2 px-5"
+            >
+              Sign In
+            </Link>
+          </div>
         </motion.section>
       )}
     </nav>
