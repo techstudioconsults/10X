@@ -25,7 +25,7 @@ const Profile = () => {
     info: "",
     security: "",
   });
-  const [image, setImage] = useState("https://static-00.iconduck.com/assets.00/avatar-default-symbolic-icon-479x512-n8sg74wg.png");
+  const [image, setImage] = useState("");
   const userToken = Cookies.get("userToken");
 
   const handleImageChange = (event) => {
@@ -215,7 +215,7 @@ const Profile = () => {
               <img
                 src={image}
                 alt=""
-                className="lg:w-[294px] md:w-[200px] lg:h-[294px] md:h-[200px]  w-full h-[190px]  rounded-full border border-black object-cover"
+                className="lg:w-[294px] bg-[#6072AC]  md:w-[200px] lg:h-[294px]  md:h-[200px]  w-full h-[190px]  rounded-full border border-black object-cover"
               />
             </div>
           </div>

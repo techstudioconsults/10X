@@ -69,7 +69,7 @@ function CheckIcon() {
   );
 }
 
-export const SingleCourseView = () => {
+ const SingleCourseView = () => {
   const { title } = useParams();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("courseContent");
@@ -291,3 +291,6 @@ export const SingleCourseView = () => {
     </main>
   );
 };
+
+
+export default SingleCourseView
