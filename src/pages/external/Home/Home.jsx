@@ -26,7 +26,7 @@ import { FirstCardSlider } from "../../../components/Reusable/FirstCardSlider";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
-export const Home = () => {
+ const Home = () => {
   const location = useLocation()
   useEffect(()=>{
     window.scrollTo(0, 0)
@@ -446,3 +446,6 @@ export const Home = () => {
     </main>
   );
 };
+
+
+export default Home
