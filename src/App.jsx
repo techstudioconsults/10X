@@ -26,11 +26,16 @@ const SingleCourseView = lazy(() =>
 const UserSettings = lazy(() =>
   import("./pages/internal/user/Usersetting/UserSettings")
 );
+const PageNotFound = lazy(() =>
+  import("./pages/external/ErrorPage/PageNotFound")
+);
+// çonst PageNotFound = lazy(()=> import("./pages/external/ErrorPage/PageNotFound"));
+
 import Rootlayout from "./layout/Rootlayout";
 import Adminlayout from "./layout/AdminLayout";
 import PrivateRoute from "./utils/PrivateRoute";
 import AdminPrivateRoute from "./utils/AdminPrivateRoute";
-import PageNotFound from "./pages/external/ErrorPage/PageNotFound";
+// import PageNotFound from "./pages/external/ErrorPage/PageNotFound";
 import PageLoader from "./components/loader/PageLoader";
 
 
