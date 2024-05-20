@@ -63,7 +63,7 @@ export const Footer = () => {
             <h1 className="font-[870] text-lg text-center md:text-start">
               7+ Figures and Beyond
             </h1>
-            <p className="text-sm max-w-[300px] md:max-w-[350px] mx-auto md:mx-0 text-center md:text-star">
+            <p className="text-sm max-w-[300px] md:max-w-[350px] mx-auto md:mx-0 text-center lg:text-left md:text-star">
               Subscribe to our newsletter and keep up to date with the latest
               news, tips & tricks from Revenue Growth
             </p>

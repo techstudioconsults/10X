@@ -3,7 +3,7 @@ import "./App.css";
 import React, { lazy, Suspense } from "react";
 const Home = lazy(() => import("./pages/external/Home/Home"));
 const Resource = lazy(() => import("./pages/external/Resource/Resource"));
-const SalesPage = lazy(() => import("./pages/external/Resource/Resource"));
+const SalesPage = lazy(() => import("./pages/external/SalesPage/SalesPage"));
 const Login = lazy(() => import("./pages/Auth/Login/Login"));
 const WhatWeDo = lazy(() => import("./pages/external/About/WhatWeDO"));
 const Library = lazy(() => import("./pages/internal/Admin/library/Library"));
