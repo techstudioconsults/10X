@@ -1,9 +1,11 @@
 
 import FileDropzone from "./FileDropZone";
 import propTypes from 'prop-types'
+import { useFormContext } from "react-hook-form"
 
 
-const CreateCourseDetails = ({setShowNext}) => {
+const CreateCourseDetails = ({setShowNext, register}) => {
+  // const { register } = useFormContext()
   const handleNext = ()=>{
     setShowNext(true)
   }
@@ -41,6 +43,7 @@ const CreateCourseDetails = ({setShowNext}) => {
             </label>
             <input
               type="text"
+              {...register("title", { required: "Course Title is required" })}
               className="px-3 py-4 border-2 border-gray-400 rounded-md"
               placeholder="Name your course......"
             />

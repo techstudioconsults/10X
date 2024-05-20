@@ -5,7 +5,7 @@ import CourseContentTwo from "./CourseContentTwo";
 import CourseContentThree from "./CourseContentThree";
 import CourseContentOne from "./CourseContentOne";
 
-const CourseContent = () => {
+const CourseContent = ({ onSubmit }) => {
 
   const [showTwo, setShowTwo] = useState(false);
   const [showThree, setShowThree] = useState(false);

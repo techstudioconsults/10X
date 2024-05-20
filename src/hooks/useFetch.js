@@ -49,7 +49,7 @@ export const useFetch = (url, token) => {
         setContent(resourceData);
         setAllResource(resourceData);
         // console.log(resourceData);
-        setBooks(resourceData.filter((item) => item.category === "pdf"));
+        setBooks(resourceData.filter((item) => item.category === "book"));
         setVideos(resourceData.filter((item) => item.category === "video"));
       } catch (error) {
         setLoading(false)

@@ -19,7 +19,7 @@ const UserProvider = ({children}) => {
               Authorization: `Bearer ${userToken}`,
             },
           });
-          console.log(data);
+          // console.log(data);
           if (data.success) {
             setUserInfo(data);
            
