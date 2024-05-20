@@ -458,8 +458,10 @@ function PurchaseForm() {
         formData
       );
       setIsLoading(true);
+      console.log(registerRes);
+    
 
-      if (registerRes.status === 200) {
+      if (registerRes.status === 201) {
         setIsLoading(false);
         const authorizationUrl =
           registerRes.data.paymentData.data.authorization_url;
