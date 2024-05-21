@@ -31,7 +31,7 @@ const MyCourses = () => {
       {/* <MyCoursesComponents /> */}
 
       <main>
-        <h1 className=" text-[46px] text-darkBlue font-[650]">My Courses</h1>
+        <h1 className=" text-[30px] lg:text-[46px] text-darkBlue font-[650]">My Courses</h1>
 
         <Tabs value={activeTab}>
           <TabsHeader

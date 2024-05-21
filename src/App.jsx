@@ -67,11 +67,11 @@ function App() {
                 <Route path="/settings" element={<UserSettings />} />
                 <Route path="/mycourses" element={<MyCourses />} />
               </Route>
+            </Route>
               <Route
                 path="/mycourses-resume/:title"
                 element={<SingleCourseView />}
               />
-            </Route>
 
             <Route element={<Adminlayout />}>
               <Route path="/admin/home" element={<Dashboard />} />

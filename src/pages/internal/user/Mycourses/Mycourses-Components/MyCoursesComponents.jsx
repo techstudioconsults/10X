@@ -45,7 +45,7 @@ export const MyCoursesComponents = () => {
       {courses.map((c) => (
         <div
           key={c.id}
-          className="mb-5 shadow-xl shadow-[#032BF214] w-full md:flex  gap-3 "
+          className="mb-5 shadow-xl shadow-[#032BF214] w-full md:flex  gap-3 px-5 "
         >
           <div>
             <img
@@ -53,6 +53,14 @@ export const MyCoursesComponents = () => {
               alt={c.title}
               className="w-full md:w-[200px] md:h-[150px] lg:w-[400px] lg:h-[200px] mb-2 md:mb-0 rounded-tr-xl rounded-tl-xl lg:rounded-lg"
             />
+            <div className="my-3 hidden md:block">
+              <Progress value={10} color="purple" className="progress h-1" />
+
+              <div className="flex justify-between mt-2 text-[11px] text-[#6476BA]">
+                <p>IN PROGRESS</p>
+                <p>10% complete</p>
+              </div>
+            </div>
           </div>
 
           <div className=" space-y-3 shadow-xl shadow-[#032BF214] p-2 rounded-bl-xl rounded-br-xl pb-4">
@@ -78,16 +86,14 @@ export const MyCoursesComponents = () => {
             {/* </div>
 
 </div> */}
-            <Progress
-              value={10}
-              
-              color="purple"
-              className="progress h-1"
-            />
 
-            <div className="flex justify-between mt-2 text-[11px] text-[#6476BA]">
-              <p>IN PROGRESS</p>
-              <p>10% complete</p>
+            <div className="my-3  md:hidden">
+              <Progress value={10} color="purple" className="progress h-1" />
+
+              <div className="flex justify-between mt-2 text-[11px] text-[#6476BA]">
+                <p>IN PROGRESS</p>
+                <p>10% complete</p>
+              </div>
             </div>
 
             <button
