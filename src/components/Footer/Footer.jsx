@@ -19,10 +19,10 @@ export const Footer = () => {
               </div>
 
               <div className="flex gap-3 flex-col text font-[650]">
-                <Link>Become a Client</Link>
-                <Link>Training</Link>
+                <Link to={"/resource"}>Become a Client</Link>
+                <Link to={"/resource"}>Training</Link>
                 <Link>Community</Link>
-                <Link>Log in</Link>
+                <Link to={"/login"}>Log in</Link>
               </div>
             </div>
           </section>
