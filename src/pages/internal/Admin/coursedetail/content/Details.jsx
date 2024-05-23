@@ -2,6 +2,8 @@ import { formatCurrency } from "../../../../../utils/Currency";
 import courseCheck from "../../../../../assets/course-check.png"
 import PropTypes from 'prop-types';
 import { useState } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import {
   Accordion,
   AccordionHeader,
@@ -48,8 +50,8 @@ const Details = ({ data }) => {
       <div className="grid gap-8 grid-cols-1 lg:grid-cols-2 py-2 ">
         <div>
           {/* // eslint-disable-next-line react/prop-types */}
-          <div className=" w-[500px]  rounded-md">
-          <img loading="lazy" className="w-full object-cover rounded-xl" src={thumbnail} alt="" />
+          <div className=" w-full  lg:w-[500px]  rounded-md">
+          <LazyLoadImage effect="blur"  className=" object-cover rounded-xl w-full lg:min-w-[500px]" src={thumbnail} alt="" />
           </div>
           <h1 className="text-2xl py-5">Course Description</h1>
           <p>{data.description}</p>
@@ -59,20 +61,20 @@ const Details = ({ data }) => {
         <div className="border-1 shadow-md border-gray-500 rounded-md p-4 w-[380px]  flex flex-col gap-5">
             <h1 className="text-blue text-2xl font-bold">{formatCurrency(`${data.price}`)}</h1>
             <p>Course Detail</p>
-            <div className="grid grid-cols-2 gap-4 py-3 justify-start" >
-             <div className="flex justify-start items-center gap-4">
+            <div className="grid grid-cols-2 gap-2 md:gap-4 py-3 justify-start" >
+             <div className="flex justify-start items-center gap-1 md:gap-4">
               <img src={courseCheck} alt="" />
               <p className="text-gray-500 text-base"> 100 clients</p>
              </div>
-             <div className="flex justify-start items-center gap-4">
+             <div className="flex justify-start items-center gap-1 md:gap-4">
              <img src={courseCheck} alt="" />
               <p className="text-gray-500 text-base">9,927 unit sold</p>
              </div>
-             <div className="flex justify-start items-center gap-4">
+             <div className="flex justify-start items-center gap-1 md:gap-4">
              <img src={courseCheck} alt="" />
               <p className="text-gray-500 text-base">{data.content?.length} modules </p>
              </div>
-             <div className="flex justify-start items-center gap-4">
+             <div className="flex justify-start items-center gap-1 md:gap-4">
              <img src={courseCheck} alt="" />
               <p className="text-gray-500 text-base"> 1,567 reviews</p>
              </div>
