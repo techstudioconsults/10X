@@ -4,10 +4,13 @@ import CreateCourseDetails from "./content/CreateCourseDetails";
 import { useForm, FormProvider, } from "react-hook-form";
 import axios from "axios";
 import useAdminContext from "../../../../hooks/useAdminContext";
+import CreateCourseSuccess from "../../../../components/Modal/CreateCourseSuccess";
 
 const CreateCourse = () => {
   const { API_URL, token } = useAdminContext();
   const [isLoading, setIsLoading] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("")
   const methods = useForm({
     defaultValues: {
       title: "",
@@ -33,7 +36,6 @@ const CreateCourse = () => {
   });
   const [showNext, setShowNext] = useState(false);
 
-  // const onSubmit = async (data) => {
   //   console.log(data);
   //   try {
   //     setIsLoading(true);
@@ -148,16 +150,42 @@ const CreateCourse = () => {
 
       if(res.status == 201){
         setIsLoading(false)
+        setOpenModal(true)
       }
     } catch (error) {
       setIsLoading(false);
-      console.log("Error:", error);
+      // setErrorMessage("Something went wrong, make sure every input field is filled ")
+      // console.log("Error:", error);
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        console.error("Server Error:", error.response.data);
+        console.error("Status Code:", error.response.status);
+        console.error("Response Headers:", error.response.headers);
+        setErrorMessage("Something went wrong, check input fields.");
+      } else if (error.request) {
+        // The request was made but no response was received
+        // This likely indicates a network error
+        console.error("Network Error:", error.request);
+        setErrorMessage("Network error occurred. Please check your internet connection.");
+      } else {
+        // Something else happened in making the request that triggered an error
+        console.error("Error:", error.message);
+        setErrorMessage("Something went wrong, check input fields.");
+      }
     }
   };
 
   
   return (
     <div className="w-full px-3 md:px-6 container">
+      {/* {errorMessage && <p>{errorMessage}</p>} */}
+      {errorMessage && (
+        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+          <strong className="font-bold">Error: </strong>
+          <span className="block sm:inline">{errorMessage}</span>
+        </div>
+      )}
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
           <div>
@@ -173,6 +201,8 @@ const CreateCourse = () => {
           )} */}
         </form>
       </FormProvider>
+
+      {openModal && <CreateCourseSuccess open={openModal}/> }
     </div>
   );
 };

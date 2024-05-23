@@ -3,6 +3,12 @@ import courseCheck from "../../../../../assets/course-check.png"
 import PropTypes from 'prop-types';
 
 const Details = ({ data }) => {
+
+  console.log(data);
+  // eslint-disable-next-line react/prop-types
+  const thumbnail = data?.thumbnail
+
+  console.log(thumbnail);
   return (
     // <div> <p>Paystack Details showing clients</p> </div>
     <div>
@@ -10,7 +16,7 @@ const Details = ({ data }) => {
         <div>
           {/* // eslint-disable-next-line react/prop-types */}
           <div className=" w-[500px]  rounded-md">
-          <img loading="lazy" className="w-full object-cover rounded-xl" src={data.photo} alt="" />
+          <img loading="lazy" className="w-full object-cover rounded-xl" src={thumbnail} alt="" />
           </div>
           <h1 className="text-2xl py-5">Course Description</h1>
           <p>{data.description}</p>

@@ -77,9 +77,8 @@ const CreateCourseDetails = ({setShowNext,}) => {
             </label>
             <input
             id="price"
-            // placeholder="100,000.00"
+            placeholder="100,000.00"
             {...register("price", { required: "Price is required" })}
-            placeholder=" 100,000.00"
               type="text"
               className="px-3 py-4 border-2 border-gray-400 rounded-md "
           

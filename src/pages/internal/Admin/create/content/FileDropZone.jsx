@@ -109,7 +109,10 @@ function FileDropzone() {
           </p>
         </div>
       </div>
-      {errors.thumbnail?.type === "required" && (
+      {/* {errors.thumbnail?.type === "required" && (
+        <p className="text-red-500">{errors.thumbnail.message}</p>
+      )} */}
+       {errors.thumbnail && !file && (
         <p className="text-red-500">{errors.thumbnail.message}</p>
       )}
       {file && (
