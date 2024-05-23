@@ -10,6 +10,8 @@ import { useNavigate } from "react-router-dom";
 import { useFetch } from "../../../hooks/useFetch";
 import { formatCurrency } from "../../../utils/Currency";
 import { useLocation } from "react-router-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const Resource = () => {
   const location = useLocation()
@@ -157,7 +159,8 @@ const Resource = () => {
               onClick={() => navigate(`/sales/${item._id}`)}
             >
               <div className="w-full max-w-[298] xl:h-[210px] lg:h-[150px]">
-                <img
+                <LazyLoadImage
+                effect="blur"
                   className="w-full object-cover h-full rounded-t-2xl"
                   loading="lazy"
                   src={item.thumbnail}

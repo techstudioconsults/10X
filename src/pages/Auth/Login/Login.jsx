@@ -204,7 +204,7 @@ const Login = () => {
                   Remember Me
                 </label>
                 <p className="font-semibold text-xs underline">
-                  <Link>Forgot password?</Link>
+                  <Link to="/forgot-password">Forgot password?</Link>
                 </p>
               </div>
 

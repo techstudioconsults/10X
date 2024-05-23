@@ -10,6 +10,8 @@ const Library = lazy(() => import("./pages/internal/Admin/library/Library"));
 const Settings = lazy(() => import("./pages/internal/Admin/Settings/Settings"));
 const Dashboard = lazy(() => import("./pages/internal/Admin/Home/Dashboard"));
 const Edit = lazy(() => import("./pages/internal/Admin/Edit-Course/Edit"));
+const ForgotPassword = lazy(() => import("./pages/Auth/ResetPassword/ForgotPassword"));
+const ResetPassword = lazy(() => import("./pages/Auth/ResetPassword/ResetPassword"));
 const CourseDetail = lazy(() =>
   import("./pages/internal/Admin/coursedetail/CourseDetail")
 );
@@ -29,13 +31,11 @@ const UserSettings = lazy(() =>
 const PageNotFound = lazy(() =>
   import("./pages/external/ErrorPage/PageNotFound")
 );
-// çonst PageNotFound = lazy(()=> import("./pages/external/ErrorPage/PageNotFound"));
 
 import Rootlayout from "./layout/Rootlayout";
 import Adminlayout from "./layout/AdminLayout";
 import PrivateRoute from "./utils/PrivateRoute";
 import AdminPrivateRoute from "./utils/AdminPrivateRoute";
-// import PageNotFound from "./pages/external/ErrorPage/PageNotFound";
 import PageLoader from "./components/loader/PageLoader";
 
 
@@ -92,6 +92,8 @@ function App() {
             </Route>
             <Route path="/admin/login" element={<Adminlogin />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/reset-password" element={<ResetPassword />} />
           </Routes>
         </BrowserRouter>{" "}
       </Suspense>
