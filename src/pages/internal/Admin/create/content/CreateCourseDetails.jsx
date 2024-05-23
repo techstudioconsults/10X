@@ -4,8 +4,10 @@ import propTypes from 'prop-types'
 import { useFormContext } from "react-hook-form"
 
 
-const CreateCourseDetails = ({setShowNext, register}) => {
-  // const { register } = useFormContext()
+const CreateCourseDetails = ({setShowNext,}) => {
+  // const { handleSubmit } = useFormContext();
+
+  const { register,  formState: { errors } } = useFormContext();
   const handleNext = ()=>{
     setShowNext(true)
   }
@@ -32,7 +34,7 @@ const CreateCourseDetails = ({setShowNext, register}) => {
 
         <hr className=" my-6 border border-gray-400 " />
 
-        <form className="grid grid-cols-1 lg:grid-cols-2 items-center gap-10 lg:gap-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-10 lg:gap-20">
           <div className="flex flex-col gap-3">
             <label
               htmlFor="course-title"
@@ -43,35 +45,45 @@ const CreateCourseDetails = ({setShowNext, register}) => {
             </label>
             <input
               type="text"
-              {...register("title", { required: "Course Title is required" })}
+              id="course-title"
+              {...register("title", { required: "Course title is required" })}
               className="px-3 py-4 border-2 border-gray-400 rounded-md"
               placeholder="Name your course......"
             />
+            {errors.title && <span className="text-red-500">{errors.title.message}</span>}
             <label
               htmlFor="description"
               className=" font-semibold text-base text-[#6476BA]"
             >
               {" "}
-              Course Description
+              Course Description 
             </label>
             <textarea
+            id="description"
               rows={3}
               type="text"
+              {...register("description", { required: "Course description is required" })}
               className="px-3 py-4 border-2 border-gray-400 rounded-md"
               placeholder="Short course description"
             />
+            {errors.description && <span className="text-red-500">{errors.description.message}</span>}
+
             <label
-              htmlFor="course-title"
+              htmlFor="price"
               className=" font-semibold text-base text-[#6476BA]"
             >
               {" "}
               Price *
             </label>
             <input
+            id="price"
+            placeholder="100,000.00"
+            {...register("price", { required: "Price is required" })}
               type="text"
-              className="px-3 py-4 border-2 border-gray-400 rounded-md"
-              placeholder="100,000.00"
+              className="px-3 py-4 border-2 border-gray-400 rounded-md "
+          
             />
+            {errors.price && <span className="text-red-500">{errors.price.message}</span>}
           </div>
           <div>
             <label
@@ -85,7 +97,8 @@ const CreateCourseDetails = ({setShowNext, register}) => {
                 <input
                   id="bordered-radio-1"
                   type="radio"
-                  value=""
+                  {...register("category")}
+                  value="video"
                   name="bordered-radio"
                   className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300   "
                 />
@@ -101,7 +114,8 @@ const CreateCourseDetails = ({setShowNext, register}) => {
                   checked
                   id="bordered-radio-2"
                   type="radio"
-                  value=""
+                  {...register("category")}
+                  value="book"
                   name="bordered-radio"
                   className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 "
                 />
@@ -109,14 +123,15 @@ const CreateCourseDetails = ({setShowNext, register}) => {
                   htmlFor="bordered-radio-2"
                   className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
-                  Books
+                  Book
                 </label>
               </div>
             </div>
             {/* drag & drop */}
             <FileDropzone />
           </div>
-        </form>
+          {/* <button type="submit">submit</button> */}
+        </div>
       </div>
     </div>
   );

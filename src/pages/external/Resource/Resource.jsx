@@ -46,24 +46,6 @@ const Resource = () => {
 
   const disableBtn = searchTerm === '' ? 'disabled cursor-not-allowed opacity-50 ' : '  '
 
-  // handle search
-  // const handleSearch = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     if (filterClicked) setLoading(true);
-  //     const response = await axios.get(
-  //       `${baseUrl}/api/v1/resources?search=${searchTerm}`
-  //     );
-  //     setSearchResults(response.data.data);
-  //     setLoading(false);
-  //     setError("");
-  //   } catch (error) {
-  //     console.error("Error fetching search results:", error);
-  //     setLoading(false);
-  //     setError("No product fit your search");
-  //   }
-  // };
-
 
     const handleSearch = (e) => {
       e.preventDefault();
@@ -178,7 +160,7 @@ const Resource = () => {
                 <img
                   className="w-full object-cover h-full rounded-t-2xl"
                   loading="lazy"
-                  src={item.photo}
+                  src={item.thumbnail}
                   alt=""
                 />
               </div>

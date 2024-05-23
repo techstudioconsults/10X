@@ -20,6 +20,8 @@ const Library = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(9);
 
+  console.log(data);
+
   const handleTabClick = (tab) => {
     setActiveTab(tab);
     setCurrentPage(1);
@@ -40,9 +42,9 @@ const Library = () => {
   const getHeadingText = () => {
     switch (activeTab) {
       case "video":
-        return "Video ";
-      case "pdf":
-        return "Books";
+        return "Video";
+      case "book":
+        return "Book";
       case "draft":
         return "Draft ";
       default:
@@ -224,11 +226,11 @@ const Library = () => {
               Video
             </Tab>
             <Tab
-              value="pdf"
-              onClick={() => handleTabClick("pdf")}
-              className={`w-1/5 text-base lg:text-xl ${getTabClass("pdf")}`}
+              value="book"
+              onClick={() => handleTabClick("book")}
+              className={`w-1/5 text-base lg:text-xl ${getTabClass("book")}`}
             >
-              Books
+              Book
             </Tab>
             <Tab
               value="draft"

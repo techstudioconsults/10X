@@ -1,12 +1,11 @@
-import { useState, } from "react";
+import { useState } from "react";
 // import closeIcon from "../../../../../assets/remove-content.svg";
 import plusIcon from "../../../../../assets/plus-icon.png";
 import CourseContentTwo from "./CourseContentTwo";
 import CourseContentThree from "./CourseContentThree";
 import CourseContentOne from "./CourseContentOne";
 
-const CourseContent = ({ onSubmit }) => {
-
+const CourseContent = ({ loading, onSubmit }) => {
   const [showTwo, setShowTwo] = useState(false);
   const [showThree, setShowThree] = useState(false);
 
@@ -17,6 +16,9 @@ const CourseContent = ({ onSubmit }) => {
   const toggleThree = () => {
     setShowThree(!showThree);
   };
+   
+
+
 
   return (
     <div>
@@ -34,8 +36,12 @@ const CourseContent = ({ onSubmit }) => {
           <button className="text-[#032BF2] text- font-bold border-[#032BF2] border-2 bg-white w-32 h-12 rounded-lg ">
             Save as Draft
           </button>
-          <button className="text-white bg-[#032BF2] w-32 h-12 rounded-lg ">
-            Publish
+          <button
+            type="submit"
+            onClick={onSubmit}
+            className="text-white bg-[#032BF2] w-32 h-12 rounded-lg "
+          >
+            {loading ? "loading..." : "Publish"}
           </button>
         </div>
       </div>
@@ -43,12 +49,12 @@ const CourseContent = ({ onSubmit }) => {
       <hr className=" my-6 border border-gray-400 " />
 
       {/* Content Section */}
-      <div className="relative pb-24 grid grid-cols-1 lg:grid-cols-2 gap-14 justify-between items-center">
-        {/* Content 1 */}
-        <CourseContentOne/>
+      <CourseContentOne />
+      {/* <div className="relative pb-24 grid grid-cols-1 lg:grid-col"> */}
+      {/* Content 1 */}
 
-        {/* Content 2 */}
-         <div className="">
+      {/* Content 2 */}
+      {/* <div className="">
           {showTwo && (
             <CourseContentTwo showTwo={showTwo} setShowTwo={setShowTwo}/>
           )}
@@ -64,12 +70,12 @@ const CourseContent = ({ onSubmit }) => {
            </button>
          </div>
           )}
-        </div> 
-        {/* Content 3 */}
-        {showThree && (
+        </div>  */}
+      {/* Content 3 */}
+      {/* {showThree && (
           <CourseContentThree showThree={showThree} setShowThree={setShowThree}/>
-        )}
-        {showTwo && !showThree && (
+        )} */}
+      {/* {showTwo && !showThree && (
           <div className="absolute bottom-0 w-full flex py-2 justify-around">
             <button
               onClick={toggleThree}
@@ -80,8 +86,8 @@ const CourseContent = ({ onSubmit }) => {
               <span> Add Content</span>
             </button>
           </div>
-        )}
-      </div>
+        )} */}
+      {/* </div> */}
     </div>
   );
 };
