@@ -1,6 +1,8 @@
 import React from "react";
 import lib1 from "../../../../../assets/libimg.png";
 import { Link } from "react-router-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const lib = [
   { id: crypto.randomUUID(), title: "Digital Marketing", module: 6, img: lib1 },
@@ -21,7 +23,7 @@ const Library = () => {
             key={l.id}
             className="flex items-center gap-5 text-sm text-darkBlue shadow p-2 rounded"
           >
-            <img src={l.img} alt="" className="w-10 h-10 rounded-md" />
+            <LazyLoadImage effect="blur" src={l.img} alt="" className="w-10 h-10 rounded-md" />
             <div className=" flex-1">
               <h3 className=" underline font-[650]">{l.title}</h3>
               <p className=" text-xs">{l.module} Modules</p>

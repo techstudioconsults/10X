@@ -8,7 +8,7 @@ export const UserContext = createContext();
 const UserProvider = ({ children }) => {
   const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
   const [userInfo, setUserInfo] = useState();
-   const [course, setCourse] = useState([]);
+  const [course, setCourse] = useState([]);
 
   const userToken = Cookies.get("userToken");
   let decode = null;
@@ -17,8 +17,6 @@ const UserProvider = ({ children }) => {
     decode = jwtDecode(userToken);
   }
 
-
-
   const getUserInfo = async () => {
     try {
       const { data } = await axios.get(`${API_URL}/api/v1/auth/me`, {
@@ -26,7 +24,7 @@ const UserProvider = ({ children }) => {
           Authorization: `Bearer ${userToken}`,
         },
       });
-
+      // console.log(data);
       if (data.success) {
         setUserInfo(data);
       }
@@ -35,22 +33,18 @@ const UserProvider = ({ children }) => {
     }
   };
 
-
-
   const getPaidCourses = async () => {
-    const { data: {data} } = await axios(
-      `${API_URL}/api/v1/users/${decode?.id}/course`,
-      {
-        headers: {
-          Authorization: `Bearer ${userToken}`,
-        },
-      }
-    );
+    const {
+      data: { data },
+    } = await axios(`${API_URL}/api/v1/users/${decode?.id}/course`, {
+      headers: {
+        Authorization: `Bearer ${userToken}`,
+      },
+    });
 
     // console.log(data);
-    setCourse(data)
+    setCourse(data);
   };
-
 
   useEffect(() => {
     if (userToken) {
@@ -58,8 +52,6 @@ const UserProvider = ({ children }) => {
       getPaidCourses();
     }
   }, [userToken]);
-
- 
 
   const AdminData = { API_URL, userInfo, getUserInfo };
 

@@ -83,7 +83,7 @@ const Adminlogin = () => {
       <div className="h-screen grid place-items-center w-full">
         <form className="flex flex-col gap-20 items-center px-3 " onSubmit={handleSubmit(onSubmit)}>
          <div >
-         <Link>
+         <Link to="/">
             <img src={logo} alt="" />
           </Link>
           </div>

@@ -14,20 +14,21 @@ const CreateCourseDetails = ({setShowNext,}) => {
   return (
     <div>
             <div className=" flex justify-between items-center gap-5">
-        <div>
-          <h1 className="text-[#0027BA] text-xl md:text-3xl font-bold">
-            Create New Course
-          </h1>
-          <p className="text-[#818181] sm:text-sm w-[90%] md:w-full pt-1 md:pt-2">
-            Please fill in all the details of your course.
+            <div>
+          <h1 className=" text-darkBlue font-[650] text-2xl">Edit Course</h1>
+          <p className="text-sm mt-1 text-grey">
+            Please fill in all the details of your course
           </p>
         </div>
-        <button
-          onClick={handleNext}
-          className="text-white bg-[#032BF2] w-32 h-12 rounded-lg "
-        >
-          Next
-        </button>
+        <div className="flex items-center gap-5">
+          <button className=" border-2 border-darkBlue rounded-md font-[650] text-darkBlue h-11 w-24">
+            Discard
+          </button>
+          <button onClick={handleNext} className="  bg-darkBlue rounded-md font-[650] text-white h-11 w-24">
+            Next
+          </button>
+        </div>
+        
       </div>
       <div className=" mt-8 mb-9 px-6 rounded-lg border shadow-md py-7">
         <h1 className="text-[#A5A5A5] text-sm font-medium ">COURSE DETAILS</h1>

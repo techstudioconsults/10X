@@ -9,12 +9,14 @@ import Cookies from "js-cookie";
 import { Bars } from "react-loader-spinner";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import useUserContext from "../../../hooks/useUserContext";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const Login = () => {
   // const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
@@ -49,6 +51,7 @@ const Login = () => {
         Cookies.set("userToken", data.token);
         getUserInfo()
         navigate("/myCourses");
+        window.location.reload()
         setIsLoading(false);
       }
     } catch (error) {
@@ -91,15 +94,17 @@ const Login = () => {
     <div>
       <div className="lg:grid grid-cols-2  flex flex-col items-center gap-4 h-screen">
         <div className="h-screen lg:self-start ">
-          <img
+          <LazyLoadImage
             src={signinImg}
             alt=""
             className="h-full w-full object-cover hidden lg:block"
+            effect="blur"
           />
-          <img
+          <LazyLoadImage
             src={loginMobile}
             alt=""
             className="h-full w-full object-cover lg:hidden block"
+            effect="blur"
           />
         </div>
         <div
@@ -199,7 +204,7 @@ const Login = () => {
                   Remember Me
                 </label>
                 <p className="font-semibold text-xs underline">
-                  <Link>Forgot password?</Link>
+                  <Link to="/forgot-password">Forgot password?</Link>
                 </p>
               </div>
 

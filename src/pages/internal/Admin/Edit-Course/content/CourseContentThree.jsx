@@ -2,36 +2,24 @@ import { useState, useCallback, useMemo } from "react";
 import closeIcon from "../../../../../assets/remove-content.svg";
 import plusIcon from "../../../../../assets/plus-icon.png";
 import { useDropzone } from "react-dropzone";
-import { useFormContext, useFieldArray } from "react-hook-form";
 
-const CourseContentTwo = ({setShowTwo, showTwo}) => {
-  const { control, formState: { errors }, register, setValue } = useFormContext();
-  const { fields, append, remove } = useFieldArray({
-    control,
-    name: "content",
-  });
+const CourseContentThree = ({showThree, setShowThree}) => {
   const [selectedFiles, setSelectedFiles] = useState([]);
 
-  const toggleContent = () => {
-    setShowTwo(!showTwo);
+  const toggleThree = () => {
+    setShowThree(!showThree);
   };
 
-  const onDrop = useCallback((acceptedFiles, rejectedFiles, event) => {
-    const updatedFiles = [...selectedFiles];
-    acceptedFiles.forEach((file, index) => {
-      const fieldIndex = selectedFiles.length + index;
-      updatedFiles[fieldIndex] = file;
-      setValue(`content.${fieldIndex}.file`, file);
-    });
-    setSelectedFiles(updatedFiles);
-  }, [selectedFiles, setValue]);
+  const onDrop = useCallback((acceptedFiles) => {
+    setSelectedFiles(acceptedFiles);
+  }, []);
 
-  const removeFile = (index) => {
-    const updatedFiles = selectedFiles.filter((_, fileIndex) => fileIndex !== index);
+  const removeFile = () => {
+    console.log("clicked");
+    const updatedFiles = [];
+    updatedFiles.splice(1);
     setSelectedFiles(updatedFiles);
-    setValue(`content.${index}.file`, null); // Clear the file field
   };
-
   const {
     getRootProps,
     getInputProps,
@@ -59,37 +47,28 @@ const CourseContentTwo = ({setShowTwo, showTwo}) => {
         ? "#2196f3"
         : "#ced4da",
       borderWidth: "2px",
-      borderRightRadius: "0rem", // Corrected property name
-      borderLeftRadius: "0.375rem", // Corrected property name
-      padding: "0.5rem",
+      borderRightRadiem: "0rem",
+      borderLeftRadiem: "0.375rem",
+      padding: "0.5rem", // Tailwind's p-2
     }),
     [isDragAccept, isDragReject, isDragActive]
   );
 
-
-
-
-
-    // const onDrop = useCallback((acceptedFiles) => {
-    //   setSelectedFiles(acceptedFiles);
-    // }, []);
-    
-    return (
-      <div>
+  return (
+    <div>
       <div className="p-7 rounded-md border shadow-md w-full h-[407px]">
       <div className="flex justify-between">
                  {" "}
-                 <h1 className="py-4 text-[#A5A5A5] font-medium ">CONTENT 2</h1>
+                 <h1 className="py-4 text-[#A5A5A5] font-medium ">CONTENT 3</h1>
                  <img
                   className="cursor-pointer"
-                   onClick={toggleContent}
+                   onClick={toggleThree}
                    src={closeIcon}
                    alt=""
                  />{" "}
              </div>
         <hr className=" my-6 border border-gray-400 " />
-      {fields.map((item, index)=>(
-          <div key={item.id} className="flex flex-col gap-5">
+        <div className="flex flex-col gap-5">
           <div className="flex flex-col gap-1">
             <label
               htmlFor="course-title"
@@ -98,18 +77,28 @@ const CourseContentTwo = ({setShowTwo, showTwo}) => {
               Content Name
             </label>
             <input
-             id={`course-title-${index}`}
-             type="text"
-             {...register(`content.${index}.title`)}
+              type="text"
               className="px-3 py-2 h-[48px] border-2 border-gray-400 rounded-md"
               placeholder="Introduction to Zero Call Close"
             />
-          {errors.content?.[index]?.title && (
-                <span className="text-red-500">
-                  {errors.content[index].title.message}
-                </span>
-              )}
           </div>
+          {/* <div className='flex flex-col gap-1'>
+              <label
+                htmlFor="course-title"
+                className=" font-semibold text-base text-[#6476BA]"
+              >
+                Upload content file
+              </label>
+              <div className='flex w-full '>
+                <input
+                  type="text"
+                  className="px-3 w-[65%] py-2 h-[48px] border-2 border-gray-400 border-r-0 rounded-l-md"
+                  placeholder="Browser files or drag and drop here"
+                />
+              <button className='w-[35%] bg-[#032BF2] text-white rounded-r-md flex justify-center items-center gap-4'> <img src={plusIcon} alt="" /> <span>Add</span></button>
+              </div>
+              <p className='text-[#969BAC] font-medium text-sm pt-3'>Files Uploaded will appear here</p>
+            </div> */}
 
           <div className="flex flex-col gap-1">
             <label
@@ -124,7 +113,6 @@ const CourseContentTwo = ({setShowTwo, showTwo}) => {
                 className="flex justify-between w-full bg-[#CFE6FF] rounded-l-md"
               >
                 <input
-                     id={`file-upload-${index}`}
                   {...getInputProps()}
                   className="px-3 w-[65%] py-2 h-11 border-2 border-gray-400 border-r-0 rounded-l-md"
                   placeholder={
@@ -176,10 +164,9 @@ const CourseContentTwo = ({setShowTwo, showTwo}) => {
             )}
           </div>
         </div>
-      ))}
       </div>
     </div>
   );
 };
 
-export default CourseContentTwo;
+export default CourseContentThree;

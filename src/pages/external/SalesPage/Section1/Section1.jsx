@@ -6,12 +6,12 @@ import { NewAccordions } from "../accordion/NewAccordion";
 
 const Section1 = ({courseId}) => {
   return (
-    <div className="flex justify-center w-11/12 container mx-auto carousel-class mb-7 w-full">
-      <div className="w-full">
+    <div className="flex justify-center container mx-auto carousel-class mb-7 w-full">
+      <div className="w-11/12 mx-auto container ">
         
           <div className="flex flex-col-reverse md:flex-row mx-auto w-full">
             <div className="flex flex-col-reverse lg:flex-row gap-20 w-full xl:gap-40 items-stretch">
-              <div className="flex flex-col gap-5 lg:pt-36 lg:w-1/2 w-full ">
+              <div className="flex flex-col gap-5 lg:pt-36 lg:w-1/2 w-full">
                 <div className="flex flex-col items-start gap-3">
                   <SectionHeading title="Description" color="#0027BA" />
                   <p className="max-w-xl text-[#6476BA]">

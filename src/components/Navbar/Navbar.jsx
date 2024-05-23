@@ -8,6 +8,7 @@ import Cookies from "js-cookie";
 import useUserContext from "../../hooks/useUserContext";
 import axios from "axios";
 import MenuComp from "./menu/Menu";
+import { Typography } from "@material-tailwind/react";
 
 export const Navbar = () => {
   const { API_URL, getUserInfo, userInfo } = useUserContext();
@@ -18,6 +19,8 @@ export const Navbar = () => {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const showSignIn = userToken? 'hidden' : 'block'
   // const getUser = async () => {
   //   try {
   //     const { data } = await axios.get(`${API_URL}/api/v1/auth/me`, {
@@ -83,9 +86,21 @@ export const Navbar = () => {
                   alt=""
                 />
                 <div className="hidden md:block">
-                  <p className=" font-semibold text-blue ">
-                    {userInfo?.data?.fullname}
-                  </p>
+                  {userInfo ? (
+                    <p className=" font-semibold text-blue ">
+                      {userInfo?.data?.fullname}
+                    </p>
+                  ) : (
+                    <div className="animate-pulse flex items-center">
+                      <Typography
+                        as="div"
+                        variant="h1"
+                        className=" h-3 w-16 rounded-xl bg-gray-600"
+                      >
+                        &nbsp;
+                      </Typography>{" "}
+                    </div>
+                  )}
                 </div>
                 {/* <img src={arrowDown} alt="" /> */}
                 <MenuComp />
@@ -93,7 +108,7 @@ export const Navbar = () => {
             ) : (
               <Link
                 to="/login"
-                className=" border border-blue w-[90px] h-[45px] lg:flex justify-center items-center rounded-lg text-blue font-semibold hover:bg-blue hover:text-white duration-500 hidden "
+                className={`${showSignIn}  border border-blue w-[90px] h-[45px] md:flex justify-center items-center rounded-lg   text-blue font-semibold hover:bg-blue hover:text-white duration-500 hidden `}
               >
                 Sign In
               </Link>
@@ -133,7 +148,7 @@ export const Navbar = () => {
 
             <Link
               to="/login"
-              className=" border border-blue md:flex justify-center items-center rounded-lg text-blue font-semibold hover:bg-blue hover:text-white duration-500 py-2 px-5"
+              className={` ${showSignIn} border border-blue md:flex justify-center items-center rounded-lg text-blue font-semibold hover:bg-blue hover:text-white duration-500 py-2 px-5`}
             >
               Sign In
             </Link>
