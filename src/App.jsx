@@ -69,7 +69,7 @@ function App() {
               </Route>
             </Route>
               <Route
-                path="/mycourses-resume/:title"
+                path="/mycourses-resume/:id"
                 element={<SingleCourseView />}
               />
 

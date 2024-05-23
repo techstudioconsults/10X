@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import {
   Accordion,
@@ -102,14 +103,16 @@ function CheckIcon() {
   );
 }
 
-export const CourseContent = () => {
+export const CourseContent = ({ singleCourse }) => {
   const [open, setOpen] = useState(0);
 
   const handleOpen = (value) => setOpen(open === value ? 0 : value);
 
+
+
   return (
     <main className="w-11/12 container mx-auto my-3">
-      {coursesContent.map((course, i) => (
+      {singleCourse?.content?.map((course, i) => (
         <Accordion
           key={course.id}
           open={open === i + 1}
@@ -122,7 +125,7 @@ export const CourseContent = () => {
             {course.title}
           </AccordionHeader>
 
-          {course.subtitle.map((sub, i) => (
+          {course.subtitle?.map((sub, i) => (
             <AccordionBody
               key={i}
               className={"text-[#6476BA] font-[500]  h-[50px] w-full"}

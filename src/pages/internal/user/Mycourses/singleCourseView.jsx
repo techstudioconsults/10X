@@ -1,5 +1,5 @@
 import "./single.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { courses } from "./Mycourses-Components/MyCoursesComponents";
 import { useNavigate, useParams } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa6";
@@ -10,6 +10,7 @@ import {
   MdKeyboardDoubleArrowUp,
   MdKeyboardDoubleArrowDown,
 } from "react-icons/md";
+import ReactPlayer from "react-player";
 
 import {
   Tabs,
@@ -29,8 +30,12 @@ import {
   AccordionBody,
 } from "@material-tailwind/react";
 
+import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
+
 import { Radio, Typography } from "@material-tailwind/react";
 import { Navbar } from "../../../../components/Navbar/Navbar";
+import axios from "axios";
 
 function Icon({ id, open }) {
   return (
@@ -71,11 +76,12 @@ function CheckIcon() {
 }
 
 const SingleCourseView = () => {
-  const { title } = useParams();
+  const { title, id } = useParams();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("courseContent");
   const [currentPage, setCurrentPage] = useState(1);
   const [showProgress, setShowProgress] = useState(true);
+  const [singleCourse, setSingleCourse] = useState({});
 
   const [open, setOpen] = useState(0);
 
@@ -96,11 +102,31 @@ const SingleCourseView = () => {
       : "text-[#818181] font-semibold";
   };
 
-  const findCourse = courses.find((c) => c.title === title);
+  const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
+
+  const userToken = Cookies.get("userToken");
+
+  const getSingleCourse = async () => {
+    const {
+      data: { data },
+    } = await axios(`${API_URL}/api/v1/course/${id}`, {
+      headers: {
+        Authorization: `Bearer ${userToken}`,
+      },
+    });
+
+    setSingleCourse(data);
+  };
+
+  useEffect(() => {
+    getSingleCourse();
+  }, [id]);
+
+    console.log(singleCourse);
 
   return (
     <main>
-      <Navbar/>
+      <Navbar />
       <section className="pt-24 w-full md:container md:mx-auto">
         {/* mobile design */}
         <main className="lg:hidden">
@@ -117,25 +143,41 @@ const SingleCourseView = () => {
             </div>
 
             <h1 className=" text-darkBlue text-xl font-[650] mt-3 max-w-[250px] md:max-w-full  px-2 ">
-              Introduction to Zero Call Close
+              {singleCourse.title}
             </h1>
-
-            <div className="flex items-center justify-between bg-[#EBEFFF] px-2 py-1 rounded-lg">
-              <h2 className=" text-darkBlue text-[14px] md:text-[17px] font-[650]  max-w-[150px] md:max-w-full">
-                Master Step By Step Frame Work
-              </h2>
-              <span className="bg-[#40BF80] py-2 rounded-md text-white px-3 text-sm font-[600]">
-                Completed
-              </span>
-            </div>
           </section>
 
-          <div className="w-full my-5">
+          <div className="flex items-center justify-between bg-[#EBEFFF] px-2 py-1 rounded-lg mt-3 mx-3">
+            <h2 className=" text-darkBlue text-[14px] md:text-[17px] font-[650]  max-w-[150px] md:max-w-full">
+              Master Step By Step Frame Work
+            </h2>
+            <span className="bg-[#40BF80] py-2 rounded-md text-white px-3 text-sm font-[600]">
+              Completed
+            </span>
+          </div>
+
+          <div className="w-full my-5 bg-black">
             {/* video player */}
 
-            <Player>
-              <source src={findCourse.video} />
-            </Player>
+            {/* <Player>
+              <source
+                src={
+                  "https://res.cloudinary.com/dgde8cwjk/video/upload/v1716219896/m4n3qogdqkqlqu9yhfkx.mp4"
+                }
+              />
+            </Player> */}
+
+            <ReactPlayer
+              // playIcon={"m"}
+              light={true}
+              controls
+              width={"100%"}
+              height={"440px"}
+              volume={true}
+              url={
+                "https://res.cloudinary.com/dgde8cwjk/video/upload/v1716219896/m4n3qogdqkqlqu9yhfkx.mp4"
+              }
+            />
 
             {/* video player */}
           </div>
@@ -172,7 +214,9 @@ const SingleCourseView = () => {
           </section>
 
           <section>
-            {activeTab === "courseContent" && <CourseContent />}
+            {activeTab === "courseContent" && (
+              <CourseContent singleCourse={singleCourse} />
+            )}
           </section>
           <section>{activeTab === "lesson" && <Lesson />}</section>
         </main>
@@ -266,12 +310,27 @@ const SingleCourseView = () => {
               </span>
             </div>
 
-            <div className="w-full my-5">
+            <div className="w-full my-5 bg-black">
               {/* video player */}
+              {/* <Player width={100}>
+                <source
+                  src={
+                    "https://res.cloudinary.com/dgde8cwjk/video/upload/v1716219896/m4n3qogdqkqlqu9yhfkx.mp4"
+                  }
+                />
+              </Player> */}
 
-              <Player>
-                <source src={findCourse.video} />
-              </Player>
+              <ReactPlayer
+                // playIcon={"m"}
+                light={true}
+                controls
+                width={"100%"}
+                height={"509px"}
+                volume={true}
+                url={
+                  "https://res.cloudinary.com/dgde8cwjk/video/upload/v1716219896/m4n3qogdqkqlqu9yhfkx.mp4"
+                }
+              />
 
               {/* video player */}
             </div>

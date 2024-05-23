@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import MyCourses from "../MyCourses";
 import {
   Tabs,
@@ -9,6 +9,7 @@ import {
 } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 import { Progress } from "@material-tailwind/react";
+import { UserContext } from "../../../../../context/UserContext";
 
 export const courses = [
   {
@@ -40,16 +41,22 @@ export const courses = [
 export const MyCoursesComponents = () => {
   const navigate = useNavigate();
 
+  const context = useContext(UserContext);
+
+  const { course } = context;
+
+  console.log(course?.purchasedCourses);
+
   return (
     <section className="mt-7">
-      {courses.map((c) => (
+      {course?.purchasedCourses?.map((c) => (
         <div
           key={c.id}
           className="mb-5 shadow-xl shadow-[#032BF214] w-full md:flex  gap-3 px-5 "
         >
           <div>
             <img
-              src={c.image}
+              src={c.thumbnail}
               alt={c.title}
               className="w-full md:w-[200px] md:h-[150px] lg:w-[400px] lg:h-[200px] mb-2 md:mb-0 rounded-tr-xl rounded-tl-xl lg:rounded-lg"
             />
@@ -63,7 +70,7 @@ export const MyCoursesComponents = () => {
             </div>
           </div>
 
-          <div className=" space-y-3 shadow-xl shadow-[#032BF214] p-2 rounded-bl-xl rounded-br-xl pb-4">
+          <div className=" space-y-3 shadow-xl shadow-[#032BF214] md:shadow-none p-2 rounded-bl-xl rounded-br-xl pb-4">
             <h1 className=" text-darkBlue font-[650] md:text-lg">{c.title}</h1>
             <p className="  text-[10px] md:max-w-[350px] lg:text-[16px] text-[#6476BA]">
               {c.description}
@@ -79,13 +86,11 @@ export const MyCoursesComponents = () => {
               >
                 {c.category}
               </p>
-              <p>{c.star}</p>
+              <p>{c.star || "⭐⭐⭐⭐⭐"}</p>
             </div>
             {/* <div className="h-0.5 rounded w-full mt-2 bg-darkBlue" /> */}
 
-            {/* </div>
-
-</div> */}
+            {/* </div></div> */}
 
             <div className="my-3  md:hidden">
               <Progress value={10} color="purple" className="progress h-1" />
@@ -99,7 +104,7 @@ export const MyCoursesComponents = () => {
             <button
               className="text-xs bg-darkBlue w-full md:w-[350px] h-10 md:h-9 mt-2 py-3 rounded text-white font-semibold"
               onClick={() => {
-                navigate(`/mycourses-resume/${c.title}`);
+                navigate(`/mycourses-resume/${c._id}`);
               }}
             >
               Resume course
