@@ -10,7 +10,7 @@ export const Sliders = () => {
     dots: true,
     infinite: true,
     speed: 600,
-    slidesToShow: 3,
+    slidesToShow: 2,
     slidesToScroll: 3,
     autoplay: true,
     initialSlide: 0,

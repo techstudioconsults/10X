@@ -81,7 +81,8 @@ footer {
 .video-react.video-react-4-3 {
   width: 100px;
   max-width: 100%;
-  height: 0;
+  /* height: 0; */
+  height: 200px !important;
 }
 
 .video-react .video-react-big-play-button:before {
@@ -92,6 +93,7 @@ footer {
   right: 0 !important;
   width: 100%;
   height: 100%;
+  /* height: 200px !important; */
   text-align: center;
 }
 
@@ -114,45 +116,58 @@ footer {
   transition: all 0.4s;
 }
 
-
-@media(min-width: 560px){
+@media (min-width: 560px) {
   .video-react .video-react-big-play-button {
-  font-size: 3em;
-  line-height: 1.5em;
-  height: 45px !important;
-  border-radius: 100% !important;
-  width: 46px !important;
-  display: block;
-  position: absolute;
-  top: 40% !important;
-  left: 45% !important;
-  padding: 0;
-  cursor: pointer;
-  opacity: 1;
-  background-color: white;
-  border: none !important;
-  background-color: rgba(3, 43, 242, 1) !important;
-  transition: all 0.4s;
-}
+    font-size: 3em;
+    line-height: 1.5em;
+    height: 45px !important;
+    border-radius: 100% !important;
+    width: 46px !important;
+    display: block;
+    position: absolute;
+    top: 40% !important;
+    left: 45% !important;
+    padding: 0;
+    cursor: pointer;
+    opacity: 1;
+    background-color: white;
+    border: none !important;
+    background-color: rgba(3, 43, 242, 1) !important;
+    transition: all 0.4s;
+  }
 }
 
-@media(min-width: 800px){
+@media (min-width: 800px) {
   .video-react .video-react-big-play-button {
-  font-size: 3em;
-  line-height: 1.5em;
-  height: 45px !important;
-  border-radius: 100% !important;
-  width: 46px !important;
-  display: block;
-  position: absolute;
-  top: 44% !important;
-  left: 47% !important;
-  padding: 0;
-  cursor: pointer;
-  opacity: 1;
-  background-color: white;
-  border: none !important;
-  background-color: rgba(3, 43, 242, 1) !important;
-  transition: all 0.4s;
+    font-size: 3em;
+    line-height: 1.5em;
+    height: 45px !important;
+    border-radius: 100% !important;
+    width: 46px !important;
+    display: block;
+    position: absolute;
+    top: 44% !important;
+    left: 47% !important;
+    padding: 0;
+    cursor: pointer;
+    opacity: 1;
+    background-color: white;
+    border: none !important;
+    background-color: rgba(3, 43, 242, 1) !important;
+    transition: all 0.4s;
+  }
 }
+
+.video-react .video-react-video {
+  /* width: 500px !important; */
+  height: 250px !important;
 }
+
+/* .video-react-video {
+  height: 250px !important;
+  width: 250% !important;
+} */
+
+/* .video-react-controls-enabled video-react-has-started video-react-paused video-react-fluid video-react-user-inactive video-react-workinghover video-react{
+    height: 200px !important;
+} */
