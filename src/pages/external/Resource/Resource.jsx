@@ -101,7 +101,7 @@ const Resource = () => {
             </span>
           </h1>
           <div className="w-full ">
-            <form onSubmit={handleSearch} className="flex justify-center items-center w-full  lg:w-4/5 mx-auto py-8">
+            <form onSubmit={handleSearch} className="flex justify-center items-center w-11/12  lg:w-4/5 mx-auto py-8">
          <div className="flex bg-[#EBEFFF] rounded-l-lg w-full max-w-[870px]">
          <span><img className="translate-x-5 translate-y-3 lg:translate-x-8" src={searchIcon} alt="" /></span>
               <input
@@ -155,18 +155,17 @@ const Resource = () => {
           {currentItems.map((item) => (
             <div
               key={item._id}
-              className="flex hover:border-2 border-[#032BF2] duration-500 cursor-pointer flex-col justify-center items-center bg-[#FFFFFF] drop-shadow-md rounded-2xl"
+              className="flex  mx-auto w-11/12  sm:w-[370px] md:w-[340px] lg:w-[270px]  xl:w-[260px] 2xl:w-[295px] hover:border-2 border-[#032BF2] duration-500 cursor-pointer flex-col justify-center  items-center bg-[#FFFFFF] drop-shadow-md rounded-2xl"
               onClick={() => navigate(`/sales/${item._id}`)}
             >
-              <div className="w-full max-w-[298] xl:h-[210px] lg:h-[150px]">
                 <LazyLoadImage
                 effect="blur"
-                  className="w-full object-cover h-full rounded-t-2xl"
+                  className="w-[390px] md:w-[340px] lg:w-[270px] xl:w-[260px] 2xl:w-[295px] min-h-44 max-h-44  rounded-t-2xl"
                   loading="lazy"
                   src={item.thumbnail}
                   alt=""
                 />
-              </div>
+              
               <div className="w-full p-4 xl:p-4 flex flex-col justify-between gap-4">
                 <h1 className="text-[#0027BA] font-bold text-xl lg:text-lg text-left ">
                   {item.title.length > 20
