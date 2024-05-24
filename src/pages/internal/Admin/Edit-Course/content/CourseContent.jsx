@@ -4,8 +4,9 @@ import plusIcon from "../../../../../assets/plus-icon.png";
 import CourseContentTwo from "./CourseContentTwo";
 import CourseContentThree from "./CourseContentThree";
 import CourseContentOne from "./CourseContentOne";
+import { Bars } from "react-loader-spinner";
 
-const CourseContent = ({ loading, onSubmit }) => {
+const CourseContent = ({ loading, onSubmit, courseDetails }) => {
   const [showTwo, setShowTwo] = useState(false);
   const [showThree, setShowThree] = useState(false);
 
@@ -39,9 +40,21 @@ const CourseContent = ({ loading, onSubmit }) => {
           <button
             type="submit"
             onClick={onSubmit}
-            className="text-white bg-[#032BF2] w-32 h-12 rounded-lg "
+            className="text-white flex items-center justify-center bg-[#032BF2] w-32 h-12 rounded-lg "
           >
-            {loading ? "loading..." : "Publish"}
+            {loading ? (
+                  <div>
+                    <Bars
+                      height="28"
+                      width="82"
+                      color="#fff"
+                      ariaLabel="bars-loading"
+                      wrapperStyle={{}}
+                      wrapperClass=""
+                      visible={true}
+                    />{" "}
+                  </div>
+                ) : "Publish"}
           </button>
         </div>
       </div>
@@ -49,7 +62,7 @@ const CourseContent = ({ loading, onSubmit }) => {
       <hr className=" my-6 border border-gray-400 " />
 
       {/* Content Section */}
-      <CourseContentOne />
+      <CourseContentOne course={courseDetails}/>
       {/* <div className="relative pb-24 grid grid-cols-1 lg:grid-col"> */}
       {/* Content 1 */}
 

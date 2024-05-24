@@ -35,7 +35,7 @@ export function MobileAccordions() {
   
   return (
     <>
-      <main className="w-[343px] max-w-full px-3  mx-auto">
+      <main className="w-[343px] max-w-full px-3  mx-auto pt-10">
         <Accordion open={open === 1}>
           <AccordionHeader
             onClick={() => handleOpen(1)}

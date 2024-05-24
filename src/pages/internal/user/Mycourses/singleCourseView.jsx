@@ -1,5 +1,5 @@
-import "./single.css"
-import React, { useState } from "react";
+import "./single.css";
+import React, { useEffect, useState } from "react";
 import { courses } from "./Mycourses-Components/MyCoursesComponents";
 import { useNavigate, useParams } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa6";
@@ -10,6 +10,7 @@ import {
   MdKeyboardDoubleArrowUp,
   MdKeyboardDoubleArrowDown,
 } from "react-icons/md";
+import ReactPlayer from "react-player";
 
 import {
   Tabs,
@@ -29,7 +30,12 @@ import {
   AccordionBody,
 } from "@material-tailwind/react";
 
+import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
+
 import { Radio, Typography } from "@material-tailwind/react";
+import { Navbar } from "../../../../components/Navbar/Navbar";
+import axios from "axios";
 
 function Icon({ id, open }) {
   return (
@@ -69,12 +75,13 @@ function CheckIcon() {
   );
 }
 
- const SingleCourseView = () => {
-  const { title } = useParams();
+const SingleCourseView = () => {
+  const { title, id } = useParams();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("courseContent");
   const [currentPage, setCurrentPage] = useState(1);
   const [showProgress, setShowProgress] = useState(true);
+  const [singleCourse, setSingleCourse] = useState({});
 
   const [open, setOpen] = useState(0);
 
@@ -95,168 +102,52 @@ function CheckIcon() {
       : "text-[#818181] font-semibold";
   };
 
-  const findCourse = courses.find((c) => c.title === title);
+  const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
+
+  const userToken = Cookies.get("userToken");
+
+  const getSingleCourse = async () => {
+    const {
+      data: { data },
+    } = await axios(`${API_URL}/api/v1/course/${id}`, {
+      headers: {
+        Authorization: `Bearer ${userToken}`,
+      },
+    });
+
+    setSingleCourse(data);
+  };
+
+  useEffect(() => {
+    getSingleCourse();
+  }, [id]);
+
+    console.log(singleCourse);
 
   return (
-    <main className="pt-28 w-full md:container md:mx-auto">
-      {/* mobile design */}
-      <main className="lg:hidden">
-        <section className="mx-3">
-          <div className=" text-[#6476BA] flex items-center gap-3  px-2 ">
-            <button
-              onClick={() => {
-                navigate(-1);
-              }}
-            >
-              <FaArrowLeft />
-            </button>
-            <p>Back to my courses</p>
-          </div>
-
-          <h1 className=" text-darkBlue text-xl font-[650] mt-3 max-w-[250px] md:max-w-full  px-2 ">
-            Introduction to Zero Call Close
-          </h1>
-
-          <div className="flex items-center justify-between bg-[#EBEFFF] px-2 py-1 rounded-lg">
-            <h2 className=" text-darkBlue text-[14px] md:text-[17px] font-[650]  max-w-[150px] md:max-w-full">
-              Master Step By Step Frame Work
-            </h2>
-            <span className="bg-[#40BF80] py-2 rounded-md text-white px-3 text-sm font-[600]">
-              Completed
-            </span>
-          </div>
-        </section>
-
-        <div className="w-full my-5">
-          {/* video player */}
-
-          <Player>
-            <source src={findCourse.video} />
-          </Player>
-
-          {/* video player */}
-        </div>
-
-        <section>
-          <Tabs value={activeTab}>
-            <TabsHeader
-              className="rounded-none border-b gap-10 md:gap-5 ms-5 lg:ms-0 mt-6 border-blue-gray-50 bg-transparent p-0 z-0"
-              indicatorProps={{
-                className:
-                  "bg-transparent border-b-2 border-[#0027BA] shadow-none rounded-none",
-              }}
-            >
-              <Tab
-                value="courseContent"
-                onClick={() => handleTabClick("courseContent")}
-                className={` w-1/3 ms-2 text-base lg:text-xl whitespace-nowrap ${getTabClass(
-                  "courseContent"
-                )}`}
+    <main>
+      <Navbar />
+      <section className="pt-24 w-full md:container md:mx-auto">
+        {/* mobile design */}
+        <main className="lg:hidden">
+          <section className="mx-3">
+            <div className=" text-[#6476BA] flex items-center gap-3  px-2 ">
+              <button
+                onClick={() => {
+                  navigate(-1);
+                }}
               >
-                Course Content
-              </Tab>
-              <Tab
-                value="lesson"
-                onClick={() => handleTabClick("lesson")}
-                className={`w-1/2 text-base lg:text-xl ${getTabClass(
-                  "lesson"
-                )}`}
-              >
-                Lesson
-              </Tab>
-            </TabsHeader>
-          </Tabs>
-        </section>
-
-        <section>{activeTab === "courseContent" && <CourseContent />}</section>
-        <section>{activeTab === "lesson" && <Lesson />}</section>
-      </main>
-
-      {/* mobile design */}
-
-      {/* large devices */}
-
-      <main className=" w-full justify-between hidden lg:flex">
-        <section className="w-[30%]">
-          {showProgress && (
-            <div>
-              <div className="flex justify-between items-center text-sm text-[#6476ba]">
-                <p>COURSE PROGRESS</p>
-                <p>10%</p>
-              </div>
-
-              <Progress
-                value={10}
-                color="purple"
-                className="progress"
-              />
+                <FaArrowLeft />
+              </button>
+              <p>Back to my courses</p>
             </div>
-          )}
 
-          <div className="mt-3">
-            <button
-              className="text-[13px] flex items-center gap-5"
-              onClick={handleProgressVisibilityChange}
-            >
-              {showProgress ? " Hide course content" : " Show course content"}
-              <span>
-                {showProgress ? (
-                  <MdKeyboardDoubleArrowUp size={14} />
-                ) : (
-                  <MdKeyboardDoubleArrowDown size={14} />
-                )}
-              </span>
-            </button>
-          </div>
+            <h1 className=" text-darkBlue text-xl font-[650] mt-3 max-w-[250px] md:max-w-full  px-2 ">
+              {singleCourse.title}
+            </h1>
+          </section>
 
-          <div className="mt-8">
-            {coursesContent.map((course, i) => (
-              <Accordion
-                key={course.id}
-                open={open === i + 1}
-                icon={<Icon id={i + 1} open={open} />}
-              >
-                <AccordionHeader
-                  onClick={() => handleOpen(i + 1)}
-                  className="text-[16px] text-darkBlue"
-                >
-                  {course.title}
-                </AccordionHeader>
-
-                {course.subtitle.map((sub, i) => (
-                  <AccordionBody
-                    key={i}
-                    className={
-                      "text-[#6476BA] font-[500] flex justify-between items-center h-[50px]"
-                    }
-                  >
-                    {sub}
-
-                    <span>
-                      <Radio
-                        name="type"
-                        defaultChecked
-                        ripple={false}
-                        icon={<CheckIcon />}
-                        className="border-gray-900/10 bg-gray-900/5 p-0 transition-all hover:before:opacity-0"
-                      />
-                    </span>
-                  </AccordionBody>
-                ))}
-              </Accordion>
-            ))}
-          </div>
-        </section>
-
-        <section className="w-[60%]">
-          <div className="flex items-center justify-between px-2">
-            <p className="text-[#0027BA] font-[650]">
-              Introduction to Zero Call Close
-            </p>
-            <p className="text-[#6476BA] text-xs">MODULE 1, LESSON 1</p>
-          </div>
-
-          <div className="flex items-center justify-between bg-[#EBEFFF] px-2 py-1 rounded-lg my-10">
+          <div className="flex items-center justify-between bg-[#EBEFFF] px-2 py-1 rounded-lg mt-3 mx-3">
             <h2 className=" text-darkBlue text-[14px] md:text-[17px] font-[650]  max-w-[150px] md:max-w-full">
               Master Step By Step Frame Work
             </h2>
@@ -265,32 +156,201 @@ function CheckIcon() {
             </span>
           </div>
 
-          <div className="w-full my-5">
+          <div className="w-full my-5 bg-black">
             {/* video player */}
 
-            <Player>
-              <source src={findCourse.video} />
-            </Player>
+            {/* <Player>
+              <source
+                src={
+                  "https://res.cloudinary.com/dgde8cwjk/video/upload/v1716219896/m4n3qogdqkqlqu9yhfkx.mp4"
+                }
+              />
+            </Player> */}
+
+            <ReactPlayer
+              // playIcon={"m"}
+              light={true}
+              controls
+              width={"100%"}
+              height={"440px"}
+              volume={true}
+              url={
+                "https://res.cloudinary.com/dgde8cwjk/video/upload/v1716219896/m4n3qogdqkqlqu9yhfkx.mp4"
+              }
+            />
 
             {/* video player */}
           </div>
 
-          <div className="my-10">
-            <p className="text-[#33414B] text-[16px]">
-              Brand identity design encompasses every graphic design element
-              that embodies your brand. After following this comprehensive
-              guide, you’ll have the capability to compile a brand book
-              containing all the essential identity elements necessary for
-              accurately portraying your company to consumers.
-            </p>
-          </div>
-        </section>
-      </main>
+          <section>
+            <Tabs value={activeTab}>
+              <TabsHeader
+                className="rounded-none border-b gap-10 md:gap-5 ms-5 lg:ms-0 mt-6 border-blue-gray-50 bg-transparent p-0 z-0"
+                indicatorProps={{
+                  className:
+                    "bg-transparent border-b-2 border-[#0027BA] shadow-none rounded-none",
+                }}
+              >
+                <Tab
+                  value="courseContent"
+                  onClick={() => handleTabClick("courseContent")}
+                  className={` w-1/3 ms-2 text-base lg:text-xl whitespace-nowrap ${getTabClass(
+                    "courseContent"
+                  )}`}
+                >
+                  Course Content
+                </Tab>
+                <Tab
+                  value="lesson"
+                  onClick={() => handleTabClick("lesson")}
+                  className={`w-1/2 text-base lg:text-xl ${getTabClass(
+                    "lesson"
+                  )}`}
+                >
+                  Lesson
+                </Tab>
+              </TabsHeader>
+            </Tabs>
+          </section>
 
-      {/* large devices */}
+          <section>
+            {activeTab === "courseContent" && (
+              <CourseContent singleCourse={singleCourse} />
+            )}
+          </section>
+          <section>{activeTab === "lesson" && <Lesson />}</section>
+        </main>
+
+        {/* mobile design */}
+
+        {/* large devices */}
+
+        <main className=" w-full justify-between hidden lg:flex">
+          <section className="w-[30%]">
+            {showProgress && (
+              <div>
+                <div className="flex justify-between items-center text-sm text-[#6476ba]">
+                  <p>COURSE PROGRESS</p>
+                  <p>10%</p>
+                </div>
+
+                <Progress value={10} color="purple" className="progress" />
+              </div>
+            )}
+
+            <div className="mt-3">
+              <button
+                className="text-[13px] flex items-center gap-5"
+                onClick={handleProgressVisibilityChange}
+              >
+                {showProgress ? " Hide course content" : " Show course content"}
+                <span>
+                  {showProgress ? (
+                    <MdKeyboardDoubleArrowUp size={14} />
+                  ) : (
+                    <MdKeyboardDoubleArrowDown size={14} />
+                  )}
+                </span>
+              </button>
+            </div>
+
+            <div className="mt-8">
+              {coursesContent.map((course, i) => (
+                <Accordion
+                  key={course.id}
+                  open={open === i + 1}
+                  icon={<Icon id={i + 1} open={open} />}
+                >
+                  <AccordionHeader
+                    onClick={() => handleOpen(i + 1)}
+                    className="text-[16px] text-darkBlue"
+                  >
+                    {course.title}
+                  </AccordionHeader>
+
+                  {course.subtitle.map((sub, i) => (
+                    <AccordionBody
+                      key={i}
+                      className={
+                        "text-[#6476BA] font-[500] flex justify-between items-center h-[50px]"
+                      }
+                    >
+                      {sub}
+
+                      <span>
+                        <Radio
+                          name="type"
+                          defaultChecked
+                          ripple={false}
+                          icon={<CheckIcon />}
+                          className="border-gray-900/10 bg-gray-900/5 p-0 transition-all hover:before:opacity-0"
+                        />
+                      </span>
+                    </AccordionBody>
+                  ))}
+                </Accordion>
+              ))}
+            </div>
+          </section>
+
+          <section className="w-[60%]">
+            <div className="flex items-center justify-between px-2">
+              <p className="text-[#0027BA] font-[650]">
+                Introduction to Zero Call Close
+              </p>
+              <p className="text-[#6476BA] text-xs">MODULE 1, LESSON 1</p>
+            </div>
+
+            <div className="flex items-center justify-between bg-[#EBEFFF] px-2 py-1 rounded-lg my-10">
+              <h2 className=" text-darkBlue text-[14px] md:text-[17px] font-[650]  max-w-[150px] md:max-w-full">
+                Master Step By Step Frame Work
+              </h2>
+              <span className="bg-[#40BF80] py-2 rounded-md text-white px-3 text-sm font-[600]">
+                Completed
+              </span>
+            </div>
+
+            <div className="w-full my-5 bg-black">
+              {/* video player */}
+              {/* <Player width={100}>
+                <source
+                  src={
+                    "https://res.cloudinary.com/dgde8cwjk/video/upload/v1716219896/m4n3qogdqkqlqu9yhfkx.mp4"
+                  }
+                />
+              </Player> */}
+
+              <ReactPlayer
+                // playIcon={"m"}
+                light={true}
+                controls
+                width={"100%"}
+                height={"509px"}
+                volume={true}
+                url={
+                  "https://res.cloudinary.com/dgde8cwjk/video/upload/v1716219896/m4n3qogdqkqlqu9yhfkx.mp4"
+                }
+              />
+
+              {/* video player */}
+            </div>
+
+            <div className="my-10">
+              <p className="text-[#33414B] text-[16px]">
+                Brand identity design encompasses every graphic design element
+                that embodies your brand. After following this comprehensive
+                guide, you’ll have the capability to compile a brand book
+                containing all the essential identity elements necessary for
+                accurately portraying your company to consumers.
+              </p>
+            </div>
+          </section>
+        </main>
+
+        {/* large devices */}
+      </section>
     </main>
   );
 };
 
-
-export default SingleCourseView
+export default SingleCourseView;

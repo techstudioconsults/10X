@@ -11,6 +11,8 @@ import {
 } from "@material-tailwind/react";
 import checkmark from "../../../../../assets/check-icon.svg"
 import {Link} from "react-router-dom"
+import DeleteCourse from "../../../../../components/Modal/DeleteCourse";
+
 
 function Icon({ id, open }) {
   return (
@@ -34,6 +36,7 @@ function Icon({ id, open }) {
 }
 
 const Details = ({ data }) => {
+ 
   const [open, setOpen] = useState();
 
   const handleOpen = (value) => setOpen(open === value ? null : value);
@@ -44,6 +47,8 @@ const Details = ({ data }) => {
   const thumbnail = data?.thumbnail
 
   console.log(thumbnail);
+
+ 
   return (
     // <div> <p>Paystack Details showing clients</p> </div>
     <div>
@@ -80,8 +85,9 @@ const Details = ({ data }) => {
              </div>
             </div>
             <div className="flex justify-start items-center gap-3">
-              <Link to={`/admin/edit-course/${data?._id}`} className=" text-white  bg-blue rounded-md px-10 text-sm  py-3">Edit</Link>
-              <button className=" border-red-500 border-2 rounded-md py-3 px-10  text-sm text-red-500">Delete Icon</button>
+              <Link to={`/admin/edit-course/${data?._id}`}> <button className=" text-white  bg-blue rounded-md px-10 text-sm  py-3">Edit</button></Link>
+              {/* <button className=" border-red-500 border-2 rounded-md py-3 px-10  text-sm text-red-500" onClick={() => handleCourseDelete()}>Delete Icon</button> */}
+              <DeleteCourse />
             </div>
 
           </div>

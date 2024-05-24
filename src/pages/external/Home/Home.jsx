@@ -238,7 +238,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
         </Link>
       </div>
 
-      <section className="hidden md:flex justify-center items-center gap-10 md:my-10 h-[483px]">
+      <section className="hidden md:flex justify-center items-center gap-10 md:my-10 h-[483px] px-5">
         <div>
           <ul className="text-white">
             <li className="">

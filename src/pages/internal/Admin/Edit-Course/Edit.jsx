@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CourseContent from "./content/CourseContent";
-import CreateCourseDetails from "./content/CreateCourseDetails";
+import EditCourseDetails from "./content/EditCourseDetails";
 import { useForm, FormProvider, } from "react-hook-form";
 import axios from "axios";
 import useAdminContext from "../../../../hooks/useAdminContext";
@@ -8,12 +8,21 @@ import CreateCourseSuccess from "../../../../components/Modal/CreateCourseSucces
 import { CiCamera } from "react-icons/ci";
 // import { useForm } from "react-hook-form";
 import EditComponent from "./content/Edit"
+import {useFetch} from "../../../../hooks/useFetch"
+import { useParams, useNavigate } from "react-router-dom";
 
 const Edit = () => {
+  const {id} = useParams()
+  const navigate = useNavigate()
+  console.log(id);
   const { API_URL, token } = useAdminContext();
   const [isLoading, setIsLoading] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+  const [courseDetails, setCourseDetails] = useState([]);
   const [errorMessage, setErrorMessage] = useState("")
+  // const { register, handleSubmit, setValue } = useForm();
+
+
   const methods = useForm({
     defaultValues: {
       title: "",
@@ -37,11 +46,52 @@ const Edit = () => {
       ],
     },
   });
+ 
+  const { setValue } = methods;
+
+  const getCourseInfo = async () => {
+
+    try {
+      const {data} = await axios.get(`${API_URL}/api/v1/course/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      console.log(data.data);
+      setCourseDetails(data.data);
+      setValue("title", data.data.title);
+      setValue("description", data.data.description);
+      setValue("price", data.data.price);
+      setValue("category", data.data.category);
+      setValue("thumbnail", data.data.thumbnail);
+      setValue("content", [
+        {
+          title: data.data?.content[0]?.title || "",
+          file: data.data?.content[0]?.file || null,
+        },
+        {
+          title: data.data?.content[1]?.title || "",
+          file: data.data?.content[1]?.file || null,
+        },
+        {
+          title: data.data?.content[2]?.title || "",
+          file: data.data?.content[2]?.file || null,
+        },
+      ]);
+      
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
+ 
+  
+
   const [showNext, setShowNext] = useState(false);
   const [profileImage, setProfileImage] = useState("");
   const [images, setImages] = useState(null);
 
-  const { register, handleSubmit } = useForm();
 
   const handleImageChange = (e) => {
     setProfileImage(e.target.files[0]);
@@ -53,7 +103,7 @@ const Edit = () => {
   }
 
   const onSubmit = async (data) => {
-    console.log("Form data:", data);
+    console.table("Form data:", data);
   
     try {
       setIsLoading(true);
@@ -71,11 +121,15 @@ const Edit = () => {
       // formData.append("content", data.content)
   
       // Append thumbnail file
-      if (data.thumbnail instanceof File) {
-        formData.append("thumbnail", data.thumbnail);
+      if (data.thumbnail[0] instanceof File) {
+        formData.append("thumbnail", data.thumbnail[0]);
+      } else if (typeof data.thumbnail === "string") {
+        formData.append("thumbnail", courseDetails.thumbnail);  // Assuming backend handles thumbnail URL
       } else {
         console.error("Thumbnail is not a file");
       }
+
+
       
     // Append content array data
     formData.append("content", JSON.stringify(data.content));
@@ -84,6 +138,8 @@ const Edit = () => {
       formData.append(`content[${index}].title`, contentItem.title);
       if (contentItem.file instanceof File) {
         formData.append(`content[${index}].file`, contentItem.file);
+      } else if (typeof contentItem.file === "string") {
+        formData.append(`content[${index}].file`, contentItem.file);  // Assuming backend handles file URL
       } else {
         console.error(`Content item at index ${index} is missing a file`);
       }
@@ -91,7 +147,7 @@ const Edit = () => {
 
       console.log(data.content);
   
-      const res = await axios.post(`${API_URL}/api/v1/course`, formData, {
+      const res = await axios.put(`${API_URL}/api/v1/course/${id}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
@@ -99,9 +155,10 @@ const Edit = () => {
       });
       console.log("API response:", res);
 
-      if(res.status == 201){
+      if(res.status == 200){
         setIsLoading(false)
         setOpenModal(true)
+        navigate(`/coursedetail/${id}`)
       }
     } catch (error) {
       setIsLoading(false);
@@ -127,6 +184,10 @@ const Edit = () => {
     }
   };
 
+  useEffect(() => {
+    getCourseInfo()
+  }, [])
+
   return (
     <main className=" container mx-auto w-11/12">
       {/* <EditComponent /> */}
@@ -135,10 +196,10 @@ const Edit = () => {
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
           <div>
-            {!showNext && <CreateCourseDetails setShowNext={setShowNext} />}
+            {!showNext && <EditCourseDetails courseDetails={courseDetails} setShowNext={setShowNext} />}
           </div>
           <div className="">
-            {showNext && <CourseContent loading={isLoading} onSubmit={methods.handleSubmit(onSubmit)}  />}
+            {showNext && <CourseContent courseDetails={courseDetails} loading={isLoading} onSubmit={methods.handleSubmit(onSubmit)}  />}
           </div>
           {/* {showNext && (
             <button type="submit" className="btn btn-primary">
