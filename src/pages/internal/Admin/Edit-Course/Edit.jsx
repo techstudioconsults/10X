@@ -155,7 +155,7 @@ const Edit = () => {
       });
       console.log("API response:", res);
 
-      if(res.status == 201){
+      if(res.status == 200){
         setIsLoading(false)
         setOpenModal(true)
         navigate(`/coursedetail/${id}`)
