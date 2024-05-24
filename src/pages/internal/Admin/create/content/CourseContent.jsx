@@ -49,7 +49,7 @@ const CourseContent = ({ loading, onSubmit }) => {
       <hr className=" my-6 border border-gray-400 " />
 
       {/* Content Section */}
-      <CourseContentOne />
+      {/* <CourseContentOne /> */}
       {/* <div className="relative pb-24 grid grid-cols-1 lg:grid-col"> */}
       {/* Content 1 */}
 
