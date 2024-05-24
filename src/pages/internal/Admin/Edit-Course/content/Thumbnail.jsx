@@ -68,7 +68,7 @@ import uploadFile from "../../../../../assets/file-upload.svg";
 import { useFormContext } from "react-hook-form";
 import { CiCamera } from "react-icons/ci";
 
-function FileDropzone() {
+function Thumbnail({course}) {
   const { register, setValue, formState: { errors } } = useFormContext();
   const [file, setFile] = useState(null);
   const [images, setImages] = useState(null);
@@ -96,27 +96,28 @@ function FileDropzone() {
   return (
     <main className="relative overflow-hidden h-56 w-full bg-gray-200 rounded-lg mb-4">
     <div>
-      {images && (
+      
         <img
-          src={images && images}
+          src={images ?  images : course?.thumbnail}
           className="absolute inset-0 object-cover w-full h-full"
         />
-      )}
+      
     </div>
 
     <input
       type="file"
       name=""
       id=""
+      {...register("thumbnail")}
       onChange={handleImageChange}
-      className="absolute inset-0 opacity-0 w-full h-full cursor-pointer"
+      className="absolute inset-0 opacity-0 w-full h-full z-40 cursor-pointer"
     />
 
     <div
       className="flex items-center justify-center top-[45%] left-0 right-0 absolute gap-1 text-sm z-0 cursor-pointer"
       onChange={handleImageChange}
     >
-      <button className="flex gap-1 items-center bg-black opacity-[80%] text-white px-5 py-2 rounded-lg border border-white cursor-pointer">
+      <button className="flex gap-1 items-center bg-black opacity-[80%] text-white px-5 py-2 rounded-lg border border-white cursor-pointer" type="button">
         <CiCamera />
         <p>Replace photo</p>
       </button>
@@ -125,4 +126,4 @@ function FileDropzone() {
   );
 }
 
-export default FileDropzone;
+export default Thumbnail;

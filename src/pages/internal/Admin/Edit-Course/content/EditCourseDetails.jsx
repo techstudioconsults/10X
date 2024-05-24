@@ -1,11 +1,14 @@
 
-import FileDropzone from "./FileDropZone";
+import Thumbnail from "./Thumbnail";
 import propTypes from 'prop-types'
+import { useNavigate, useParams } from "react-router-dom";
 import { useFormContext } from "react-hook-form"
 
 
-const CreateCourseDetails = ({setShowNext,}) => {
+const EditCourseDetails = ({setShowNext, courseDetails}) => {
   // const { handleSubmit } = useFormContext();
+  const navigate = useNavigate()
+  const {id} = useParams()
 
   const { register,  formState: { errors } } = useFormContext();
   const handleNext = ()=>{
@@ -21,7 +24,7 @@ const CreateCourseDetails = ({setShowNext,}) => {
           </p>
         </div>
         <div className="flex items-center gap-5">
-          <button className=" border-2 border-darkBlue rounded-md font-[650] text-darkBlue h-11 w-24">
+          <button onClick={() => navigate(`/coursedetail/${id}`)} className=" border-2 border-darkBlue rounded-md font-[650] text-darkBlue h-11 w-24">
             Discard
           </button>
           <button onClick={handleNext} className="  bg-darkBlue rounded-md font-[650] text-white h-11 w-24">
@@ -50,6 +53,7 @@ const CreateCourseDetails = ({setShowNext,}) => {
               {...register("title", { required: "Course title is required" })}
               className="px-3 py-4 border-2 border-gray-400 rounded-md"
               placeholder="Name your course......"
+              // defaultValue={courseDetails?.data?.title}
             />
             {errors.title && <span className="text-red-500">{errors.title.message}</span>}
             <label
@@ -101,6 +105,7 @@ const CreateCourseDetails = ({setShowNext,}) => {
                   {...register("category")}
                   value="video"
                   name="bordered-radio"
+                  checked={courseDetails?.category === "video"}
                   className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300   "
                 />
                 <label
@@ -112,12 +117,12 @@ const CreateCourseDetails = ({setShowNext,}) => {
               </div>
               <div className="flex items-center ps-4 border shadow border-gray-200 rounded dark:border-gray-700">
                 <input
-                  checked
                   id="bordered-radio-2"
                   type="radio"
                   {...register("category")}
                   value="book"
                   name="bordered-radio"
+                  checked={courseDetails?.category === "book"}
                   className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 "
                 />
                 <label
@@ -129,7 +134,7 @@ const CreateCourseDetails = ({setShowNext,}) => {
               </div>
             </div>
             {/* drag & drop */}
-            <FileDropzone />
+            <Thumbnail course={courseDetails}/>
           </div>
           {/* <button type="submit">submit</button> */}
         </div>
@@ -138,8 +143,8 @@ const CreateCourseDetails = ({setShowNext,}) => {
   );
 };
 
-export default CreateCourseDetails;
+export default EditCourseDetails;
 
-CreateCourseDetails.propTypes = {
+EditCourseDetails.propTypes = {
 setShowNext: propTypes.bool,
 }
