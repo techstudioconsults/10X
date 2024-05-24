@@ -9,6 +9,7 @@ const UserProvider = ({ children }) => {
   const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
   const [userInfo, setUserInfo] = useState();
   const [course, setCourse] = useState([]);
+    console.log(API_URL);
 
   const userToken = Cookies.get("userToken");
   let decode = null;
