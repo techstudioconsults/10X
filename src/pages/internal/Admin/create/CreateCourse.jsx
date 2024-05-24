@@ -5,36 +5,60 @@ import { useForm, FormProvider, } from "react-hook-form";
 import axios from "axios";
 import useAdminContext from "../../../../hooks/useAdminContext";
 import CreateCourseSuccess from "../../../../components/Modal/CreateCourseSuccess";
+import CourseContentOne from "./content/CourseContentOne";
 
 const CreateCourse = () => {
   const { API_URL, token } = useAdminContext();
   const [isLoading, setIsLoading] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState("")
+  const [numContentFields, setNumContentFields] = useState(1);
   const methods = useForm({
+    // defaultValues: {
+    //   title: "",
+    //   description: "",
+    //   price: " ",
+    //   category: " ",
+    //   thumbnail: " ",
+    //   content: [
+    //     {
+    //       title: "",
+    //       file: "",
+    //     },
+    //     {
+    //       title: "",
+    //       file: "",
+    //     },
+    //     {
+    //       title: "",
+    //       file: "",
+    //     },
+    //   ],
+    // },
+
     defaultValues: {
       title: "",
       description: "",
       price: " ",
       category: " ",
       thumbnail: " ",
-      content: [
-        {
-          title: "",
-          file: "",
-        },
-        {
-          title: "",
-          file: "",
-        },
-        {
-          title: "",
-          file: "",
-        },
-      ],
+      content: Array.from({ length: numContentFields }, () => ({
+        title: "",
+        file: "",
+      })),
     },
   });
   const [showNext, setShowNext] = useState(false);
+
+
+  const handleAddContent = () => {
+    setNumContentFields((prevNumFields) => prevNumFields + 1);
+    methods.setValue("content", [
+      ...methods.getValues("content"),
+      { title: "", file: "" },
+    ]);
+  };
+
 
   //   console.log(data);
   //   try {
@@ -192,7 +216,8 @@ const CreateCourse = () => {
             {!showNext && <CreateCourseDetails setShowNext={setShowNext} />}
           </div>
           <div className="">
-            {showNext && <CourseContent loading={isLoading} onSubmit={methods.handleSubmit(onSubmit)}  />}
+            {showNext && <CourseContent  loading={isLoading} onSubmit={methods.handleSubmit(onSubmit)}  />}
+            {showNext && <CourseContentOne numContentFields = {numContentFields} handleAddContent={handleAddContent}/>}
           </div>
           {/* {showNext && (
             <button type="submit" className="btn btn-primary">
