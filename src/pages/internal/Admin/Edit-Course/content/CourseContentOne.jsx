@@ -172,13 +172,13 @@
 
 // export default CourseContentOne;
 
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback, useMemo, useEffect } from "react";
 import closeIcon from "../../../../../assets/remove-content.svg";
 import plusIcon from "../../../../../assets/plus-icon.png";
 import { useDropzone } from "react-dropzone";
 import { useFieldArray, useFormContext } from "react-hook-form";
 
-const CourseContentOne = () => {
+const CourseContentOne = ({course}) => {
   const {
     control,
     formState: { errors },
@@ -253,6 +253,18 @@ const CourseContentOne = () => {
   const handleAddThirdContent = () => {
     setShowThirdContent(true);
   };
+
+
+  
+
+  useEffect(() => {
+    if (course?.content?.length === 2 ) {
+      handleAddSecondContent();
+    }
+    if (course?.content?.length === 3 ) {
+      handleAddThirdContent();
+    }
+  },[])
 
   return (
     <div>
