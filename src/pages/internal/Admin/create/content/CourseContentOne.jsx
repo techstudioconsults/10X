@@ -240,7 +240,7 @@ const CourseContentOne = () => {
         ? "#2196f3"
         : "#ced4da",
       borderWidth: "2px",
-      borderRadius: "0.375rem",
+      // borderRadius: "0.375rem",
       padding: "0.5rem",
     }),
     [isDragAccept, isDragReject, isDragActive]
@@ -298,7 +298,7 @@ const CourseContentOne = () => {
                 <div className="flex">
                   <div
                     {...getRootProps({ style: dropzoneStyle })}
-                    className="flex justify-between w-full bg-[#CFE6FF] rounded-l-md"
+                    className="flex justify-between w-full bg-[#CFE6FF] rounded-l-md border-r-0"
                   >
                     <input
                       {...getInputProps()}
@@ -362,9 +362,10 @@ const CourseContentOne = () => {
         {!showSecondContent && (
           <div className="flex justify-center items-center h-full">
             <button
-              className="bg-blue px-5 py-3 text-white"
+              className="bg-blue px-5 py-3 text-white flex items-center rounded-md gap-4"
               onClick={handleAddSecondContent}
             >
+              <span><img src={plusIcon} alt="" /></span>
               Add content
             </button>
           </div>
@@ -374,10 +375,11 @@ const CourseContentOne = () => {
         {showSecondContent && !showThirdContent && (
           <div className="flex py-10 justify-center items-center h-full">
             <button
-              className="bg-blue px-5 py-3 text-white"
+              className="bg-blue px-5 py-3 text-white flex items-center justify-center gap-4 rounded-md"
               onClick={handleAddThirdContent}
             >
-              Add content three
+              <span> <img src={plusIcon} alt="" /> </span>
+              Add content 
             </button>
           </div>
         )}
