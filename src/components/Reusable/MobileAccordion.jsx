@@ -43,10 +43,10 @@ export function MobileAccordions() {
           >
             <div className="flex items-center gap-5 ms-7 text-blue focus:bg-darkBlue focus:text-white">
               <FaBell size={20} />
-              <p className=" ">Marketing Funnels</p>
+              <p className="mt-5 ">Marketing Funnels</p>
             </div>
           </AccordionHeader>
-          <AccordionBody>
+          <AccordionBody >
             We help coaches, experts, and digital course creators replace the
             unpredictability of static launches with evergreen assets that
             consistently convert cold prospects into premium clients and
