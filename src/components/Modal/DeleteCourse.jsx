@@ -23,7 +23,11 @@ const DeleteCourse = () => {
 
       console.log(data);
 
-      navigate("/admin/library")
+      if(data.success) {
+
+          navigate("/admin/library")
+      }
+
     } catch (error) {
       console.log(error);
     }
