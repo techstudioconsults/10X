@@ -480,7 +480,7 @@ function PurchaseForm() {
         if (loginRes.status === 200) {
           Cookies.set("userToken", loginRes.data.token);
           getUserInfo();
-          navigate("/mycourses");
+          // navigate("/mycourses");
           console.log("User logged in successfully");
         } else {
           console.error("Failed to log in the user");
@@ -491,6 +491,8 @@ function PurchaseForm() {
       setRegistrationError(error.response.data.error);
     }
   };
+
+
 
   useEffect(() => {
     if (email !== "" && errors.email) {
@@ -503,6 +505,7 @@ function PurchaseForm() {
       errors.confirmPassword.message = "Passwords do not match";
     }
   }, [password, confirmPassword, errors.confirmPassword]);
+
   return (
     <div className="flex flex-col items-center container mx-auto w-full lg:my-0 my-7">
       <img
