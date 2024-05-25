@@ -4,7 +4,7 @@ import shareIcon from "../../../../assets/share-icon.png"
 import React from "react"
 import { Tabs, TabsHeader, TabsBody, Tab, TabPanel } from "@material-tailwind/react"
 import Details from "./content/Details"
-import { useParams } from "react-router-dom"
+import { useParams, useHistory } from "react-router-dom"
 import { useFetch } from "../../../../hooks/useFetch"
 import ShareButton from "./content/ShareButton"
 import Overview from "./content/Overview"
@@ -12,13 +12,18 @@ import Overview from "./content/Overview"
 const CourseDetail = () => {
   const { id } = useParams()
   // console.log(id);
+  const history = useHistory();
   const { single, error, loading } = useFetch(`/api/v1/course/${id}`);
   console.log(single);
   const [activeTab, setActiveTab] = React.useState("overview")
 
+  const goBack = () => {
+    history.goBack();
+  };
+
   return (
     <div className="w-11/12 mx-auto container">
-      <Link className="text-gray-500 flex gap-2 items-center" to="/admin/library">
+      <Link className="text-gray-500 flex gap-2 items-center" onClick={goBack} >
         <img src={prevPage} alt="" /> Back to all course
       </Link>
       <div className="flex flex-col gap-4 lg:flex-row justify-between py-12">

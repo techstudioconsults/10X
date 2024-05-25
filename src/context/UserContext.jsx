@@ -62,9 +62,9 @@ const UserProvider = ({children}) => {
 
 
 
-    const AdminData = {API_URL, userInfo, getUserInfo, course};
+    const UserData = {API_URL, userInfo, getUserInfo, course};
     
-    return <UserContext.Provider value={AdminData }>
+    return <UserContext.Provider value={UserData }>
         {children}
     </UserContext.Provider>
 }
