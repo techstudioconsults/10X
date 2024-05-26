@@ -27,36 +27,39 @@ function Icon({ id, open }) {
   );
 }
 
-export function NewAccordions() {
+export function NewAccordions({content}) {
+  // const (content.content);
+
+const contentTitle = content.content
+
+  console.log(contentTitle);
+
   const [open, setOpen] = useState(0);
 
-  const handleOpen = (value) => setOpen(open === value ? 0 : value);
-
+  
   return (
     <>
       <main className="max-w-[600px]">
-        <Accordion open={open === 1} icon={<Icon id={1} open={open} />}>
-          <AccordionHeader
-            onClick={() => handleOpen(1)}
-            className="text-md px-4 bg-[#FAFBFF] text-[#0027BA] hover:bg-[#E5E7EB] hover:text-[#0027BA] cursor-pointer transition-colors"
-          >
-            Introduction to Zero Call Close
-          </AccordionHeader>
-          <AccordionBody className="bg-[#FAFBFF]">
-            <div className="space-y-3 px-4">
-              <div className="flex items-center gap-3">
-                <img src={checkmark} alt="" />
-                <p className="text-[#6476BA] font-medium">Master the step-by-step framework</p>
-              </div>
-              <div className="flex items-center gap-3">
-                <img src={checkmark} alt="" />
-                <p className="text-[#6476BA] font-medium">Understanding the impact on sales conversation rates</p>
-              </div>
-            </div>
-          </AccordionBody>
-        </Accordion>
+        
 
-        <Accordion open={open === 2} icon={<Icon id={2} open={open} />}>
+      {contentTitle?.map((item, index) => (
+      <Accordion key={item._id}>
+        <AccordionHeader
+          className="text-md px-4 bg-[#FAFBFF] text-[#0027BA] hover:bg-[#E5E7EB] hover:text-[#0027BA] cursor-pointer transition-colors"
+        >
+          {item.title}
+        </AccordionHeader>
+      </Accordion>
+    ))}
+
+      </main>
+    </>
+  );
+}
+
+// const handleOpen = (value) => setOpen(open === value ? 0 : value);
+
+        {/* <Accordion open={open === 2} icon={<Icon id={2} open={open} />}>
           <AccordionHeader
             onClick={() => handleOpen(2)}
             className="text-md px-4 bg-[#FAFBFF] text-[#0027BA] hover:bg-[#E5E7EB] hover:text-[#0027BA] cursor-pointer transition-colors"
@@ -159,8 +162,4 @@ export function NewAccordions() {
               </div>
             </div>
           </AccordionBody>
-        </Accordion>
-      </main>
-    </>
-  );
-}
+        </Accordion> */}

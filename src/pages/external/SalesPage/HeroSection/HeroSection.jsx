@@ -6,8 +6,11 @@ import arrow from "../../../../assets/arrow-left.svg";
 import darkBg from "../../../../assets/dark-bg.svg";
 import "./Hero.css";
 import { Link } from "react-router-dom";
+// import { useFetch } from "../../../../hooks/useFetch";
 
-const HeroSection = () => {
+
+const HeroSection = ({content}) => {
+  
   return (
     <div>
       <div className="sales-hero-img mt-10  rounded-sm flex w-full">
@@ -22,7 +25,7 @@ const HeroSection = () => {
               <Link to="/resource" className="flex items-center gap-2"><img src={arrow} alt="" /> Resources Hub</Link>
             </p>
 
-            <h2 className="font-[1000] md:text-5xl text-3xl md:text-start text-center">The Zero Call Close</h2>
+            <h2 className="font-[1000] md:text-5xl text-3xl md:text-start text-center">{content?.title}</h2>
             <p className="md:text-xl text-lg md:text-start text-center">Close 40% Of Prospects Without Phone Calls The Zero Call Close" offers you a game changing solution for life.</p>
             <div className="flex items-center gap-6 ">
               <button className="h-16 lg:w-56 w-40 md:m-0 mx-auto bg-blue rounded-lg text-lg font-semibold">
