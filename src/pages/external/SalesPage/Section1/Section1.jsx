@@ -6,7 +6,7 @@ import { NewAccordions } from "../accordion/NewAccordion";
 import { useParams } from "react-router-dom";
 import { useFetch } from "../../../../hooks/useFetch";
 
-const Section1 = ({ courseId }) => {
+const Section1 = () => {
   const { id } = useParams();
   //  console.log(id);
   const { single, error, loading } = useFetch(`/api/v1/course/${id}`);
@@ -21,7 +21,7 @@ const Section1 = ({ courseId }) => {
             <div className="flex flex-col gap-5 lg:pt-36 lg:w-1/2 w-full">
               <div className="flex flex-col items-start gap-3">
                 <SectionHeading title="Description" color="#0027BA" />
-                <p className="max-w-xl text-[#6476BA]">{single.description}</p>
+                <p className="max-w-xl text-[#6476BA]">{single?.description}</p>
               </div>
               <div className="flex flex-col gap-2">
                 <SectionHeading title="Course content" color="#0027BA" />
@@ -35,7 +35,7 @@ const Section1 = ({ courseId }) => {
               </div>
               <NewAccordions single={single} />
               <SectionHeading
-                title="Why people choose the zero call close"
+                title={`Why people choose the ${single?.title}`}
                 color="#0027BA"
                 responsive={"text-center lg:text-start"}
               />
