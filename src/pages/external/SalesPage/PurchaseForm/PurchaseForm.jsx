@@ -393,11 +393,19 @@ import { Bars } from "react-loader-spinner";
 import axiosInstance from "../../../../utils/axiosConfig";
 import useUserContext from "../../../../hooks/useUserContext";
 
-function PurchaseForm() {
+// eslint-disable-next-line react/prop-types
+function PurchaseForm({content}) {
   const { getUserInfo } = useUserContext();
+
+
+// eslint-disable-next-line react/prop-types
+  console.log(content.price);
   const { id } = useParams();
   const navigate = useNavigate();
-  const [amount] = useState(40000);
+
+  // eslint-disable-next-line react/prop-types
+  const amount = content?.price
+  console.log(amount);
   const [registrationError, setRegistrationError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -650,7 +658,7 @@ function PurchaseForm() {
                 className="absolute inset-y-0 right-0 flex items-center px-3"
                 onClick={toggleConfirmPasswordVisibility}
               >
-                {showConfirmPassword ? <FiEye /> : <FiEyeOff />}
+                {/* {showConfirmPassword ? <FiEye /> : <FiEyeOff />} */}
               </button>
             </div>
             {errors.confirmPassword && (

@@ -25,8 +25,11 @@ import { AssistSlider } from "../../../components/Reusable/AssitSlider";
 import { FirstCardSlider } from "../../../components/Reusable/FirstCardSlider";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import useUserContext from "../../../hooks/useUserContext";
 
  const Home = () => {
+  const { userToken } = useUserContext()
+  console.log(userToken);
   const location = useLocation()
   useEffect(()=>{
     window.scrollTo(0, 0)
@@ -109,22 +112,22 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
             className="absolute top-[38%] left-[38%] hidden md:block"
             alt=""
           />
-          <div className=" absolute -bottom-14 hidden md:block left-0 right-0">
-            <LazyLoadImage src={white} alt="" className=" h-[300px] w-[900px]" />
+          <div className=" absolute bottom-0 hidden md:block left-0 right-0">
+            <LazyLoadImage src={white} alt="" className=" h-[185px] w-[900px]" />
           </div>
         </section>
 
         <div className="text-center ms-5 hero-img-div2 absolute left-0 right-5  bottom-[35%] md:bottom-[55%] lg:bottom-[55%]">
          <Link to="/resource">
          <button className="bg-white h-[51px]  w-[196px] md:w-[220px] md:h-[59px] text-md md:text-[20px] mx-auto text-center shadow text-[#214672] font-semibold rounded-xl client border border-blue hover:bg-blue hover:text-white duration-500">
-            Become a Client
+           {userToken ? ' Explore Resources'  : ' Become a Client'}
           </button></Link>
         </div>
 
         <LazyLoadImage effect="blur" src={mcompanies} alt="" className="w-screen  md:hidden mt-[120px]" />
       </section>
 
-      <div className="text-center mt-8 mb-16">
+      <div className="text-center mb-16">
         <h1 className="text-3xl lg:text-[45px] font-[650] max-w-[300px] md:max-w-[700px] mx-auto text-blue h-[62px]">
           Everything your <span className=" text-darkBlue">business</span> needs
         </h1>

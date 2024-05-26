@@ -30,8 +30,7 @@ function Icon({ id, open }) {
 export function NewAccordions({ single }) {
   const [open, setOpen] = useState(0);
 
-  const handleOpen = (value) => setOpen(open === value ? 0 : value);
-
+  
   return (
     <>
       <main className="max-w-[600px]">
