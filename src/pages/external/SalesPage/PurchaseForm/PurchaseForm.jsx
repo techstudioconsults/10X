@@ -480,7 +480,7 @@ function PurchaseForm() {
         if (loginRes.status === 200) {
           Cookies.set("userToken", loginRes.data.token);
           getUserInfo();
-          navigate("/mycourses");
+          // navigate("/mycourses");
           console.log("User logged in successfully");
         } else {
           console.error("Failed to log in the user");
@@ -491,6 +491,8 @@ function PurchaseForm() {
       setRegistrationError(error.response.data.error);
     }
   };
+
+
 
   useEffect(() => {
     if (email !== "" && errors.email) {
@@ -503,8 +505,12 @@ function PurchaseForm() {
       errors.confirmPassword.message = "Passwords do not match";
     }
   }, [password, confirmPassword, errors.confirmPassword]);
+
   return (
-    <div className="flex flex-col items-center container mx-auto w-full lg:my-0 my-7">
+    <div
+      className="flex flex-col items-center container mx-auto w-full lg:my-0 my-7"
+      id="form"
+    >
       <img
         src={arrowDown}
         className="self-end translate-y-5 xl:w-auto w-[101px] lg:block hidden"
@@ -540,54 +546,54 @@ function PurchaseForm() {
           </div>
 
           <div className="flex relative  flex-col  ">
-          <div className="flex items-center w-full">
-          <img src={person} className="absolute h-5  left-4" alt="" />
-            <input
-              type="text"
-              {...register("fullName", { required: "Full Name is required" })}
-              placeholder="Full Name"
-              className={`border border-[#787878] rounded-md py-3 pl-12 pr-4 h-[56px] w-full bg-[#FAFBFF] ${
-                errors.fullName ? "border-red-500" : ""
-              }`}
-            />
-          </div>
+            <div className="flex items-center w-full">
+              <img src={person} className="absolute h-5  left-4" alt="" />
+              <input
+                type="text"
+                {...register("fullName", { required: "Full Name is required" })}
+                placeholder="Full Name"
+                className={`border border-[#787878] rounded-md py-3 pl-12 pr-4 h-[56px] w-full bg-[#FAFBFF] ${
+                  errors.fullName ? "border-red-500" : ""
+                }`}
+              />
+            </div>
             {errors.fullName && (
               <p className="text-red-500 pt-2">{errors.fullName.message}</p>
             )}
           </div>
 
-         <div>
-         <div className="relative flex flex-col">
-            <div className="flex items-center w-full">
-            <img src={lock} className="absolute h-5 left-4" alt="" />
-            <input
-              type={showPassword ? "text" : "password"}
-              {...register("password", {
-                required: "Password is required",
-                validate: {
-                  isValidPassword: (value) =>
-                    isValidPassword(value) ||
-                    "Password must be at least 8 characters long and contain at least one number or special character",
-                },
-              })}
-              placeholder="Create Password"
-              className={`border border-[#787878] rounded-md py-3 pl-12 w-full bg-[#FAFBFF] pr-10 ${
-                errors.password ? "border-red-500" : ""
-              }`}
-            />
+          <div>
+            <div className="relative flex flex-col">
+              <div className="flex items-center w-full">
+                <img src={lock} className="absolute h-5 left-4" alt="" />
+                <input
+                  type={showPassword ? "text" : "password"}
+                  {...register("password", {
+                    required: "Password is required",
+                    validate: {
+                      isValidPassword: (value) =>
+                        isValidPassword(value) ||
+                        "Password must be at least 8 characters long and contain at least one number or special character",
+                    },
+                  })}
+                  placeholder="Create Password"
+                  className={`border border-[#787878] rounded-md py-3 pl-12 w-full bg-[#FAFBFF] pr-10 ${
+                    errors.password ? "border-red-500" : ""
+                  }`}
+                />
+              </div>
+              <button
+                type="button"
+                className="absolute inset-y-0 right-0 flex items-center px-3"
+                onClick={togglePasswordVisibility}
+              >
+                {showPassword ? <FiEye /> : <FiEyeOff />}
+              </button>
             </div>
-            <button
-              type="button"
-              className="absolute inset-y-0 right-0 flex items-center px-3"
-              onClick={togglePasswordVisibility}
-            >
-              {showPassword ? <FiEye /> : <FiEyeOff />}
-            </button>
-          </div>
             {errors.password && (
-                <p className="pt-2 text-red-500 ">{errors.password.message}</p>
+              <p className="pt-2 text-red-500 ">{errors.password.message}</p>
             )}
-         </div>
+          </div>
 
           <div>
             {/* <div className="relative flex items-center">
@@ -621,23 +627,23 @@ function PurchaseForm() {
             )} */}
             <div className="relative flex flex-col">
               <div className="flex items-center w-full">
-              <img src={lock} className="absolute h-5 left-4" alt="" />
-              <input
-                type={showConfirmPassword ? "text" : "password"}
-                {...register("confirmPassword", {
-                  required: "Confirm Password is required",
-                  validate: {
-                    matchesPreviousPassword: (value) => {
-                      const { password } = getValues();
-                      return password === value || "Passwords should match";
+                <img src={lock} className="absolute h-5 left-4" alt="" />
+                <input
+                  type={showConfirmPassword ? "text" : "password"}
+                  {...register("confirmPassword", {
+                    required: "Confirm Password is required",
+                    validate: {
+                      matchesPreviousPassword: (value) => {
+                        const { password } = getValues();
+                        return password === value || "Passwords should match";
+                      },
                     },
-                  },
-                })}
-                placeholder="Confirm Password"
-                className={`border border-[#787878] rounded-md py-3 pl-12 pr-10 w-full bg-[#FAFBFF] ${
-                  errors.confirmPassword ? "border-red-500" : ""
-                }`}
-              />
+                  })}
+                  placeholder="Confirm Password"
+                  className={`border border-[#787878] rounded-md py-3 pl-12 pr-10 w-full bg-[#FAFBFF] ${
+                    errors.confirmPassword ? "border-red-500" : ""
+                  }`}
+                />
               </div>
               <button
                 type="button"
@@ -646,12 +652,14 @@ function PurchaseForm() {
               >
                 {showConfirmPassword ? <FiEye /> : <FiEyeOff />}
               </button>
-          </div>
+            </div>
             {errors.confirmPassword && (
-              <p className="text-red-500 py-2">{errors.confirmPassword.message}</p>
-              )}
-              </div>
-          
+              <p className="text-red-500 py-2">
+                {errors.confirmPassword.message}
+              </p>
+            )}
+          </div>
+
           <div className="">
             <div className="flex items-center">
               <input

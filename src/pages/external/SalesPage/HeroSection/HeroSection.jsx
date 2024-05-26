@@ -43,7 +43,10 @@ const HeroSection = () => {
               {single?.description}
             </p>
             <div className="md:flex items-center gap-6 mt-5">
-              <button className="h-16 lg:w-56 w-40 md:m-0 mx-auto bg-blue rounded-lg text-lg font-semibold">
+              <button
+                className="h-16 lg:w-56 w-40 md:m-0 mx-auto bg-blue rounded-lg text-lg font-semibold"
+                id="form"
+              >
                 Get the Course
               </button>
               {/* <img

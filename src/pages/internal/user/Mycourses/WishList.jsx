@@ -4,6 +4,7 @@ import { FaHeart } from "react-icons/fa";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { MyCourseWishListLoader } from "../../../../components/loader/MyCourseLoader";
+import { useNavigate } from "react-router-dom";
 
 const WishList = () => {
   const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
@@ -11,6 +12,7 @@ const WishList = () => {
   const [wishList, setWishList] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
   const handleRemoveFromWishList = async (id) => {
     try {
@@ -87,7 +89,7 @@ const WishList = () => {
           </div>
           <div className="p-2 h-30 rounded-bl-md rounded-br-md pb-4 shadow-xl shadow-[#032BF214] md:w-[200px] lg:w-[295px] space-y-1">
             <h2 className="text-[20px] md:max-w-[250px] text-darkBlue font-[650]">
-              {w.title}
+              {w.title.substring(0, 20)}...
             </h2>
             <p className="font-bold text-darkBlue text-xl">
               {formatCurrency(w.price)}
@@ -100,7 +102,10 @@ const WishList = () => {
             </div>
 
             <div className="mt-2">
-              <button className="text-xs border border-darkBlue w-full py-3 rounded hover:bg-darkBlue hover:text-white font-bold md:py-3 text-darkBlue duration-300">
+              <button
+                className="text-xs border border-darkBlue w-full py-3 rounded hover:bg-darkBlue hover:text-white font-bold md:py-3 text-darkBlue duration-300"
+                onClick={() => navigate(`/sales/${w._id}`)}
+              >
                 Buy Now
               </button>
             </div>

@@ -1,6 +1,5 @@
 import "./single.css";
-import React, { useEffect, useState } from "react";
-import { courses } from "./Mycourses-Components/MyCoursesComponents";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa6";
 import { Player } from "video-react";
@@ -85,7 +84,7 @@ const SingleCourseView = () => {
   const [singleCourse, setSingleCourse] = useState({});
   const [checkedCourses, setCheckedCourses] = useState({});
   const [currentModule, setCurrentModule] = useState(1);
-const [currentLesson, setCurrentLesson] = useState(1);
+  const [currentLesson, setCurrentLesson] = useState(1);
 
   const [open, setOpen] = useState(0);
 
@@ -127,14 +126,16 @@ const [currentLesson, setCurrentLesson] = useState(1);
     getSingleCourse();
   }, [id]);
 
-  // console.log(singleCourse);
-
   const [selectedCourse, setSelectedCourse] = useState(singleCourse[0]);
+
+   useEffect(() => {
+     localStorage.setItem("checkedCourses", JSON.stringify(checkedCourses));
+   }, [checkedCourses]);
 
   const handleTitleClick = (course) => {
     setSelectedCourse(course);
-   setCheckedCourses((prev) => ({ ...prev, [course?._id]: true }));
-    
+    setCheckedCourses((prev) => ({ ...prev, [course?._id]: true }));
+    //  localStorage.setItem("checkedCourses", JSON.stringify(checkedCourses));
   };
 
   return (

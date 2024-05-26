@@ -10,9 +10,6 @@ export const AddWishList = ({ id }) => {
   const [show, setShow] = useState(false);
   const userToken = Cookies.get("userToken");
 
-  console.log(id);
-
-  // Check local storage when the component mounts
   useEffect(() => {
     const isInWishlist = localStorage.getItem(`wishlist_${id}`);
     setShow(isInWishlist === "true");
@@ -31,16 +28,16 @@ export const AddWishList = ({ id }) => {
       );
       console.log(data);
       if (data) {
-        alert("Added to wishlist");
+        // alert("Added to wishlist");
         setShow(true);
-        localStorage.setItem(`wishlist_${id}`, "true"); // Store in local storage
+        localStorage.setItem(`wishlist_${id}`, "true");
         return data;
       }
     } catch (error) {
       console.error("Error adding to wishlist:", error.message);
-      alert("Failed to add to wishlist");
+      // alert("Failed to add to wishlist");
       setShow(false);
-      localStorage.removeItem(`wishlist_${id}`, "false"); // Store in local storage
+      localStorage.removeItem(`wishlist_${id}`, "false");
     }
   };
 
@@ -55,16 +52,16 @@ export const AddWishList = ({ id }) => {
         }
       );
       if (data) {
-        alert("Removed from wishlist");
+        // alert("Removed from wishlist");
         setShow(false);
-        localStorage.removeItem(`wishlist_${id}`, "false"); // Store in local storage
+        localStorage.removeItem(`wishlist_${id}`, "false");
         return data;
       }
     } catch (error) {
       console.error("Error removing from wishlist:", error.message);
-      alert("Failed to remove from wishlist");
+      // alert("Failed to remove from wishlist");
       setShow(true);
-      localStorage.setItem(`wishlist_${id}`, "true"); // Store in local storage
+      localStorage.setItem(`wishlist_${id}`, "true");
     }
   };
 
@@ -75,7 +72,6 @@ export const AddWishList = ({ id }) => {
           onClick={handleRemoveFromWishList}
           className="h-16 px-3 whitespace-nowrap md:m-0 mx-auto border rounded-lg text-lg font-semibold"
         >
-          {/* <FaHeart color="white" size={30} /> */}
           Remove from wishlist
         </button>
       ) : (
@@ -83,7 +79,7 @@ export const AddWishList = ({ id }) => {
           onClick={handleAddToWishList}
           className="h-16 lg:w-56 w-40 md:m-0 mx-auto border rounded-lg text-lg font-semibold"
         >
-          {/* <IoMdHeartEmpty color="white" size={33} /> */} Add to wishlist
+          Add to wishlist
         </button>
       )}
     </main>

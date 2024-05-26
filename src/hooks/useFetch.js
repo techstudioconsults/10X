@@ -38,6 +38,8 @@ export const useFetch = (url, token) => {
       
     }
     getSingleResource()
+
+    
     const fetchResource = async () => {
       try {
         setLoading(true);

@@ -19,8 +19,9 @@ import useUserContext from "../../../hooks/useUserContext";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
 const Login = () => {
-  const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
-  const { getUserInfo,  } = useUserContext();
+  // const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
+  const {getUserInfo, API_URL} = useUserContext()
+  // console.log(API_URL);
   const [isLoading, setIsLoading] = useState(false);
   const [Error, setError] = useState({ password: "", email: "", network: "" });
   const {
