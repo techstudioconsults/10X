@@ -19,8 +19,8 @@ import useUserContext from "../../../hooks/useUserContext";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
 const Login = () => {
-  // const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
-  const { getUserInfo, API_URL } = useUserContext();
+  const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
+  const { getUserInfo,  } = useUserContext();
   const [isLoading, setIsLoading] = useState(false);
   const [Error, setError] = useState({ password: "", email: "", network: "" });
   const {
@@ -49,7 +49,7 @@ const Login = () => {
 
       if (data.success) {
         Cookies.set("userToken", data.token);
-        getUserInfo();
+        // getUserInfo();
         navigate("/myCourses");
         window.location.reload();
         setIsLoading(false);

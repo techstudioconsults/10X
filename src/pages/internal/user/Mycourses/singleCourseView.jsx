@@ -84,6 +84,8 @@ const SingleCourseView = () => {
   const [showProgress, setShowProgress] = useState(true);
   const [singleCourse, setSingleCourse] = useState({});
   const [checkedCourses, setCheckedCourses] = useState({});
+  const [currentModule, setCurrentModule] = useState(1);
+const [currentLesson, setCurrentLesson] = useState(1);
 
   const [open, setOpen] = useState(0);
 
@@ -131,7 +133,7 @@ const SingleCourseView = () => {
 
   const handleTitleClick = (course) => {
     setSelectedCourse(course);
-    setCheckedCourses((prev) => ({ ...prev, [course?._id]: true }));
+   setCheckedCourses((prev) => ({ ...prev, [course?._id]: true }));
     
   };
 
@@ -163,7 +165,7 @@ const SingleCourseView = () => {
 
           <div className="flex items-center justify-between bg-[#EBEFFF] px-2 py-1 rounded-lg mt-3 mx-3">
             <h2 className=" text-darkBlue text-[14px] md:text-[17px] font-[650]  max-w-[150px] md:max-w-full">
-            {selectedCourse?.title}
+              {selectedCourse?.title}
             </h2>
             <span className="bg-[#40BF80] py-2 rounded-md text-white px-3 text-sm font-[600]">
               Completed
@@ -310,13 +312,34 @@ const SingleCourseView = () => {
                       <p> {course?.title}</p>
 
                       <span>
-                        <Radio
+                        {/* <Radio
                           name="type"
                           defaultChecked
                           checked={!!checkedCourses[course?._id]}
+                          onChange={() => {
+                            setCheckedCourses((prev) => ({
+                              ...prev,
+                              [course?._id]: !prev[course?._id],
+                            }));
+
+                            console.log("clicked");
+                          }}
                           ripple={false}
                           icon={<CheckIcon />}
                           className="border-gray-900/10 bg-gray-900/5 p-0 transition-all hover:before:opacity-0"
+                        /> */}
+                        <input
+                          className="form-checkbox h-5 w-5 text-green-600 rounded-full"
+                          type="checkbox"
+                          checked={!!checkedCourses[course?._id]}
+                          onChange={() => {
+                            setCheckedCourses((prev) => ({
+                              ...prev,
+                              [course?._id]: !prev[course?._id],
+                            }));
+
+                            console.log("clicked");
+                          }}
                         />
                       </span>
                     </div>

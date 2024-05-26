@@ -10,49 +10,26 @@ import {
 import { useNavigate } from "react-router-dom";
 import { Progress } from "@material-tailwind/react";
 import { UserContext } from "../../../../../context/UserContext";
-
-export const courses = [
-  {
-    id: crypto.randomUUID(),
-    image:
-      "https://images.pexels.com/photos/694740/pexels-photo-694740.jpeg?auto=compress&cs=tinysrgb&w=600",
-    title: "The Zero Call Close",
-    description:
-      "Close 40% Of Prospects Without Phone Calls The Zero Call Close offers you a game changing solution for life.",
-    category: "video",
-    star: "⭐⭐⭐⭐⭐",
-    video:
-      "https://videos.pexels.com/video-files/3192305/3192305-sd_640_360_25fps.mp4",
-  },
-  {
-    id: crypto.randomUUID(),
-    image:
-      "https://images.pexels.com/photos/694740/pexels-photo-694740.jpeg?auto=compress&cs=tinysrgb&w=600",
-    title: "The Zero Call Close",
-    description:
-      "Close 40% Of Prospects Without Phone Calls The Zero Call Close offers you a game changing solution for life.",
-    category: "book",
-    star: "⭐⭐⭐⭐⭐",
-    video:
-      "https://videos.pexels.com/video-files/3192305/3192305-sd_640_360_25fps.mp4",
-  },
-];
+import { MyCourseLoader } from "../../../../../components/loader/MyCourseLoader";
 
 export const MyCoursesComponents = () => {
   const navigate = useNavigate();
 
   const context = useContext(UserContext);
 
-  const { course } = context;
+  const { course, error, loading } = context;
 
-  console.log(course?.purchasedCourses);
+  if (loading) {
+    return <MyCourseLoader />;
+  }
 
   return (
     <section className="mt-7">
+      <p>{error}</p>
       {course?.purchasedCourses?.map((c) => (
         <div
           key={c.id}
-          className="mb-5 shadow-xl shadow-[#032BF214] w-full md:flex  gap-3 px-5 "
+          className="mb-5 shadow-xl shadow-[#032BF214] w-full md:flex  gap-3 lg:px-5"
         >
           <div>
             <img
@@ -88,9 +65,6 @@ export const MyCoursesComponents = () => {
               </p>
               <p>{c.star || "⭐⭐⭐⭐⭐"}</p>
             </div>
-            {/* <div className="h-0.5 rounded w-full mt-2 bg-darkBlue" /> */}
-
-            {/* </div></div> */}
 
             <div className="my-3  md:hidden">
               <Progress value={10} color="purple" className="progress h-1" />

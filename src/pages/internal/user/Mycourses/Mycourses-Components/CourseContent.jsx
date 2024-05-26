@@ -105,6 +105,7 @@ function CheckIcon() {
 
 export const CourseContent = ({ singleCourse, handleTitleClick }) => {
   const [open, setOpen] = useState(0);
+ const [checkedCourses, setCheckedCourses] = useState({});
   
 
   const handleOpen = (value) => setOpen(open === value ? 0 : value);
@@ -135,12 +136,25 @@ export const CourseContent = ({ singleCourse, handleTitleClick }) => {
               <p> {course.title}</p>
 
               <span>
-                <Radio
+                {/* <Radio
                   name="type"
                   defaultChecked
                   ripple={false}
                   icon={<CheckIcon />}
                   className="border-gray-900/10 bg-gray-900/5 p-0 transition-all hover:before:opacity-0"
+                /> */}
+                <input
+                  className="form-checkbox h-5 w-5 text-green-600 rounded-full"
+                  type="checkbox"
+                  checked={!!checkedCourses[course?._id]}
+                  onChange={() => {
+                    setCheckedCourses((prev) => ({
+                      ...prev,
+                      [course?._id]: !prev[course?._id],
+                    }));
+
+                    console.log("clicked");
+                  }}
                 />
               </span>
             </div>
