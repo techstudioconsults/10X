@@ -19,7 +19,6 @@ console.log(content);
     <div className="pt-10">
     <HeroSection content={content}/>
       <Section1 content={content} />
-     
     </div>
   );
 };
