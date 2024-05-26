@@ -392,19 +392,20 @@ import { useForm } from "react-hook-form";
 import { Bars } from "react-loader-spinner";
 import axiosInstance from "../../../../utils/axiosConfig";
 import useUserContext from "../../../../hooks/useUserContext";
+import { useFetch } from "../../../../hooks/useFetch";
 
 // eslint-disable-next-line react/prop-types
-function PurchaseForm({content}) {
+function PurchaseForm() {
+  const {id} = useParams()
+  const { single, error, loading } = useFetch(`/api/v1/course/${id}`);
   const { getUserInfo } = useUserContext();
 
+console.log(single);
 
-// eslint-disable-next-line react/prop-types
-  console.log(content.price);
-  const { id } = useParams();
+  console.log(single.price);
   const navigate = useNavigate();
 
-  // eslint-disable-next-line react/prop-types
-  const amount = content?.price
+  const amount = single.price
   console.log(amount);
   const [registrationError, setRegistrationError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
