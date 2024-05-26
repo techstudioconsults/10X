@@ -26,6 +26,7 @@ export const useFetch = (url, token) => {
         setLoading(true);
         const res = await axiosInstance.get(url);
         const singleDatum = res.data.data;
+        console.log(res);
         if (res.status == 200) {
           setLoading(false);
         }

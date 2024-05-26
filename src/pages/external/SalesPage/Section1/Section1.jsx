@@ -4,7 +4,10 @@ import { NewSliders } from "../Carousel/NewSlider";
 import PurchaseForm from "../PurchaseForm/PurchaseForm";
 import { NewAccordions } from "../accordion/NewAccordion";
 
-const Section1 = ({courseId}) => {
+// eslint-disable-next-line react/prop-types
+const Section1 = ({content}) => {
+  const contentLength = content.content?.length
+  console.log(contentLength);
   return (
     <div className="flex justify-center container mx-auto carousel-class mb-7 w-full">
       <div className="w-11/12 mx-auto container ">
@@ -15,37 +18,28 @@ const Section1 = ({courseId}) => {
                 <div className="flex flex-col items-start gap-3">
                   <SectionHeading title="Description" color="#0027BA" />
                   <p className="max-w-xl text-[#6476BA]">
-                    Are you tired of dealing with time-wasting prospects or
-                    uncomfortable with making sales calls? "The Zero Call Close"
-                    offers you a game-changing solution. This course is
-                    specifically designed to empower you with the skills and
-                    knowledge needed to close 40% of your sales conversations
-                    without ever picking up the phone. Whether you are a
-                    seasoned professional or just starting in sales, this
-                    step-by-step framework will guide you through transforming
-                    potential clients into premium buyers, even for offers
-                    valued between $5,000 and $30,000. Say goodbye to phone call
-                    anxiety and hello to increased sales success.
+                  {/* eslint-disable-next-line react/prop-types  */}
+                {content?.description}
                   </p>
                 </div>
                 <div className="flex flex-col gap-2">
                   <SectionHeading title="Course content" color="#0027BA" />
                   <div className="flex items-center gap-2">
-                    <p className="text-[#6476BA]">6 sections</p>
                     <img src={dotIcon} alt="dot icon" />
-                    <p className="text-[#6476BA]">1h 17m total length</p>
+                    <p className="text-[#6476BA]">{contentLength} Contents</p>
+                    {/* <p className="text-[#6476BA]">1h 17m total length</p> */}
                   </div>
                 </div>
-                <NewAccordions />
+                <NewAccordions content={content} />
                 <SectionHeading
-                  title="Why people choose the zero call close"
+                  title={`Why people choose ${content.title}`}
                   color="#0027BA"
                   responsive={"text-center lg:text-start"}
                 />
                 <NewSliders />
               </div>
               <div className="lg:w-1/2">
-                <PurchaseForm />
+                <PurchaseForm content={content} />
               </div>
             </div>
           </div>
