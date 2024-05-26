@@ -6,11 +6,12 @@ import { jwtDecode } from "jwt-decode";
 export const UserContext = createContext()
 
 
-const UserProvider = ({children}) => {
-    const API_URL = import.meta.env.VITE_REACT_APP_API_URL
-    const [userInfo, setUserInfo] = useState()
-    // const [getData, setGetData] = useState()
-    const [course, setCourse] = useState([]);
+const UserProvider = ({ children }) => {
+  const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
+  const [userInfo, setUserInfo] = useState();
+  const [course, setCourse] = useState([]);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const userToken = Cookies.get("userToken");
   let decode = null;
@@ -38,35 +39,37 @@ const UserProvider = ({children}) => {
 
       
   const getPaidCourses = async () => {
-    const {
-      data: { data },
-    } = await axios(`${API_URL}/api/v1/users/${decode?.id}/course`, {
-      headers: {
-        Authorization: `Bearer ${userToken}`,
-      },
-    });
-
-    // console.log(data);
-    setCourse(data);
+    setLoading(true);
+    try {
+      const {
+        data: { data },
+      } = await axios(`${API_URL}/api/v1/users/${decode?.id}/course`, {
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      });
+      setCourse(data);
+      setLoading(false);
+      setError("");
+    } catch (error) {
+      console.log(error?.message);
+      setLoading(false);
+      setError(`${error?.message} Please check your internet connection ⚠️`);
+    }
   };
 
-      useEffect(() => {
-        if (userToken) {
-            getUserInfo()
-            getPaidCourses()
-        }
-      },[userToken])
+  useEffect(() => {
+    if (userToken) {
+      getUserInfo();
+      getPaidCourses();
+    }
+  }, [userToken]);
 
+  const UserData = { API_URL, userInfo, getUserInfo, course, error, loading };
 
-
-
-
-
-    const UserData = {API_URL, userInfo, getUserInfo, course, userToken};
-    
-    return <UserContext.Provider value={UserData }>
-        {children}
-    </UserContext.Provider>
-}
+  return (
+    <UserContext.Provider value={UserData}>{children}</UserContext.Provider>
+  );
+};
 
 export default UserProvider

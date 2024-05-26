@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import useUserContext from "../../../hooks/useUserContext";
-import 'react-lazy-load-image-component/src/effects/blur.css';
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const Login = () => {
   // const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
@@ -34,7 +34,7 @@ const Login = () => {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-  console.log(API_URL);
+
 
   const onSubmit = async (data) => {
     setIsLoading(true);
@@ -50,9 +50,9 @@ const Login = () => {
 
       if (data.success) {
         Cookies.set("userToken", data.token);
-        getUserInfo()
+        // getUserInfo();
         navigate("/myCourses");
-        window.location.reload()
+        window.location.reload();
         setIsLoading(false);
       }
     } catch (error) {
@@ -60,7 +60,7 @@ const Login = () => {
       setIsLoading(false);
 
       if (error.message === "Network Error") {
-        setError({...Error, network: "Check your internet connection"})
+        setError({ ...Error, network: "Check your internet connection" });
         setTimeout(() => {
           setError({ password: "", email: "", network: "" });
         }, 4000);
@@ -205,7 +205,7 @@ const Login = () => {
                   Remember Me
                 </label>
                 <p className="font-semibold text-xs underline">
-                  <Link to="/forgot-password">Forgot password?</Link>
+                  <Link>Forgot password?</Link>
                 </p>
               </div>
 

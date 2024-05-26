@@ -124,7 +124,7 @@ import useUserContext from "../../../hooks/useUserContext";
           </button></Link>
         </div>
 
-        <LazyLoadImage effect="blur" src={mcompanies} alt="" className="w-full  md:hidden mt-[120px]" />
+        <LazyLoadImage effect="blur" src={mcompanies} alt="" className="w-screen  md:hidden mt-[120px]" />
       </section>
 
       <div className="text-center mb-16">
@@ -132,7 +132,7 @@ import useUserContext from "../../../hooks/useUserContext";
           Everything your <span className=" text-darkBlue">business</span> needs
         </h1>
 
-        <p className=" text-sm max-w-[300px] md:max-w-[630px] mx-auto my-3 text-blue h-[40px]">
+        <p className=" text-sm max-w-[300px] md:max-w-[630px] mx-auto my-3 text-blue h-[40px] py-4">
           We help coaches, experts, and digital course creators replace the
           unpredictability of static launches with evergreen assets that
           consistently convert cold prospects into premium clients and

@@ -4,7 +4,7 @@ import {
   AccordionHeader,
   AccordionBody,
 } from "@material-tailwind/react";
-import checkmark from "../../../../assets/check-icon.svg"
+import checkmark from "../../../../assets/check-icon.svg";
 
 function Icon({ id, open }) {
   return (
@@ -27,139 +27,37 @@ function Icon({ id, open }) {
   );
 }
 
-export function NewAccordions({content}) {
-  // const (content.content);
-
-const contentTitle = content.content
-
-  console.log(contentTitle);
-
+export function NewAccordions({ single }) {
   const [open, setOpen] = useState(0);
 
   
   return (
     <>
       <main className="max-w-[600px]">
-        
+        {single?.content?.map((course, i) => (
+          <Accordion
+            key={course?.id}
+            open={open === i + 1}
+            icon={<Icon id={i + 1} open={open} />}
+          >
+            <AccordionHeader
+              onClick={() => handleOpen(i + 1)}
+              className="text-[16px] text-darkBlue"
+            >
+              {course?.title}
+            </AccordionHeader>
 
-      {contentTitle?.map((item, index) => (
-      <Accordion key={item._id}>
-        <AccordionHeader
-          className="text-md px-4 bg-[#FAFBFF] text-[#0027BA] hover:bg-[#E5E7EB] hover:text-[#0027BA] cursor-pointer transition-colors"
-        >
-          {item.title}
-        </AccordionHeader>
-      </Accordion>
-    ))}
-
+            <AccordionBody
+              key={i}
+              className={"text-[#6476BA] font-[500]  h-[50px] w-full"}
+            >
+              <div className="flex gap-2 items-center">
+                <img src={checkmark} alt="" /> <p> {course?.title}</p>
+              </div>
+            </AccordionBody>
+          </Accordion>
+        ))}
       </main>
     </>
   );
 }
-
-// const handleOpen = (value) => setOpen(open === value ? 0 : value);
-
-        {/* <Accordion open={open === 2} icon={<Icon id={2} open={open} />}>
-          <AccordionHeader
-            onClick={() => handleOpen(2)}
-            className="text-md px-4 bg-[#FAFBFF] text-[#0027BA] hover:bg-[#E5E7EB] hover:text-[#0027BA] cursor-pointer transition-colors"
-          >
-            Identifying and Qualifying Prospects
-          </AccordionHeader>
-          <AccordionBody className="bg-[#FAFBFF]">
-          <div className="space-y-3 px-4">
-              <div className="flex items-center gap-3">
-                <img src={checkmark} alt="" />
-                <p className="text-[#6476BA] font-medium">Master the step-by-step framework</p>
-              </div>
-              <div className="flex items-center gap-3">
-                <img src={checkmark} alt="" />
-                <p className="text-[#6476BA] font-medium">Understanding the impact on sales conversation rates</p>
-              </div>
-            </div>
-          </AccordionBody>
-        </Accordion>
-
-        <Accordion open={open === 3} icon={<Icon id={3} open={open} />}>
-          <AccordionHeader
-            onClick={() => handleOpen(3)}
-            className="text-md px-4 bg-[#FAFBFF] text-[#0027BA] hover:bg-[#E5E7EB] hover:text-[#0027BA] cursor-pointer transition-colors"
-          >
-            Crafting Compelling Offers
-          </AccordionHeader>
-          <AccordionBody className="bg-[#FAFBFF]">
-          <div className="space-y-3 px-4">
-              <div className="flex items-center gap-3">
-                <img src={checkmark} alt="" />
-                <p className="text-[#6476BA] font-medium">Master the step-by-step framework</p>
-              </div>
-              <div className="flex items-center gap-3">
-                <img src={checkmark} alt="" />
-                <p className="text-[#6476BA] font-medium">Understanding the impact on sales conversation rates</p>
-              </div>
-            </div>
-          </AccordionBody>
-        </Accordion>
-
-        <Accordion open={open === 4} icon={<Icon id={4} open={open} />}>
-          <AccordionHeader
-            onClick={() => handleOpen(4)}
-            className="text-md px-4 bg-[#FAFBFF] text-[#0027BA] hover:bg-[#E5E7EB] hover:text-[#0027BA] cursor-pointer transition-colors"
-          >
-            Utilizing the Step-by-Step Framework
-          </AccordionHeader>
-          <AccordionBody className="bg-[#FAFBFF]">
-          <div className="space-y-3 px-4">
-              <div className="flex items-center gap-3">
-                <img src={checkmark} alt="" />
-                <p className="text-[#6476BA] font-medium">Master the step-by-step framework</p>
-              </div>
-              <div className="flex items-center gap-3">
-                <img src={checkmark} alt="" />
-                <p className="text-[#6476BA] font-medium">Understanding the impact on sales conversation rates</p>
-              </div>
-            </div>
-          </AccordionBody>
-        </Accordion>
-
-        <Accordion open={open === 5} icon={<Icon id={5} open={open} />}>
-          <AccordionHeader
-            onClick={() => handleOpen(5)}
-            className="text-md px-4 bg-[#FAFBFF] text-[#0027BA] hover:bg-[#E5E7EB] hover:text-[#0027BA] cursor-pointer transition-colors"
-          >
-            Handling Objections Without Phone Conversations
-          </AccordionHeader>
-          <AccordionBody className="bg-[#FAFBFF]">
-          <div className="space-y-3 px-4">
-              <div className="flex items-center gap-3">
-                <img src={checkmark} alt="" />
-                <p className="text-[#6476BA] font-medium">Master the step-by-step framework</p>
-              </div>
-              <div className="flex items-center gap-3">
-                <img src={checkmark} alt="" />
-                <p className="text-[#6476BA] font-medium">Understanding the impact on sales conversation rates</p>
-              </div>
-            </div>
-          </AccordionBody>
-        </Accordion>
-
-        <Accordion open={open === 6} icon={<Icon id={6} open={open} />}>
-          <AccordionHeader
-            onClick={() => handleOpen(6)}
-            className="text-md px-4 bg-[#FAFBFF] text-[#0027BA] hover:bg-[#E5E7EB] hover:text-[#0027BA] cursor-pointer transition-colors"
-          >
-            Closing Techniques for Premium Offers
-          </AccordionHeader>
-          <AccordionBody className="bg-[#FAFBFF]">
-          <div className="space-y-3 px-4">
-              <div className="flex items-center gap-3">
-                <img src={checkmark} alt="" />
-                <p className="text-[#6476BA] font-medium">Master the step-by-step framework</p>
-              </div>
-              <div className="flex items-center gap-3">
-                <img src={checkmark} alt="" />
-                <p className="text-[#6476BA] font-medium">Understanding the impact on sales conversation rates</p>
-              </div>
-            </div>
-          </AccordionBody>
-        </Accordion> */}

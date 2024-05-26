@@ -103,18 +103,18 @@ function CheckIcon() {
   );
 }
 
-export const CourseContent = ({ singleCourse }) => {
+export const CourseContent = ({ singleCourse, handleTitleClick }) => {
   const [open, setOpen] = useState(0);
+ const [checkedCourses, setCheckedCourses] = useState({});
+  
 
   const handleOpen = (value) => setOpen(open === value ? 0 : value);
-
-
 
   return (
     <main className="w-11/12 container mx-auto my-3">
       {singleCourse?.content?.map((course, i) => (
         <Accordion
-          key={course.id}
+          key={course._id}
           open={open === i + 1}
           icon={<Icon id={i + 1} open={open} />}
         >
@@ -125,26 +125,40 @@ export const CourseContent = ({ singleCourse }) => {
             {course.title}
           </AccordionHeader>
 
-          {course.subtitle?.map((sub, i) => (
-            <AccordionBody
-              key={i}
-              className={"text-[#6476BA] font-[500]  h-[50px] w-full"}
+          <AccordionBody
+            key={i}
+            className={"text-[#6476BA] font-[500]  h-[50px] w-full"}
+          >
+            <div
+              className="flex justify-between items-center cursor-pointer"
+              onClick={() => handleTitleClick(course)}
             >
-              <div className="flex justify-between items-center">
-                <p> {sub}</p>
+              <p> {course.title}</p>
 
-                <span>
-                  <Radio
-                    name="type"
-                    defaultChecked
-                    ripple={false}
-                    icon={<CheckIcon />}
-                    className="border-gray-900/10 bg-gray-900/5 p-0 transition-all hover:before:opacity-0"
-                  />
-                </span>
-              </div>
-            </AccordionBody>
-          ))}
+              <span>
+                {/* <Radio
+                  name="type"
+                  defaultChecked
+                  ripple={false}
+                  icon={<CheckIcon />}
+                  className="border-gray-900/10 bg-gray-900/5 p-0 transition-all hover:before:opacity-0"
+                /> */}
+                <input
+                  className="form-checkbox h-5 w-5 text-green-600 rounded-full"
+                  type="checkbox"
+                  checked={!!checkedCourses[course?._id]}
+                  onChange={() => {
+                    setCheckedCourses((prev) => ({
+                      ...prev,
+                      [course?._id]: !prev[course?._id],
+                    }));
+
+                    console.log("clicked");
+                  }}
+                />
+              </span>
+            </div>
+          </AccordionBody>
         </Accordion>
       ))}
     </main>
