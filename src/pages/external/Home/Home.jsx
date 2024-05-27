@@ -15,6 +15,7 @@ import mcompanies from "../../../assets/mCompanies.png";
 // import mobpic from "../../assets/mobpic.png";
 import assit from "../../../assets/assit.png";
 import white from "../../../assets/white.png";
+import mbg from "../../../assets/Frame 64.png"
 import { Link, useLocation } from "react-router-dom";
 import { FaBell } from "react-icons/fa";
 import { ChangeText } from "../../../components/Reusable/ChangeText";
@@ -313,8 +314,8 @@ import useUserContext from "../../../hooks/useUserContext";
           </ul>
         </div>
 
-        <section className="bg-purple-900 rounded-xl mt-5 md:mt-0 relative">
-          <img src={b} alt="" className=" relative h-[400px]" />
+        <section className=" rounded-xl mt-5 md:mt-0 relative">
+          <img src={mbg} alt="" className=" relative h-[400px]" />
 
           <div className="absolute top-[20%] left-6">
             <ChangeText

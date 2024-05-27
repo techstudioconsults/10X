@@ -7,7 +7,8 @@ import {
   import successIcon from "../../assets/Success Icon.svg"
   import viewCourseIcon from "../../assets/view-course.svg"
 
-const CreateCourseSuccess = ({open}) => {
+const CreateCourseSuccess = ({open, courseId}) => {
+  console.log(courseId);
   return (
     <div>
 
@@ -20,7 +21,7 @@ const CreateCourseSuccess = ({open}) => {
 
       <div className="flex flex-col items-center px-8 justify-center w-full gap-3 pt-4">
 
-    <Link to="/admin/library" className="w-full">
+    <Link to={`/coursedetail/${courseId}`} className="w-full">
      
     <Button className="bg-blue w-full mx-auto text-center text-white p-3 flex items-center justify-center gap-3 "
         >
