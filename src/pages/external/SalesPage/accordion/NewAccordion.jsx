@@ -37,11 +37,11 @@ export function NewAccordions({ single }) {
         {single?.content?.map((course, i) => (
           <Accordion
             key={course?.id}
-            open={open === i + 1}
-            icon={<Icon id={i + 1} open={open} />}
+            // open={open === i + 1}
+            // icon={<Icon id={i + 1} open={open} />}
           >
             <AccordionHeader
-              onClick={() => handleOpen(i + 1)}
+              // onClick={() => handleOpen(i + 1)}
               className="text-[16px] text-darkBlue"
             >
               {course?.title}
