@@ -141,7 +141,11 @@ export const Navbar = () => {
               Resource Hub
             </Link>
             {userToken ? (
-              <Link to="/mycourses" className=" text-blue nav__link">
+              <Link
+                to="/mycourses"
+                className=" text-blue nav__link"
+                onClick={handleClose}
+              >
                 My Courses
               </Link>
             ) : null}

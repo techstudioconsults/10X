@@ -23,6 +23,10 @@ export const MyCoursesComponents = () => {
     return <MyCourseLoader />;
   }
 
+  if (course?.purchasedCourses?.length < 1) {
+    return <p className="my-7">No Purchased Course Yet</p>;
+  }
+
   return (
     <section className="mt-7">
       <p>{error}</p>

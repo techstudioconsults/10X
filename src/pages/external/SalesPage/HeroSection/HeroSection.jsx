@@ -26,7 +26,7 @@ const HeroSection = () => {
           <div className="h-full w-full absolute inset-0">
             <img src={darkBg} className="h-full w-full  " alt="" />
           </div>
-          <div className="text-white z-10 grid gap-3 w-5/6">
+          <div className="text-white z-0 grid gap-3 w-5/6">
             <p className="flex items-center gap-2 mb-10 text-lg font-semibold">
               <Link to="/resource" className="flex items-center gap-2">
                 <img src={arrow} alt="" /> Resources Hub

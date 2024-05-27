@@ -114,7 +114,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
           </div>
         </section>
 
-        <div className="text-center ms-5 hero-img-div2 absolute left-0 right-5  bottom-[35%] md:bottom-[55%] lg:bottom-[55%]">
+        <div className="text-center ms-5 hero-img-div2 absolute left-0 right-5  bottom-[35%] md:bottom-[55%] lg:bottom-[55%] z-10">
          <Link to="/resource">
          <button className="bg-white h-[51px]  w-[196px] md:w-[220px] md:h-[59px] text-md md:text-[20px] mx-auto text-center shadow text-[#214672] font-semibold rounded-xl client border border-blue hover:bg-blue hover:text-white duration-500">
             Become a Client
