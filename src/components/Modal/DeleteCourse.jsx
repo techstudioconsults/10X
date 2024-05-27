@@ -37,7 +37,7 @@ const DeleteCourse = () => {
     <div>
         <>
       <button onClick={handleOpen}  className=" border-red-500 border-2 rounded-md py-3 px-10  text-sm text-red-500 ">
-        Delete Account
+        Delete Course
       </button>
       <Dialog size="xs" open={open} handler={handleOpen} className="flex py-7 px-4 flex-col items-center justify-center gap-4">
       

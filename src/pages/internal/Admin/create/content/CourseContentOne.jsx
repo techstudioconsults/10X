@@ -172,29 +172,12 @@
 
 // // export default CourseContentOne;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // import { useState, useCallback, useMemo } from "react";
 // import closeIcon from "../../../../../assets/remove-content.svg";
 // import plusIcon from "../../../../../assets/plus-icon.png";
 // import { useDropzone } from "react-dropzone";
 // import { useFieldArray, useFormContext } from "react-hook-form";
-// import closeContent from "../../../../../assets/remove-content.svg" 
+// import closeContent from "../../../../../assets/remove-content.svg"
 // const CourseContentOne = ({ handleAddContent, numContentFields }) => {
 //   const {
 //     control,
@@ -285,7 +268,7 @@
 //            <h1 className="py-4 text-[#320f0f] font-medium">
 //               CONTENT {`${index + 1}`}
 //             </h1>
-          
+
 //            </div>
 //             <hr className="my-6 border border-gray-400" />
 //             <div className="flex flex-col gap-5">
@@ -416,7 +399,189 @@
 
 // export default CourseContentOne;
 
+// import { useState, useCallback, useMemo } from "react";
+// import closeIcon from "../../../../../assets/remove-content.svg";
+// import plusIcon from "../../../../../assets/plus-icon.png";
+// import { useDropzone } from "react-dropzone";
+// import { useFieldArray, useFormContext } from "react-hook-form";
 
+// const CourseContentOne = ({ handleAddContent }) => {
+//   const { control, formState: { errors }, register, setValue } = useFormContext();
+//   const { fields, append, remove } = useFieldArray({
+//     control,
+//     name: "content",
+//   });
+//   const [selectedFiles, setSelectedFiles] = useState([]);
+
+//   const onDrop = useCallback((acceptedFiles, rejectedFiles, event) => {
+//     const updatedFiles = [...selectedFiles];
+//     acceptedFiles.forEach((file, index) => {
+//       const fieldIndex = selectedFiles.length + index;
+//       updatedFiles[fieldIndex] = file;
+//       setValue(`content.${fieldIndex}.file`, file);
+//     });
+//     setSelectedFiles(updatedFiles);
+//   }, [selectedFiles, setValue]);
+
+//   const removeFile = (index) => {
+//     setSelectedFiles((prevFiles) =>
+//       prevFiles.filter((_, fileIndex) => fileIndex !== index)
+//     );
+//   };
+
+//   const {
+//     getRootProps,
+//     getInputProps,
+//     isDragActive,
+//     isDragAccept,
+//     isDragReject,
+//     open,
+//   } = useDropzone({
+//     onDrop,
+//     accept: {
+//       "application/pdf": [],
+//       "video/mp4": [],
+//       "video/webm": [],
+//       "video/*": [],
+//     },
+//     maxFiles: fields.length,
+//   });
+
+//   const dropzoneStyle = useMemo(() => ({
+//     borderColor: isDragAccept
+//       ? "#00e676"
+//       : isDragReject
+//       ? "#ff1744"
+//       : isDragActive
+//       ? "#2196f3"
+//       : "#ced4da",
+//     borderWidth: "2px",
+//     padding: "0.5rem",
+//   }), [isDragAccept, isDragReject, isDragActive]);
+
+//   return (
+//     <div>
+//       <div className="pb-10 grid gap-16 grid-cols-1 lg:grid-cols-2">
+//         {fields.map((item, index) => (
+//           <div key={item.id} className="p-7 rounded-md border shadow-md w-full h-[407px]">
+//             <div className="grid grid-cols-2 justify-between">
+//               <h1 className="py-4 text-[#320f0f] font-medium">
+//                 CONTENT {`${index + 1}`}
+//               </h1>
+//               {index > 0 && (
+//                 <button
+//                   type="button"
+//                   onClick={() => remove(index)}
+//                   className="text-red-500 flex justify-end items-center"
+//                 >
+//                   <img className="-translate-y-4" src={closeIcon} alt="Remove content" />
+//                 </button>
+//               )}
+//             </div>
+//             <hr className="my-6 border border-gray-400" />
+//             <div className="flex flex-col gap-5">
+//               <div className="flex flex-col gap-1">
+//                 <label htmlFor={`course-title-${index}`} className="font-semibold text-base text-[#6476BA]">
+//                   Content Name
+//                 </label>
+//                 <input
+//                   id={`course-title-${index}`}
+//                   type="text"
+//                   {...register(`content.${index}.title`)}
+//                   className="px-3 py-2 h-[48px] border-2 border-gray-400 rounded-md"
+//                   placeholder="Introduction to Zero Call Close"
+//                 />
+//                 {errors.content?.[index]?.title && (
+//                   <span className="text-red-500">
+//                     {errors.content[index].title.message}
+//                   </span>
+//                 )}
+//               </div>
+
+//               <div className="flex flex-col gap-1">
+//                 <label htmlFor={`file-upload-${index}`} className="font-semibold text-base text-[#6476BA]">
+//                   Upload content file
+//                 </label>
+//                 <div className="flex">
+//                   <div
+//                     {...getRootProps({ style: dropzoneStyle })}
+//                     className="flex justify-between w-full bg-[#CFE6FF] rounded-l-md border-r-0"
+//                   >
+//                     <input
+//                       {...getInputProps()}
+//                       id={`file-upload-${index}`}
+//                       className="px-3 w-[65%] py-2 h-11 border-2 border-gray-400 border-r-0 rounded-l-md"
+//                       placeholder={
+//                         selectedFiles[index]
+//                           ? selectedFiles[index].name
+//                           : "Browse files or drag and drop here"
+//                       }
+//                       disabled
+//                     />
+//                     <input
+//                       id={`file-upload-${index}`}
+//                       type="file"
+//                       className="hidden"
+//                     />
+//                   </div>
+//                   <button
+//                     type="button"
+//                     htmlFor={`file-upload-${index}`}
+//                     onClick={open}
+//                     className="w-[35%] bg-[#032BF2] h-11 text-white rounded-r-md flex justify-center px-5 items-center gap-2 md:gap-4 cursor-pointer"
+//                   >
+//                     <img src={plusIcon} alt="" />
+//                     <span>Add</span>
+//                   </button>
+//                 </div>
+//                 {!selectedFiles[index] && (
+//                   <p className="text-[#969BAC] font-medium text-sm pt-3">
+//                     File Uploaded will appear here
+//                   </p>
+//                 )}
+//                 {selectedFiles[index] && (
+//                   <div className="flex flex-col gap-2 mt-2">
+//                     <div className="flex justify-between items-center gap-2 bg-[#CFE6FF] rounded-md p-3 w-72">
+//                       <div className="flex justify-between gap-2">
+//                         <span className="text-gray-600">
+//                           <p>{selectedFiles[index].name.slice(0, 10)}...</p>
+//                         </span>
+//                         <span className="text-gray-500">
+//                           ({(selectedFiles[index].size / 1024 / 1024).toFixed(2)} MB)
+//                         </span>
+//                       </div>
+//                       <img
+//                         className="cursor-pointer"
+//                         onClick={() => removeFile(index)}
+//                         src={closeIcon}
+//                         alt=""
+//                       />
+//                     </div>
+//                   </div>
+//                 )}
+//               </div>
+//             </div>
+//           </div>
+//         ))}
+
+//         <div className="flex justify-center items-center h-full">
+//           <button
+//             type="button"
+//             className="bg-blue px-5 py-3 text-white flex items-center rounded-md gap-4"
+//             onClick={handleAddContent}
+//           >
+//             <span>
+//               <img src={plusIcon} alt="" />
+//             </span>
+//             Add content
+//           </button>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default CourseContentOne;
 
 import { useState, useCallback, useMemo } from "react";
 import closeIcon from "../../../../../assets/remove-content.svg";
@@ -425,22 +590,30 @@ import { useDropzone } from "react-dropzone";
 import { useFieldArray, useFormContext } from "react-hook-form";
 
 const CourseContentOne = ({ handleAddContent }) => {
-  const { control, formState: { errors }, register, setValue } = useFormContext();
+  const {
+    control,
+    formState: { errors },
+    register,
+    setValue,
+  } = useFormContext();
   const { fields, append, remove } = useFieldArray({
     control,
     name: "content",
   });
   const [selectedFiles, setSelectedFiles] = useState([]);
 
-  const onDrop = useCallback((acceptedFiles, rejectedFiles, event) => {
-    const updatedFiles = [...selectedFiles];
-    acceptedFiles.forEach((file, index) => {
-      const fieldIndex = selectedFiles.length + index;
-      updatedFiles[fieldIndex] = file;
-      setValue(`content.${fieldIndex}.file`, file);
-    });
-    setSelectedFiles(updatedFiles);
-  }, [selectedFiles, setValue]);
+  const onDrop = useCallback(
+    (acceptedFiles, rejectedFiles, event) => {
+      const updatedFiles = [...selectedFiles];
+      acceptedFiles.forEach((file, index) => {
+        const fieldIndex = selectedFiles.length + index;
+        updatedFiles[fieldIndex] = file;
+        setValue(`content.${fieldIndex}.file`, file);
+      });
+      setSelectedFiles(updatedFiles);
+    },
+    [selectedFiles, setValue]
+  );
 
   const removeFile = (index) => {
     setSelectedFiles((prevFiles) =>
@@ -463,26 +636,32 @@ const CourseContentOne = ({ handleAddContent }) => {
       "video/webm": [],
       "video/*": [],
     },
-    maxFiles: fields.length,
+    maxFiles: 1, // Only one file per index
   });
 
-  const dropzoneStyle = useMemo(() => ({
-    borderColor: isDragAccept
-      ? "#00e676"
-      : isDragReject
-      ? "#ff1744"
-      : isDragActive
-      ? "#2196f3"
-      : "#ced4da",
-    borderWidth: "2px",
-    padding: "0.5rem",
-  }), [isDragAccept, isDragReject, isDragActive]);
+  const dropzoneStyle = useMemo(
+    () => ({
+      borderColor: isDragAccept
+        ? "#00e676"
+        : isDragReject
+        ? "#ff1744"
+        : isDragActive
+        ? "#2196f3"
+        : "#ced4da",
+      borderWidth: "2px",
+      padding: "0.5rem",
+    }),
+    [isDragAccept, isDragReject, isDragActive]
+  );
 
   return (
     <div>
       <div className="pb-10 grid gap-16 grid-cols-1 lg:grid-cols-2">
         {fields.map((item, index) => (
-          <div key={item.id} className="p-7 rounded-md border shadow-md w-full h-[407px]">
+          <div
+            key={item.id}
+            className="p-7 rounded-md border shadow-md w-full h-[407px]"
+          >
             <div className="grid grid-cols-2 justify-between">
               <h1 className="py-4 text-[#320f0f] font-medium">
                 CONTENT {`${index + 1}`}
@@ -493,14 +672,21 @@ const CourseContentOne = ({ handleAddContent }) => {
                   onClick={() => remove(index)}
                   className="text-red-500 flex justify-end items-center"
                 >
-                  <img className="-translate-y-4" src={closeIcon} alt="Remove content" />
+                  <img
+                    className="-translate-y-4"
+                    src={closeIcon}
+                    alt="Remove content"
+                  />
                 </button>
               )}
             </div>
             <hr className="my-6 border border-gray-400" />
             <div className="flex flex-col gap-5">
               <div className="flex flex-col gap-1">
-                <label htmlFor={`course-title-${index}`} className="font-semibold text-base text-[#6476BA]">
+                <label
+                  htmlFor={`course-title-${index}`}
+                  className="font-semibold text-base text-[#6476BA]"
+                >
                   Content Name
                 </label>
                 <input
@@ -518,11 +704,14 @@ const CourseContentOne = ({ handleAddContent }) => {
               </div>
 
               <div className="flex flex-col gap-1">
-                <label htmlFor={`file-upload-${index}`} className="font-semibold text-base text-[#6476BA]">
+                <label
+                  htmlFor={`file-upload-${index}`}
+                  className="font-semibold text-base text-[#6476BA]"
+                >
                   Upload content file
                 </label>
                 <div className="flex">
-                  <div
+                  {/* <div
                     {...getRootProps({ style: dropzoneStyle })}
                     className="flex justify-between w-full bg-[#CFE6FF] rounded-l-md border-r-0"
                   >
@@ -535,19 +724,48 @@ const CourseContentOne = ({ handleAddContent }) => {
                           ? selectedFiles[index].name
                           : "Browse files or drag and drop here"
                       }
-                      disabled
                     />
                     <input
                       id={`file-upload-${index}`}
                       type="file"
                       className="hidden"
                     />
-                  </div>
+                  </div> */}
+                  <div
+    {...getRootProps({ style: dropzoneStyle })}
+    className="flex justify-between w-full bg-[#CFE6FF] rounded-l-md border-r-0"
+  >
+    <input
+      {...getInputProps()}
+      id={`file-upload-${index}`}
+      className={`px-3 w-[65%] py-2 h-11 border-2 border-gray-400 border-r-0 rounded-l-md ${
+        selectedFiles[index] ? "cursor-not-allowed" : "cursor-pointer"
+      }`}
+      placeholder={
+        selectedFiles[index]
+          ? selectedFiles[index].name
+          : "Browse files or drag and drop here"
+      }
+      disabled={selectedFiles[index] ? true : false}
+    />
+    <input
+      id={`file-upload-${index}`}
+      type="file"
+      className="hidden"
+      disabled={selectedFiles[index] ? true : false}
+    />
+  </div>
+
                   <button
                     type="button"
                     htmlFor={`file-upload-${index}`}
                     onClick={open}
-                    className="w-[35%] bg-[#032BF2] h-11 text-white rounded-r-md flex justify-center px-5 items-center gap-2 md:gap-4 cursor-pointer"
+                    className={`w-[35%] bg-[#032BF2] h-11 text-white rounded-r-md flex justify-center px-5 items-center gap-2 md:gap-4 ${
+                      selectedFiles[index]
+                        ? "opacity-50 cursor-not-allowed"
+                        : "cursor-pointer"
+                    }`}
+                    disabled={selectedFiles[index] ? true : false}
                   >
                     <img src={plusIcon} alt="" />
                     <span>Add</span>
@@ -566,7 +784,9 @@ const CourseContentOne = ({ handleAddContent }) => {
                           <p>{selectedFiles[index].name.slice(0, 10)}...</p>
                         </span>
                         <span className="text-gray-500">
-                          ({(selectedFiles[index].size / 1024 / 1024).toFixed(2)} MB)
+                          (
+                          {(selectedFiles[index].size / 1024 / 1024).toFixed(2)}{" "}
+                          MB)
                         </span>
                       </div>
                       <img
@@ -601,4 +821,3 @@ const CourseContentOne = ({ handleAddContent }) => {
 };
 
 export default CourseContentOne;
-

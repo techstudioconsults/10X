@@ -13,6 +13,7 @@ const CreateCourse = () => {
   const [openModal, setOpenModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState("")
   const [numContentFields, setNumContentFields] = useState(1);
+  const [courseId, setCourseId]= useState("")
   const methods = useForm({
     // defaultValues: {
     //   title: "",
@@ -171,10 +172,13 @@ const CreateCourse = () => {
         },
       });
       console.log("API response:", res);
+      console.log(res.data.data._id);
+      setCourseId(res.data.data._id)
 
       if(res.status == 201){
         setIsLoading(false)
         setOpenModal(true)
+
       }
     } catch (error) {
       setIsLoading(false);
@@ -227,7 +231,7 @@ const CreateCourse = () => {
         </form>
       </FormProvider>
 
-      {openModal && <CreateCourseSuccess open={openModal}/> }
+      {openModal && <CreateCourseSuccess open={openModal} courseId={courseId} /> }
     </div>
   );
 };
