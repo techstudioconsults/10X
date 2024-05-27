@@ -92,7 +92,7 @@ const CreateCourseDetails = ({setShowNext,}) => {
             >
               Course category{" "}
             </label>
-            <div className="grid grid-cols-2 gap-10 w-72 py-3">
+            {/* <div className="grid grid-cols-2 gap-10 w-72 py-3">
               <div className="flex items-center ps-4  shadow border-gray-200 rounded dark:border-gray-700">
                 <input
                   id="bordered-radio-1"
@@ -126,7 +126,42 @@ const CreateCourseDetails = ({setShowNext,}) => {
                   Book
                 </label>
               </div>
-            </div>
+            </div> */}
+            <div className="grid grid-cols-2 gap-10 w-72 py-3">
+  <div className="flex items-center ps-4  shadow border-gray-200 rounded dark:border-gray-700">
+    <input
+      id="bordered-radio-1"
+      type="radio"
+      {...register("category", { required: "Category is required" })}
+      value="video"
+      name="category"
+      className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300"
+    />
+    <label
+      htmlFor="bordered-radio-1"
+      className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+    >
+      Video
+    </label>
+  </div>
+  <div className="flex items-center ps-4 border shadow border-gray-200 rounded dark:border-gray-700">
+    <input
+      id="bordered-radio-2"
+      type="radio"
+      {...register("category", { required: "Category is required" })}
+      value="book"
+      name="category"
+      className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300"
+    />
+    <label
+      htmlFor="bordered-radio-2"
+      className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+    >
+      Book
+    </label>
+  </div>
+</div>
+{errors.category && <span className="text-red-500">{errors.category.message}</span>}
             {/* drag & drop */}
             <FileDropzone />
           </div>

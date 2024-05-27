@@ -327,9 +327,9 @@ import useUserContext from "../../../hooks/useUserContext";
             />
           </div>
 
-          <div className=" absolute bottom-[1%] right-0">
+          {/* <div className=" absolute bottom-[1%] right-0">
             <img src={marketing} alt="" className="w-[200px] lg:w-[300px]" />
-          </div>
+          </div> */}
         </section>
       </section>
 
