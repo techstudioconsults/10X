@@ -11,7 +11,11 @@ export const MyCourseLoader = () => {
 
 export const MyCourseWishListLoader = () => {
   return (
-    <main className="flex gap-3 lg:px-5 my-7">
+    <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 lg:px-5 my-7">
+      <Skeleton
+        className="rounded-lg  h-[350px] lg:h-[350px]"
+        width={"300px"}
+      />
       <Skeleton
         className="rounded-lg  h-[350px] lg:h-[350px]"
         width={"300px"}

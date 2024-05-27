@@ -49,7 +49,7 @@ const Library = () => {
   // console.log(library);
 
   return (
-    <main className=" shadow-xl shadow-[#032BF214] border-[rgba(0,0,0,0.1)] border-2  p-5 rounded-md h-[306px] xl:max-h-80 ">
+    <main className=" shadow-xl shadow-[#032BF214] border-[rgba(0,0,0,0.1)] border-2  p-5 rounded-md min-h-[331px]xl:max-h-80 ">
       <div className="flex items-center justify-between">
         <h1 className="xl:text-lg font-semibold text-darkBlue py-2">Library</h1>
       </div>

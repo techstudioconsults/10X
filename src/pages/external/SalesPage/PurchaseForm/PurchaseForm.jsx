@@ -516,7 +516,7 @@ console.log(single);
   }, [password, confirmPassword, errors.confirmPassword]);
 
   return (
-    <div
+    <div 
       className="flex flex-col items-center container mx-auto w-full lg:my-0 my-7"
       id="form"
     >

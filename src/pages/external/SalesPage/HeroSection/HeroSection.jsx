@@ -19,6 +19,13 @@ const HeroSection = () => {
   const { single, error, loading } = useFetch(`/api/v1/course/${id}`);
   // console.log(single);
 
+  const handleScrollToForm = () => {
+    const formElement = document.getElementById("form");
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div>
       <div className="sales-hero-img mt-10  rounded-sm flex w-full">
@@ -33,7 +40,7 @@ const HeroSection = () => {
               </Link>
             </p>
 
-            <h2 className="font-[1000] md:text-5xl text-3xl md:text-start text-center">
+            <h2 className="font-[1000] lg:leading-snug md:text-5xl text-3xl md:text-start text-center">
               {/* The Zero Call Close */}
               {single?.title}
             </h2>
@@ -42,18 +49,19 @@ const HeroSection = () => {
               offers you a game changing solution for life. */}
               {single?.description}
             </p>
-            <div className="md:flex items-center gap-6 mt-5">
+            <div className="flex flex-col md:flex-row items-center w-full mx-auto gap-4 md:gap-6 mt-5">
               <button
+              onClick={handleScrollToForm}
                 className="h-16 lg:w-56 w-40 md:m-0 mx-auto bg-blue rounded-lg text-lg font-semibold"
-                id="form"
+                
               >
                 Get the Course
               </button>
-              {/* <img
+            {!userToken &&   <img
                 src={whiteArrow}
                 className="self-end md:block h-12 hidden translate-y-3"
                 alt=""
-              /> */}
+              />}
 
               {userToken && (
                 <div className="mt-2 md:mt-0">

@@ -36,7 +36,7 @@ console.log(courseAnalytics);
   return (
     <main className="flex-col flex lg:flex-row items-center justify-between  lg:gap-3">
       {/* <section> */}
-      <section className="md:flex items-center gap-3">
+      <section className="md:flex items-center gap-5">
         <div className="flex items-center border-[rgba(0,0,0,0.1)] border-2 h-24 w-[321px] gap-4 shadow-xl shadow-[#032BF214] p-4 rounded-md">
           {/* Total Earnings */}
           <img src={course1} alt="" className="w-14 h-14" />

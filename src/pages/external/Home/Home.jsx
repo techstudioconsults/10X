@@ -29,7 +29,7 @@ import useUserContext from "../../../hooks/useUserContext";
 
  const Home = () => {
   const { userToken } = useUserContext()
-  console.log(userToken);
+  
   const location = useLocation()
   useEffect(()=>{
     window.scrollTo(0, 0)

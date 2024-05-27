@@ -65,7 +65,7 @@ const UserProvider = ({ children }) => {
     }
   }, [userToken]);
 
-  const UserData = { API_URL, userInfo, getUserInfo, course, error, loading };
+  const UserData = { API_URL, userInfo, getUserInfo, course, error, loading, userToken };
 
   return (
     <UserContext.Provider value={UserData}>{children}</UserContext.Provider>

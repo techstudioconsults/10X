@@ -120,7 +120,7 @@ export const Navbar = () => {
       {/* mobile */}
       {isOpen && (
         <motion.section
-          className="bg-white w-full h-full fixed top-0 z-10 right-0"
+          className="bg-white w-full h-full fixed top-16 z-20 right-0"
           initial={{
             x: 200,
           }}
@@ -128,7 +128,7 @@ export const Navbar = () => {
           exit={{ x: 200, transition: { duration: 0.3 } }}
           transition={{ duration: 0.5 }}
         >
-          <div className="flex pt-20 flex-col justify-center items-center gap-8 font-semibold text-blue text-lg">
+          <div className="flex pt-14 flex-col justify-center items-center gap-8 font-semibold text-blue text-lg">
             <Link to="/" onClick={handleClose}>
               Home
             </Link>
