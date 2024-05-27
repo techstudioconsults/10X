@@ -41,7 +41,7 @@ const Details = ({ data }) => {
 
   const handleOpen = (value) => setOpen(open === value ? null : value);
 
-  console.log(data);
+  // console.log(data);
   // eslint-disable-next-line react/prop-types
   
   const thumbnail = data?.thumbnail
