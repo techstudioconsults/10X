@@ -177,7 +177,7 @@ const Settings = () => {
       </div>
 
       <div className="flex lg:flex-row  flex-col items-start gap-10">
-        <div className="xl:w-[637px] lg:w-2/3 w-full p-6 border-[rgba(0,0,0,0.1)] shadow-sm border-2 rounded-xl">
+        <div className="xl:w-[637px] min-h-[483px] lg:w-2/3 w-full p-6 border-[rgba(0,0,0,0.1)] shadow-sm border-2 rounded-xl">
           <form>
             <h2 className="text-[#0027BA] font-semibold text-lg my-3">
               Personal Information
@@ -298,7 +298,7 @@ const Settings = () => {
           </form>
         </div>
 
-        <div className=" lg:max-w-[401px] lg:w-1/2 w-full h-full border-[#0000001A] border-2 shadow-sm rounded-xl">
+        <div className=" lg:max-w-[401px] lg:w-1/2 w-full h-full min-h-[483px] border-[#0000001A] border-2 shadow-sm rounded-xl">
           <form className="flex flex-col p-6  gap-3">
             <h2 className="text-[#0027BA] font-semibold text-lg mt-3">
               Security
