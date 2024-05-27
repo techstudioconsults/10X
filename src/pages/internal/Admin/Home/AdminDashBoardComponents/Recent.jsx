@@ -11,7 +11,7 @@ const Recent = () => {
 
   console.log(sliced);
   return (
-    <main className="shadow-xl shadow-[#032BF214] border-2 border-[rgba(0,0,0,0.1)] h-[331px] p-5 rounded-md">
+    <main className="shadow-xl shadow-[#032BF214] border-2 border-[rgba(0,0,0,0.1)] min-h-[331px] p-5 rounded-md">
       <div className=" flex items-center w-full justify-between ">
         <h1 className="text-lg font-semibold text-darkBlue py-3">
           Recently Uploaded Courses
