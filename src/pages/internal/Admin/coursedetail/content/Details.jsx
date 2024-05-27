@@ -101,22 +101,20 @@ const Details = ({ data }) => {
               {
                 data?.content?.map((module, i) => (
                    <div key={module._id} className="">
-                     <Accordion open={open === i} icon={<Icon id={i} open={open} />}>
+                     <Accordion  >
                   <AccordionHeader
                     onClick={() => handleOpen(i)}
                     className="text-md px-4 border-2 border-[#0000000D] rounded-lg text-[#0027BA] hover:bg-[#E5E7EB] hover:text-[#0027BA] cursor-pointer transition-colors"
                   >
-                    {module.title}
+                    {module.title} 
                   </AccordionHeader>
                   <AccordionBody className="bg-[#FAFBFF]">
                     <div className="space-y-3 px-4">
                       <div className="flex items-center gap-3">
-                        <img src={checkmark} alt="" />
-                        <p className="text-[#6476BA] font-medium">Master the step-by-step framework</p>
+                       
                       </div>
                       <div className="flex items-center gap-3">
-                        <img src={checkmark} alt="" />
-                        <p className="text-[#6476BA] font-medium">Understanding the impact on sales conversation rates</p>
+                      
                       </div>
                     </div>
                   </AccordionBody>
