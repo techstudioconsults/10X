@@ -128,7 +128,7 @@ export const Navbar = () => {
           exit={{ x: 200, transition: { duration: 0.3 } }}
           transition={{ duration: 0.5 }}
         >
-          <div className="flex pt-14 flex-col justify-center items-center gap-8 font-semibold text-blue text-lg">
+          <div className="flex pt-12 flex-col justify-center items-center gap-8 font-semibold text-blue text-lg">
             <Link to="/" onClick={handleClose}>
               Home
             </Link>

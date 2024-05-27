@@ -16,7 +16,7 @@ const AdminSidebar = () => {
     <div className='h-screen 2xl:w-1/5 lg:w-1/4  fixed hidden lg:block bg-[#032BF20F] p-4  shadow-xl'>
         <div className='flex h-full flex-col gap-10'>
             <div className="mt-3 ">
-         <Link to="/">
+         <Link to="/admin/home">
          <img
             src={revenueLogo}
             className="w-[140px] h-[54px] md:w-[140px] md:h-[54.22px]"

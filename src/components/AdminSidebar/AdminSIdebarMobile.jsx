@@ -40,7 +40,7 @@ const AdminSIdebarMobile = ({setIsOpen}) => {
                     <Link to="/admin/home" className='w-full'>Home</Link>
                 </div>
                 <div className={`flex gap-4 items-center ${pathname.includes("library") ? "bg-blue text-white" : null} duration-300 rounded-lg h-12 p-3 text-grey font-semibold text-base`}><IoBookOutline  className='text-2xl'/> <Link to="/admin/library" className='w-full'>Library</Link></div>
-                <div className='flex gap-4 items-center rounded-lg text-grey h-12 p-3 font-semibold text-base'><LuBook  className='text-xl'/><Link className='w-full'>Create A Course </Link></div>
+                <div className='flex gap-4 items-center rounded-lg text-grey h-12 p-3 font-semibold text-base'><LuBook  className='text-xl'/><Link to="/admin/create" className='w-full'>Create A Course </Link></div>
                 <div className={`flex gap-4 items-center ${pathname === "/admin/settings" ? "bg-blue text-white" : null} duration-300 rounded-lg h-12 p-3 text-grey font-semibold text-base`}> <IoSettingsOutline  className='text-xl'/><Link to="/admin/settings" className="w-full">Settings</Link></div>
             </div>
         </div>
