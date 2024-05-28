@@ -205,7 +205,7 @@ const Resource = () => {
                     </span>
                   </div>
                   <button className="border-[#032BF2] border-2 text-[#032BF2] hover:bg-[#032BF2] hover:text-white duration-100 font-semibold text-xl w-full p-3 rounded-lg mb-3">
-                    Buy Now
+                    View Course
                   </button>
                 </div>
               </div>
