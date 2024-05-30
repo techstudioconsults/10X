@@ -82,7 +82,7 @@ const HeroSection = () => {
     <div>
       <AccessModal open={open} setOpen={setOpen} />
       <div className="sales-hero-img mt-10  rounded-sm flex w-full">
-        <div className="flex items-center justify-center py-8  relative lg:w-3/5 md:w-8/12   w-full">
+        <div className="flex items-center justify-center py-8  relative md:w-3/5   w-full">
           <div className="h-full w-full absolute inset-0">
             <img src={darkBg} className="h-full w-full  " alt="" />
           </div>
@@ -103,10 +103,10 @@ const HeroSection = () => {
               offers you a game changing solution for life. */}
               {/* {single?.description} */}
             </p>
-            <div className="flex  flex-col md:flex-row items-center w-full mx-auto gap-4 md:gap-6 mt-5">
+            <div className="flex  flex-col lg:flex-row items-center w-full mx-auto gap-4 md:gap-6 mt-5">
 
-          {!userToken &&     <form  onSubmit={handleSubmit(onSubmit)} className="flex flex-col md:flex-row items-center gap-4" >
-             <div className="grid grid-cols-1 relative">
+          {!userToken &&     <form  onSubmit={handleSubmit(onSubmit)} className="flex w-full flex-col lg:flex-row items-center justify-between gap-4" >
+             <div className="grid w-full lg:w-48 grid-cols-1 relative">
              <input
                 type="email"
                 {...register("email", {
@@ -130,7 +130,7 @@ const HeroSection = () => {
     )}
 
              </div>
-                <button className="h-14 lg:w-56 min-w-64 lg:min-w-56 md:m-0 mx-auto bg-blue rounded-lg text-lg font-semibold" >{isloading ? "loading..." : "Get Instant Access"} </button>
+                <button className="h-14 w-full lg:w-56 min-w-64 lg:min-w-56 md:m-0 mx-auto bg-blue rounded-lg text-lg font-semibold" >{isloading ? "loading..." : "Get Instant Access"} </button>
               </form>}
 
              {userToken &&  <button
