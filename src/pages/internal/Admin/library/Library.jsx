@@ -149,7 +149,7 @@ const Library = () => {
   };
 
   return (
-    <div className="w-full px-6  container">
+    <div className="w-full px-6  container ">
       <div className="px-0 py-3 flex flex-col lg:flex-row justify-evenly lg:justify-between items-center ">
         <h1 className="text-2xl text-[#0027BA] font-bold">
           {" "}

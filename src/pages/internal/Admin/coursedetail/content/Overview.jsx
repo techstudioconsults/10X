@@ -17,6 +17,7 @@ const Overview = ({ courseId }) => {
   // const { single, error, loading } = useFetch(`api/v1/paystack/${courseId}`)
   // console.log(single);
   const [payment, setPayment] = useState([]);
+  const [analytics, setAnalytics] = useState({})
   const [loading, setLoading] = useState(false);
   const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   // const {count} = payment
@@ -31,6 +32,7 @@ const Overview = ({ courseId }) => {
       });
       setLoading(false);
       console.log(res.data.data);
+      setAnalytics(res.data)
       setPayment(res.data.data);
     } catch (error) {
       setLoading(false);
@@ -43,31 +45,32 @@ const Overview = ({ courseId }) => {
   }, [courseId]);
 
   console.log(payment);
+  console.log(analytics);
   return (
     <div>
       <div className="w-full lg:w-3/4">
         <div className=" grid grid-cols-1  md:grid-cols-3 gap-5 ">
-          <div className="p-5 shadow-md  flex items-center   gap-2">
+          <div className="p-5 shadow-md  flex items-center justify-evenly lg:justify-start  gap-2">
             <img src={totalEarnings} alt="" />
             <div>
               <p>Total Earning</p>
-              <p className="text-blue font-bold text-lg">- - -</p>
+              <p className="text-blue font-bold text-lg">{analytics?.totalAmount || "---"}</p>
             </div>
           </div>
-          <div className="p-5 shadow-md flex  items-center  gap-2">
+          <div className="p-5 shadow-md flex justify-evenly lg:justify-start  items-center  gap-2">
             {" "}
             <img src={totalClients} alt="" />{" "}
             <div>
               <p>Total Clients</p>{" "}
-              <p className="text-blue font-bold text-lg">- - -</p>
+              <p className="text-blue font-bold text-lg">{analytics?.count || "---"}</p>
             </div>{" "}
           </div>
-          <div className="p-5 shadow-md flex  items-center  gap-2">
+          <div className="p-5 shadow-md flex justify-evenly lg:justify-start  items-center  gap-2">
             {" "}
             <img src={totalOrders} alt="" />{" "}
             <div>
               <p>Total Orders</p>{" "}
-              <p className="text-blue font-bold text-lg">- - -</p>
+              <p className="text-blue font-bold text-lg">{analytics?.count || "---"} </p>
             </div>{" "}
           </div>
         </div>

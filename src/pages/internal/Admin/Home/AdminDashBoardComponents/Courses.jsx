@@ -35,11 +35,11 @@ const Courses = () => {
   const navigate = useNavigate();
 
   return (
-    <main className="">
+    <main className="overflow-x-auto">
       <section className="w-full flex flex-col md:flex-row justify-between items-center gap-3">
         <div className="w-full flex flex-col md:flex-row items-center justify-between gap-3 md:gap-3 lg:gap-4 xl:gap-7 ">
           <div className="flex items-center border-[rgba(0,0,0,0.1)] border-2 h-24 w-full lg:w-[270px] xl:w-[321px] 2xl:w-[300px] gap-4 shadow-xl shadow-[#032BF214] p-4 rounded-md">
-            <img src={course1} alt="" className="w-14 h-14" />
+            <img src={course1} alt="" className="md:hidden lg:block w-14 h-14" />
             <div>
               <p className="text-sm text-gray-500">Total Earnings</p>
               <h3 className="text-blue font-[1000] lg:text-xl xl:text-2xl">
@@ -48,7 +48,7 @@ const Courses = () => {
             </div>
           </div>
           <div className="flex items-center h-24 gap-4 w-full lg:w-[200px] 2xl:w-[220px] border-[rgba(0,0,0,0.1)] border-2 shadow-xl shadow-[#032BF214] p-4 rounded-md">
-            <img src={course2} alt="" className="w-14 h-14" />
+            <img src={course2} alt="" className=" md:hidden lg:block  w-14 h-14" />
             <div>
               <p className="text-sm text-gray-500">Total Clients</p>
               <h3 className="text-blue font-[1000] text-2xl">
@@ -57,7 +57,7 @@ const Courses = () => {
             </div>
           </div>
           <div className="flex items-center h-24 gap-4 w-full lg:w-[210px] 2xl:w-[220px] border-[rgba(0,0,0,0.1)] border-2 shadow-xl shadow-[#032BF214] p-4 rounded-md">
-            <img src={course3} alt="" className="w-14 h-14" />
+            <img src={course3} alt="" className=" md:hidden lg:block  w-14 h-14" />
             <div>
               <p className="text-sm text-gray-500">Total Courses</p>
               <h3 className="text-blue font-[1000] text-2xl">
@@ -65,8 +65,8 @@ const Courses = () => {
               </h3>
             </div>
           </div>
-      <Link to="/admin/create">
-        <button className="bg-blue lg:w-40 xl:w-64 text-white h-24 w-full font-semibold rounded-md mt-4 lg:mt-0">
+      <Link className="w-full lg:w-40 xl:w-64" to="/admin/create">
+        <button className="bg-blue  lg:w-40 xl:w-64 text-white h-24 w-full font-semibold rounded-md mt-4 md:mt-0 lg:mt-0">
           + Add a Course
         </button>
       </Link>
