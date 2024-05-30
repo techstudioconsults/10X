@@ -78,7 +78,7 @@ const Overview = ({ courseId }) => {
           <thead>
             <tr className="bg-[#F8F8F8] text-[#7C87AC] font-medium">
               {/* <th className="px-4 py-3 min-w-36 md:min-w-52 min-w-lg-60">Course Name</th> */}
-              <th className="px-4 py-3 min-w-14">User ID</th>
+              <th className="px-4 py-3 min-w-14"> S/N</th>
               <th className="px-4 py-3 min-w-36">Clients</th>
               <th className="px-4 py-3 min-w-36">Email</th>
               <th className="px-4 py-3 min-w-36 md:min-w-52">Date</th>
