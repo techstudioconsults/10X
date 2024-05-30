@@ -73,7 +73,7 @@ const HeroSection = () => {
     setShowError(true);
     const timeoutId = setTimeout(() => {
       setShowError(false);
-    }, 3000); // 3 seconds
+    }, 5000); // 3 seconds
     setTimeoutId(timeoutId);
   };
 
@@ -103,7 +103,7 @@ const HeroSection = () => {
               offers you a game changing solution for life. */}
               {/* {single?.description} */}
             </p>
-            <div className="flex  flex-col xl:flex-row items-center w-full mx-auto gap-4 md:gap-6 mt-5">
+            <div className="flex  flex-col xl:flex-row items-center w-full gap-4 md:gap-6 mt-5  xl:max-w-xl">
 
           {!userToken &&     <form  onSubmit={handleSubmit(onSubmit)} className="flex w-full flex-col xl:flex-row items-center justify-between gap-4" >
              <div className="grid w-full  grid-cols-1 relative">
@@ -122,35 +122,35 @@ const HeroSection = () => {
                 }`}
               />
               {errors.email && (
-              <p className="text-red-500 absolute -bottom-7  ">{errors.email.message}</p>
+              <p className="text-red-500 absolute -bottom-28 xl:-bottom-7  ">{errors.email.message}</p>
             )} 
             {/* {formError && <p className="text-red-500 absolute -bottom-14 ">{formError}</p>} */}
             {showError && (
-      <p className="text-red-500 absolute -bottom-14 ">{formError}</p>
+      <p className="text-red-500 absolute   -bottom-28 md:-bottom-28 xl:-bottom-14 ">{formError}</p>
     )}
 
              </div>
                 <button className="h-14 w-full xl:w-56 min-w-64 xl:min-w-56 md:m-0 mx-auto bg-blue rounded-lg text-lg font-semibold" >{isloading ? "loading..." : "Get Instant Access"} </button>
               </form>}
 
-             {userToken &&  <button
+              {!userToken &&   <img
+                  src={whiteArrow}
+                  className="self-end md:block h-12 hidden translate-y-3"
+                  alt=""
+                />}
+            </div>
+        <div className="grid grid-col-1 lg:grid-cols-2 gap-4 items-center w-full max-w-md">       
+        {userToken &&  <button
               onClick={handleScrollToForm}
-                className="h-16 lg:w-56 w-40 md:m-0 mx-auto bg-blue rounded-lg text-lg font-semibold"
+                className="h-16 w-full md:m-0 mx-auto bg-blue rounded-lg text-lg font-semibold"
               >
                 Get the Course
               </button>}
-            {!userToken &&   <img
-                src={whiteArrow}
-                className="self-end md:block h-12 hidden translate-y-3"
-                alt=""
-              />}
 
-              {userToken && (
-                <div className="mt-2 md:mt-0">
-                  <AddWishList id={single._id} />
-                </div>
+              {userToken && (  <AddWishList id={single._id} />
+                
               )}
-            </div>
+        </div>
           </div>
         </div>
         <div className="lg:w-1/2 md:w-5/12 h-full md:block hidden">
