@@ -93,7 +93,7 @@ const HeroSection = () => {
               </Link>
             </p>
 
-            <h2 className=" text-2xl  lg:text-4xl font-medium md:text-start text-center">
+            <h2 className=" text-2xl lg:text-3xl xl:text-4xl font-medium md:text-start text-center">
               {/* The Zero Call Close */}
               {/* {single?.title} */}
               Discover and Implement the Proven 3-Step Blueprint That Catapulted My Business from Zero to N100M in Annual Sales!
@@ -103,10 +103,10 @@ const HeroSection = () => {
               offers you a game changing solution for life. */}
               {/* {single?.description} */}
             </p>
-            <div className="flex  flex-col lg:flex-row items-center w-full mx-auto gap-4 md:gap-6 mt-5">
+            <div className="flex  flex-col xl:flex-row items-center w-full mx-auto gap-4 md:gap-6 mt-5">
 
-          {!userToken &&     <form  onSubmit={handleSubmit(onSubmit)} className="flex w-full flex-col lg:flex-row items-center justify-between gap-4" >
-             <div className="grid w-full lg:w-48 grid-cols-1 relative">
+          {!userToken &&     <form  onSubmit={handleSubmit(onSubmit)} className="flex w-full flex-col xl:flex-row items-center justify-between gap-4" >
+             <div className="grid w-full  grid-cols-1 relative">
              <input
                 type="email"
                 {...register("email", {
@@ -130,7 +130,7 @@ const HeroSection = () => {
     )}
 
              </div>
-                <button className="h-14 w-full lg:w-56 min-w-64 lg:min-w-56 md:m-0 mx-auto bg-blue rounded-lg text-lg font-semibold" >{isloading ? "loading..." : "Get Instant Access"} </button>
+                <button className="h-14 w-full xl:w-56 min-w-64 xl:min-w-56 md:m-0 mx-auto bg-blue rounded-lg text-lg font-semibold" >{isloading ? "loading..." : "Get Instant Access"} </button>
               </form>}
 
              {userToken &&  <button
