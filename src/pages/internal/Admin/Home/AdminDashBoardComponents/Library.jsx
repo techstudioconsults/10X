@@ -65,7 +65,7 @@ const Library = () => {
             <div className=" flex-1">
               {loading && <Skeleton/>}
               <h3 className=" underline font-[650]">{l?.title}</h3>
-              <p className=" text-xs">{`${l?.content.length}`} Contents</p>
+              {/* <p className=" text-xs">{`${l?.content.length}`} Contents</p> */}
             </div>
 
             <Link to={`/coursedetail/${l._id}`}  className="text-xs">View More</Link>

@@ -5,9 +5,11 @@ import { useForm } from "react-hook-form";
 import { Bars } from "react-loader-spinner";
 import useUserContext from "../../hooks/useUserContext";
 import axios from "axios";
+import SubscriptionModal from "../Modal/SubscriptionModal";
 export const Footer = () => {
   const { API_URL} = useUserContext()
   const [isLoading, setIsLoading]= useState(false)
+  const [open, setOpen] = useState(false)
   const {
     register,
     handleSubmit,
@@ -28,6 +30,10 @@ export const Footer = () => {
       const { data } = await axios.post(fullUrl, formData);
       setIsLoading(false)
       console.log(data);
+
+      if(data.message == "Subscription successful"){
+        setOpen(true)
+      }
       reset()
     } catch (error) {
       setIsLoading(false);
@@ -140,6 +146,7 @@ export const Footer = () => {
           <Link>Privacy Policy</Link>
         </div>
       </section>
+      <SubscriptionModal open={open} setOpen={setOpen}/>
     </footer>
   );
 };

@@ -63,21 +63,22 @@ const Edit = () => {
       setValue("description", data.data.description);
       setValue("price", data.data.price);
       setValue("category", data.data.category);
+      setValue("url", data.data.url)
       setValue("thumbnail", data.data.thumbnail);
-      setValue("content", [
-        {
-          title: data.data?.content[0]?.title || "",
-          file: data.data?.content[0]?.file || null,
-        },
-        {
-          title: data.data?.content[1]?.title || "",
-          file: data.data?.content[1]?.file || null,
-        },
-        {
-          title: data.data?.content[2]?.title || "",
-          file: data.data?.content[2]?.file || null,
-        },
-      ]);
+      // setValue("content", [
+      //   {
+      //     title: data.data?.content[0]?.title || "",
+      //     file: data.data?.content[0]?.file || null,
+      //   },
+      //   {
+      //     title: data.data?.content[1]?.title || "",
+      //     file: data.data?.content[1]?.file || null,
+      //   },
+      //   {
+      //     title: data.data?.content[2]?.title || "",
+      //     file: data.data?.content[2]?.file || null,
+      //   },
+      // ]);
       
     } catch (error) {
       console.log(error);
@@ -129,23 +130,6 @@ const Edit = () => {
         console.error("Thumbnail is not a file");
       }
 
-
-      
-    // Append content array data
-    formData.append("content", JSON.stringify(data.content));
-
-    data.content.forEach((contentItem, index) => {
-      formData.append(`content[${index}].title`, contentItem.title);
-      if (contentItem.file instanceof File) {
-        formData.append(`content[${index}].file`, contentItem.file);
-      } else if (typeof contentItem.file === "string") {
-        formData.append(`content[${index}].file`, contentItem.file);  // Assuming backend handles file URL
-      } else {
-        console.error(`Content item at index ${index} is missing a file`);
-      }
-    });
-
-      console.log(data.content);
   
       const res = await axios.put(`${API_URL}/api/v1/course/${id}`, formData, {
         headers: {
@@ -196,11 +180,11 @@ const Edit = () => {
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
           <div>
-            {!showNext && <EditCourseDetails courseDetails={courseDetails} setShowNext={setShowNext} />}
+          <EditCourseDetails loading={isLoading}  onSubmit={methods.handleSubmit(onSubmit)} courseDetails={courseDetails} setShowNext={setShowNext} />
           </div>
-          <div className="">
-            {showNext && <CourseContent courseDetails={courseDetails} loading={isLoading} onSubmit={methods.handleSubmit(onSubmit)}  />}
-          </div>
+          {/* <div className="">
+            {showNext && <CourseContent courseDetails={courseDetails}   />}
+          </div> */}
           {/* {showNext && (
             <button type="submit" className="btn btn-primary">
               Submit form

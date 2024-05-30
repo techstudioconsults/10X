@@ -42,7 +42,7 @@ export function NewAccordions({ single }) {
           >
             <AccordionHeader
               // onClick={() => handleOpen(i + 1)}
-              className="text-[16px] text-darkBlue"
+              className="text-[16px]  text-darkBlue"
             >
               {course?.title}
             </AccordionHeader>
@@ -51,7 +51,7 @@ export function NewAccordions({ single }) {
               key={i}
               className={"text-[#6476BA] font-[500]  h-[50px] w-full"}
             >
-              <div className="flex gap-2 items-center">
+              <div className="flex items-center">
                 <img src={checkmark} alt="" /> <p> {course?.title}</p>
               </div>
             </AccordionBody>

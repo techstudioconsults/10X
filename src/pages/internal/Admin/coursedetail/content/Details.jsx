@@ -43,10 +43,10 @@ const Details = ({ data }) => {
 
   // console.log(data);
   // eslint-disable-next-line react/prop-types
-  
+  // console.log(data);
   const thumbnail = data?.thumbnail
 
-  console.log(thumbnail);
+  // console.log(thumbnail);
 
  
   return (
@@ -56,7 +56,7 @@ const Details = ({ data }) => {
         <div>
           {/* // eslint-disable-next-line react/prop-types */}
           <div className=" w-full  lg:w-[500px]  rounded-md">
-          <LazyLoadImage effect="blur"  className=" object-cover rounded-xl w-full lg:min-w-[500px]" src={thumbnail} alt="" />
+          <LazyLoadImage effect="blur"  className=" object-cover rounded-xl w-full lg:min-w-[500px] min-h-72 max-h-72" src={thumbnail} alt="" />
           </div>
           <h1 className="text-2xl py-5">Course Description</h1>
           <p>{data.description}</p>
@@ -69,11 +69,11 @@ const Details = ({ data }) => {
             <div className="grid grid-cols-2 gap-2 md:gap-4 py-3 justify-start" >
              <div className="flex justify-start items-center gap-1 md:gap-4">
               <img src={courseCheck} alt="" />
-              <p className="text-gray-500 text-base"> 100 clients</p>
+              <p className="text-gray-500 text-base"> --- clients</p>
              </div>
              <div className="flex justify-start items-center gap-1 md:gap-4">
              <img src={courseCheck} alt="" />
-              <p className="text-gray-500 text-base">9,927 unit sold</p>
+              <p className="text-gray-500 text-base">--- unit sold</p>
              </div>
              <div className="flex justify-start items-center gap-1 md:gap-4">
              <img src={courseCheck} alt="" />
@@ -81,7 +81,7 @@ const Details = ({ data }) => {
              </div>
              <div className="flex justify-start items-center gap-1 md:gap-4">
              <img src={courseCheck} alt="" />
-              <p className="text-gray-500 text-base"> 1,567 reviews</p>
+              <p className="text-gray-500 text-base"> --- reviews</p>
              </div>
             </div>
             <div className="flex justify-start items-center gap-3">

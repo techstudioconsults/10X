@@ -29,7 +29,7 @@ export const MyCoursesComponents = () => {
       {course?.purchasedCourses?.map((c) => (
         <div
           key={c.id}
-          className="mb-5 shadow-xl shadow-[#032BF214] w-full md:flex  gap-3 lg:px-5"
+          className="mb-16 shadow-xl shadow-[#032BF214] w-full md:flex  gap-3 lg:px-5"
         >
           <div>
             <img
