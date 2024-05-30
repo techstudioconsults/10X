@@ -66,29 +66,29 @@ export const AddWishList = ({ id }) => {
   };
 
   return (
-    <div className="mt-2 md:mt-0 w-full">
+    <main>
       {loading ? (
         <button
           disabled
-          className="h-16 w-full px-3 whitespace-nowrap md:m-0 mx-auto border rounded-lg text-lg font-semibold opacity-50 cursor-not-allowed"
+          className="h-16 w-40 px-3 whitespace-nowrap md:m-0 mx-auto border rounded-lg text-lg font-semibold opacity-50 cursor-not-allowed"
         >
           Loading...
         </button>
       ) : show ? (
         <button
           onClick={handleRemoveFromWishList}
-          className="h-16 px-3 whitespace-nowrap w-full md:m-0 mx-auto border rounded-lg text-lg font-semibold"
+          className="h-16 px-3 whitespace-nowrap md:m-0 mx-auto border rounded-lg text-lg font-semibold"
         >
           Remove from wishlist
         </button>
       ) : (
         <button
           onClick={handleAddToWishList}
-          className="h-16 w-full md:m-0 mx-auto border rounded-lg text-lg font-semibold"
+          className="h-16 lg:w-56 w-40 md:m-0 mx-auto border rounded-lg text-lg font-semibold"
         >
           Add to wishlist
         </button>
       )}
-    </div>
+    </main>
   );
 };

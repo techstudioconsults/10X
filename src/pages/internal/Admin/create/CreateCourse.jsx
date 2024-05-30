@@ -133,7 +133,7 @@ const onSubmit = async (data) => {
       console.error("Server Error:", error.response.data);
       console.error("Status Code:", error.response.status);
       console.error("Response Headers:", error.response.headers);
-      setErrorMessage("Something went wrong, check input fields.");
+      setErrorMessage("Something went wrong, Pls fill all input fields.");
     } else if (error.request) {
       // No response was received from the server
       console.error("Network Error:", error.request);
@@ -141,7 +141,7 @@ const onSubmit = async (data) => {
     } else {
       // Other errors during the request
       console.error("Error:", error.message);
-      setErrorMessage("Something went wrong, check input fields.");
+      setErrorMessage("Something went wrong, Pls fill all input fields.");
     }
   }
 };
