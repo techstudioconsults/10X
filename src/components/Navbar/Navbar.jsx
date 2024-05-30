@@ -141,14 +141,15 @@ export const Navbar = () => {
               Resource Hub
             </Link>
             {userToken ? (
-              <Link to="/mycourses" className=" text-blue nav__link">
+              <Link to="/mycourses" onClick={handleClose} className=" text-blue nav__link">
                 My Courses
               </Link>
             ) : null}
 
             <Link
               to="/login"
-              className={` ${showSignIn} border border-blue md:flex justify-center items-center rounded-lg text-blue font-semibold hover:bg-blue hover:text-white duration-500 py-2 px-5`}
+              onClick={handleClose}
+              className={` ${showSignIn}  border border-blue md:flex justify-center items-center rounded-lg text-blue font-semibold hover:bg-blue hover:text-white duration-500 py-2 px-5`}
             >
               Sign In
             </Link>
