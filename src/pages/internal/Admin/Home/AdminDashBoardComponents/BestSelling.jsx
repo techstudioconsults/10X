@@ -57,7 +57,7 @@ const BestSelling = () => {
 //   console.log(token);
   return (
     <main
-      className="shadow-xl shadow-[#032BF214] border-[rgba(0,0,0,0.1)] border-2 p-5 rounded-md w-full "
+      className="shadow-xl overflow-x-auto shadow-[#032BF214] border-[rgba(0,0,0,0.1)] border-2 p-5 rounded-md w-full "
       style={{ height: "100%", width: "100%" }}
     >
       <div className=" flex items-center w-full justify-between ">
