@@ -156,7 +156,7 @@ const Adminlogin = () => {
               Remember Me
             </label>
             <p className="font-semibold text-xs underline">
-              <Link>Forgot password?</Link>
+              {/* <Link>Forgot password?</Link> */}
             </p>
           </div>
 
