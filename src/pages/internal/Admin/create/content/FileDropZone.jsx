@@ -239,7 +239,7 @@ function FileDropzone() {
           </p>
         </div>
       </div>
-      {errors.thumbnail && !file && (
+      {errors.thumbnail  && (
         <p className="text-red-500">{errors.thumbnail.message}</p>
       )}
       {file && (

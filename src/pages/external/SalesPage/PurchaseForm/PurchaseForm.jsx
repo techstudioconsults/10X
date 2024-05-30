@@ -147,12 +147,12 @@ console.log(single);
         className="self-end translate-y-5 xl:w-auto w-[101px] lg:block hidden"
         alt=""
       /> */}
-      <div className="rounded-md p-4  w-full mx-auto bg-[#FAFBFF] ">
+      <div className="rounded-md p-1  w-full mx-auto bg-[#FAFBFF] ">
         <h2 className="text-xl text-center font-[800] mb-4 text-[#032BF2]">
           Begin your Journey
         </h2>
         <hr className="mb-4 border-[#0027BA4D]" />
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 w-full">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 w-full">
           <div>
             <div className="flex relative items-center">
               <img src={emailIcon} className="absolute h-5 left-4" alt="" />

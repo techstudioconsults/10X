@@ -3,6 +3,7 @@ import revenueLogo from "../../assets/10X LOGO.png";
 import { Link } from "react-router-dom";
 import { Turn as Hamburger } from "hamburger-react";
 import "../Navbar/navbar.css";
+import defaultImg from "../../assets/default-profile-img.png"
 import { motion } from "framer-motion";
 import Cookies from "js-cookie";
 import useUserContext from "../../hooks/useUserContext";
@@ -15,7 +16,7 @@ export const Navbar = () => {
   // const [userInfo, setUserInfo] = useState(user)
   const [isOpen, setOpen] = useState(false);
   const userToken = Cookies.get("userToken");
-
+console.log(userInfo);
   const handleClose = () => {
     setOpen(false);
   };
@@ -81,10 +82,11 @@ export const Navbar = () => {
             {userToken ? (
               <div className="flex gap-1 items-center">
                 <img
-                  src={userInfo?.data?.photo}
+                  src={userInfo?.data?.photo || defaultImg}
                   className=" w-8 h-8 bg-[#6072AC] rounded-full object-cover"
                   alt=""
                 />
+              
                 <div className="hidden md:block">
                   {userInfo ? (
                     <p className=" font-semibold text-blue ">

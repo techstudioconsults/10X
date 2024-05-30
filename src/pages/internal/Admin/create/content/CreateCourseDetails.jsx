@@ -158,16 +158,18 @@ const CreateCourseDetails = ({ loading, onSubmit  }) => {
                   Url Link *
                 </label>
                 <input
-                  {...register("url", { required: "url link is required" })}
+                {...register("url", {
+                  required: "url link is required",
+                })}
                   className="px-3 min-w-60 h-[45px] my-3 border-2 border-gray-400 rounded-md "
                   type="text"
                   placeholder="Enter url"
                 />
-              </div>
-            </div>
             {errors.url && (
               <span className="text-red-500"> {errors.url.message} </span>
             )}
+              </div>
+            </div>
             {/* drag & drop */}
             <FileDropzone />
           </div>
