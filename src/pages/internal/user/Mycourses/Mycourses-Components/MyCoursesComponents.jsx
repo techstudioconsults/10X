@@ -37,17 +37,17 @@ export const MyCoursesComponents = () => {
               alt={c.title}
               className="w-full md:w-[200px] min-h-[200px] md:h-[150px] lg:w-[400px] lg:h-[200px] mb-2 md:mb-0 rounded-tr-xl rounded-tl-xl lg:rounded-lg"
             />
-            <div className="my-3 hidden md:block">
+            {/* <div className="my-3 hidden md:block">
               <Progress value={10} color="purple" className="progress h-1" />
 
               <div className="flex justify-between mt-2 text-[11px] text-[#6476BA]">
                 <p>IN PROGRESS</p>
                 <p>10% complete</p>
               </div>
-            </div>
+            </div> */}
           </div>
 
-          <div className=" space-y-3 shadow-xl shadow-[#032BF214] md:shadow-none p-2 rounded-bl-xl rounded-br-xl pb-4">
+          <div className=" pb-14 space-y-3 shadow-xl shadow-[#032bf20d] md:shadow-none p-2 rounded-bl-xl rounded-br-xl ">
             <h1 className=" text-darkBlue font-[650] md:text-lg">{c.title}</h1>
             <p className="  text-[10px] md:max-w-[350px] lg:text-[16px] text-[#6476BA]">
               {c.description}
@@ -66,14 +66,14 @@ export const MyCoursesComponents = () => {
               <p>{c.star || "⭐⭐⭐⭐⭐"}</p>
             </div>
 
-            <div className="my-3  md:hidden">
+            {/* <div className="my-3  md:hidden">
               <Progress value={10} color="purple" className="progress h-1" />
 
               <div className="flex justify-between mt-2 text-[11px] text-[#6476BA]">
                 <p>IN PROGRESS</p>
                 <p>10% complete</p>
               </div>
-            </div>
+            </div> */}
 
             <button
               className="text-xs bg-darkBlue w-full md:w-[350px] h-10 md:h-9 mt-2 py-3 rounded text-white font-semibold"
@@ -81,7 +81,7 @@ export const MyCoursesComponents = () => {
                 navigate(`/mycourses-resume/${c._id}`);
               }}
             >
-              Resume course
+              Watch Video
             </button>
           </div>
         </div>

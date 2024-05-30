@@ -405,21 +405,21 @@ const [selectedCourse, setSelectedCourse] = useState({});
                   </button>
                   <p>Back to my courses</p>
                 </div>
-                <p className="text-[#6476BA] text-xs">MODULE 1, LESSON 1</p>
+                {/* <p className="text-[#6476BA] text-xs">MODULE 1, LESSON 1</p> */}
               </div>
-              <h1 className=" text-darkBlue text-xl font-[650] mt-3 max-w-[250px] md:max-w-full  px-2 ">
+              {/* <h1 className=" text-darkBlue text-xl font-[650] mt-3 max-w-[250px] md:max-w-full  px-2 ">
                 {singleCourse?.title}
-              </h1>
+              </h1> */}
             </section>
     
-            <div className="flex items-center justify-between bg-[#EBEFFF] px-2 py-1 rounded-lg mt-3 mx-3">
+            {/* <div className="flex items-center justify-between bg-[#EBEFFF] px-2 py-1 rounded-lg mt-3 mx-3">
               <h2 className=" text-darkBlue text-[14px] md:text-[17px] font-[650]  max-w-[150px] md:max-w-full">
                 {selectedCourse?.title}
               </h2>
               <span className="bg-[#40BF80] py-2 rounded-md text-white px-3 text-sm font-[600]">
                 Completed
               </span>
-            </div>
+            </div> */}
     
             <div className="w-full my-5 bg-black h-[440px]">
               {selectedCourse && selectedCourse.file && (
@@ -474,13 +474,13 @@ const [selectedCourse, setSelectedCourse] = useState({});
                 />
               )}
             </section>
-            <section>{activeTab === "lesson" && <Lesson />}</section>
+            <section>{activeTab === "lesson" && <Lesson singleCourse={singleCourse} />}</section>
           </main>
     
           {/* large devices */}
           <main className=" w-full justify-between hidden lg:flex">
             <section className="w-[30%]">
-              {showProgress && (
+              {/* {showProgress && (
                 <div>
                   <div className="flex justify-between items-center text-sm text-[#6476ba]">
                     <p>COURSE PROGRESS</p>
@@ -488,8 +488,8 @@ const [selectedCourse, setSelectedCourse] = useState({});
                   </div>
                   <Progress value={10} color="purple" className="progress" />
                 </div>
-              )}
-              <div className="mt-3">
+              )} */}
+              {/* <div className="mt-3">
                 <button
                   className="text-[13px] flex items-center gap-5"
                   onClick={handleProgressVisibilityChange}
@@ -503,7 +503,7 @@ const [selectedCourse, setSelectedCourse] = useState({});
                     )}
                   </span>
                 </button>
-              </div>
+              </div> */}
               <div className="mt-8">
                 <p className="text-[#0027BA] font-[650]" >{singleCourse?.title}</p>
                 <p className="pt-6">{singleCourse?.description}</p>
@@ -551,10 +551,10 @@ const [selectedCourse, setSelectedCourse] = useState({});
             </section>
     
             <section className="w-[60%]">
-              <div className="flex items-center justify-between px-2">
+              {/* <div className="flex items-center justify-between px-2">
                 <p className="text-[#0027BA] font-[650]">{singleCourse.title}</p>
                 <p className="text-[#6476BA] text-xs">MODULE 1, LESSON 1</p>
-              </div>
+              </div> */}
 {/*     
               <div className="flex items-center justify-between bg-[#EBEFFF] px-2 py-1 rounded-lg my-6">
                 <h2 className=" text-darkBlue text-[14px] md:text-[17px] font-[650]  max-w-[150px] md:max-w-full">
@@ -572,7 +572,7 @@ const [selectedCourse, setSelectedCourse] = useState({});
                     light={true}
                     controls
                     width={"100%"}
-                    height={"440px"}
+                    height={"510px"}
                     volume={true}
                     url={selectedCourse.file}
                   />
