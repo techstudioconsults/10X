@@ -14,13 +14,13 @@ const RegistrationModal = ({ openReg, setOpenReg }) => {
   return (
     <div>
       <Dialog
-        size="sm"
+        size="lg md:sm lg:xs"
         open={openReg}
         handler={openReg}
         className="flex py-7 px-4 flex-col items-center justify-center gap-2"
       >
-      <div>
-        <img onClick={closeForm} src={close} alt="" />
+      <div className="w-full">
+        <img className="absolute top-4 right-4" onClick={closeForm} src={close} alt="" />
       <PurchaseForm/>
       </div>
       </Dialog>

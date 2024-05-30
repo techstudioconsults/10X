@@ -95,7 +95,7 @@ console.log(single);
         setIsLoading(false);
         const authorizationUrl =
           registerRes.data.paymentData.data.authorization_url;
-        window.open(authorizationUrl, "_blank");
+        window.open(authorizationUrl,);
 
         const loginData = {
           email: data.email,

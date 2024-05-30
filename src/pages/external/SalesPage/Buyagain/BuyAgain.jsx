@@ -39,7 +39,7 @@ const BuyAgain = () => {
       console.log(res.data.data.message);
       console.log(res.data.data.data.authorization_url);
       const authorizationUrl = res.data.data.data.authorization_url
-      window.open(authorizationUrl, "_blank");
+      window.open(authorizationUrl,);
       }
     } catch (error) {
       setIsLoading(false);
@@ -48,10 +48,10 @@ const BuyAgain = () => {
   };
 
   return (
-    <div className="pt-5 lg:pt-32 ">
-      <div className="w-[400px] flex flex-col justify-center  shadow-md pb-9 rounded-b-lg">
+    <div id="buyagain" className="pt-5 lg:pt-32 ">
+      <div  className="w-full lg:w-[400px] flex flex-col justify-center  shadow-md pb-9 rounded-b-lg">
         <img
-          className="w-full min-w-[400px] min-h-56 rounded-t-lg"
+          className="w-full  lg:min-w-[400px] min-h-56 rounded-t-lg"
           src={single?.thumbnail}
           alt=""
         />
