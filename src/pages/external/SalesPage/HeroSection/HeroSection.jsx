@@ -32,12 +32,12 @@ const HeroSection = () => {
   //  console.log(id);
   // console.log(single);
 
-  // const handleScrollToForm = () => {
-  //   const formElement = document.getElementById("form");
-  //   if (formElement) {
-  //     formElement.scrollIntoView({ behavior: "smooth" });
-  //   }
-  // };
+  const handleScrollToForm = () => {
+    const formElement = document.getElementById("buyagain");
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   const onSubmit = async (data)=>{
     console.log(data);
@@ -48,7 +48,7 @@ const HeroSection = () => {
       if(res.status == 201){
         setIsLoading(false)
         setOpen(true)
-        console.log("gooooood");
+        // console.log("gooooood");
       }
     } catch (error) {
       setIsLoading(false)
@@ -132,10 +132,9 @@ const HeroSection = () => {
              </div>
                 <button className="h-14 lg:w-56 min-w-64 lg:min-w-56 md:m-0 mx-auto bg-blue rounded-lg text-lg font-semibold" >{isloading ? "loading..." : "Get Instant Access"} </button>
               </form>}
-               
 
              {userToken &&  <button
-              // onClick={handleScrollToForm}
+              onClick={handleScrollToForm}
                 className="h-16 lg:w-56 w-40 md:m-0 mx-auto bg-blue rounded-lg text-lg font-semibold"
               >
                 Get the Course
