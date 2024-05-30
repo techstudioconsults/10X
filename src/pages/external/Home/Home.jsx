@@ -119,13 +119,13 @@ import useUserContext from "../../../hooks/useUserContext";
         </section>
 
         <div className="text-center ms-5 hero-img-div2 absolute left-0 right-5  bottom-[35%] md:bottom-[55%] lg:bottom-[55%]">
-         <Link to="/resource">
+         <Link className="absolute z-10 right-0 left-0 bottom-0" to="/resource">
          <button className="bg-white h-[51px]  w-[196px] md:w-[220px] md:h-[59px] text-md md:text-[20px] mx-auto text-center shadow text-[#214672] font-semibold rounded-xl client border border-blue hover:bg-blue hover:text-white duration-500">
            {userToken ? ' Explore Resources'  : ' Become a Client'}
           </button></Link>
         </div>
 
-        <LazyLoadImage effect="blur" src={mcompanies} alt="" className="w-screen  md:hidden mt-[120px]" />
+        <LazyLoadImage effect="blur" src={mcompanies} alt="" className="w-screen hidded  md:hidden mt-[120px]" />
       </section>
 
       <div className="text-center mb-16">
