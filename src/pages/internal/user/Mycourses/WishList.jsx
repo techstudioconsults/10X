@@ -72,7 +72,7 @@ const WishList = () => {
             <img
               src={w.thumbnail}
               alt={w.title}
-              className="w-full h-auto md:h-[150px] min-h-[150px] lg:h-[200px] mb-2 rounded-tr-xl rounded-tl-xl lg:rounded-lg"
+              className="w-full h-auto md:h-[200px] min-h-[200px] lg:h-[200px] mb-2 rounded-tr-xl rounded-tl-xl lg:rounded-lg"
             />
             <div className="absolute top-2 right-3">
               <button onClick={() => handleRemoveFromWishList(w._id)}>

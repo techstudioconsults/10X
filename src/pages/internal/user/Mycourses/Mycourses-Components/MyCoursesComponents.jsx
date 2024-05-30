@@ -35,7 +35,7 @@ export const MyCoursesComponents = () => {
             <img
               src={c.thumbnail}
               alt={c.title}
-              className="w-full md:w-[200px] md:h-[150px] lg:w-[400px] lg:h-[200px] mb-2 md:mb-0 rounded-tr-xl rounded-tl-xl lg:rounded-lg"
+              className="w-full md:w-[200px] min-h-[200px] md:h-[150px] lg:w-[400px] lg:h-[200px] mb-2 md:mb-0 rounded-tr-xl rounded-tl-xl lg:rounded-lg"
             />
             <div className="my-3 hidden md:block">
               <Progress value={10} color="purple" className="progress h-1" />
