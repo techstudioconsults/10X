@@ -56,8 +56,10 @@ export const NewSliders = () => { // Renamed the component to NewSliders
   };
 
   return (
-    <main className="slider max-w-[700px] bg-[#032BF214]">
-      <Slider {...settings} className="mx-auto 2xl:-space-x-6 lg:-space-x-6 my-10 w-full " style={{ padding: "0 20px" }}>
+   <div>
+
+     <main className="slider max-w-[700px] bg-[#032BF214]">
+      <Slider {...settings} className="mx-auto 2xl:-space-x-6 lg:-space-x-6 my-4 lg:my-10 w-full " style={{ padding: "0 20px" }}>
         {award.map((a) => {
           const { name, job, msg, id } = a;
 
@@ -78,5 +80,6 @@ export const NewSliders = () => { // Renamed the component to NewSliders
         })}
       </Slider>
     </main>
+   </div>
   );
 };

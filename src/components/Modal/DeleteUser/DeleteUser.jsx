@@ -29,6 +29,7 @@ const  DeleteUser = (userId) => {
 
         if (data.success) {
             setOpen(false)
+            Cookies.remove("userToken")
             navigate("/")
 
         }

@@ -14,19 +14,21 @@ const CourseDetail = () => {
   // console.log(id);
   // const history = useHistory();
   const { single, error, loading } = useFetch(`/api/v1/course/${id}`);
-  console.log(single);
+  // console.log(single);
   const [activeTab, setActiveTab] = React.useState("overview")
   return (
     <div className="w-11/12 mx-auto container">
       <Link className="text-gray-500 flex gap-2 items-center" to="/admin/library" >
         <img src={prevPage} alt="" /> Back to all course
       </Link>
-      <div className="flex flex-col gap-4 lg:flex-row justify-between py-12">
-        <div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-7 justify-between py-12">
+        <div className="">
           <h1 className="text-3xl font-bold text-[#0027BA]">{single.title}</h1>
           <p className="text-[#787878] pt-1">{single.description}</p>
         </div>
-        <ShareButton />
+       <div className=" hidden  w-full lg:flex justify-end">
+       <ShareButton />
+       </div>
       </div>
       <div>
         <Tabs value={activeTab}>

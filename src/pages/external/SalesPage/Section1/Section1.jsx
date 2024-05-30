@@ -5,8 +5,12 @@ import PurchaseForm from "../PurchaseForm/PurchaseForm";
 import { NewAccordions } from "../accordion/NewAccordion";
 import { useParams } from "react-router-dom";
 import { useFetch } from "../../../../hooks/useFetch";
+import useUserContext from "../../../../hooks/useUserContext";
+import BuyAgain from "../Buyagain/BuyAgain";
 
 const Section1 = () => {
+  const {userInfo} = useUserContext()
+  console.log(userInfo);
   const { id } = useParams();
   //  console.log(id);
   const { single, error, loading } = useFetch(`/api/v1/course/${id}`);
@@ -17,33 +21,57 @@ const Section1 = () => {
     <div className="flex justify-center container mx-auto carousel-class mb-7 w-full">
       <div className="w-11/12 mx-auto container ">
         <div className="flex flex-col-reverse md:flex-row mx-auto w-full">
-          <div className="flex flex-col-reverse lg:flex-row gap-20 w-full xl:gap-40 items-stretch">
-            <div className="flex flex-col gap-5 lg:pt-36 lg:w-1/2 w-full">
+          <div className="flex flex-col-reverse lg:flex-row gap-10 lg:gap-20 w-full xl:gap-40 items-stretch">
+            <div className="flex flex-col gap-5 lg:pt-10 lg:w-1/2 w-full">
               <div className="flex flex-col items-start gap-3">
                 <SectionHeading title="Description" color="#0027BA" />
-                <p className="max-w-xl text-[#6476BA]">{single?.description}</p>
+                <h1 className="max-w-xl text-xl text-[#6476BA]">
+                  {/* {single?.description} */}
+                  In this workshop, I lay bare the strategies and tactics I used to 10X my business revenue while working less than 2hrs a day.
+                  
+                  </h1>
+                  <li className="text-[#6476BA]  text-base">
+                  The 3-STEP FORMULAR you need to grow your annual revenue to ₦100m in under 3 years without investors funding.
+                  </li>
+                  <li className="text-[#6476BA] text-lg">
+                  How you can spend less than 10hours/week on your business while it makes you millions every single month.
+                  </li>
+                  <li className="text-[#6476BA] text-lg">How I started with less than ₦50k and made ₦10m in the first year of running my business</li>
               </div>
-              <div className="flex flex-col gap-2">
-                <SectionHeading title="Course content" color="#0027BA" />
-                <div className="flex items-center gap-2">
-                  <p className="text-[#6476BA]">
-                    {single?.content?.length} sections
-                  </p>
-                  <img src={dotIcon} alt="dot icon" />
-                  <p className="text-[#6476BA]">1h 17m total length</p>
-                </div>
-              </div>
+  
               <NewAccordions single={single} />
-              <SectionHeading
-                title={`Why people choose the ${single?.title}`}
-                color="#0027BA"
-                responsive={"text-center lg:text-start"}
-              />
+
+              {/* show when user is authenticated */}
+            { userInfo &&   <div className="lg:w-full" id="form pt-6">
+              <h1 className="text-2xl lg:text-left font-semibold text-center mt-10 py-3 lg:py-0 text-[#0027BA]">
+              Why people choose this 
+              </h1>
               <NewSliders />
+              {/* <PurchaseForm /> */}
+            </div>}
             </div>
-            <div className="lg:w-1/2" id="form">
-              <PurchaseForm />
-            </div>
+
+            {/* authenticated user purchased form  */}
+
+            {/* <div className="lg:w-1/2" id="form pt-6">
+              <h1 className="text-2xl font-semibold mt-10 py-3 lg:py-0 text-[#0027BA]">
+              Why people choose this
+              </h1>
+      
+            </div> */}
+              {/* <PurchaseForm /> */}
+
+            {/* show when user is unauthenticated */}
+        {!userInfo &&     
+            <div className="lg:w-1/2 pt-10" id="form ">
+              <h1 className="text-2xl font-semibold text-center mt-10 py-3 lg:py-0 text-[#0027BA]">
+              Why people choose this
+              </h1>
+              <NewSliders />
+              {/* <PurchaseForm /> */}
+            </div>}
+
+            {userInfo && <BuyAgain/>}
           </div>
         </div>
       </div>
@@ -51,9 +79,9 @@ const Section1 = () => {
   );
 };
 
-const SectionHeading = ({ title, color, responsive }) => {
+const SectionHeading = ({ title, color, responsive,  }) => {
   return (
-    <h2 className={`text-2xl font-semibold text-[${color}] ${responsive} my-3`}>
+    <h2 className={`text-2xl font-semibold text-[${color}]  ${responsive} my-5`}>
       {title}
     </h2>
   );
