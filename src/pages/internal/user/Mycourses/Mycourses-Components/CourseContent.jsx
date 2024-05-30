@@ -112,55 +112,7 @@ export const CourseContent = ({ singleCourse, handleTitleClick }) => {
 
   return (
     <main className="w-11/12 container mx-auto my-3">
-      {singleCourse?.content?.map((course, i) => (
-        <Accordion
-          key={course._id}
-          open={open === i + 1}
-          icon={<Icon id={i + 1} open={open} />}
-        >
-          <AccordionHeader
-            onClick={() => handleOpen(i + 1)}
-            className="text-[16px] text-darkBlue"
-          >
-            {course.title}
-          </AccordionHeader>
-
-          <AccordionBody
-            key={i}
-            className={"text-[#6476BA] font-[500]  h-[50px] w-full"}
-          >
-            <div
-              className="flex justify-between items-center cursor-pointer"
-              onClick={() => handleTitleClick(course)}
-            >
-              <p> {course.title}</p>
-
-              <span>
-                {/* <Radio
-                  name="type"
-                  defaultChecked
-                  ripple={false}
-                  icon={<CheckIcon />}
-                  className="border-gray-900/10 bg-gray-900/5 p-0 transition-all hover:before:opacity-0"
-                /> */}
-                <input
-                  className="form-checkbox h-5 w-5 text-green-600 rounded-full"
-                  type="checkbox"
-                  checked={!!checkedCourses[course?._id]}
-                  onChange={() => {
-                    setCheckedCourses((prev) => ({
-                      ...prev,
-                      [course?._id]: !prev[course?._id],
-                    }));
-
-                    console.log("clicked");
-                  }}
-                />
-              </span>
-            </div>
-          </AccordionBody>
-        </Accordion>
-      ))}
+     <h1>{singleCourse?.title}</h1>
     </main>
   );
 };
