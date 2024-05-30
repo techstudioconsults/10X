@@ -11,7 +11,7 @@ import useUserContext from "../../../hooks/useUserContext";
 
 const ForgotPassword = () => {
   const { API_URL } = useUserContext();
-//   console.log(API_URL);
+  console.log(API_URL);
   const {
     register,
     handleSubmit,
@@ -25,7 +25,7 @@ const ForgotPassword = () => {
     try {
       setIsLoading(true);
       console.log(data);
-      const res = await axios.post(`${API_URL}/api/v1/auth/forgotpassword`);
+      const res = await axios.post(`${API_URL}/api/v1/auth/forgotpassword`, data);
       console.log(res);
       if(res.status == 200){
         setShowSuccess(true)
@@ -55,7 +55,7 @@ const ForgotPassword = () => {
       </div>
       {/* {formError && <p className="text-red-500 text-left">{formError}</p>} */}
       <form
-        className="w-full md:w-9/12 lg:w-1/2  mx-auto pt-5"
+        className="w-full md:w-9/12 lg:w-1/2 xl:w-5/12  mx-auto pt-5"
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="relative w-full  flex flex-col gap-3 items-center ">
@@ -112,7 +112,7 @@ const ForgotPassword = () => {
                 <img src={successIcon} alt="" />
             </div>
             <h1 className="text-blue font-bold text-2xl py-5">Link Sent, Check Your Inbox</h1>
-            <p className=" underline">Back to Log In</p>
+            <Link to="/login" className=" underline">Back to Log In</Link>
         </div>
     }
    </div>
