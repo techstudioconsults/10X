@@ -101,15 +101,15 @@ const CreateCourseDetails = ({ loading, onSubmit  }) => {
             )}
           </div>
           <div>
-            <div className="flex flex-row gap-3 justify-between items-center">
-              <div>
+            <div className="flex flex-col lg:flex-row gap-3 justify-between items-center">
+              <div className="w-full">
                 <label
-                  className="font-semibold text-base text-[#6476BA]"
+                  className="font-semibold text-base text-left w-full text-[#6476BA]"
                   htmlFor="category"
                 >
                   Course category{" "}
                 </label>
-                <div className="grid grid-cols-2 gap-4 w-52 py-3">
+                <div className="grid grid-cols-2 gap-4 w-full lg:w-52 py-3">
                   <div className="flex items-center ps-4  shadow border-gray-200 rounded dark:border-gray-700">
                     <input
                       id="bordered-radio-1"
@@ -153,8 +153,8 @@ const CreateCourseDetails = ({ loading, onSubmit  }) => {
                   </span>
                 )}
               </div>
-              <div className="flex flex-col ">
-                <label className="text-[#6476BA] font-semibold" htmlFor="url">
+              <div className="flex flex-col w-full ">
+                <label className="text-[#6476BA] font-semibold text-left" htmlFor="url">
                   Url Link *
                 </label>
                 <input
